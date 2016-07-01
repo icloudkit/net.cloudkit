@@ -1933,3 +1933,4 @@ POST   /uri     创建
 DELETE /uri/xxx 删除
 PUT    /uri/xxx 更新或创建
 GET    /uri/xxx 查看
+http://blog.csdn.net/mfe10714022/article/details/39692305
