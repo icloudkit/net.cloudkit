@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : net.cloudkit.relaxation : cloudkit-relaxation-1.0.0-v20160701-RELEASE.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/net.cloudkit.relaxation</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="archive" name="cloudkit-relaxation-1.0.0-v20160701-RELEASE.war">
+      <element id="javaee-facet-resources" facet="net.cloudkit.relaxation_main/web/Web Gradle : cloudkit-relaxation-1.0.0-v20160701-RELEASE.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="net.cloudkit.relaxation_main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/net.cloudkit.relaxation/build/resources/main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/net.cloudkit.relaxation/libs/esp-client.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/net.cloudkit.relaxation/libs/smsdeclareutil.jar" />
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.7" />
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.7" />
+          <element id="library" level="project" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.21" />
+          <element id="library" level="project" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.21" />
+          <element id="library" level="project" name="Gradle: org.slf4j:jul-to-slf4j:1.7.21" />
+          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.21" />
+          <element id="library" level="project" name="Gradle: org.logback-extensions:logback-ext-spring:0.1.4" />
+          <element id="library" level="project" name="Gradle: com.google.guava:guava:19.0" />
+          <element id="library" level="project" name="Gradle: org.mozilla:rhino:1.7.7" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/net.cloudkit.relaxation/exploded/cloudkit-relaxation-1.0.0-v20160701-RELEASE.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

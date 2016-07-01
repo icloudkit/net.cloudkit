@@ -5,4 +5,5 @@ include 'net.cloudkit.relaxation'
 include 'net.cloudkit.flowportal'
 include 'net.cloudkit.example'
 include 'net.cloudkit.ecosystem'
+include 'net.cloudkit.resources'
 

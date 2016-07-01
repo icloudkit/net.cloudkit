@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":net.cloudkit.resources:main" external.linked.project.path="$MODULE_DIR$/../../../net.cloudkit.resources" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="cloudkit" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web Gradle : net.cloudkit.resources.war">
+      <configuration>
+        <webroots>
+          <root url="file://$MODULE_DIR$/../../../net.cloudkit.resources/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../../../net.cloudkit.resources/build/classes/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../net.cloudkit.resources/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../net.cloudkit.resources/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../net.cloudkit.resources/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.7" level="project" />
+    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.1.7" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:jul-to-slf4j:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.logback-extensions:logback-ext-spring:0.1.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
+  </component>
+</module>

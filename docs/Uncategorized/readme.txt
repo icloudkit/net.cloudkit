@@ -1927,3 +1927,9 @@ http://photonkit.com
 
 http://connors.github.io/simple-user-styles/
 https://github.com/suprb/Nested
+
+
+POST   /uri     创建
+DELETE /uri/xxx 删除
+PUT    /uri/xxx 更新或创建
+GET    /uri/xxx 查看
