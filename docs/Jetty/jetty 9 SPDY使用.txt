@@ -1,0 +1,203 @@
+spdy介绍
+http://www.slideshare.net/ihower/a-brief-introduction-to-spdy-http20#btnNext
+http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3#TOC-3.-HTTP-Layering-over-SPDY
+
+环境准备
+jdk:openjdk7
+
+jetty9:http://download.eclipse.org/jetty/9.0.0.RC2/dist/
+
+npn-boot-1.1.5.v20130313.jar
+
+使用场景
+作为手机app的服务端，之前已经有很多server，现在计划引入spdy支持，用来减少网络传输、网络连接建立时间等
+
+jetty部署
+修改start.ini
+###增加jvm参数，保证npn功能
+--exec
+-Xbootclasspath/p:/home/guanfei/jetty/jetty9/npn-boot-1.1.5.v20130313.jar
+
+### 开启spdy
+OPTIONS=spdy
+etc/jetty-spdy-proxy.xml
+
+etc/jetty-spdy-proxy.xml
+
+配置监听8443端口，将此端口的spdy转化成http，然后redirect到127.0.0.1:9602
+keystore:http://git.eclipse.org/c/jetty/org.eclipse.jetty.project.git/tree/jetty-spdy/spdy-http-server/src/test/resources
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+  <!-- ============================================================= -->
+  <!-- Configure the Jetty Server instance with an ID "Server"       -->
+  <!-- by adding a SPDY connector.                                   -->
+  <!-- This configuration must be used in conjunction with jetty.xml -->
+  <!-- It should not be used with jetty-https.xml as this connector  -->
+  <!-- can provide both HTTPS and SPDY connections                   -->
+  <!-- ============================================================= -->
+  <Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+    <!-- =========================================================== -->
+    <!-- Set up the SSL Context factory used to establish all TLS     -->
+    <!-- Connections and session.                                    -->
+    <!--                                                             -->
+    <!-- Consult the javadoc of o.e.j.util.ssl.SslContextFactory     -->
+    <!-- o.e.j.server.HttpConnectionFactory for all configuration    -->
+    <!-- that may be set here.                                       -->
+    <!-- =========================================================== -->
+    <New id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
+      <Set name="KeyStorePath">/home/sankuai/keystore.jks</Set>
+      <Set name="KeyStorePassword">storepwd</Set>
+      <Set name="TrustStorePath">/home/sankuai/truststore.jks</Set>
+      <Set name="TrustStorePassword">storepwd</Set>
+      <Set name="Protocol">TLSv1</Set>
+    </New>
+
+    <!-- =========================================================== -->
+    <!-- Enables NPN debugging on System.err                         -->
+    <!-- ===========================================================
+    <Set class="org.eclipse.jetty.npn.NextProtoNego" name="debug" type="boolean">true</Set>
+    -->
+
+    <!-- =========================================================== -->
+    <!-- Create a TLS specific HttpConfiguration based on the        -->
+    <!-- common HttpConfiguration defined in jetty.xml               -->
+    <!-- Add a SecureRequestCustomizer to extract certificate and    -->
+    <!-- session information                                         -->
+    <!-- =========================================================== -->
+    <New id="tlsHttpConfig" class="org.eclipse.jetty.server.HttpConfiguration">
+      <Arg><Ref refid="httpConfig"/></Arg>
+      <Call name="addCustomizer">
+        <Arg><New class="org.eclipse.jetty.server.SecureRequestCustomizer"/></Arg>
+      </Call>
+    </New>
+
+  <!-- =========================================================== -->
+  <!-- This ProxyEngine translates the incoming SPDY/x(HTTP)       -->
+  <!-- requests to HTTP                                            -->
+  <!-- =========================================================== -->
+  <New id="httpProxyEngine" class="org.eclipse.jetty.spdy.server.proxy.HTTPProxyEngine">
+    <Arg>
+      <New class="org.eclipse.jetty.client.HttpClient">
+        <Call name="start"/>
+      </New>
+    </Arg>
+  </New>
+
+  <!-- =========================================================== -->
+  <!-- The ProxyEngineSelector receives SPDY/x(HTTP) requests      -->
+  <!-- from proxy connectors below and is configured to process    -->
+  <!-- requests for host "localhost".                              -->
+  <!-- Such requests are converted from SPDY/x(HTTP) to            -->
+  <!-- HTTP by the configured ProxyEngine and forwarded            -->
+  <!-- to 127.0.0.1:9090, where they are served by the upstream    -->
+  <!-- server above.                                               -->
+  <!-- =========================================================== -->
+  <New id="proxyEngineSelector" class="org.eclipse.jetty.spdy.server.proxy.ProxyEngineSelector">
+    <Call name="putProxyEngine">
+      <Arg>http/1.1</Arg>
+      <Arg>
+        <Ref refid="httpProxyEngine"/>
+      </Arg>
+    </Call>
+    <Set name="proxyServerInfos">
+      <Map>
+        <Entry>
+          <Item>localhost</Item>
+          <Item>
+            <New class="org.eclipse.jetty.spdy.server.proxy.ProxyEngineSelector$ProxyServerInfo">
+              <Arg type="String">http/1.1</Arg>
+              <Arg>127.0.0.1</Arg>
+              <Arg type="int">9602</Arg>
+            </New>
+          </Item>
+        </Entry>
+      </Map>
+    </Set>
+  </New>
+
+
+  <!-- =========================================================== -->
+  <!-- These are the reverse proxy connectors accepting requests   -->
+  <!-- from clients.                                               -->
+  <!-- They accept non-SSL (on port 8080) and SSL (on port 8443)   -->
+  <!-- HTTP, SPDY/2(HTTP) and SPDY/3(HTTP).                        -->
+  <!-- Non-SPDY HTTP requests are converted to SPDY internally     -->
+  <!-- and passed to the ProxyEngine above.                        -->
+  <!-- =========================================================== -->
+  <Call name="addConnector">
+    <Arg>
+      <New class="org.eclipse.jetty.spdy.server.proxy.HTTPSPDYProxyServerConnector">
+        <Arg>
+          <Ref refid="Server"/>
+        </Arg>
+        <Arg>
+          <Ref refid="sslContextFactory"/>
+        </Arg>
+        <Arg>
+          <Ref refid="proxyEngineSelector"/>
+        </Arg>
+        <Set name="Port">8443</Set>
+      </New>
+    </Arg>
+  </Call>
+</Configure>
+
+启动jetty
+cd $JETTY_HOME
+/usr/lib/jvm/java-7-openjdk-amd64/bin/java -Xbootclasspath/p:/home/guanfei/jetty/jetty9/npn-boot-1.1.5.v20130313.jar -jar start.jar
+
+启动成功
+guanfei@mobile-devhotel01:~/jetty-distribution-9.0.0.RC2/etc$ netstat -an|grep 8443
+tcp6       0      0 :::8443                 :::*                    LISTEN
+
+JAVA client调用
+InetSocketAddress proxyAddress = new InetSocketAddress("192.168.2.207", 8443);
+
+        Session client = factory.newSPDYClient(version)
+                .connect(proxyAddress, null).get(10, TimeUnit.SECONDS);
+
+
+        Fields headers = SPDYTestUtils
+                .createHeaders("localhost", proxyAddress.getPort(), version,
+                        "GET", "/api/1/hotel/search/1");
+
+        client.syn(new SynInfo(headers, true),
+                new StreamFrameListener.Adapter() {
+                    @Override
+                    public void onReply(Stream stream, ReplyInfo replyInfo) {
+                        Fields headers = replyInfo.getHeaders();
+                        System.out.println(headers.get(HTTPSPDYHeader.VERSION
+                                .name(version)));
+                        System.out.println(headers.get(header));
+                        System.out.println(headers.get("connection"));
+                        replyLatch.countDown();
+                    }
+
+                    @Override
+                    public void onData(Stream stream, DataInfo dataInfo) {
+                        ByteArrayOutputStream os = new ByteArrayOutputStream();
+                        os.write(dataInfo.asBytes(true), 0, dataInfo.length());
+                        System.out.println(new String(os.toByteArray()));
+                    }
+
+                    @Override
+                    public void onHeaders(Stream stream, HeadersInfo headersInfo) {
+                        super.onHeaders(stream, headersInfo);
+                        System.out.println("on heder");
+                    }
+                });
+create header
+public static Fields createHeaders(String host, int port, short version, String httpMethod, String path)
+    {
+        Fields headers = new Fields();
+        headers.put(HTTPSPDYHeader.METHOD.name(version), httpMethod);
+        headers.put(HTTPSPDYHeader.URI.name(version), path);
+        headers.put(HTTPSPDYHeader.VERSION.name(version), "HTTP/1.1");
+        headers.put(HTTPSPDYHeader.SCHEME.name(version), "http");
+        headers.put(HTTPSPDYHeader.HOST.name(version), host + ":" + port);
+        return headers;
+    }
+
+eclipse中运行，增加下面的参数

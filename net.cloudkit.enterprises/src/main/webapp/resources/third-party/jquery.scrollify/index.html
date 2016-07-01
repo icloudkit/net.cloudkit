@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- Modifications to this file will be overwritten. -->
+<!--[if lt IE 7]><html class="no-js lt-ie10 ie6" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie10 ie7" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie10 ie8" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10 ie9" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="zh-CN" dir="ltr"><!--<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>jQuery全屏滚动插件Scrollify演示</title>
+<meta name="keywords" content="jquery" />
+<meta name="description" content="jQuery全屏滚动插件Scrollify演示" />
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<style type="text/css">
+.viewport {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.indicator{position:absolute;margin-top:-175px;right:2%;top:50%}
+.indicator li{cursor:pointer;height:50px;margin-bottom:20px;width:20px}
+.indicator li:hover div{box-shadow:0 0 20px 2px #fff}.indicator div{height:100%;margin:0 auto;width:1px;background-color:#fff;background-color:rgba(255,255,255,.9);-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px}
+.indicator .current div,.indicator li.current div{border:1px solid #FFF}
+</style>
+<script type="text/javascript" src="../jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.easing/1.3/jquery.easing.js"></script>
+<script type="text/javascript" src="0.1.3/jquery.scrollify.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	// $('.panel').css({'height': $(window).height()});
+    $('.panel').css({'height': $('.container').height()});
+
+	$.scrollify({
+        // section选择器，绑定需要滚动的对象 .panel
+		section: '.section',
+        // // 哈希值，用于区另于其它section
+        // sectionName : "section-name",
+        // // easing的动画方法
+        // easing: "easeOutExpo",
+        // // 滚动的速度
+        // scrollSpeed: 1100,
+        // // 偏移,抵消每个部分位置的像素
+        // offset : 0,
+        // 定义是否滚动条是否可见的
+		scrollbars: false,
+        // // 动画前触发的函数
+        // before: function() {},
+        // // 动画后触发的函数
+        // after: function() {},
+        target: '.container'
+	});
+
+    $(".next-page").click(function(e) {
+        e.preventDefault();
+        $.scrollify("move",$(this).attr("href"));
+    });
+
+    /*
+    // 局部滚动
+    $('.panel').css({'height': $('.left').height()});
+    $.scrollify({
+        section: '.panel',
+        target: '.left'
+    });
+    */
+
+});
+</script>
+</head>
+
+<body>
+
+<div class="viewport">
+    <div class="container" style="height: 2500px; top: 0px;">
+        <section class="section section-0" data-section-name="section-0" style="height: 614px;">
+            <div class="inner">
+                <header>
+                    <h1>SCROLLIFY</h1>
+                    <p class="tagline">Power steering for your scroll wheel</p>
+                </header>
+                <p>A jQuery plugin that assists scrolling and smoothly snaps to sections.</p>
+                <p>Fully configurable and optimised for touch.</p>
+                <p><a href="https://github.com/lukehaas/Scrollify" target="_blank">https://github.com/lukehaas/Scrollify</a></p>
+            </div>
+        </section>
+        <section class="section section-1" data-section-name="section-1" style="height: 614px;">
+            <div class="inner">
+                <h2>Basic Setup</h2>
+                <p>Scrollify requires <a href="http://jquery.com/" target="_blank">jQuery</a> 1.6+ and an easing library such as <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank">jquery.easing.js</a>.</p>
+                <pre>
+    &lt;! doctype html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;script&gt;
+                $(function() {
+                    $.scrollify({
+                        section : "section",
+                    });
+                });
+            &lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;section&gt;&lt;/section&gt;
+            &lt;section&gt;&lt;/section&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                </pre>
+            </div>
+        </section>
+        <section class="section section-2" data-section-name="section-2" style="height: 614px;">
+            <div class="inner">
+            <h2>Configuration</h2>
+                <pre>
+    $.scrollify({
+        section : "section",
+        sectionName : "section-name",
+        easing: "easeOutExpo",
+        scrollSpeed: 1100,
+        offset : 0,
+        scrollbars: true,
+        before:function() {},
+        after:function() {}
+    });
+                </pre>
+
+            </div>
+        </section>
+        <section class="section section-3" data-section-name="section-3" style="height: 614px;">
+            <div class="inner">
+                <h2>Options</h2>
+                <dl>
+                    <dt>section</dt>
+                    <dd>A selector for the sections.</dd>
+                    <dt>sectionName</dt>
+                    <dd>Scrollify lets you define a hash value for each section. This makes it possible to permalink to particular sections. This is set as a data attribute on the sections. The name of the data attribute is defined by 'sectionName'.</dd>
+                    <dt>easing</dt>
+                    <dd>Define the easing method.</dd>
+                    <dt>offset</dt>
+                    <dd>A distance in pixels to offset each sections position by.</dd>
+                    <dt>scrollbars</dt>
+                    <dd>A boolean to define whether scroll bars are visible or not.</dd>
+                    <dt>before</dt>
+                    <dd>A callback that is called before a section is scrolled to via the move method. Arguments include the index of the section and an array of all section elements.</dd>
+                    <dt>after</dt>
+                    <dd>A callback that is called after a new section is scrolled to. Arguments include the index of the section and an array of all section elements.</dd>
+                </dl>
+            </div>
+        </section>
+        <section class="section section-4" data-section-name="section-4" style="height: 614px;">
+            <div class="inner">
+                <h2>Methods</h2>
+                <p>The move method can be used to scroll to a particular section. This can take the index of the section, or the name of the section preceded by a hash.</p>
+                <pre>
+                $.scrollify("move","#name");
+                </pre>
+            </div>
+        </section>
+    </div>
+    <a class="back-top" href="javascript:;" title="上一页" style="display: none;"></a>
+    <a class="next-page" href="javascript:;" title="下一页" style="display: inline;"></a>
+    <ul id="indicator" class="indicator">
+        <li class="current" data-index="0"><div></div></li>
+        <li data-index="1" class=""><div></div></li>
+        <li data-index="2" class=""><div></div></li>
+        <li data-index="3" class=""><div></div></li>
+        <li data-index="4" class=""><div></div></li>
+    </ul>
+</div>
+</body>
+</html>

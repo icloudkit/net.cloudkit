@@ -1,0 +1,79 @@
+################################################################
+# openssl example configuration file.
+# This is mostly used for generation of certificate requests.
+#################################################################
+[ca]
+default_ca = CA_default # The default ca section
+#################################################################
+[CA_default]
+# Where everything is kept
+dir = /etc/ssl/conf
+# Where the issued certs are kept
+certs = $dir
+# Where the issued crl are kept
+crl_dir = $dir/crl
+# database index file
+database = $dir/index.txt
+# default place for new certs
+new_certs_dir = $dir/new_certs
+# The CA certificate
+certificate = $dir/CA/OrbixCA
+# The current serial number
+serial = $dir/serial
+# The current CRL
+crl = $dir/crl.pem
+# The private key
+private_key = $dir/CA/OrbixCA.pk
+# private random number file
+RANDFILE = $dir/.rand
+# how long to certify for
+default_days = 365
+# how long before next CRL
+default_crl_days = 30
+# which message digest to use
+default_md = md5
+# keep passed DN ordering
+preserve = no
+# A few different ways of specifying how closely the request should
+# conform to the details of the CA
+policy = policy_match
+# For the CA policy [policy_match]
+countryName = match
+stateOrProvinceName = match
+organizationName = match
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+# For the `anything' policy
+# At this point in time, you must list all acceptable `object'
+# types
+[policy_anything]
+countryName  = optional
+stateOrProvinceName = optional
+localityName = optional
+organizationName  = optional
+organizationalUnitName  = optional
+commonName = supplied
+emailAddress = optional
+[req]
+default_bits  = 1024
+default_keyfile = privkey.pem
+distinguished_name  = req_distinguished_name
+attributes  = req_attributes
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_min = 2
+countryName_max  = 2
+stateOrProvinceName = State or Province Name (full name)
+localityName  = Locality Name (eg, city)
+organizationName  = Organization Name (eg, company)
+organizationalUnitName  = Organizational Unit Name (eg, section)
+commonName  = Common Name (eg. YOUR name)
+commonName_max  = 64
+emailAddress  = Email Address
+emailAddress_max  = 40
+[req_attributes]
+challengePassword  = A challenge password
+challengePassword_min  = 4
+challengePassword_max  = 20
+unstructuredName = An optional company name

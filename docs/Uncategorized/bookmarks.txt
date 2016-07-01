@@ -1,0 +1,208 @@
+http://golang.org.nyud.net/doc/install
+http://www.itellyou.cn/
+
+https://speakerdeck.com/
+https://github.com/
+http://www.zealer.com/
+http://www.zhihu.com/
+http://koudai.com/
+http://www.xipin.com/
+http://segmentfault.com/
+http://fanke.com/
+http://www.yougou.com/
+http://www.meidebi.com/
+http://stackoverflow.com
+
+http://www.liepin.com/
+http://www.dajie.com/
+http://www.kanzhun.com/
+http://xueqiu.com/
+http://www.tiantian.com/
+http://taofang.com
+https://www.dropbox.com/
+https://github.com/
+https://twitter.com/
+
+
+
+http://www.ruanyifeng.com/
+http://www.zhihu.com/
+http://www.segmentfault.com/
+
+http://sphinxsearch.com/ 全文搜索
+http://www.xunsearch.com/ 讯搜PHP全文搜索
+http://detectmobilebrowsers.com/ 移动浏览器判断
+
+http://www.staticfile.org/ cdn javascrpit lib
+http://pandoc.googlecode.com/ md -> pdf
+
+https://www.dropbox.com/
+https://twitter.com/
+http://fancy.com/
+https://github.com/
+https://gitcafe.com/
+https://wandou.com/
+https://www.gitbook.com/
+https://www.name.com/
+https://www.godaddy.com/
+https://stackoverflow.com/
+http://segmentfault.com/
+http://www.csshero.org/
+https://www.chromeexperiments.com/
+https://stripe.com/
+http://netty.io/
+https://vaadin.com/
+http://oauth.net/
+http://www.guoku.com/
+https://grizzly.java.net/
+https://www.behance.net/
+https://coding.net/
+http://www.lianjia.com/
+http://jiwu.com/
+http://www.mayi.com/
+http://www.tujia.com/
+http://libs.useso.com/
+http://www.staticfile.org/
+https://www.qingcloud.com/
+http://www.zhihu.com/
+http://www.anquanbao.com/
+http://www.duobei.com/
+http://unity3d.com/
+http://www.1tai.com/
+http://huaban.com/
+http://mangguo.org/
+http://www.koubei.com/
+http://www.mediatek.com/zh-CN/
+https://www.icloud.com/
+http://live.com/
+http://www.tmall.com/
+http://www.paipai.com/
+http://qianbao.com/?spm=fd886260-464a-45da-81bd-53592df6742b
+https://www.jdpay.com/
+http://www.lakala.com/
+http://www.alipay.com/
+http://www.500.com/
+http://www.qinxue.com/
+http://www.xiji.com/
+http://www.kaola.com/
+http://www.baixing.com/
+https://www.baifubao.com/
+https://cn.fotolia.com/
+https://bearychat.com/
+http://shixian.com/
+http://xueqiu.com/
+https://typekit.com/
+http://ideacodes.com/
+https://www.raspberrypi.org/
+http://shixian.com/
+https://webflow.com/
+
+dart https://www.dartlang.org
+go http://golang.org/doc/install https://code.google.com/p/go/downloads/list
+nodejs http://nodejs.org/
+npm http://nodejs.org/dist/npm/ https://www.npmjs.org/
+
+jspm http://jspm.io/ javascript包管理
+kickstrap http://getkickstrap.com/
+commonjs标准 http://www.commonjs.org/specs/
+html5shiv https://github.com/aFarkas/html5shiv
+compass sass less http://lesscss.org/
+Zepto http://zeptojs.com/ Zepto是一个轻量级的针对现代高级浏览器的JavaScript库， 它与jquery有着类似的api
+Bootstrap http://getbootstrap.com/
+Semantic UI http://semantic-ui.com/
+Foundation http://foundation.zurb.com/
+requirejs http://requirejs.org/docs/api.html
+ui-router https://github.com/angular-ui/ui-router
+JQuery http://jquery.com/
+MooTools http://mootools.net/
+respond https://github.com/scottjehl/Respond CSS3 Media Queryes
+Emberjs http://www.emberjs.cn/guides/
+Angularjs http://angularjs.org/ http://angular-ui.github.io/
+angular-ui-growl https://github.com/ctrix/angular-ui-growl/blob/master/README.md
+highlightjs http://highlightjs.org/
+http://fgnass.github.io/spin.js/  Ajax Loading
+D3 http://d3js.org/ 图像图表
+
+LABjs、RequireJS、SeaJS 模块加载
+Angular、Backbone、CanJS与Ember
+
+
+https://code.google.com/p/markdown4j/
+
+
+
+http://jianshu.io/
+
+
+http://dribbble.com/
+http://www.uiparade.com/
+http://uielements.net/
+http://appicontemplate.com/
+https://www.behance.net/
+http://designmodo.com/
+http://pixelbuddha.net/
+http://www.shutterstock.com/zh/
+http://www.graphicsfuel.com/
+http://www.flaticon.com/
+http://brankic1979.com/icons/
+
+http://www.psdgraphics.com/*
+http://depositphotos.com/
+http://www.wix.com/
+http://medialoot.com/
+
+http://envatomarketplaces.com/*
+
+http://www.xiangshu.com/pic/4?page=6
+
+
+http://camel.apache.org/enterprise-integration-patterns.html
+
+
+http://www.szcredit.com.cn/web/GSZJGSPT/QyxyDetail.aspx?rid=71523f3624c54a08865b626ab7637db7
+https://www.gitbook.com/explore
+http://search.maven.org/
+http://redisdoc.com/
+http://hemin.cn/jq/
+https://jersey.java.net/
+
+
+
+http://www.jiankongbao.com/
+http://www.kancloud.cn/
+https://www.daocloud.io/
+https://www.gotokeep.com/
+http://www.zhimatech.com/
+https://zine.la/
+http://mmxueche.com/
+http://www.camcap.us/
+http://zero.teerapp.com/
+https://pubu.im/
+https://www.pgyer.com/
+https://tower.im/
+https://www.huoban.com/
+https://www.nextoffer.com/
+http://www.mitanglvxing.com/
+http://www.jianshu.com/
+http://www.pingwest.com/
+http://xueqiu.com/
+http://fir.im/
+http://www.looip.cn/
+https://luosimao.com/
+http://yuantiku.com/
+http://www.zhinanmao.com/
+https://www.vc.cn/
+https://www.pingxx.com/
+http://ke.qq.com/
+http://www.zealer.com/
+https://sendcloud.sohu.com/
+http://www.haizhi.com/
+https://www.wandoujia.com/
+https://csphere.cn/
+http://www.weixinhost.com/
+http://www.sobot.com/
+https://segmentfault.com/
+https://gitcafe.com/
+http://xueqiu.com/
+
+http://coolshell.cn/

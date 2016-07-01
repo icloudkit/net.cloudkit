@@ -1,0 +1,189 @@
+# robots.txt for lattice
+
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /images/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /assets/
+
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+
+Crawl-delay: 10
+
+Sitemap: /sitemap.xml
+
+
+------------------------------------------------------------------------------------------------------------------------
+允许所有的机器人：
+
+User-agent: *
+Disallow:
+另一写法
+
+User-agent: *
+Allow:/
+仅允许特定的机器人：（name_spider用真实名字代替）
+
+User-agent: name_spider
+Allow:
+拦截所有的机器人：
+
+User-agent: *
+Disallow: /
+禁止所有机器人访问特定目录：
+
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /images/
+Disallow: /tmp/
+Disallow: /private/
+仅禁止坏爬虫访问特定目录（BadBot用真实的名字代替）：
+
+User-agent: BadBot
+Disallow: /private/
+禁止所有机器人访问特定文件类型[2]：
+
+User-agent: *
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+非标准扩展协议
+自动发现Sitemaps文件
+Sitemap 指令被几大搜索引擎支持（包括Google、Yahoo、Bing和Ask），指定了网站 Sitemaps文件的位置。Sitemaps文件包含了网站页面所在的URL的一个列表。Sitemap 指令并不受 User-agent 指令的限制，所以它可以放在 robots.txt 文件中的任意位置。 [3] 唯一要注意的就是要使用网站地图指令，<sitemap_location>,并将URL的"location"值换成网站地图的地址，例如，下面就是一个网站地图指令的例子：
+
+Sitemap: <http://www.example.com/sitemap.xml>
+如何编写 Sitemaps 文件，请参考 sitemaps.org（英文） 上的说明。
+
+Crawl-delay 指令
+几大抓取工具支持Crawl-delay参数，设置为多少秒，以等待同服务器之间连续请求：[4][5]
+
+User-agent: *
+Crawl-delay: 10
+Allow 指令
+一些大的Crawlers支持一项Allow指令，可以抵消先前Disallow指令。比如Googlebot。[6]
+
+替代
+虽然robots.txt是最为广泛接受的方法，但也可以与robots META标签一起使用。robots META标签主要是针对一个独立的页面设置，与其他的META标签（如使用的语言、页面的描述、关键词等）一样，robots META标签也是放在页面的HEAD标签中，专门用来告诉搜索引擎robots如何抓取该页的内容。
+
+<head>
+	<meta name="robots" content="noindex, nofollow" />
+</head>
+
+"rel=nofollow"属性
+      nofollow是HTML元标签(meta)的content属性和链接标签(a)的rel属性的一个值，告诉机器(爬虫)无需追踪目标页，为了对抗blogspam(博客垃圾留言信息)，Google推荐使用nofollow，告诉搜索引擎爬虫无需抓取目标页，同时告诉搜索引擎无需将的当前页的Pagerank传递到目标页。但是如果你是通过sitemap直接提交该页面，爬虫还是会爬取，这里的nofollow只是当前页对目标页的一种态度，并不代表其他页对目标页的态度。
+1 nofollow的使用
+2 nofollow的作用
+3 PR修剪(Pagerank sculpting)
+4 SEO建议
+5 SEO基础更多阅读
+nofollow的使用
+nofollow有两种用法：
+1.用于meta元标签：<meta name="robots" content="nofollow" />，告诉爬虫该页面上所有链接都无需追踪。
+2.用于a标签：<a href="login.aspx" rel="nofollow">登录</a>,告诉爬虫该页面无需追踪。
+nofollow的作用
+
+nofollow主要有三个作用：
+1.防止不可信的内容，最常见的是博客上的垃圾留言与评论中为了获取外链的垃圾链接，为了防止页面指向一些拉圾页面和站点。
+2.付费链接：为了防止付费链接影响Google的搜索结果排名，Google建议使用nofollow属性。
+3.引导爬虫抓取有效的页面：避免爬虫抓取一些无意义的页面，影响爬虫抓取的效率。
+PR修剪(Pagerank Sculpting)
+
+nofollow的滥用，一些SEO为了做到搜索引擎的最大优化，通过nofollow来控制PR的流动，可以很好的优化一些特定页面。当然这种优化比较适合一些已经积淀了相当数量PR的老站点。为了防止PR修剪和nofollow的滥用，Google已经减弱了nofollow的作用，以前的nofollow不仅仅不会造成PR流动，同时不会造成PR损失，现在的nofollow规定虽然也不会造成PR流向目标页，但是原本流向的目标页的将会损失掉。比方当前页PR为1，而且页面上有10个链接，其中一个是nofollow的链接，根据先前的nofollow的规定，每个非nofollow链接指向的目标页将获得1/9的PR，含nofollow的链接不能获得PR，而根据现在Google对nofollow的新规定，非nofollow链接指向的目标页只能获得1/10，nofollow链接同样不能获得PR，也就是损失了1/10的PR。
+SEO建议
+
+      nofollow在Google的作用已经很弱，所以SEO要控制站点的PR的流动，避免链接指向垃圾页面，只能靠人工审核的方法。
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+URL规范化(url normalization)其实就是一个标准化URL的过程，其实也就是将一个URL转化为一个符合规范的等价URL(如http://www.example.com/resources转化为http://www.example.com/resources/)，这样程序可以确定这两个URL是等价的。
+URL规范化用于搜索引擎可以减少对页面的重复索引，同时也可以减少爬虫的重复抓取。浏览器端识别用户是否访问过一个URL也需要使用URL规范化。
+1 URL组成
+2 不规范的URL
+3 URL规范化过程
+4 SEO URL规范化
+URL组成:
+protocol :// hostname[:port] / path / [;parameters][?query]#fragment
+  协议://主机名[:端口]/ 路径/[:参数] [?查询]#Fragment
+
+不规范的URL:
+1 URL中多余的字符
+1.1 子域名的URL中包含"www":  "http://www.resources.example.com/"
+1.2 含有默认端口: "http://www.example.com:80/resources/"
+1.3 松散的URL: "http://www.chapters.indigo.ca/books/amazon-sucks-donkey-balls/9780470170779-item.html"
+1.4 多余默认文件名index.html,default.aspx等："http://www.example.com/resources/index.html"
+1.5 文件路径中
+     (1) 多余的"/":"http://www.example.com/resources//"
+     (2) 多余的点修饰串:"x/y/z/http://www.example.com/a/b/http://www.example.com/../page.html"
+1.6 查询串中多余的
+     (1) ? (空查询串):http://www.example.com/resources?
+     (2) &
+     (3) 无用的查询变量:http://www.example.com/display?id=123&fake=fake
+2 URL缺少字符串
+2.1 缺少"/":"http://www.example.com/resources"
+2.2 查询串缺少名称或者值:"http://www.example.com/display?id=" 或者 "http://www.example.com/display?=123"
+3 其他不规范的URL
+3.1 "http://resources.example.com/" 与 "http://www.example.com/resources/"其实是相同的内容
+3.2 使用IP代替域名
+3.3 含有扩充字符(extended characters)，大小写敏感("http://www.google.cn/Intl/zh-CN/about.html" 和"http://www.google.cn/intl/zh-CN/about.html")
+3.4 "+"和"%20"混用
+3.5 查询变量顺序混乱:"http://www.example.com/test.aspx?bar=1&a=test"
+3.6 含临时的状态变量:http://www.example.com/test?back=/prevpage.aspx
+
+URL规范化过程：
+1.URL协议名和主机名小写化
+HTTP://WWW.EXAMPLE.com/test   -> http://www.example.com/test
+2.escape序列转化为大写,因为escape序列大小敏感
+%3a ->%3A
+3.删除Fragment(#)
+http://www.example.com/test/index.html#seo -> http://www.example.com/test/index.html
+4.删除空查询串的'?'
+http://www.example.com/test?  ->  http://www.example.com/test
+5.删除默认后缀
+http://www.example.com/test/index.html   ->  http://www.example.com/test/
+6.删除多余的点修复符
+  http://www.example.com/../a/b/../c/./d.html -> http://www.example.com/a/c/d.html
+7.删除多余的"www"
+http://www.test.example.com/  -> http://test.example.com/
+8.对查询变量排序
+ http://www.example.com/test?id=123&fakefoo=fakebar → http://www.example.com/test?id=123 \
+9.删除取默认值的变量
+http://www.example.com/test?id=&sort=ascending → http://www.example.com/test
+10.删除多余的查询串，如?,&
+ http://www.example.com/test? → http://www.example.com/test
+11.Dust 规则(Schonfeld 等人提出的启发式方法) [http://www2007.org/paper194.php]
+http://www.example.com/test?id=123 -> http://www.example.com/test_123
+
+SEO URL规范化：
+不规范的URL会造成网站很多重复的URL，导致爬虫重复抓取同一内容，影响网站有效的内容被抓取，同时也就影响索引。
+多个不规范URL造成PR稀疏，本来流向同一页面的PR，结果造成了流向多个不规范的URL。
+还有一个用户体验问题，复杂或者不规范的URL容易使用户对网站造成不良印象。
+
+Google管理员增加了URL规范化的工具，可以删除URL中无用的参数。
+------------------------------------------------------------------------------------------------------------------------
+关键词堆砌(Keyword Stuffing)
+关键词堆砌(Keyword Stuffing)，就是在页面上大量的重复(堆砌)一些关键词，通过关键词密度来提高页面针对某一关键词的相关性，以此提高该页面针对该关键词在搜索结果中的排名。这是由于早期搜索引擎排名采用相关性算法TF/IDF来评价页面与某一关键词相关性，关键词堆砌正是利用了这一算法的缺陷。
+关键词堆砌是被认为是一种的不道德行为，随着搜索引擎逐渐降低甚至摒弃相关性算法对排名的影响，并使用了专门的检测算法(如LSI)来对抗这种作弊技术，关键词堆砌已经渐渐失去他的价值。
+最常见的关键词堆砌形式就是在Title、Meta Keyword、Meta description、页面内容里重复关键词，还有隐藏文本(Hidden Text)、隐藏链接（Hidden Link）、Noscript等等非常隐蔽的形式。
+关键词堆砌不仅仅存在被K的风险，而且大大伤害用户体验，将最终损害网站的利益。当然不是说不需要进行关键词优化了，对于一些优质内容的页面，通过良好的关键词优化，告诉搜索引擎和用户该页面与某一关键词的相关性，既有利于用户也有利于搜索引擎排名，但是关键词优化必须注意关键词的密度，采用比较自然的方式。
+------------------------------------------------------------------------------------------------------------------------
+隐藏页(Cloaking)，又称障眼法、伪装技术，就是为搜索引擎爬虫和用户浏览器分别提供不同版本的内容，这主要根据HTTP请求头的IP和User-Agent信息来区分。
+障眼法是一种典型的黑帽SEO作弊方法 ，也是桥页的一种形式。通过返回给爬虫的内容（如拷贝已经在搜索引擎获得高排名的页面内容）获取较高的排名，吸引搜索引擎的用户点击过来，而当搜索引擎用户点击进来时发现内容不同而且很普通。这类欺骗搜索引擎的内容一旦被举报，搜索引擎将会除名该站点。
+隐藏页面技术不仅仅用来的欺骗搜索引擎，有时也用来欺骗一些开放目录的编辑，因为编辑喜欢点击目录页面上的链接来检查站点，这样可以根据HTTP请求头中的Referer来确定用户来自特定的开放目录，服务器将为该用户返回伪造页内容。
+2006年随着"渐进增加(progressive Enhancement)"策略（一种Web可访问性的概念）的出现，隐藏页技术被认为是一种多余的技术。
+2007年“马赛克式隐藏页”概念被提出，通过只动态改变页面标题、部分页面内容、Javascript和CSS等，减小伪造页面与真实页面之间内容差别。
+现在的很多大站点根据用户的地理位置发送不同内容,被称为"IP Delivery"，也是一种良性的隐藏页。有些网站使用首次免费点击(First Click Free)，用户第一次访问是免费的，但第二次访问会跳转到付费页面。这些都是隐藏页，搜索引擎不会认为这是作弊。
+反伪装，搜索引擎也可以通过伪装成客户端浏览器来检测获得内容与爬虫获得内容是否相同。所以Cloaking是非常危险的技术，要保证识别一个搜索引擎爬虫的所有的IP。
+------------------------------------------------------------------------------------------------------------------------
+桥页(Bridge Page)，顾名思义，就是起桥接作用的中间页面，桥页的目标是针对特定的关键词能在搜索结果中获得较好的排名，并通过一些技术将来访者导向特定的目标页 (如主页)。桥页也被称为 Portal Page, Jump Page, Gateway Page, Entry Page等等。一般情况下，桥页由软件生成，大部分是无意义的垃圾页面。桥页大部分情况下采用Meta Refresh将页面重定向到目标页，也有使用Javascript，服务器端重定向到目标页面，或者以欺骗的方式引诱用户点击到目标页，这种类型的桥页被搜索引擎 发现都会被严惩，甚至整站被K。还有直接拷贝高排名的页面内容，这些页面被发现是复制内容，不会被搜索引擎索引(Indexing)。
+也有一些桥页经过很好的优化，被设计成搜索引擎友好(Search Engine Friendly,SEF)的，通过链接与导航引导用户点击到目标页，被称为富内容门页(Content Rich Doorway)。登陆页(Landing Page)通常被误认为是桥页。隐藏页(Cloaking)也是桥页的一种形式，通过服务器端脚本为搜索引擎爬虫和用户的浏览器分别返回不同内容，以此欺 骗搜索引擎。
+富内容门页是非常有用的，但必须是搜索引擎友好的，适合关键词密度，不欺骗爬虫，有良好的导航功能等等。
+------------------------------------------------------------------------------------------------------------------------
+链接无效(link rot)，是指为防止链接所指向的内容消失、变更或者位置改变等导致坏链而启用的处理链接错误的一个过程，服务器一般是返回一个出错页面(如error.aspx等等)，而不是404错误。同时也用来形容因更新失败导致的内容过期、或者使用含有无用内容的链接来扰乱搜索结果的现象。
+因为链接无效返回的HTTP状态码为200的错误页面，而不是404，也称之为软404，搜索引擎很难识别。Bar-Yossef等人2004年提出了一种启发式的方法来识别这类软404。

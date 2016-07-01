@@ -1,0 +1,331 @@
+if(!window.console){
+    console = {
+        log: function(info){
+            return false
+        }
+    }
+}
+
+// 注入脚本
+var url = '//upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js';
+// 创建script标签，设置其属性
+var script = document.createElement('script');
+script.setAttribute('src', url);
+// 把script标签加入head，此时调用开始
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
+// AJAX
+try {
+    request = new XMLHttpRequest();
+} catch (trymicrosoft) {
+    try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (othermicrosoft) {
+        try {
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (failed) {
+            request = false;
+        }
+    }
+}
+if (!request) {
+    alert("Error initializing XMLHttpRequest!");
+}
+
+
+// code for IE7+, Firefox, Chrome, Opera, Safari
+if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+} else {// code for IE6, IE5
+    // Msxml2.XMLHTTP
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+    // alert(xmlhttp.status);
+    // Server is done!
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log('http status:' + xmlhttp.status);
+        // document.getElementById("content").innerHTML = xmlhttp.responseText;
+    }
+}
+
+// escape
+xmlhttp.open("GET","http://www.baidu.com?q=ajax", true);
+// xmlhttp.setRequestHeader("Content-Length", arg.lenght);
+// 用POST的时候一定要有这句
+xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+xmlhttp.send();
+
+// 定时器
+var interval_id = setInterval(function() {
+    // TODO
+}, 1000);
+// clearInterval(interval_id);
+
+// var timer = setTimeout(function() {
+    // TODO
+}, 1000);
+// clearTimeout(timer);
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+修改电信华为路由WiFi共享名称
+
+// ChinaNet-
+// AJAX
+try {
+    request = new XMLHttpRequest();
+} catch (trymicrosoft) {
+    try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (othermicrosoft) {
+        try {
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (failed) {
+            request = false;
+        }
+    }
+}
+if (!request) {
+    alert("Error initializing XMLHttpRequest!");
+}
+
+
+// code for IE7+, Firefox, Chrome, Opera, Safari
+if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+} else {// code for IE6, IE5
+    // Msxml2.XMLHTTP
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+    // alert(xmlhttp.status);
+    // Server is done!
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log('http status:' + xmlhttp.status);
+        // document.getElementById("content").innerHTML = xmlhttp.responseText;
+    }
+}
+var content = "x.WLANConfiguration.1.X_CT-COM_APModuleEnable=1&y.Standard=b%2Cg%2Cn&y.X_ATP_11NHtMcs=33&y.X_ATP_Wlan11NBWControl=20&y.X_ATP_Wlan11NGIControl=long&y.Enable=1&y.Channel=0&y.X_CT-COM_SSIDHide=0&y.X_CT-COM_Powerlevel=1&y.SSID=lenzhi.com&y.BeaconType=WPAand11i&y.X_ATP_WPSMode=ap-pbc&k.PreSharedKey.1.PreSharedKey=rootroot&y.WPAWPA2EncryptionModes=AESEncryption";
+// escape
+xmlhttp.open("POST","http://10.1.1.1/html/network/setcfg.cgi?x=InternetGatewayDevice.LANDevice.1&y=InternetGatewayDevice.LANDevice.1.WLANConfiguration.1&k=InternetGatewayDevice.LANDevice.1.WLANConfiguration.1&RequestFile=html/network/wlan.asp", true);
+xmlhttp.setRequestHeader("Content-Length", content.lenght);
+// 用POST的时候一定要有这句
+xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+xmlhttp.send(content);
+
+
+------------------------------------------------------------------------------------------------------------------------
+var inner = $('<iframe></iframe>');
+$('body').append(inner);
+inner.src = 'http://www.google.com';
+
+
+------------------------------------------------------------------------------------------------------------------------
+var buy = $('<a title="立即购买" class="button-buy button-style-1" href="javascript:;" onclick="ec.product.buy(\'sku\');"><span>立即购买</span></a>');
+$('#pro-operation').prepend(buy);
+buy.trigger('click');
+
+// 定时器
+var interval_id = setInterval(function() {
+    if(window.location.href == 'http://www.vmall.com/order/confirmcart') {
+        if($('.system-error-area').text().indexOf('购买失败') != -1) {
+            window.location.href = 'http://www.vmall.com/product/1396.html#2525';
+        }
+    }
+}, 1);
+// clearInterval(interval_id);
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+// 华科刷登录次数
+
+// 注入脚本
+var url = '//upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js';
+// 创建script标签，设置其属性
+var script = document.createElement('script');
+script.setAttribute('src', url);
+// 把script标签加入head，此时调用开始
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
+// AJAX
+try {
+    request = new XMLHttpRequest();
+} catch (trymicrosoft) {
+    try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (othermicrosoft) {
+        try {
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (failed) {
+            request = false;
+        }
+    }
+}
+if (!request) {
+    alert("Error initializing XMLHttpRequest!");
+}
+
+
+// code for IE7+, Firefox, Chrome, Opera, Safari
+if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+} else {// code for IE6, IE5
+    // Msxml2.XMLHTTP
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+    // alert(xmlhttp.status);
+    // Server is done!
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log('http status:' + xmlhttp.status);
+        // document.getElementById("content").innerHTML = xmlhttp.responseText;
+    }
+}
+
+
+// 定时器
+var interval_id = setInterval(function() {
+    // TODO
+    // escape
+    // xmlhttp.open("GET","http://sns.hust-snde.com/learning/sso/login_webTrnLogin.action?ssoUser.loginId=4450714310088&siteCode=code62", true);
+    // xmlhttp.setRequestHeader("Content-Length", arg.lenght);
+    // 用POST的时候一定要有这句
+    // xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+    // xmlhttp.send();
+
+    $.get("http://sns.hust-snde.com/learning/sso/login_webTrnLogin.action?ssoUser.loginId=4450714310088&siteCode=code62", function(result) {
+        $("div").html(result);
+    });
+}, 1000);
+
+
+
+
+// 注入脚本
+var url = '//upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js';
+// 创建script标签，设置其属性
+var script = document.createElement('script');
+script.setAttribute('src', url);
+// 把script标签加入head，此时调用开始
+document.getElementsByTagName('head')[0].appendChild(script);
+$.ajax({
+    type: "POST",
+    url: "http://quickpass.chinaport.gov.cn/QuickPass/QuickPass.soap",
+    data: "item=Dec&method=Save&array=H4sIAOcDnXcA/+1d25Pb1nlfOZKqiy1bUerEddpst4mb1N4lQO5VWSGDJUAKFQkwAChp1QcMtQtJbLnkluTaUicPTtokTRyP00w7nUzd9DadzvQyk4zbWK3d+l/oTN/7Uu9afkrf+tCH9BwcXM7hZZcfwk9hl+FIWADn/M754fs+nMt3Ds6ZOTEzM/Nj8qN/6e8ZevIE+X+aHuTVtZxEf7k1aW1p1nHn5dyitJxbm3e3nO3GnbWidP/Wvd+5LXfvd7rd+a1a5+xHCOzJk+RQ1Pwtvdmtdx+8NHvdb3fqreaV7IK0IC9lpdyCvLK0/NJsfq/R3Wv7V5r+Xrdda7w0W9m73ahvXfMfuK3f8ptXmnuNxpOnwsTyrZ2dVrM3MXlVXpBXl9ZGS+wUpXdJ3221uwuanl+IOV4i988Ynu4VSmrxjLPpeO5mRT9D4nhXdVULTkqG4z5FT/KW6aqGqdtPs9t53XR0zcpXz9Prgq3r7k03CCvrjuM5rupWnSAJxyiaT9IT1zaDhOMLmvjF6CLO4KnoTtGyNOeSEM7uPU2vuWwChKpphmtYpnMhyLRaqZT0sm66QQKUqePZulpSaZyAs563yJ3SiRMn2e+J4EfPLgrCuurXtqk+xLuleqdL7z4r3M23mt1avem3adAnegBbfrPjb7e29mjgx4TAQtv3u/eDBD8uBJT9Tsfp1rp7nX4KTv1us5+Cur1d7xJb6fQn5uzt7jb8Hb/Zpcb6vGgShFjH9muNGgWf6jeZrZbtN+h9ij19mhxO6Kd/jv6Rzp4hf86epYdz9HCeHp6kh6fo4QI5nAt+Z5+m18/Qw0V6+Cg5nDrT92BU4tRon9Nq3Zpbu93wF2x/p9WtN++GL8LZmzsNZ+uev1M7T860+p07xXZt5yMnTlxwHnS6/s5CGI/yPUvt/PTHyOHd31j/wv2dxuzL4ds0Jy9Ic7N+c6u1TZK+MrfXvTMvL899QXnq3Pr9zuVOkMEsQTQ7V+bm2Mnl++T8Xre7ezmTeeWVVxZeyS202nczWUmSMzfLJUYqirvT2SZPQBJuN8PUOvM79a12q9O6Q4qO1s5lEm+exUowu+3W7tEYGmuOMJ2dpVx9ptfZZm3HvzIXmHfwrs3NstQv52sd3yEGSGzjZRLDbe/5NIymcnmDhDExSwI2SJ2lT/IlpnPffbDrh3fZ/Y7/23tEgMnNQXQ2LFPTNc+04hytdk27TRMjOsguC0TyrcbeTlMAdYOINLdumygqfqZurX3X75okj85ubcunOtqpN62trb02URJRbeZwWhUopQomHSL4klexbBdCiQMh0dI1wzM0CKcIgUjI1suqfQ1KKkIhEYuqUgitBINFSvPyV0GSihBIhCqq7ZJaHmhTPAqJGGkLkMbBdR3ITIAhUbtubapFHVhacSCsAtQiTTCYtGIIEqW8RcpotaxDOCUYRFJ5SwOTYhisgsGsVF3yRkGlJeKwynjTtTeD7giojOdQWMRuurqpeQVDL8HqRAGHRI687qYLtjQehUoMamk8CotYpWIDi9UYglWoGqUStF0aQbDKL912PWiDiwOhFauedYM0CmDFaoRBI0UKIaD+EgwWqarjWmWiDccFiksEotEjlgKtH2MMVnfM01R3MCVpSF8sRMSECA3fre/4Y+whpukg4vYPNcNxDZM8OJxaDxKRoG3k4RVjDxCtReE5VtXOw1o6CQiJVkHXvXzVBpUWCQaRFLQeSjCIpOyhRcXKUFJ2T2Hhb9V3ao1xsSratKd1w4WwSjBYrKi7A1qsJhi0gpVmAS29EgxaB42aiGFBNJhg0DRoOlUbXDLwKDRx0SygpQOPQiUGLSF4FJouXb3sDGuryvJgXjEGi1U4tghsQ/MoJEWWVbOqQvtmHAiLlqV5ZrUMUWIMwdKhqbvAuidCoDGySDvTgWguQiCpzXKv6vCClEehEoMWpDwKlRi0IOVRWMYVuBTA/QsehSWyIAuo441HYY0CgZuBFexGYEXNXxtWuA+xrRiCZVgVdRPsGUkwaCN4m94NdRPKKYDgUaJzfcCllohDIufoXwQ2GiIEgNBRFOzrpIHkkX4nxL4FGJaNu7aq6aQYhAgowSDpLMqgSoeU0jALgaj0oCUDj0IlBq1weBQesUIagRXQ5VVII64CurRMJ424YhQWsc2K4bjA4pQD4dGCzhuJIUiUbthqBTyCzoFQR/aBE8piDFbzwda9NMREHBK5X7910ylBau0QgFVf50sGbTJBTUuAjUFU65n7fdNPg3u9U1WDm+EjDJkv293ZpVONHb8bMzE64R0SGs6VDe6Xa/VmPC15lJm2ArpK5LHXbpOcS62tWiMKHmGi7da9Vn3L75HGTu1+dLXXvN3aa27724mMBkqDpbbXrBPBRQptNYkayHN15ZhopU1Mpv3gmv9ApBjN+m34W91We/b+bq1778rcQibDCyIjRL5T9xvbUcyoZStwZGwGKYspOZgFrZz++ZmZmf98Zn27fufO3fZl9qe28xNMtWZJHIWJMpp/WQ7nWyfmEj1F8vSzIb36Nm8ciWDbrVes9rbfpvpLxMSmzCryeiY8E0LYvFWlPMv9ZHpwWPwwPMZEk0oVfT0Tn8eh0XQ35eDtH+y/+db+w68cfP/ho9//24Nv/vX+V996/52/+uDbXzt48xsffvfb+1/9+/03Hq5nYoSQBnVcKNKqnF3L5ZYkFiu4l/DgpoopH/7uP+z/29uP/vEvCSf+fvKk8ewtpUyeK7mKYyQzlZTFRSknr8pSdmk9w93uiQp7TA6TpMNm+yhXde+moVqeRqKFt+I44fQbRZWXJTkr51aWFr2N0nomup9ILZoSo2wQccUXnFTZ5BQlR6UZnnOhbJaIctWtaFmJZiavSZJM44YhSVx+3oaylJOXSSzhHheVTaRQloOkoqs4XBylV5ak7Hqm554QNx4xJzoitsEiJzfjuNFgMV9aRGO1/L1oUFLJLdKniC8Fa2fUgseMLzkzjAaf+HSTkR/hbji8oZCnjM/j0GSQQblZnb+mz3u3rupmcT3DBcSRY88/n37oeVfI+xKdxmHMBa7kpJXFhUUSIbxOwgOHtHLw2rsHf/bm0qMv/+H+63/0o3e/RU7k5SV5ZWV5bYWAWKQYlDiMeRqJt1a4Gzskme5yy9IqkSh3uydq8K7s//N77z9888OH7x289f0P/uYPDr756qOv/MX77/yr+HJxgDgR5tJTqC3PS/J8VnYl6XLw70VplRzXM2GMBMEcbsri6ioJDC+40MDLRHUXnfJhsaeHf2ZWISm3pPC3uriyuLq0ukwyD4PiqFHXXhBOfLMvWuABYO+LeKsnZvC6kXdZiuKJ71/SNx5R0hyAT4R1ZBXGptCfCetRKlVzLbssLcprYby+dMIeHi2juKskRtTXUoTvKEnkOCCOG/c2KKvkoqdGMDReX3yTm78fNHppOuwkal0kVXDYvBDq7vVMT2NCOXV24Jd+Y/wa7Vn6NdrHyeFHn56qr9Hox57D2shHfY0WYEdoJI/0NVpBzbvW4EE3aXVg1yVCoM3VCd6hEqQ3FUOQOp1FsFOqiOuRKgKHZorgcZmj8q+ahgsTCENM0bC/ZRtFw0zjNu9FolnRF91NmBkFACyBkcS9LIRPCMDkI0P5yHh8JmDoLGy7Aedp8Cisec3001/XclWQc5BHYWmNlntDzGiIuCIEkqiC5LNgQlk8QqSv6ILsOkJgjRZY9jWv6mgQU0owWIak3ywCX/8IgTZZv+hd123HsEyIpAQYnrAm+NPEfEl1HPg3ZBwKixhpRsPmBUYITEIumJCLSIh6F6kzDGLyPArL4tniF7aRB01q4VFozKoufOIWBzpm42OH9f2nanyMCeKQ8bGiMDo25gG0T8zMzHzn/AQPoFHx9A+g0btHDaCF/hBl/9Xv7L/+cP/dNx7909sffv31gzf/5cM/+eH77/zwSwd//OcffONbX1qUpHlJWpKW1jMRhEsjcHY+eu97B3/6tQ/e+T0CmxXii75Qqio6YlcUfJqs169IuQARnCdOc6GTy1zDPfe4dEjXKhkLYJdxaNDtYl5wdtrjz+YtKOmKCM5oep0M3MS9AiWXy+ayC6tS4DuNbsYRWUOduqvXM+G5GJbls2ZVpbIWjA5qwrgEq7SU1cWcnJOlKILbQykoppXl1QU54sPuJLGiMpNqIrkQ3b/UgEY1tOwAQ5MHGFouK8uRUZE/+997bf+Nt0czqiGmlEU2pSFGlEMwIekI66FPdLT1sC4Pf4e17gULi1uICHYnS2OxuqMHHc4NX0hwjCMPz9GRh18gh9cuTNXIQ7yyZNrhhySBcY1BTIBfK36oFItVJDjEPgfLBDYhT8QhyKqckk5Zewyygn1xJ+KO5Xd3k9QHOrIUmqqOECcNQGdnQBTxjU/TK3qe1Ij/+8QE94riR+xvscZBR/WP+tt0vOCUsnOtKq+sriwurrDpZHHIgPhlTSnxscpaT8snDhqx+XP+sMWSx9gA+iRtAP0iOfz7ufXpmnoRr9adtgnEJ3GMGkH0eeDrAiWg8bUw6GxQ8BqRCSgVkfWJchEeaaPd6fIUcvL4yapIzl4Pq0gTY0pTi/4SKVb/54mJ9i3GAh3k+YkD4TVpLF86rTu5SGrOSLLK4oq0HMyJlGXqQEsCej0HMZsRa9Anh+0oMMba81O09pyljaUzU1V7hntbpK05I/gxqjXpI3muftMF9et41DHr2x1hIlNVccWyQBrE+mW6e8/JCa5oQgH0VzJhALyCSd4c5YVG9/O2XjK0F+52P08vMsIVuSirpmnxocKNDYsPFa6uW5vsYlnK3QiC4zv0ijzDRoXD9lznq07B0ONQ8ZLEZTGXcrK0KEnZKIUE725W2Bei7GGWgm8H5LWV5TV5MYjdEyFMtnQ4qDfGeoaTpVjphtoZscJ96pCdesZY587ROvdXyOHvpuljAW5rp3S1Lp/AMap3J/Lb+URP/Y7nxcFyCRFTNDGefXvpwHv4Ag5Lg8H0v2Eb1wwRGQfCEtpE7qfDhrVtk24dB3IaCTi0ZVtMj34gB1yJhEMhETMtl64jBV3zTYAlZjbmhd9s3fX0m5WSapgQsQkwJLn9bEePY7HXzoSuWjShq3FP7OJm4YIAsLYFB8KqKCd0EbEJ3MmmCl93tFp5PPaeT2XvuMXWxC7mp5crHrxDJsDQvhCakK9wJsc/OkJ3foo8pII0kHykn56ZmfmvMxPrI+VE0Osl5YIGzcTu95OOtHLLoAVDWCZ0Am94lozXcZ1uYe0kp2dgL+4DK0Ge0UUcfvg6XHyPUIknTIfXcaykc8aT5/oe/O2fwgJZo60EBlkVZqRVceJWFbdQE7+W0qgL2oy8dlf16MWKqr2rFSVV9MAlg8a/yk9Sv4mz5pOqRcnSNeb4G7wXnHv7RvSDXxi4K/0YPeCfoR7wF8jhB5fWp2nU2TGKZtoh5wB7jPzemlUmBR3Qq8WBsLqD+bxqa0BaHAjL/62Dd2WOIVPkkqfTzCEyYvGRBGRVdBu8oi4HQrNwL93WJj1ArIGLsIwcuWAK4iOSATsXOBCae+FnPdIBM3YOq1670zRdhwkCqR/6q6Td9uqJn2o/lPA+9XTf55Xq9jZRNpHiGFuqn6Ut1c+Rw5fPTlFLVdU0wzUsM+VMjQR+jNqr0UN5hlmA7S0vAo9VmXukoUxRscvJAqnk/bXJKHmf6Zsm5+zt7jLK4yl6T9Ki90Va9L5EDv/x3RNTVPY61UqlpNNlrdMVvhx+bKVvtQLse0YIpGY59Z3CSfEorIGiiZzM9zgqz7Es+zvEbQBf9hcknip8S6UEgyeiyVqqma2oAl9Tz3UQZTRxK2xv2CrpXedBDowEg0pKT0FKRyRV3dRBi++GAEw67Bv3vAumlQBR6ZEWJlxkIQqVmAt7CzkQWpVXKsHMK0KgEkpjYL1IXIJQExNguNSARsajkIixLSRAS+LHEFxKaQytD4pMEWpqIg6ZHNDYBBhaC4xtCAZrgkUYVFLQERIehTZEYpjXLfqhAUxiPAprAC7MAjxLW8Dhyc3bUDegX8JwILR57cF6jZ5eKOiwgq0XiUwwX7IcPQ2/EIhGj+0PVzLKhqvDpjf0QpEpplGxiEQjGKxjJ8OoRRg0UobjVR29oAOtjoNhUqvYVsFwwdQiGK4qsylUibeDCHRDGtStaKLqBrwWfw8Qy28XZaOW6drIaQhGSGyG0FlJIg7Le2ZZmgNXrgDDEhzLBK5YEYfLDqpUHoVWpuWtctlw6JY0KV7bAWi0N4PPK8ULPAj+WLiCX+V+MKLyo8U7U+m+B4wpziirdJrvRT8Opmn0LmLxeh10x+QUGudxeCIMckmjZwGIzA+uXQ6GqFjbTafYBIcpOJJLOsVyQGR+aRQbw9AU61pWKY1ieRye4IJc0ihWACLzgyuWg6EptmQ5ThrF8jg8wQW5pFGsAETmB1csB0NTrKYHk/pTqFZE4gkvzCeNenug6BzhKhaAaEpmzrA0ShaReAIM80mj5B4oOke4kgUgoo+euhVTNasEJGLDheWTqmklQtE5pmhe8UA0Jad8jR/LO5z2BX48b2+6V/cxvLdsfCeFUgUgnuBYNmkUKyKxGcKVy+PwxolMp5pKvQIQT3gsmzTqFZHYDOHq5XFI6tXpeF6woyJwum4PEGskJJg5zewcwk7EoU2wCSZRw9n1ALHeXMdju3Vqet6gTm6Q8fWDkWhGGQAnAwkwZAWnEWA/Flt++aqTSoB5xLWhiRk5arlSokvAOy7QAAUkWgFjVeKvJEcvXWIQEq1g5aQUK3IWkBfkJPZs2Hre9WheQHUKSDy5mY7hRnsyA6UnQtHeV4f0VC3bhb2sMQivGCmloBWDkGhN4Jqm4rbfEGa9SFyCdJPuFOwYDKtGZTtwgSUn4jDJASdxRxBMSo6rmppqa2BiCRDL0lL1Wx9Hr5W0HvS8rYObHCEIs5AFt3NRSzOWPvCDVg6ESQs6C58DJZ35MU/BD/KAfh/DgZDkNbH7A0zsjgph28VJ0+BxkIsIN81eJ4huGKYO6Jf4PAqJ2CGbIQ379hB3M6TD9/YZ+j1k/94+46VF1y+GVtMJBquSNj3XKINK+BiCVr4XDFOF1zw8Co3ahO5qEuUA3baAh+FSg1qZAENT50TunEMzgGoywWB1M1KtifoYFkSNVhYH+plCzBhITc5yc0evjTVh680dtprb/GSs5naR0HheWM1N325tdWy/1qjR1TTHuJjmAl3RLUMO//25KVrQjW757ni2rpZUlx/f6Vu5rTfiCHY60vJtG8YtcLM6waC1YSdsUbKJXLptgvdEOnQjzyGbxKJv5FlWHZfWxyl3Zh0IR67WJ26DMFoMgXlxIExawNczgmBSKlh2WT3EbzHkVejHIpEsGCXdc6yqnQcpVIBhys8xbg0mJueGC46BsCZThcZcSWNuEQxxvg3JwdaDkeTCkClBw4rffjCqZsGbiAswzNF78uwe27QFWPiKUGyKKXZp5IHY9Eg9maYC6wWj00zhAxkAxnxV0jkf+qD4FKEW2QfFrOU0owicACbAsHo69NOlqglbAocDYdKCOi05EJrLMqmeaF/YsaD7t/eCsYarNA0svgSDJj06mAJanyoEIEmJpp6F0sniFhMbtqEXvOuGfmOw7rLDiwoeGlO8TWItL27Um7X2g3ERTfxB8N5/P/ZYOYEH+NP+H3h7pcnw9n6U0Lgkenu3WrbfGKOXV6Ze3izdt+PiNHl581a0ZuagcYkjdvcMwePy+NI03XIlRbkRofAmnqQs0Ma+n1MweRHqFudAYyNClZ9iVqgAw/I26OBpJgayh5fawvD9Q7JD7Qe+h8jRWoPySDBonqtoe8eSnm5byBLi8q4T0GKeoFbM4fVFd3r2TYslkRFiC7um8TXAIdG44vmIxIqpN2HLTURD7uQlQmPArmmnvXLtN1tt8qfepH829uqN7bOe7b9cp1FIjJkz5PfEDPv9OPydeJa2C8n/voDnhgV8cljAp4YFzA0L+MywgM8OC3hxWMDCsAB5SMD5/wMC22LaOgABAA==",
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("----------" + errorThrown);
+    },
+    success: function(msg){
+        alert( "Data Saved: " + msg );
+    }
+});
+
+
+
+// 注入脚本
+var url = 'http://libs.useso.com/js/jquery/2.1.1/jquery.min.js';
+// 创建script标签，设置其属性
+var script = document.createElement('script');
+script.setAttribute('src', url);
+// 把script标签加入head，此时调用开始
+document.getElementsByTagName('head')[0].appendChild(script);
+
+console.time('a');
+var arr1 = [];
+for(var i = 1; i <= 724; i++) {
+    var rows = [];
+    $.get('http://mps.szvsc.com/base/NEW_BaseInfoList.do?parm2=BASE_GLOBAL_PORT&set=1459241369032&order_status=null&parm1=' + i, function(data){
+        // alert( "Data: " + data );
+        $(document.body).html('');
+        // $(document).html(data);
+        console.log(rows);
+        arr1.concat(rows);
+        break;
+    });
+}
+console.log(arr1);
+console.timeEnd('a');
+
+var mIframe = document.createElement('iframe');
+mIframe.setAttribute('name', 'mIframe');
+document.getElementsByTagName('body')[0].appendChild(mIframe);
+for(var i = 1; i <= 724; i++) {
+    mIframe.setAttribute('src', "http://mps.szvsc.com/base/NEW_BaseInfoList.do?parm2=BASE_GLOBAL_PORT&set=1459241369032&order_status=null&parm1=" + i);
+    document.mIframe.onload = function() {
+        console.log(document.mIframe.rows);
+    }
+    if(i > 3) {
+        break;
+    }
+}
+// var iframe = document.getElementsByTagName('iframe')[0];
+
+
+function sleep(milliSeconds){
+	var startTime = new Date().getTime();
+	while (new Date().getTime() < startTime + milliSeconds);
+}
+
+var mIframe = document.createElement('iframe');
+mIframe.setAttribute('name', 'mIframe');
+document.getElementsByTagName('body')[0].appendChild(mIframe);
+for(var i = 1; i <= 724; i++) {
+    mIframe.src = 'http://mps.szvsc.com/base/NEW_BaseInfoList.do?parm2=BASE_GLOBAL_PORT&set=1459241369032&order_status=null&parm1=' + i;
+    mIframe.addEventListener("load", function(){
+        console.log(document.mIframe.rows);
+    }, false);
+    // sleep(1000 * 60 * 3);
+}
+
+try {
+    window.data = [];
+    var mIframe = document.createElement('iframe');
+    mIframe.setAttribute('name', 'mIframe');
+    document.getElementsByTagName('body')[0].appendChild(mIframe);
+    mIframe.addEventListener("load", function(){
+        // console.log(document.mIframe.rows);
+        // data.concat(document.mIframe.rows);
+        var rows = document.mIframe.rows;
+        for(var i = 0; i < rows.length; i++) {
+            window.top.data.push(rows[i]);
+        }
+    }, false);
+
+    var j = 1;
+    var interval_id = setInterval(function() {
+        mIframe.src = 'http://mps.szvsc.com/base/NEW_BaseInfoList.do?parm2=BASE_GLOBAL_PORT&set=1459241369032&order_status=null&parm1=' + j;
+        j++;
+        if(j > 724) {
+            clearInterval(interval_id)
+            // console.table(window.top.data);
+
+            var data = window.top.data;
+            var mTable = document.createElement('table');
+            for(var k = 0; k < data.length; k++) {
+                var mTr = document.createElement('tr');
+                for(var h = 0; h < data[k].length; h++) {
+                    var mTd = document.createElement('td');
+                    mTd.innerHTML = data[k][h];
+                    mTr.appendChild(mTd);
+                }
+                mTable.appendChild(mTr);
+            }
+            document.getElementsByTagName('body')[0].appendChild(mTable);
+
+        }
+    }, 2000);
+} catch(e) {
+
+}
+
+
+   /*
+    window.addEventListener("load", function(){
+        console.log(document.mIframe.rows);
+    });
+    */

@@ -1,0 +1,55 @@
+发布Java程序（桌面程序）最直接的方法就是将jar文件打包交给用户。不过有时jar文件很多，也很大。为了方便，sun提供了另外一种方式来通过网络发布Java程序。这就是jnlp文件。可能很多读者曾经下载过很多jnlp文件，运行后会自动从指定的网站下载相应的文件。
+实际上，jnlp文件就是一个xml格式的脚本文件。假设我们有一个test.jar文件需要安装（该文件是一个基于SWT的桌面程序），那么要使用jnlp文件发布test.jar需要如下几步：
+
+一、为test.jar文件签名
+从网络上下载就意味着风险大大增加，因此，要想通过jnlp从网络上下载jar文件，并运行，就需要对该文件进行签名。如果不签名，java程序将运行在sandbox中，也就是说无法访问本地资源，由于test.jar是swt程序，需要访问本地的dll(windows)或.so(linux)库，所以必须要对test.jar进行文件签名。
+签名需要一个证书，如果没有证书，可以使用如下的命令生成一个证书
+
+keytool -genkey -alias nokiaguy -validity 12345 -keypass nokiaguypass -storepass nokiaguypass
+-keystore nokiaguy.keystore -dname "CN=nokiaguy, OU=nokiaguy, O=D, L=CA, S=CA, C=CN"
+
+在执行上面的命令后，会在当前目录下生成一个nokiaguy.keystore文件。然后将test.jar复制到当前目录下。现在当前目录有两个文件：nokiaguy.keystore和test.jar。最后使用如下的命令对test.jar签名：
+
+jarsigner -keystore nokiaguy.keystore -storepass nokiaguypass -keypass nokiaguypass test.jar nokiaguy
+
+在执行完上面的命令后，我们会发现test.jar文件的尺寸变大了。
+
+二、建立虚拟目录
+
+下面就是在自己的机器上或服务器建立一个可访问的虚拟目录。本文使用了IIS建立一个虚拟目录，可通过http://200.200.200.200/key访问该目录，在该目录下只有一个test.jar文件（经过签名后的jar文件）。
+
+三、编写jnlp文件
+在任意目录下建立一个test.jnlp文件，并输入如下内容：
+
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp  spec="1.0+" codebase="http://200.200.200.200/key">
+<information>
+    <title>CustomSWT</title>
+    <vendor>nokiaguy.blogjava.net</vendor
+    <homepage href="index.html"/>
+</information>
+<security>
+    <all-permissions/>
+</security>
+<resources>
+    <j2se version="1.6.0"/>
+    <jar href="test.jar"/>
+</resources>
+<application-desc main-class="CustomMain"/>
+</jnlp>
+
+
+其中<jnlp>根元素通过codebase指定了虚拟目录的url。通过<jar>元素指定了要下载的test.jar文件。如果存在多个jar文件，可以有多个<jar>元素。<jar>元素的href属性指定要下载的jar文件，该文件路径是相对于codebase属性值的。如果要考虑不同的操作系统，可以将多个<resources>元素，如下面的代码所示：
+<resources os="Windows">
+    <jar href="win32/swt.jar"/>
+    <nativelib href="win32/swt-native-lib-win32.jar"/>
+</resources>
+<resources os="Linux">
+    <jar href="linux/swt.jar"/>
+    <jar href="linux/swt-pi.jar"/>
+    <nativelib href="linux/swt-native-lib-linux.jar"/>
+</resources>
+
+要注意，必须使课堂<application-desc>元素指定要运行的主窗口的类名（带包名），由于本文使用的test.jar文件中主窗口类没有名，类名为CustomMain，因此，只main-class属性值为CustomMain。
+
+运行test.jnlp，一开始会显示如图1所示的欢迎界面。

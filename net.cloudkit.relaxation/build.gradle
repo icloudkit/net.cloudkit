@@ -1,0 +1,313 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+// apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+// JAVA 应用
+// apply plugin: 'application'
+// apply plugin: 'java'
+
+apply plugin: 'tomcat'
+apply plugin: 'jetty'
+apply plugin: 'rebel'
+// apply plugin: 'org.akhikhl.gretty'
+
+// net.cloudkit.relaxation
+archivesBaseName = 'cloudkit-relaxation'
+
+group 'net.cloudkit.relaxation'
+// 指定build输出目录和版本号 RELEASE SNAPSHOT
+version = '1.0.0-' + buildVersion() + '-RELEASE'
+// 默认为 build
+// buildDir = "target"
+
+// 如果是 JAVA 应用 apply plugin: 'application' 才设置 Tasks installApp/run
+//mainClassName = 'hello.HelloWorld'
+//applicationDefaultJvmArgs = ["-Dgreeting.language=en"]
+//// tag::jar[]
+//jar {
+//    baseName = 'net.cloudkit.hypermedia'
+//    version =  '0.1.0'
+//}
+//// end::jar[]
+
+// MANIFEST.MF 配置信息
+war {
+    manifest {
+        /*
+        MANIFEST.MF
+        Manifest-Version: 1.0
+        Implementation-Vendor: The Netty Project
+        Implementation-Title: Netty/All-in-One
+        Implementation-Version: 5.0.0.Alpha2
+        Implementation-Vendor-Id: io.netty
+        Built-By: norman
+        Build-Jdk: 1.7.0_75
+        Created-By: Apache Maven 3.2.3
+        Archiver-Version: Plexus Archiver
+        */
+        attributes 'Implementation-Vendor': 'The CloudKit Project', 'Implementation-Title': 'Relaxation/CloudKit', 'Implementation-Version': version, 'Implementation-Vendor-Id': 'net.cloudkit.relaxation', 'Built-By': 'norman', 'Build-Jdk': '1.7.0_79', 'Created-By': 'Gradle 2.6', 'Archiver-Version': 'Plexus Archiver'
+    }
+}
+
+// 设置 Project Facets
+//eclipse {
+//    wtp {
+//        facet {
+//            facet name: 'jst.web', type: Facet.FacetType.fixed
+//            facet name: 'wst.jsdt.web', type: Facet.FacetType.fixed
+//            facet name: 'jst.java', type: Facet.FacetType.fixed
+//            facet name: 'jst.web', version: '3.0'
+//            facet name: 'jst.java', version: '1.7'
+//            facet name: 'wst.jsdt.web', version: '1.0'
+//        }
+//    }
+//}
+
+// 设置 WebApp 根目录
+// webAppDirName = 'webapp'
+// 设置 Java 源码所在目录
+// sourceSets.main.java.srcDir 'src'
+
+// tag::dependencies[]
+dependencies {
+
+    // tomcat 插件的配置 tomcatVersion = '8.0.20' tomcatVersion = '7.0.59'
+    def tomcatVersion = '8.0.26'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}", "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+
+    // providedCompile 是在 war 插件下定义的
+    providedCompile(
+            // libraries.'javax.servlet-api',
+            // libraries.'jsp-api',
+            // libraries.'jstl'
+
+            libraries.'javax.servlet-api',
+            libraries.'javax.servlet.jsp-api',
+            libraries.'javax.servlet.jsp.jstl-api',
+            libraries.'httpclient',
+            libraries.'commons-io'
+
+    )
+
+    compile(
+
+            // 依赖 cloudkit-commons 项目
+            // project(':cloudkit-commons'),
+
+            libraries.'mozilla-rhino'
+    )
+
+    // runtime 'javax.servlet:jstl:1.1.2'
+}
+// end::dependencies[]
+
+buildscript {
+    repositories {
+
+        // 下载 https://github.com/bmuschko/gradle-tomcat-plugin
+        // flatDir dirs: "${gradle.gradleHomeDir}/customPlugins"
+
+        // jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.2.5'
+
+        classpath group: 'org.zeroturnaround', name: 'gradle-jrebel-plugin', version: '1.1.2'
+    }
+}
+
+sourceSets {
+    main {
+        // manifest.srcFile 'MANIFEST.MF'
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+
+        // 自定义Build 后main 的classes 目录或resources 目录的输出位置
+        // output.resourcesDir = "${buildDir}/classes/main"
+        // output.classesDir = "${buildDir}/classes/main"
+
+        // output.resourcesDir = "src/main/webapp/WEB-INF/classes"
+        // output.classesDir = "src/main/webapp/WEB-INF/classes"
+    }
+}
+
+task copyJars(type: Copy) {
+    from configurations.runtime
+    // 目标位置
+    into 'src/main/webapp/WEB-INF/lib'
+}
+
+// tomcat 插件的配置
+tomcat {
+    httpPort = 8080
+    httpsPort = 8443
+    enableSSL = true
+    ajpPort = 8009
+    stopPort = 8090
+    stopKey = 'killTomcat'
+//    contextPath = 'sample-app'
+//    users {
+//        user {
+//            username = 'user1'
+//            password = '123456'
+//            roles = ['developers', 'admin']
+//        }
+//
+//        user {
+//            username = 'user2'
+//            password = 'abcdef'
+//            roles = ['manager']
+//        }
+//    }
+}
+
+tomcatRun {
+    contextPath = '/relaxation'
+    URIEncoding = 'UTF-8'
+    reloadable = 'true'
+}
+
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/mydatabase"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="superuser"
+              password="secretpasswd"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/mydb"
+              validationQuery="select 1"
+              maxActive="10"
+              maxIdle="4"/>
+</Context>
+*/
+//[tomcatRun, tomcatRunWar]*.configFile = file('context.xml')
+
+// jetty启动配置
+// Gradle Jetty配置范例和如何指定webdefault.xml,指定webdefault.xml是为了解决在Windows下静态文件锁定的问题
+
+// [jettyRun, jettyRunWar,jettyStop]*.with {
+//     webDefaultXml = file("${rootDir}/webdefault.xml")
+// }
+
+jettyRun {
+    httpPort = 8080
+    stopPort = 8010
+    stopKey = 'killJetty'
+    contextPath = '/relaxation'
+    // reload = 'manual'
+    reload = 'automatic'
+    scanIntervalSeconds = 1
+    // file('${rootDir}/webdefault.xml')
+    // webDefaultXml = file('webdefault.xml')
+}
+
+// https://github.com/zeroturnaround/gradle-jrebel-plugin
+rebel {
+    /*
+     * alwaysGenerate - default is false
+     *
+     * If 'false' - rebel.xml is generated if timestamps of build.gradle and the current rebel.xml file are not equal.
+     * If 'true' - rebel.xml will always be generated
+     */
+    alwaysGenerate = true
+
+    /*
+     * showGenerated - default is false
+     *
+     * If set to true, generated rebel.xml will be printed out in console during the build, so you can immediately see what was generated.
+     */
+    showGenerated = true
+
+    /*
+     * rebelXmlDirectory - default is 'build/classes'
+     *
+     * Output directory for rebel.xml.
+     */
+    // rebelXmlDirectory = "build/classes"
+    rebelXmlDirectory = "src/main/resources"
+
+//    classpath {
+//        // don't add the default classes target directory
+//        omitDefaultClassesDir = true
+//
+//        // don't add the default resources directory
+//        omitDefaultResourcesDir = true
+//
+//        resource {
+//            directory = "build/main/other-classes-dir"
+//            includes = ["**/*"]
+//            excludes = ["*.java", "*.properties"]
+//        }
+//
+//        // the default element
+//        resource {}
+//
+//        resource {
+//            directory = "build/integration-tests/classes"
+//        }
+//    }
+//
+//    rootPath = "/opt/my-project"
+//
+//    web {
+//        omitDefault = true
+//        resource {
+//            directory = "src/main/jsps"
+//            target = "/WEB-INF/jsps"
+//        }
+//
+//        resource { }
+//
+//        resource {
+//            directory = "src/main/WEB-INF-resources"
+//            target = "/WEB-INF/"
+//            includes = ["**/*.xml"]
+//            excludes = ["*.java", "*.groovy", "*.scala"]
+//        }
+//    }
+//
+//    war {
+//        path = "build/dist/my-other-webapp.war"
+//    }
+
+}
+
+// unit test skipped
+// 禁用 gradle build 执行测试任务
+// gradle build -x test
+test.enabled = false
+// check.dependsOn.remove(test)
+// project(':subProject').tasks.withType(Test){
+//     enabled = false
+// }
+
+
+
+
+//task createDocs {
+//    def docs = file("$buildDir/docs")
+//    outputs.dir docs
+//    doLast {
+//        docs.mkdirs()
+//        new File(docs, "readme.txt").write("Read me!")
+//    }
+//}
+//
+//distributions {
+//    main {
+//        contents {
+//            from(createDocs) {
+//                into "docs"
+//            }
+//        }
+//    }
+//}

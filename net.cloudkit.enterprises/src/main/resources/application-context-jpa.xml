@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+       default-lazy-init="false">
+
+    <description>Spring infrastructure config</description>
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+    <!-- sessionFactory -->
+    <!--
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    -->
+
+    <!-- Configure simple datasource -->
+    <!--
+    jdbc驱动类
+    com.microsoft.jdbc.sqlserver.SQLServerDriver
+    com.mysql.jdbc.Driver
+    oracle.jdbc.OracleDriver
+    -->
+    <!--
+    jdbc URL
+    jdbc:microsoft:sqlserver://202.104.149.68:1433
+    jdbc:mysql://localhost:3306/test
+    jdbc:oracle:thin:@localhost:1521:servicename
+    jdbc:mysql://localhost/test?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+    -->
+
+    <!-- Connection Pooling Info -->
+    <!-- 连接Idle一个小时后超时 -->
+    <!--
+    初始化连接大小
+    <property name="initialSize" value="3"/>
+    连接池最大使用连接数量
+    <property name="maxActive" value="10"/>
+    连接池最大空闲
+    <property name="maxIdle" value="10" />
+    连接池最小空闲
+    <property name="minIdle" value="1"/>
+    获取连接最大等待时间
+    <property name="maxWait" value="60000"/>
+
+    <property name="poolPreparedStatements" value="true"/>
+    <property name="maxPoolPreparedStatementPerConnectionSize" value="33"/>
+
+    <property name="validationQuery" value="${validationQuery}" />
+    <property name="testOnBorrow" value="false" />
+    <property name="testOnReturn" value="false" />
+    <property name="testWhileIdle" value="true" />
+
+    配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    配置一个连接在池中最小生存的时间，单位是毫秒
+    <property name="minEvictableIdleTimeMillis" value="25200000" />
+
+    打开removeAbandoned功能
+    <property name="removeAbandoned" value="true" />
+    1800秒，也就是30分钟
+    <property name="removeAbandonedTimeout" value="1800" />
+    关闭abanded连接时输出错误日志
+    <property name="logAbandoned" value="true" />
+
+    监控数据库
+    <property name="filters" value="stat" />
+    <property name="filters" value="mergeStat"/>
+    -->
+
+    <!--
+    <bean
+        id="dataSource"
+        lazy-init="true"
+        class="org.apache.commons.dbcp.BasicDataSource"
+        p:driverClassName="com.mysql.jdbc.Driver"
+        p:url="jdbc:mysql://localhost:3306/legendfire?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+        p:username="root"
+        p:password="root"
+        p:maxActive="10"
+        p:maxIdle="2"
+        p:minIdle="1"
+        p:defaultAutoCommit="false"
+        p:timeBetweenEvictionRunsMillis="3600000"
+        p:minEvictableIdleTimeMillis="3600000" />
+    -->
+
+    <!-- 使用Apache DBCP连接池数据源  -->
+    <!--
+    <bean
+        id="dataSource"
+        lazy-init="true"
+        class="org.apache.commons.dbcp.BasicDataSource"
+        p:driverClassName="oracle.jdbc.OracleDriver"
+        p:url="jdbc:oracle:thin:@10.33.1.212:1521:orcl"
+        p:username="TEST"
+        p:password="test"
+        p:maxIdle="2"
+        p:maxActive="10"
+        p:minIdle="1" />
+    -->
+
+    <!-- JDBC 数据源 -->
+    <!--
+    <bean
+        id="dataSource"
+        lazy-init="true"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        p:driverClassName="oracle.jdbc.OracleDriver"
+        p:url="jdbc:oracle:thin:@localhost:1521:ORCL"
+        p:username="SYSTEM"
+        p:password="root" />
+    -->
+
+    <!-- 使用c3p0连接池数据源 -->
+    <!--
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        &lt;!&ndash; 初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 &ndash;&gt;
+        <property name="initialPoolSize" value="${connection_pools.initial_pool_size}" />
+        &lt;!&ndash; 连接池中保留的最小连接数 &ndash;&gt;
+        <property name="minPoolSize" value="${connection_pools.min_pool_size}" />
+        &lt;!&ndash; 连接池中保留的最大连接数。Default: 15 &ndash;&gt;
+        <property name="maxPoolSize" value="${connection_pools.max_pool_size}" />
+        <property name="maxIdleTime" value="${connection_pools.max_idle_time}" />
+        <property name="acquireIncrement" value="${connection_pools.acquire_increment}" />
+        <property name="checkoutTimeout" value="${connection_pools.checkout_timeout}" />
+        &lt;!&ndash; 每30秒检查所有连接池中的空闲连接。Default: 0 &ndash;&gt;
+        <property name="idleConnectionTestPeriod" value="connection_pools.idle_connection_test_period" />
+    </bean>
+    -->
+
+    <util:map id="dataSources">
+        <entry key="0" value-ref="dataSource1"/>
+        <!--
+        <entry key="1" value-ref="dataSource2"/>
+        <entry key="2" value-ref="dataSource3"/>
+        -->
+    </util:map>
+
+    <!-- 多数据源负载均衡,设置数据源 DataSourceHolder.setDataSourceName(0) -->
+    <bean id="dataSourceLookup" class="org.springframework.jdbc.datasource.lookup.MapDataSourceLookup">
+        <constructor-arg ref="dataSources" />
+    </bean>
+    <bean id="balanceDataSource" class="net.cloudkit.enterprises.infrastructure.persistence.BalanceRoutingDataSource">
+        <property name="defaultTargetDataSource" ref="dataSource1"/>
+        <property name="targetDataSources" ref="dataSources" />
+        <!--
+        <property name="targetDataSources">
+            <map>
+                <entry key="0" value-ref="dataSource1"/>
+                &lt;!&ndash;
+                <entry key="1" value-ref="dataSource1"/>
+                <entry key="2" value-ref="dataSource2"/>
+                &ndash;&gt;
+            </map>
+        </property>
+        -->
+        <property name="dataSourceLookup" ref="dataSourceLookup"/>
+    </bean>
+
+    <!-- Spring Simple连接池 for quartz -->
+    <!--
+    <bean id="quartzDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="${quartz.jdbc.driver}" />
+        <property name="url" value="${quartz.jdbc.url}" />
+        <property name="username" value="${quartz.jdbc.username}" />
+        <property name="password" value="${quartz.jdbc.password}" />
+    </bean>
+    -->
+
+    <!-- 使用JNDI数据源, WEB服务器JNDI -->
+    <!--
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/oracleDatasource" cache="true" expected-type="javax.sql.DataSource" />
+    -->
+    <!--
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        &lt;!&ndash; java:comp/env/jdbc/myDatasource &ndash;&gt;
+        <property name="jndiName" value="${jndiName}"/>
+    </bean>
+    -->
+
+    <!--
+    <bean id="log4jdbcInterceptor" class="net.cloudkit.enterpriseses.infrastructure.common.DataSourceSpyInterceptor" />
+
+    <bean id="dataSourceLog4jdbcAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+       <property name="interceptorNames">
+           <list>
+              <value>log4jdbcInterceptor</value>
+           </list>
+       </property>
+       <property name="beanNames">
+           <list>
+              <value>dataSource</value>
+           </list>
+       </property>
+    </bean>
+    -->
+
+    <!--
+    &lt;!&ndash; 定义jdbcTemplate &ndash;&gt;
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg><ref bean="dataSource"/></constructor-arg>
+    </bean>
+
+    &lt;!&ndash; 定义事务管理器 &ndash;&gt;
+    <bean id="jdbcTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    -->
+
+    <!-- 配置分布式事务JTA -->
+    <!-- <tx:jta-transaction-manager/> -->
+
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="databasePlatform" value="org.hibernate.dialect.MySQLMyISAMDialect" />
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="true" />
+        <!--
+        <property name="databasePlatform">
+            <bean factory-method="getDialect" class="net.cloudkit.legendfire.infrastructure.utilities.HibernateHelper">
+                <constructor-arg ref="dataSource"/>
+            </bean>
+        </property>
+        -->
+    </bean>
+
+    <!-- Jpa Entity Manager 配置 -->
+    <!-- JPA primary EntityManagerFactory LocalEntityManagerFactoryBean LocalContainerEntityManagerFactoryBean -->
+    <!-- 加载persistence.xml方式  p:persistence-xml-location="classpath*:META-INF/persistence.xml" -->
+    <bean id="entityManagerFactory" lazy-init="true" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+            p:persistenceUnitName="persistenceUnit"
+            p:jpaVendorAdapter-ref="jpaVendorAdapter"
+            p:jpaDialect-ref="jpaDialect"
+            p:dataSource-ref="balanceDataSource">
+        <!-- <property name="persistenceXmlLocation" value="classpath*:/persistence.xml" /> -->
+        <!-- <property name="persistenceUnitName" value="persistenceUnit" /> -->
+        <!-- 扫描的实体类包,不再需要persistence.xml了-->
+        <property name="packagesToScan" value="net.cloudkit.enterprises.domain.model"/>
+        <property name="jpaProperties">
+            <!--
+            <value>
+                hibernate.dialect=${hibernate.dialect}
+                #设置自动创建|更新|验证数据库表结构
+                hibernate.hbm2ddl.auto=update
+                #输出SQL语句到控制台
+                hibernate.show_sql=${hibernate.show_sql}
+            </value>
+            -->
+            <props>
+                <!--
+                org.hibernate.dialect.SQLServerDialect
+                org.hibernate.dialect.MySQLDialect
+                org.hibernate.dialect.OracleDialect
+                org.hibernate.dialect.Oracle10gDialect
+                -->
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <!-- <prop key="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop> -->
+
+                <!-- org.hibernate.cache.NoCacheProvider org.hibernate.cache.HashtableCacheProvide org.hibernate.cache.EhCacheProvider org.hibernate.cache.OSCacheProvider org.hibernate.cache.SwarmCacheProvider org.hibernate.cache.TreeCacheProvider -->
+                <!-- org.hibernate.cache.SingletonEhCacheProvider -->
+                <!-- **<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> -->
+                <!-- hibernate4.x之后 -->
+                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+                <prop key="hibernate.cache.provider_configuration">classpath:ehcache-hibernate.xml</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <!--<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>-->
+                <prop key="hibernate.max_fetch_depth">50</prop>
+                <!-- 调整JDBC抓取数量的大小: Statement.setFetchSize() -->
+                <prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+                <!-- 调整JDBC批量更新数量 -->
+                <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+                <!-- 输出所有SQL语句到控制台 -->
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+                <!-- validate | update | create | create-drop -->
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
+                <prop key="hibernate.connection.autocommit">false</prop>
+                <prop key="hibernate.id.new_generator_mappings">true</prop>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <!-- class,hbm -->
+                <prop key="hibernate.ejb.autodetection">class</prop>
+                <prop key="hibernate.generate_statistics">false</prop>
+                <prop key="hibernate.connection.release_mode">auto</prop>
+                <prop key="hibernate.autoReconnect">true</prop>
+                <!-- <prop key="hibernate.connection.isolation">4</prop> -->
+                <!-- hibernate.cglib.use_reflection_optimizer -->
+                <prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+                <prop key="hibernate.useUnicode">true</prop>
+                <prop key="hibernate.characterEncoding">UTF-8</prop>
+                <!-- <prop key="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</prop> -->
+                <!--
+                hibernate3:org.hibernate.hql.ast.ASTQueryTranslatorFactory
+                hibernate4:org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory
+                hibernate4:org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory
+                -->
+                <prop key="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</prop>
+                <prop key="javax.persistence.validation.mode">none</prop>
+                <!--
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+                <prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+                <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+                <prop key="hibernate.connection.isolation">3</prop>
+                <prop key="javax.persistence.validation.mode">none</prop>
+                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</prop>
+                <prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/${system.project_name}/index</prop>
+                -->
+            </props>
+        </property>
+    </bean>
+    <!-- EntityManagerFactory JNDI方式 -->
+    <!-- <jndi:lookup id="entityManagerFactory" jndi-name="jpa/persistenceUnit" /> -->
+    <!-- <jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/persistenceUnit"/> -->
+
+    <!-- JPA 事务管理 -->
+    <!--
+    org.springframework.orm.jpa.JpaTransactionManager
+    org.springframework.orm.hibernate3.HibernateTransactionManager
+    org.springframework.jdbc.datasource.DataSourceTransactionManager
+    transaction manager for use with a single JPA EntityManagerFactory for transactional data access to a single datasource
+    -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+            p:entityManagerFactory-ref="entityManagerFactory" />
+
+    <!-- quartz事务管理器 -->
+    <!--
+    <bean id="quartzTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="quartzDataSource" />
+    </bean>
+    -->
+
+    <!-- 强制cglib代理 -->
+    <aop:config proxy-target-class="true" />
+
+    <!-- 启动支持元数据标记 -->
+    <!-- <tx:annotation-driven /> -->
+    <!-- 使用 annotation 声明事务管理 @transaction mode="aspectj" -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+    <!-- 支持 @AspectJ 标记  proxy-target-class="true" -->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true" />
+    <!-- <bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator" /> -->
+
+    <!-- JSR303 Validator hibernate validator  -->
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
+    <!--
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+        <property name="validationMessageSource" ref="messageSource" />
+    </bean>
+    -->
+
+    <!-- 配置事务特性 ，配置add、delete和update开始的方法，事务传播特性为required jdbcTransactionManager -->
+    <!-- 事务传播行为类型   -->
+    <!-- REQUIRED如果当前没有事务,就新建一个事务,如果已经存在一个事务中,加入到这个事务中。这是最常见的选择. -->
+    <!-- SUPPORTS支持当前事务,如果当前没有事务,就以非事务方式执行. -->
+    <!-- MANDATORY使用当前的事务,如果当前没有事务,就抛出异常. -->
+    <!-- REQUIRES_NEW新建事务,如果当前存在事务,把当前事务挂起. -->
+    <!-- NOT_SUPPORTED以非事务方式执行操作,如果当前存在事务,就把当前事务挂起. -->
+    <!-- NEVER以非事务方式执行,如果当前存在事务,则抛出异常. -->
+    <!-- NESTED如果当前存在事务,则在嵌套事务内执行。如果当前没有事务,则执行与PROPAGATION_REQUIRED类似的操作. proxy-target-class="true"-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="add*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="create*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="insert*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="update*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="merge*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="del*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="remove*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="put*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="use*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <tx:method name="new*" read-only="false" propagation="REQUIRED" rollback-for="Exception" />
+            <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="query*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置那些类的方法进行事务管理 -->
+    <!-- AOP代理设置 -->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="allManagerMethod" expression="execution(* net.cloudkit.enterprises.application.*.*(..))" />
+        <!-- <aop:pointcut id="evictorPointCut" expression="execution(* net.cloudkit.repositories.application.*.*(..))" /> -->
+        <!-- <aop:advisor advice-ref="txAdvice" pointcut="execution(* net.cloudkit.repositories.domain.model.*.*(..)))" order="1" /> -->
+        <!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" order="1" /> -->
+        <!-- log日志切面 -->
+        <!-- <aop:aspect id="logAspect" ref="eventLogInterceptor" order="2" >
+            <aop:around pointcut-ref="evictorPointCut" method="serviceIntercept" />
+            在log包下面所有的类的所有方法被调用之前都调用MyLog中的before方法
+            #<aop:before pointcut-ref="pointcut" method="invoke" />
+            在log包下面所有的类的所有方法被调用之前都调用MyLog中的after方法
+            #<aop:after pointcut-ref="pointcut" method="invoke" />
+            #<aop:after-throwing pointcut-ref="pointcut" method="serviceIntercept" />
+            #<aop:after pointcut-ref="evictorPointCut" method="evict"/>
+        </aop:aspect> -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+    </aop:config>
+
+    <!-- Spring data jpa 增加对jpa命名空间的引用,扫描base-package下所有继承于Repository<T,ID>的接口 -->
+    <!--  repository-impl-postfix="Impl" -->
+    <jpa:repositories base-package="net.cloudkit.enterprises.domain.model" entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager">
+        <!--
+        <exclude-filter type="regex" expression=".*SomeRepository" />
+        <include-filter type="regex" expression=".*SomeRepository" />
+        -->
+    </jpa:repositories>
+
+    <!-- 独立环境 standalone 布署环境 development 生产环境 production 容器环境 container org.apache.tomcat.jdbc.pool.DataSource -->
+    <beans profile="standalone">
+        <!-- 配置参数 classpath*:/application.properties, classpath*:/application.development.properties -->
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:environment.properties, classpath*:development.properties" />
+        <bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="${jdbc.driver}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+            <property name="defaultAutoCommit" value="false" />
+        </bean>
+    </beans>
+
+    <!-- production环境 -->
+    <beans profile="production">
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:production.properties" />
+
+        <!-- 数据源配置,使用应用内的Tomcat JDBC连接池 -->
+        <bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <!-- Connection Info -->
+            <property name="driverClassName" value="${jdbc.driver}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+            <property name="maxActive" value="50" />
+            <property name="maxIdle" value="10" />
+            <property name="defaultAutoCommit" value="false" />
+            <!-- 连接Idle半个小时后超时，每15分钟检查一次 -->
+            <property name="timeBetweenEvictionRunsMillis" value="900000" />
+            <property name="minEvictableIdleTimeMillis" value="1800000" />
+        </bean>
+    </beans>
+
+    <!-- local development环境 -->
+    <!-- classpath*:environment.properties, classpath*:META-INF/environment.properties, /WEB-INF/environment.properties -->
+    <beans profile="development">
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:development.properties" />
+
+        <!-- Tomcat JDBC连接池 -->
+        <bean id="dataSource1" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="${jdbc.driver}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+            <property name="defaultAutoCommit" value="false" />
+        </bean>
+        <!--
+        <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+            <property name="jndiName" value="java:comp/env/jdbc/activitiDB"/>
+        </bean>
+        -->
+    </beans>
+
+    <!-- functional test环境 -->
+    <beans profile="functional">
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:/functional.properties" />
+
+        <!-- Tomcat JDBC连接池 -->
+        <bean id="dataSource1" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+            <property name="driverClassName" value="${jdbc.driver}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+            <property name="defaultAutoCommit" value="false" />
+        </bean>
+
+        <!-- 初始化数据结构 -->
+        <jdbc:initialize-database data-source="dataSource1" ignore-failures="ALL">
+            <jdbc:script location="classpath:sql/${database.type}/schema.sql" />
+        </jdbc:initialize-database>
+
+    </beans>
+
+    <!-- unit test环境 -->
+    <beans profile="test">
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:/test.properties" />
+
+        <!-- Spring Simple连接池 -->
+        <bean id="dataSource1" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+            <property name="driverClass" value="${jdbc.driver}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+        </bean>
+
+        <!-- 初始化数据结构与默认数据 -->
+        <jdbc:initialize-database data-source="dataSource1" ignore-failures="ALL">
+            <jdbc:script location="classpath:sql/h2/schema.sql" />
+            <jdbc:script location="classpath:data/h2/import-data.sql" encoding="UTF-8" />
+        </jdbc:initialize-database>
+    </beans>
+
+</beans>

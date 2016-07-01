@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Spring infrastructure config</description>
+
+	<beans profile="production">
+		<!-- 邮件发送器 -->
+		<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<property name="host" value="smtp.gmail.com" />
+			<property name="username" value="cloudkit@icloud.com" />
+			<property name="password" value="123456" />
+			<property name="defaultEncoding" value="UTF-8"/>
+			<property name="javaMailProperties">
+				<props>
+					<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+					<prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+					<!-- 使用gmail smtp server的必须参数 -->
+					<prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+					<!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
+				</props>
+			</property>
+		</bean>
+	</beans>
+
+	<beans profile="development, functional, test">
+		<!-- 邮件发送器 -->
+		<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<!-- 配置greenmail simulatore中的默认值 -->
+			<property name="host" value="smtp.qq.com" />
+			<property name="port" value="${mail.smtp.port}" />
+			<property name="username" value="qlabs@qq.com" />
+			<property name="password" value="s87483281" />
+			<property name="defaultEncoding" value="UTF-8"/>
+			<property name="javaMailProperties">
+				<props>
+					<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+					<prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+					<prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+					<!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> -->
+				</props>
+			</property>
+		</bean>
+	</beans>
+</beans>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:jee="http://www.springframework.org/schema/jee"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<description>Spring infrastructure config</description>
+
+	<!-- 启动Spring JAVA BEAN的注解功能的映射  -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!-- JSR-250标准注解 -->
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<!-- 参数配置文件 classpath*:*.properties META-INF/* -->
+	<!--<context:property-placeholder location="classpath*:*.properties,WEB-INF/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true" />-->
+    <!-- classpath*:environment.properties, classpath*:META-INF/environment.properties, /WEB-INF/environment.properties -->
+    <context:property-placeholder location="classpath*:environment.properties" ignore-resource-not-found="true" ignore-unresolvable="true" />
+
+    <!-- 启用 annotation 配置模式 -->
+	<context:annotation-config />
+
+	<!-- 扫描目标目录下的bean, @Component标识自动完成注入 Repository Service 禁用掉默认use-default-filters="false" -->
+	<context:component-scan base-package="net.cloudkit.ecosystem.enterprises">
+		<!-- 通过exclude-filter 把所有 @Controller注解的表现层控制器组件排除 -->
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <!-- 配置自动为匹配 aspectJ 注解的 Java 类生成代理对象 -->
+	<aop:aspectj-autoproxy/>
+
+    <!--  depends-on="" -->
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="test">123456</prop>
+			</props>
+		</property>
+		<!--
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+        -->
+	</bean>
+
+	<!-- 用户的密码加密或解密 -->
+	<!-- <bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" /> -->
+
+	<!--
+	Simple表示基础数据库连接配置
+    <bean id="oracleJta" class="com.atomikos.jdbc.SimpleDataSourceBean" init-method="init" destroy-method="close">
+		<property name="uniqueResourceName">
+            <value>OracleXADataSource</value>
+		</property>
+		<property name="xaDataSourceClassName">
+			<value>oracle.jdbc.xa.client.OracleXADataSource</value>
+		</property>
+		<property name="xaDataSourceProperties">
+			<value>URL=jdbc:oracle:thin:@localhost:1521:orcl;user=orcl;password=</value>
+		</property>
+		<property name="exclusiveConnectionMode">
+			<value>true</value>
+		</property>
+		<property name="connectionPoolSize">
+			<value>3</value>
+		</property>
+		<property name="validatingQuery">
+			<value>SELECT 1</value>
+		</property>
+	</bean>
+	Atomikos表示必须要用到XA数据库驱动类,可设置连接池(经过测试推荐此方法)
+    <bean id="oracleJta" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close" lazy-init="true">
+        <property name="uniqueResourceName">
+            <value>OracleXADataSource</value>
+        </property>
+        <property name="xaDataSourceClassName">
+            <value>oracle.jdbc.xa.client.OracleXADataSource</value>
+        </property>
+        <property name="xaProperties">
+            <props>
+                     <prop key="URL">jdbc:oracle:thin:@localhost:1521:orcl</prop>
+                <prop key="user">orcl</prop>
+                <prop key="password"></prop>
+            </props>
+        </property>
+          <property name="poolSize"><value>1</value></property>
+          <property name="maxPoolSize"><value>30</value></property>
+    </bean>
+	AtomikosNon表示必须要用到普通数据库驱动类,可设置连接池
+    <bean id="oracleJta" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
+        <property name="uniqueResourceName"><value>OracleXADataSource</value></property>
+        <property name="user"><value>orcl</value></property>
+        <property name="password"><value></value></property>
+        <property name="url"><value>jdbc:oracle:thin:@192.168.1.217:1521:orcl</value></property>
+        <property name="driverClassName"><value>oracle.jdbc.OracleDriver</value></property>
+        <property name="poolSize"><value>1</value></property>
+        <property name="borrowConnectionTimeout"><value>60</value></property>
+    </bean>
+    -->
+	<!--
+	<bean id="dataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
+		&lt;!&ndash; OracleXADataSource &ndash;&gt;
+		<property name="uniqueResourceName">
+			<value>${datasource.unique_resource_name}</value>
+		</property>
+		&lt;!&ndash; oracle.jdbc.xa.client.OracleXADataSource &ndash;&gt;
+		<property name="xaDataSourceClassName">
+			<value>${database.driver_class}</value>
+		</property>
+		<property name="xaProperties">
+			<props>
+				&lt;!&ndash; jdbc:oracle:thin:@localhost:1521:orcl &ndash;&gt;
+				<prop key="URL">${database.url}</prop>
+				&lt;!&ndash; orcl &ndash;&gt;
+				<prop key="user">${database.username}</prop>
+				<prop key="password">${database.password}</prop>
+			</props>
+			&lt;!&ndash; <value>URL=${database.url};user=${database.username};password=${database.password}</value> &ndash;&gt;
+		</property>
+		<property name="poolSize">
+			<value>3</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>30</value>
+		</property>
+	</bean>
+
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
+		<property name="forceShutdown" value="true"/>
+	</bean>
+
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+		&lt;!&ndash; 240 &ndash;&gt;
+		<property name="transactionTimeout" value="${transaction.timeout}"/>
+	</bean>
+
+	&lt;!&ndash; JTA事务管理器 &ndash;&gt;
+	<bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManager" ref="atomikosTransactionManager"/>
+		<property name="userTransaction" ref="atomikosUserTransaction"/>
+	</bean>
+
+	&lt;!&ndash; 事务切面配置 &ndash;&gt;
+	<aop:config>
+		<aop:pointcut id="serviceOperation"  expression="execution(* *..application*..*(..))"/>
+		<aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice"/>
+	</aop:config>
+
+	&lt;!&ndash; 通知配置 &ndash;&gt;
+	<tx:advice id="txAdvice" transaction-manager="jtaTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	-->
+    <!-- 独立环境 standalone -->
+    <!-- 布署环境 development -->
+    <!-- 生产环境 production -->
+    <!-- functional test环境 functional -->
+    <!-- unit测试 test -->
+    <!-- 容器环境 container -->
+    <!--
+    <beans profile="development, standalone">
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:development.properties" />
+    </beans>
+    -->
+</beans>

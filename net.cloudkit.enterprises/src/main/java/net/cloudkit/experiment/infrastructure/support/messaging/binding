@@ -1,0 +1,7 @@
+package net.cloudkit.ecological.experiment.domain.shared.messaging;
+
+/**
+ * Binding
+ */
+public class binding {
+}

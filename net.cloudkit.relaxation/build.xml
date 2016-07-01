@@ -1,0 +1,260 @@
+<!--
+  ~ Copyright (C) 2015. The CloudKit Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+-->
+
+<project name="MyProject" default="dist" basedir=".">
+
+    <description>
+        simple example build file
+    </description>
+
+    <!-- set global properties for this build -->
+    <!-- Configure the directory into which the web application is built -->
+    <property name="version" value="1.0.0"/>
+    <property name="src" location="${basedir}/src"/>
+    <property name="build" value="${basedir}/build"/>
+    <property name="dist" value="${basedir}/dist"/>
+    <property name="libs" value="${basedir}/libs"/>
+
+    <!--
+    &lt;!&ndash; Configure the context path for this application &ndash;&gt;
+    <property name="path" value="/relaxation"/>
+    &lt;!&ndash; Configure properties to access the Manager application &ndash;&gt;
+    <property name="url" value="http://120.25.166.162:8080/manager"/>
+    <property name="username" value="admin"/>
+    <property name="password" value="a1s2d3f4g5h6"/>
+    -->
+
+    <!-- Create the time stamp DSTAMP,TSTAMP,TODAY -->
+    <tstamp />
+    <tstamp>
+        <format property="TODAY" pattern="yyyy-MM-dd" locale="cn" />
+    </tstamp>
+    <tstamp>
+        <format property="NOW" pattern="yyyy-MM-dd HH-mm-ss" locale="cn" />
+    </tstamp>
+
+    <!--
+    target:
+    Attribute属性 Description属性值内容 Required
+    name target的名字 Y
+    depends 需要依赖的其他target N
+    description 关于target功能的简短描述 N
+    if 为了执行本target而被设置的属性的名字 N
+    unless 为了执行本target而不被设置的属性的名字 N
+    -->
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp />
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="clean" description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+        <echo level="info">cleanup is finished!</echo>
+    </target>
+
+    <target name="compile" depends="clean" description="compile the source">
+
+        <mkdir dir="${build}/classes/main/"/>
+        <mkdir dir="${build}/classes/test/"/>
+        <mkdir dir="${build}/resources/main"/>
+        <mkdir dir="${build}/resources/test"/>
+
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac srcdir="${src}/main/java" destdir="${build}/classes/main/"/>
+        <!--<javac srcdir="${src}/test/java" destdir="${build}/classes/test/"/>-->
+
+        <copy todir="${build}/resources/main/">
+            <fileset dir="${src}/main/resources/" includes="**, *.xml" />
+            <!--
+            <fileset dir="${src}/main/resources/">
+                <include name="**"/>
+                <include name="*.xml"/>
+            </fileset>
+            -->
+        </copy>
+        <copy todir="${build}/resources/test/">
+            <fileset dir="${src}/test/resources/" includes="**, *.xml" excludes="**/*.log" />
+            <!--
+            <fileset dir="${src}/test/resources/">
+                <include name="**"/>
+                &lt;!&ndash; 排除 &ndash;&gt;
+                <exclude name="**/*.log"/>
+            </fileset>
+            -->
+        </copy>
+        <echo level="info">compile is finished!</echo>
+    </target>
+
+    <target name="war" depends="compile">
+        <!-- ${DSTAMP} ${TSTAMP} ${TODAY} -->
+        <!--<tstamp/>-->
+        <tstamp>
+            <format property="TODAY" pattern="yyyyMMdd" locale="cn" />
+        </tstamp>
+        <!--
+        <tstamp>
+            <format property="NOW" pattern="yyyy-MM-dd HH-mm-ss" locale="cn" />
+        </tstamp>
+        -->
+        <war destfile="${build}/MyProject-v${DSTAMP}.war" webxml="${src}/main/webapp/WEB-INF/web.xml">
+            <!-- 拷贝webapp下除了WEB-INF和META-INF的两个文件夹-->
+            <!--<fileset dir="${src}/main/webapp/" includes="**/*" excludes="WEB-INF, META-INF" />-->
+            <fileset dir="${src}/main/webapp/" includes="**/*" />
+
+            <!-- 拷贝libs目录下的jar包-->
+            <!--<lib dir="${libs}"/>-->
+            <!-- 拷贝build/classes/main下的class文件-->
+            <classes dir="${build}/classes/main/"/>
+            <classes dir="${build}/resources/main/"/>
+            <!-- file="${dir.java.src}/${file.manifest}" -->
+            <manifest>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Ant-Version" value="Apache Ant 1.6beta2"/>
+                <attribute name="Implementation-Vendor" value="The CloudKit Project"/>
+                <attribute name="Implementation-Title" value="CloudKit/All-in-One"/>
+                <attribute name="Implementation-Version" value="5.0.0.Alpha2"/>
+                <attribute name="Implementation-Vendor-Id" value="net.cloudkit"/>
+                <attribute name="Built-By" value="norman"/>
+                <attribute name="Build-Jdk" value="1.7.0_79"/>
+                <attribute name="Build-Timestamp" value="${DSTAMP}"/>
+                <!-- Apache Maven 3.2.3 -->
+                <attribute name="Created-By" value="Gradle 2.6"/>
+                <attribute name="Main-class" value="net.sourceforge.barbecue.Main"/>
+                <!--<attribute name="Class-Path" value="lib/log4j-1.2.9.jar lib/classes12.jar lib/joone-engine.jar"/>-->
+                <attribute name="Archiver-Version" value="Plexus Archiver"/>
+            </manifest>
+        </war>
+        <echo level="info">run war is finished!</echo>
+    </target>
+
+    <target name="dist" depends="compile, init" description="generate the distribution">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}/lib"/>
+
+        <tstamp>
+            <format property="NOW" pattern="yyyy-MM-dd HH:mm:ss" locale="cn" />
+        </tstamp>
+
+        <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+        <jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}">
+            <!-- file="${dir.java.src}/${file.manifest}" -->
+            <manifest>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Ant-Version" value="Apache Ant 1.6beta2"/>
+                <attribute name="Implementation-Vendor" value="The CloudKit Project"/>
+                <attribute name="Implementation-Title" value="CloudKit/All-in-One"/>
+                <attribute name="Implementation-Version" value="5.0.0.Alpha2"/>
+                <attribute name="Implementation-Vendor-Id" value="net.cloudkit"/>
+                <attribute name="Built-By" value="norman"/>
+                <attribute name="Build-Jdk" value="1.7.0_79"/>
+                <attribute name="Build-Timestamp" value="${DSTAMP}"/>
+                <!-- Apache Maven 3.2.3 -->
+                <attribute name="Created-By" value="Gradle 2.6"/>
+                <attribute name="Main-class" value="net.sourceforge.barbecue.Main"/>
+                <!--<attribute name="Class-Path" value="lib/log4j-1.2.9.jar lib/classes12.jar lib/joone-engine.jar"/>-->
+                <attribute name="Archiver-Version" value="Plexus Archiver"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="HelloWorld">
+            <classpath>
+                <pathelement path="build/classes"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="test" if="ant.java.version">
+        <echo message="Hello world! The base dir is: ${basedir}" />
+        <echo message="Java Version: ${ant.java.version}" />
+        <echo message="${TODAY}" />
+        <echo message="${DSTAMP}" />
+        <echo message="${TSTAMP}" />
+    </target>
+
+    <!--
+    &lt;!&ndash; 对文件目录进行复制 &ndash;&gt;
+    <copy todir="../newdir/dest_dir">
+        <fileset dir="src_dir"/>
+    </copy>
+    &lt;!&ndash; 将文件复制到另外的目录 &ndash;&gt;
+    <copy file="file.txt" todir="../other/dir"/>
+
+    <delete includeEmptyDirs="true">
+        <fileset dir="." includes="**/*.bak"/>
+    </delete>
+    &lt;!&ndash; 移动单个文件 &ndash;&gt;
+    <move file="fromfile" tofile="tofile"/>
+    &lt;!&ndash; 移动单个文件到另一个目录 &ndash;&gt;
+    <move file="fromfile" todir="movedir" />
+    &lt;!&ndash; 移动某个目录到另一个目录 &ndash;&gt;
+    <move todir="newdir">
+        <fileset dir="olddir"/>
+    </move>
+    &lt;!&ndash; 包括message、file、append和level四个属性 &ndash;&gt;
+    <echo message="Hello,Amigo" file="logs/system.log" append="true" />
+    -->
+
+    <!--
+    &lt;!&ndash; Configure the custom Ant tasks for the Manager application &ndash;&gt;
+    <target name="_def_tomcat_tasks">
+        &lt;!&ndash; tasks: deploy,undeploy,reload,stop,start,list,roles,resources &ndash;&gt;
+        <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"/>
+        <taskdef name="list" classname="org.apache.catalina.ant.ListTask"/>
+        <taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask"/>
+        <taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask"/>
+        <taskdef name="roles" classname="org.apache.catalina.ant.RolesTask"/>
+        <taskdef name="start" classname="org.apache.catalina.ant.StartTask"/>
+        <taskdef name="stop" classname="org.apache.catalina.ant.StopTask"/>
+        <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask"/>
+    </target>
+
+    &lt;!&ndash; Executable Targets &ndash;&gt;
+    <target name="compile" description="WebSip manage">
+        <mkdir dir="${dist.dir}"/>
+        <war destfile="${dist.dir}/TestWeb.war" webxml="WebRoot/WEB-INF/web.xml">
+            <classes dir="WebRoot/WEB-INF/classes"/>
+            <fileset dir="WebRoot" excludes="WEB-INF/**"/>
+            <lib dir="WebRoot/WEB-INF/lib"/>
+        </war>
+    </target>
+
+    <target name="redeploy" description="Remove and Install web application" depends="_def_tomcat_tasks">
+        <antcall target="undeploy"/>
+        <antcall target="deploy"/>
+    </target>
+
+
+    <target name="deploy" description="Install web application" depends="_def_tomcat_tasks,compile">
+        <deploy url="${url}" username="${username}" password="${password}" path="${path}"
+                war="${dist.dir}/TestWeb.war"/>
+    </target>
+
+    <target name="undeploy" description="Remove web application" depends="_def_tomcat_tasks">
+        <undeploy url="${url}" username="${username}" password="${password}" path="${path}"/>
+    </target>
+
+    <target name="reload" description="Reload web application" depends="_def_tomcat_tasks,compile">
+        <reload url="${url}" username="${username}" password="${password}" path="${path}"/>
+    </target>
+    -->
+
+</project>

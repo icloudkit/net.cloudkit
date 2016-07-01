@@ -1,0 +1,193 @@
+方法一:
+通过window.location.href中的分割符获得各个参数。
+
+/*
+*函数功能：从href获得参数
+*sHref http://www.net.com/arg.html?arg1=a&arg2=b
+*sArgName arg1, arg2
+*return the value of arg. a, b
+*/
+function getArgsFromHref(sHref, sArgName) {
+    var args = sHref.split("?");
+    var retval = "";
+
+    /*参数为空*/
+    if(args[0] == sHref) {
+        return retval; /*无需做任何处理*/
+    }
+    var str = args[1];
+    args = str.split("&");
+    for(var i = 0; i < args.length; i ++) {
+        str = args[i];
+        var arg = str.split("=");
+        if(arg.length <= 1) continue;
+        if(arg[0] == sArgName) retval = arg[1];
+    }
+    return retval;
+}
+
+方法二:
+
+<script type="text/javascript">
+
+/* 用途: 接收地直栏参数 取id=1 根据ID的值 */
+//获取当前页面的url
+var url = window.location.href;
+// 获取url的长度
+var len = url.length;
+// 设置参数字符串开始的位置
+var offset=url.indexOf("?");
+// 取出参数字符串 这里会获得类似“id=1”这样的字符串
+var params = url.substr(offset, len)
+// 对获得的参数字符串按照“=”进行分割
+var paramArray = params.split("=");
+// 得到参数值
+var value = paramArray[1];
+// 得到参数名字
+var name = value[0];
+</script>
+
+方法三:
+<script type="text/javascript">
+function getValue(name){
+    // location.search是从当前URL的?号开始的字符串 例如：http://www.net.com/view.html?tid=22720 它的search就是?tid=22720
+    var str = window.location.search;
+
+    if (str.indexOf(name) != -1){
+        var pos_start = str.indexOf(name) + name.length + 1;
+        var pos_end = str.indexOf("&", pos_start);
+        if (pos_end == -1){
+            alert(str.substring(pos_start));
+        }else{
+            alert("对不起这个值不存在！");
+        }
+    }
+}
+</script>
+
+方法四:
+做中英转换的时候，要准确的获取参数并取出，所以做了一个简单的html中用js获取当取地址栏的一个Object。
+里面有三个方法：
+// 获取指定参数，返回字符串;
+1、request.QueryString("参数")
+// 获取全部参数，并返回数组;
+2、request.QueryStrings();
+// 如果当前地址栏有此参数，那么将更新此参数，否则返回一个新的地址栏参数字符串。
+3、request.setQuery("参数","参数的值");
+例如：
+当前地址栏参数字符串为：?name=a&site=online
+alert(request.setQuery("name","blueDestiny"))
+如果地址栏参数中有"name"，那么返回?name=blueDestiny&site=online
+setQuery方法有自动追加参数的功能。如：
+当前地址栏参数字符串为：?site=online
+alert(request.setQuery("name","blueDestiny"))
+则返回?site=never_online&name=blueDestiny
+同理，如果地址栏没有参数，也会自动追加参数
+alert(request.setQuery("name","blueDestiny"))
+返回?name=blueDestiny
+
+<script type="text/javascript">
+<!--
+    var request = {
+        QueryString: function(val) {
+            var uri = window.location.search;
+            var regex = new RegExp("" + va l+ "\=([^\&\?]*)", "ig");
+            return ((uri.match(re))? (uri.match(regex)[0].substr(val.length + 1)) : null);
+        },
+        QueryStrings: function() {
+            var uri = window.location.search;
+            var regex = /\w*\=([^\&\?]*)/ig;
+            var retval = [];
+            while ((arr = regex.exec(uri)) != null)
+                retval.push(arr[0]);
+            return retval;
+        },
+        setQuery: function(val1, val2) {
+            var a = this.QueryStrings();
+            var retval = "";
+            var seted = false;
+            var regex = new RegExp("^" + val1 + "\=([^\&\?]*)$", "ig");
+            for(var i = 0; i < a.length; i++) {
+                if (regex.test(a[i])) {
+                    seted = true;
+                    a[i] = val1 + "=" + val2;
+                }
+            }
+            retval = a.join("&");
+            return "?" + retval + (seted ? "" : (retval ? "&" : "") + val1 + "=" + val2);
+        }
+    }
+    alert(request.setQuery("e", "b"))
+//-->
+</script>
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+POST 方式就是用表单将获取的信息传递给目标页面，GET 方式就是直接在网址后加上内容。
+一、POST方法实现：
+这段存为1.html
+<html>
+<body>
+    <form name="form1" method="POST" action="2.html">
+    输入名字: <input type="text" name="u">
+    <input type="submit" name="submit" value="submit">
+    </form>
+</body>
+</html>
+
+这段存为2.html
+<html>
+    <head>
+    <script type="text/javascript">
+    <!--
+    var request={
+    QueryString : function(val) {
+        var uri = window.location.search;
+        var re = new RegExp("" +val+ "=([^\&\?]*)", "ig");
+        return ((uri.match(re))? (uri.match(re)[0].substr(val.length+1)):null); }
+    }
+    var u = request.QueryString("u");
+    var l = request.QueryString("l");
+    document.writeln("Hello! " + u);
+    //-->
+    </script>
+    </head>
+<body>
+
+</body>
+</html>
+
+运行结果是在1.htm输入酒红色的爱人，2.htm页面上写出“Hello，酒红色的爱人”。
+
+二、GET方法实现
+这段存为3.html
+<body>
+    <a href="4.htm?id=123">4.htm?id=123</a>
+</body>
+
+这段存为4.html
+<html>
+<head>
+<script type="text/javascript">
+    url = document.location.href;
+    get = url.split("?")[1];
+    // 得到当前网页的URL
+    param = null;
+    // 为了防止当页面没有外部变量时程序出错，因此将para的值设为空
+    if(get != null && get.length > 0){
+        param = get.split("&");
+    }
+    // 以“&”为分割符获得变量字符串
+    for(i = 0; param != null && i < param.length; i++){
+        vars = param[i].split("=");
+        eval_r("var " + vars[0] + "='" + vars[1] + "'");
+    }
+    // 将值代入对应的变量名中
+    alert("传递的参数id值为" + vars[1]);
+</script>
+</head>
+<body>
+
+</body>
+</html>

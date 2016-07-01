@@ -1,0 +1,2 @@
+http://kilim.ow2.org/
+http://www.ibm.com/developerworks/cn/java/j-javadev2-7.html

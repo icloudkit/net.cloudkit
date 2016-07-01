@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- Modifications to this file will be overwritten. -->
+<!--[if lt IE 7]><html class="no-js lt-ie10 ie6" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie10 ie7" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie10 ie8" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10 ie9" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="zh-CN" dir="ltr"><!--<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!--><html lang="zh-CN"><!--<![endif]-->
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <!-- initial-scale指定初始化的缩略比例，minimum-scale指定缩小的比例，而maximum-scale则是放大的比例，取决于user-scalable是否能缩放页面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Sign up</title>
+
+    <meta name="author" content="hongquanli@qq.com" />
+    <meta name="keywords" content="cloudkit" />
+    <meta name="description" content="Sit back and relax! We are coming soon..." />
+
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/icon/favicon.png" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- normalize.min.css -->
+    <link type="text/css" rel="stylesheet" href="resources/third-party/normalize/3.0.3/normalize.css" media="screen" />
+
+    <script type="text/javascript" src="resources/third-party/jquery/1.11.2/jquery.min.js?14.3.19.1"></script>
+    <script type="text/javascript" src="resources/third-party/jquery-validation/1.14.0/jquery.validate.min.js?14.3.19.1"></script>
+    <script type="text/javascript" src="resources/third-party/jquery-validation/1.14.0/localization/messages_zh.min.js?14.3.19.1"></script>
+
+
+    <script type="text/javascript">
+        $.validator.setDefaults({
+            submitHandler: function() {
+                form.submit();
+            }
+        });
+
+        /*
+         // this one requires the text "buga", we define a default message, too
+         $.validator.addMethod("buga", function (value) {
+         return value == "buga";
+         }, 'Please enter "buga"!');
+
+         // this one requires the value to be the same as the first parameter
+         $.validator.methods.equal = function (value, element, param) {
+         return value == param;
+         };
+         */
+
+        // 用户名验证
+        $.validator.addMethod("username", function (value, element) {
+            // return this.optional(element) || /^[\u0391-\uFFE5\w]+$/.test(value);
+            return this.optional(element) || /^[a-zA-Z_]\w{6,14}$/.test(value);
+        }, "只能包括英文字母、数字和下划线,不区分大小写");
+
+        $.validator.addMethod("username_availability", function (value, element) {
+            var is_availability = true;
+
+            jQuery.ajax({
+                type: 'POST',
+                async: false,
+                url: '${context_path}/is_username_availability',
+                data: {
+                    username: $('#username').val()
+                },
+                dataType: 'json',
+                success: function (result) {
+                    is_availability = result.is_availability;
+                },
+                error: function (e) {
+                    // alert("error" + e);
+                }
+            });
+            return this.optional(element) || is_availability;
+        }, "用户名已被占用");
+
+        $.validator.addMethod("email_availability", function (value, element) {
+            var is_availability = true;
+
+            jQuery.ajax({
+                type: 'POST',
+                async: false,
+                url: '${context_path}/is_email_availability',
+                data: {
+                    email: $('#email').val()
+                },
+                dataType: 'json',
+                success: function (result) {
+                    is_availability = result.is_availability;
+                },
+                error: function (e) {
+                    // alert("error" + e);
+                }
+            });
+            return this.optional(element) || is_availability;
+        }, "注册邮箱已被占用");
+
+        // isAvailable availability
+        $.validator.addMethod("mobile_availability", function (value, element) {
+            var is_availability = true;
+
+            jQuery.ajax({
+                type: 'POST',
+                async: false,
+                url: '${context_path}/is_mobile_availability',
+                data: {
+                    mobile: $('#mobile').val()
+                },
+                dataType: 'json',
+                success: function (result) {
+                    is_availability = result.is_availability;
+                },
+                error: function (e) {
+                    // alert("error" + e);
+                }
+            });
+            return this.optional(element) || is_availability;
+        }, "注册手机号码已被占用");
+
+        // 手机号码验证
+        $.validator.addMethod("mobile", function (value, element) {
+            if (value.indexOf('+86')) {
+                value = '+86' + value;
+            }
+            $(element).val(value);
+            // var regex = /^(\+86)?(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            var regex = /^(\+86)(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            var length = value.length;
+            // return this.optional(element) || (length == 11 && regex.test(value));
+            return this.optional(element) || (regex.test(value));
+        }, "请正确填写您的手机号码");
+
+        // 电话号码验证
+        $.validator.addMethod("telephone", function (value, element) {
+            var regex = /^(\d{3,4}-?)?\d{7,9}$/g;
+            return this.optional(element) || (regex.test(value));
+        }, "请正确填写您的电话号码");
+
+        // 邮政编码验证
+        $.validator.addMethod("zip", function (value, element) {
+            var regex = /^[0-9]{6}$/;
+            return this.optional(element) || (regex.test(value));
+        }, "请正确填写您的邮政编码");
+
+    </script>
+</head>
+<body>
+
+<div>
+    <form id="signup-form" action="" method="post">
+        <div id="signup-error-alert"></div>
+        <div><input name="email" type="text" placeholder="请输入常用电子邮箱" data-explain="输入的电子邮箱将作为账户名。" maxlength="100" value="" autocomplete="off" /></div>
+        <div><input name="agree" checked="checked" type="checkbox"> 同意《XXX服务协议》</div>
+        <div><button type="button">下一步</button></div>
+    </form>
+</div>
+
+</body>
+</html>

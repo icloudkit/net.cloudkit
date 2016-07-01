@@ -1,0 +1,1 @@
+http://bestiejs.github.io/json3/

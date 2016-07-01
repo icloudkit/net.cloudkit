@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1" id="WebApp_ID">
+
+    <!-- 在Tomcat或Jetty下部署两个或多个项目时，web.xml文件中最好定义webAppRootKey参数，如果不定义，将会缺省为“webapp.root” -->
+    <!-- 设置每个项目参数值不同，以免引起项目冲突 -->
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>webapp.root</param-value>
+    </context-param>
+
+    <!-- Spring ApplicationContext配置文件的路径,可使用通配符，用于后面的Spring Context Loader -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <!-- /WEB-INF/application-context*.xml,classpath*:application-context*.xml -->
+        <param-value>/WEB-INF/application-context*.xml,classpath*:application-context*.xml</param-value>
+    </context-param>
+
+    <!-- 设置Spring Context的默认Profile -->
+    <context-param>
+        <!-- spring.profiles.active spring.profiles.default -->
+        <param-name>spring.profiles.active</param-name>
+        <!-- production -->
+        <param-value>development</param-value>
+    </context-param>
+
+    <!-- spring logback -->
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>WEB-INF/logback.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>
+
+    <!--
+    <servlet>
+        &lt;!&ndash; Override init parameter to avoid nasty &ndash;&gt;
+        &lt;!&ndash; file locking issue on windows.         &ndash;&gt;
+        <servlet-name>default</servlet-name>
+        <init-param>
+            <param-name>useFileMappedBuffer</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </servlet>
+
+    &lt;!&ndash; 为 tomcat, jetty 将静态资源映射从 / 改为 /resources/ 目录 &ndash;&gt;
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+    -->
+
+    <!--
+    Tomcat, Jetty, JBoss, and GlassFish 默认Servlet的名字 - "default"
+    Google App Engine 默认Servlet的名字 - "_ah_default"
+    Resin 默认Servlet的名字 - "resin-file"
+    WebLogic 默认Servlet的名字  - "FileServlet"
+    WebSphere  默认Servlet的名字 - "SimpleFileServlet"
+    -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewStatusMessages</servlet-name>
+        <servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewStatusMessages</servlet-name>
+        <url-pattern>/view_classic_status</url-pattern>
+    </servlet-mapping>
+
+    <!-- SpringMVC核心分发器 Spring MVC Servlet -->
+    <!-- <param-value>/WEB-INF/spring*.xml,classpath*:spring*.xml</param-value> /WEB-INF/app-config.xml, -->
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/application-context-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- 浏览器不支持put,delete等method,由该filter将"/user?_method=delete"转换为标准的http delete方法 -->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>DispatcherServlet</servlet-name>
+    </filter-mapping>
+
+    <!-- Filter 定义 -->
+    <!-- Character Encoding filter -->
+    <filter>
+        <filter-name>SpringEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SpringEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EncodingConvertFilter</filter-name>
+        <filter-class>net.cloudkit.ecosystem.enterprises.infrastructure.commons.EncodingConvertFilter</filter-class>
+        <init-param>
+            <param-name>fromEncoding</param-name>
+            <param-value>ISO-8859-1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>toEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingConvertFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- AccessDeniedFilter -->
+    <filter>
+        <filter-name>AccessDeniedFilter</filter-name>
+        <filter-class>net.cloudkit.ecosystem.enterprises.infrastructure.commons.AccessDeniedFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessDeniedFilter</filter-name>
+        <url-pattern>*.properties</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AccessDeniedFilter</filter-name>
+        <url-pattern>*.conf</url-pattern>
+    </filter-mapping>
+
+
+    <!-- tag::springSessionRepositoryFilter[] -->
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <!--
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>testBean</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextAttribute</param-name>
+            <param-value>session</param-value>
+        </init-param>
+        -->
+        <init-param>
+            <!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- end::springSessionRepositoryFilter[] -->
+
+    <!-- Shiro Security filter -->
+    <!-- The filter-name matches name of a 'shiroFilter' bean inside applicationContext.xml -->
+    <!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->
+    <!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->
+    <!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->
+    <!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->
+    <!-- Make sure any request you want accessible to Shiro is filtered. /* catches all -->
+    <!-- requests.  Usually this filter mapping is defined first (before all others) to -->
+    <!-- ensure that Shiro works in subsequent filters in the filter chain:             -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <!--
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>testBean</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextAttribute</param-name>
+            <param-value>session</param-value>
+        </init-param>
+        -->
+        <init-param>
+            <!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!--
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        -->
+    </filter-mapping>
+
+    <!--
+    &lt;!&ndash; UrlRewriteFilter &ndash;&gt;
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+        &lt;!&ndash; set the amount of seconds the conf file will be checked for reload can be a valid integer (0 denotes check every time, -1 denotes no reload check, default -1) &ndash;&gt;
+        &lt;!&ndash; 设置定时检查配置文件的时间以供重新加载的时间，该参数值为整型，0为每次都检查，-1为从不检查，默认为-1 &ndash;&gt;
+        <init-param>
+            <param-name>confReloadCheckInterval</param-name>
+            <param-value>60</param-value>
+        </init-param>
+        &lt;!&ndash; if you need to the conf file path can be changed it is specified as a path relative to the root of your context (default /WEB-INF/urlrewrite.xml) &ndash;&gt;
+        &lt;!&ndash; 设置配置文件的路径 &ndash;&gt;
+        <init-param>
+            <param-name>confPath</param-name>
+            <param-value>/WEB-INF/urlrewrite.xml</param-value>
+        </init-param>
+        &lt;!&ndash; sets up log level (will be logged to context log) can be: TRACE, DEBUG, INFO (default), WARN, ERROR, FATAL, log4j, commons, slf4j, sysout:{level} (ie, sysout:DEBUG) if you are having trouble using normal levels use sysout:DEBUG (default WARN) &ndash;&gt;
+        &lt;!&ndash; 设置日志的等级 &ndash;&gt;
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>DEBUG</param-value>
+        </init-param>
+        &lt;!&ndash; you can change status path so that it does not conflict with your installed apps (note, defaults to /rewrite-status) note, must start with / &ndash;&gt;
+        &lt;!&ndash; 设置状态目录，必须以/开始，默认为/rewrite-status &ndash;&gt;
+        <init-param>
+            <param-name>statusPath</param-name>
+            <param-value>/status</param-value>
+        </init-param>
+        &lt;!&ndash; you can disable status page if desired can be: true, false (default true) &ndash;&gt;
+        &lt;!&ndash; 是否允许状态页面，默认为true &ndash;&gt;
+        <init-param>
+            <param-name>statusEnabled</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        &lt;!&ndash; you may want to allow more hosts to look at the status page statusEnabledOnHosts is a comma delimited list of hosts, * can be used as a wildcard (defaults to "localhost, local, 127.0.0.1") &ndash;&gt;
+        &lt;!&ndash; 设置host 的列表，可以使用通配符，多个host 用逗号隔开 &ndash;&gt;
+        &lt;!&ndash;
+        <init-param>
+            <param-name>statusEnabledOnHosts</param-name>
+            <param-value>localhost, dev.*.myco.com, *.uat.mycom.com</param-value>
+        </init-param>
+        &ndash;&gt;
+        &lt;!&ndash; defaults to false. use mod_rewrite style configuration file (if this is true and confPath is not specified confPath will be set to /WEB-INF/.htaccess) &ndash;&gt;
+        <init-param>
+            <param-name>modRewriteConf</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        &lt;!&ndash; load mod_rewrite style configuration from this parameter's value. note, Setting this parameter will mean that all other conf parameters are ignored. &ndash;&gt;
+        &lt;!&ndash;
+        <init-param>
+            <param-name>modRewriteConfText</param-name>
+            <param-value>
+                RewriteRule ^/~([^/]+)/?(.*) /u/$1/$2 [R]
+                RewriteRule ^/([uge])/([^/]+)$ /$1/$2/ [R]
+            </param-value>
+        </init-param>
+        &ndash;&gt;
+        &lt;!&ndash; defaults to false. allow conf file to be set by calling /rewrite-status/?conf=/WEB-INF/urlrewrite2.xml designed to be used for testing only &ndash;&gt;
+        &lt;!&ndash;
+        <init-param>
+            <param-name>allowConfSwapViaHttp</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        &ndash;&gt;
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    -->
+
+    <!-- Cache Control Header filter -->
+    <filter>
+        <filter-name>CacheControlHeaderFilter</filter-name>
+        <filter-class>net.cloudkit.ecosystem.enterprises.infrastructure.commons.CacheControlHeaderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CacheControlHeaderFilter</filter-name>
+        <url-pattern>/resources/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 页面传输压缩 pjl-comp-filter -->
+    <!--
+    <filter>
+        <filter-name>CompressingFilter</filter-name>
+        <filter-class>com.planetj.servlet.filter.compression.CompressingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CompressingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!--
+    &lt;!&ndash; SiteMesh Web-Page Layout filter &ndash;&gt;
+    &lt;!&ndash; com.opensymphony.sitemesh.webapp.SiteMeshFilter &ndash;&gt;
+    <filter>
+        <filter-name>SitemeshFilter</filter-name>
+        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SitemeshFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!-- 页面传输压缩 pjl-comp-filter -->
+    <!--
+    <filter>
+        <filter-name>CompressingFilter</filter-name>
+        <filter-class>com.planetj.servlet.filter.compression.CompressingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CompressingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!--
+    #maven
+    <dependency>
+        <groupId>net.sf.ehcache</groupId>
+        <artifactId>ehcache-web</artifactId>
+        <version>2.8.0</version>
+    </dependency>
+
+    #gradle
+    'net.sf.ehcache:ehcache-web:2.8.0'
+
+    <filter>
+        <filter-name>ProductCacheFilter</filter-name>
+        <filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
+        <init-param>
+            <param-name>cacheName</param-name>
+            <param-value>product</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ProductCacheFilter</filter-name>
+        <url-pattern>/product/list/*</url-pattern>
+    </filter-mapping>
+    -->
+
+    <!-- IntrospectorCleanupListener 在 ContextLoaderListener 之前 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <!-- Spring ApplicationContext 载入 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- these are for JAX-WS -->
+    <servlet>
+        <servlet-name>jaxws-servlet</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <!-- ... if you deploy more services, you might need more -->
+    <servlet-mapping>
+        <servlet-name>jaxws-servlet</servlet-name>
+        <url-pattern>/service/ServiceProviderFacade</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- 出错页面定义 -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/resource_not_found</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error</location>
+    </error-page>
+    <!--配置freemarker异常-->
+    <error-page>
+        <exception-type>net.cloudkit.ecosystem.enterprises.infrastructure.freemarker.FreemarkerViewException</exception-type>
+        <location>/error</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error</location>
+    </error-page>
+
+    <!-- 默认欢迎页 -->
+    <!-- Servlet2.5以上可直接在此处执行Servlet应用,如<welcome-file>servlet/InitSystemParamServlet</welcome-file> -->
+    <!-- 这里使用了SpringMVC提供的<mvc:view-controller>标签,实现了首页隐藏的目的,详见applicationContext.xml -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

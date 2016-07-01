@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+	   xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://jax-ws.dev.java.net/spring/core http://jax-ws.dev.java.net/spring/core.xsd
+    http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd">
+
+	<description>Spring infrastructure config</description>
+
+	<!-- https://jax-ws-commons.java.net/spring/ -->
+	<!-- http://www.mkyong.com/webservices/jax-ws/jax-ws-spring-integration-example/ -->
+	<wss:binding url="/service/ServiceProviderFacade">
+		<wss:service>
+			<ws:service bean="#serviceProviderFacade"/>
+		</wss:service>
+	</wss:binding>
+
+</beans>

@@ -1,0 +1,8 @@
+lower_case_table_names=1
+
+
+
+show variables like 'max_connections';
+set global max_connections=1000;
+
+show processlist;

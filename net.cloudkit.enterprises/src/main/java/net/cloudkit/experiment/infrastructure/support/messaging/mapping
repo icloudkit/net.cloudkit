@@ -1,0 +1,8 @@
+package net.cloudkit.ecological.experiment.domain.shared.messaging;
+
+/**
+ * InboundMessageMapper
+ * OutboundMessageMapper
+ */
+public interface mapping {
+}

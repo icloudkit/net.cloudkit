@@ -1,0 +1,256 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+// apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+// JAVA 应用
+// apply plugin: 'application'
+// apply plugin: 'java'
+
+apply plugin: 'tomcat'
+apply plugin: 'jetty'
+
+// net.cloudkit.flowportal workflow
+archivesBaseName = 'cloudkit-flowportal'
+
+group 'net.cloudkit.flowportal'
+// 指定build输出目录和版本号 RELEASE SNAPSHOT
+version = '1.0.0-' + buildVersion() + '-RELEASE'
+// 默认为 build
+// buildDir = "target"
+
+// 如果是 JAVA 应用 apply plugin: 'application' 才设置 Tasks installApp/run
+//mainClassName = 'hello.HelloWorld'
+//applicationDefaultJvmArgs = ["-Dgreeting.language=en"]
+//// tag::jar[]
+//jar {
+//    baseName = 'net.cloudkit.hypermedia'
+//    version =  '0.1.0'
+//}
+//// end::jar[]
+
+// MANIFEST.MF 配置信息
+war {
+    manifest {
+        /*
+        MANIFEST.MF
+        Manifest-Version: 1.0
+        Implementation-Vendor: The Netty Project
+        Implementation-Title: Netty/All-in-One
+        Implementation-Version: 5.0.0.Alpha2
+        Implementation-Vendor-Id: io.netty
+        Built-By: norman
+        Build-Jdk: 1.7.0_75
+        Created-By: Apache Maven 3.2.3
+        Archiver-Version: Plexus Archiver
+        */
+        attributes 'Implementation-Vendor': 'The CloudKit Project', 'Implementation-Title': 'Flowportal/CloudKit', 'Implementation-Version': version, 'Implementation-Vendor-Id': 'net.cloudkit.flowportal', 'Built-By': 'norman', 'Build-Jdk': '1.7.0_79', 'Created-By': 'Gradle 2.6', 'Archiver-Version': 'Plexus Archiver'
+    }
+}
+
+// 设置 Project Facets
+//eclipse {
+//    wtp {
+//        facet {
+//            facet name: 'jst.web', type: Facet.FacetType.fixed
+//            facet name: 'wst.jsdt.web', type: Facet.FacetType.fixed
+//            facet name: 'jst.java', type: Facet.FacetType.fixed
+//            facet name: 'jst.web', version: '3.0'
+//            facet name: 'jst.java', version: '1.7'
+//            facet name: 'wst.jsdt.web', version: '1.0'
+//        }
+//    }
+//}
+
+// 设置 WebApp 根目录
+// webAppDirName = 'webapp'
+// 设置 Java 源码所在目录
+// sourceSets.main.java.srcDir 'src'
+
+// tag::dependencies[]
+dependencies {
+
+    // tomcat 插件的配置 tomcatVersion = '8.0.20' tomcatVersion = '7.0.59'
+    def tomcatVersion = '8.0.26'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}", "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+
+    // providedCompile 是在 war 插件下定义的
+    providedCompile(
+        // libraries.'javax.servlet-api',
+        // libraries.'jsp-api',
+        // libraries.'jstl'
+
+        libraries.'javax.servlet-api',
+        libraries.'javax.servlet.jsp-api',
+        libraries.'javax.servlet.jsp.jstl-api',
+
+    )
+
+    compile(
+
+        // 依赖 cloudkit-commons 项目
+        // project(':cloudkit-commons'),
+        libraries.'spring-core',
+        libraries.'spring-context',
+        libraries.'spring-context-support',
+        libraries.'spring-aop',
+        libraries.'spring-aspects',
+        libraries.'spring-beans',
+
+        libraries.'spring-session',
+        libraries.'spring-web',
+        libraries.'spring-webmvc',
+
+        libraries.'spring-data-jpa',
+        libraries.'spring-data-redis',
+
+        libraries.'spring-jdbc',
+        libraries.'spring-orm',
+
+        libraries.'hibernate-core',
+        libraries.'hibernate-entitymanager',
+        libraries.'hibernate-ehcache',
+        libraries.'hibernate-validator',
+        // libraries.'hibernate-search',
+        // libraries.'hibernate-search-resources',
+        libraries.'hibernate-jpa-2.1-api',
+
+        libraries.'mysql-connector-java',
+        libraries.'h2',
+        libraries.'hibernate-c3p0',
+        libraries.'commons-dbcp2',
+        libraries.'asm',
+        // libraries.'javax.mail-api',
+
+        libraries.'commons-lang3',
+        libraries.'commons-beanutils',
+        libraries.'commons-beanutils-core',
+        libraries.'commons-io',
+        libraries.'commons-codec',
+        libraries.'commons-fileupload',
+        libraries.'commons-collections4',
+        libraries.'commons-compress',
+
+        'org.springframework.boot:spring-boot-starter-web:1.3.1.RELEASE',
+        'org.activiti:activiti-spring-boot-starter-jpa:6.0.0.Beta2',
+
+        'org.activiti:activiti-spring-boot-starters:6.0.0.Beta2',
+        'org.activiti:activiti-spring-boot-starter-basic:6.0.0.Beta2',
+
+        'org.activiti:activiti-spring:6.0.0.Beta2',
+        'org.activiti:activiti-engine:6.0.0.Beta2',
+        'joda-time:joda-time:2.9.1',
+        'org.apache.commons:commons-email:1.4',
+        'commons-logging:commons-logging:jar:1.2',
+        // 'com.sun.mail:javax.mail:1.5.5'
+    )
+
+    // runtime 'javax.servlet:jstl:1.1.2'
+}
+// end::dependencies[]
+
+buildscript {
+    repositories {
+
+        // 下载 https://github.com/bmuschko/gradle-tomcat-plugin
+        // flatDir dirs: "${gradle.gradleHomeDir}/customPlugins"
+
+        // jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:1.2.5'
+    }
+}
+
+sourceSets {
+    main {
+        // manifest.srcFile 'MANIFEST.MF'
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+
+        // 自定义Build 后main 的classes 目录或resources 目录的输出位置
+        // output.resourcesDir = "${buildDir}/classes/main"
+        // output.classesDir = "${buildDir}/classes/main"
+
+        // output.resourcesDir = "src/main/webapp/WEB-INF/classes"
+        // output.classesDir = "src/main/webapp/WEB-INF/classes"
+    }
+}
+
+task copyJars(type: Copy) {
+    from configurations.runtime
+    // 目标位置
+    into 'src/main/webapp/WEB-INF/lib'
+}
+
+// tomcat 插件的配置
+tomcat {
+    httpPort = 8080
+    httpsPort = 8443
+    enableSSL = true
+    ajpPort = 8009
+    stopPort = 8090
+    stopKey = 'killTomcat'
+//    contextPath = 'sample-app'
+//    users {
+//        user {
+//            username = 'user1'
+//            password = '123456'
+//            roles = ['developers', 'admin']
+//        }
+//
+//        user {
+//            username = 'user2'
+//            password = 'abcdef'
+//            roles = ['manager']
+//        }
+//    }
+}
+
+tomcatRun {
+    contextPath = '/flowportal'
+    URIEncoding = 'UTF-8'
+    reloadable = 'true'
+}
+
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/mydatabase"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="superuser"
+              password="secretpasswd"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/mydb"
+              validationQuery="select 1"
+              maxActive="10"
+              maxIdle="4"/>
+</Context>
+*/
+//[tomcatRun, tomcatRunWar]*.configFile = file('context.xml')
+
+// jetty启动配置
+// Gradle Jetty配置范例和如何指定webdefault.xml,指定webdefault.xml是为了解决在Windows下静态文件锁定的问题
+
+// [jettyRun, jettyRunWar,jettyStop]*.with {
+//     webDefaultXml = file("${rootDir}/webdefault.xml")
+// }
+
+jettyRun {
+    httpPort = 8080
+    stopPort = 8010
+    stopKey = 'killJetty'
+    contextPath = '/flowportal'
+    // reload = 'manual'
+    reload = 'automatic'
+    scanIntervalSeconds = 1
+    // file('${rootDir}/webdefault.xml')
+    // webDefaultXml = file('webdefault.xml')
+}

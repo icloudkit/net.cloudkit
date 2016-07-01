@@ -1,0 +1,127 @@
+<!--
+  ~ Copyright (C) 2015. The CloudKit Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/flowportal">
+
+    <!-- Examples -->
+
+    <!-- declaration of the signal -->
+    <signal id="alertSignal" name="alert" />
+
+    <error id="myError" errorCode="error123" />
+
+    <process id="helloProcess" name="The Hello Process">
+        <startEvent id="start"/>
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="printTask"/>
+        <serviceTask id="printTask" activiti:expression="#{printerService.printMessage()}"/>
+        <sequenceFlow id="flow2" sourceRef="printTask" targetRef="end"/>
+        <endEvent id="end"/>
+    </process>
+
+    <process id="taskProcess" name="The Task Process">
+        <!--
+        <extensionElements>
+            <activiti:eventListener class="org.activiti.engine.test.MyEventListener" />
+            <activiti:eventListener delegateExpression="${testEventListener}" events="JOB_EXECUTION_SUCCESS,JOB_EXECUTION_FAILURE" />
+        </extensionElements>
+        -->
+
+        <startEvent id="timerStartEvent" name="Timer start">
+            <timerEventDefinition>
+                <!--<timeDate>2011-03-11T12:13:14</timeDate>-->
+                <!-- 0 0/5 * * * ? -->
+                <!--<timeDuration>${duration}</timeDuration>-->
+                <!--<timeDuration>P10D</timeDuration>-->
+                <timeCycle>0/30 * * * * ?</timeCycle>
+                <!--<timeCycle>R4/2011-03-11T12:13/PT5M</timeCycle>-->
+                <!--<timeCycle>R3/PT10H/${EndDate}</timeCycle>-->
+                <!--<timeCycle activiti:endDate="2015-02-25T16:42:11+00:00">R3/PT10H</timeCycle>-->
+            </timerEventDefinition>
+
+        </startEvent>
+
+        <!--<startEvent id="taskStart" name="Start" />-->
+        <sequenceFlow id="taskflow1" sourceRef="timerStartEvent" targetRef="userTask" />
+        <userTask id="userTask" name="User Task" />
+        <sequenceFlow id="taskflow2" sourceRef="userTask" targetRef="taskEnd" />
+        <endEvent id="taskEnd" name="End" />
+
+        <endEvent id="errorEndEvent">
+            <errorEventDefinition errorRef="error" />
+        </endEvent>
+    </process>
+
+
+    <process id="catchSignal">
+        <intermediateThrowEvent id="throwSignalEvent" name="Alert">
+            <!-- signal event definition -->
+            <signalEventDefinition signalRef="alertSignal" />
+        </intermediateThrowEvent>
+        <intermediateCatchEvent id="catchSignalEvent" name="On Alert">
+            <!-- signal event definition -->
+            <signalEventDefinition signalRef="alertSignal" />
+        </intermediateCatchEvent>
+    </process>
+
+    <!--
+    <process id="financialReport" name="Monthly financial report reminder process">
+
+        <startEvent id="theStart" />
+        <sequenceFlow id='flow1' sourceRef='theStart' targetRef='writeReportTask' />
+
+        <userTask id="writeReportTask" name="Write monthly financial report" >
+            <documentation>
+                Write monthly financial report for publication to shareholders.
+            </documentation>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>accountancy</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+
+        <sequenceFlow id='flow2' sourceRef='writeReportTask' targetRef='verifyReportTask' />
+
+        <userTask id="verifyReportTask" name="Verify monthly financial report" >
+            <documentation>
+                Verify monthly financial report composed by the accountancy department.
+                This financial report is going to be sent to all the company shareholders.
+            </documentation>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>management</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+
+        <sequenceFlow id='flow3' sourceRef='verifyReportTask' targetRef='theEnd' />
+        <endEvent id="theEnd" />
+    </process>
+    -->
+
+
+
+
+<!--
+
+-->
+
+
+</definitions>

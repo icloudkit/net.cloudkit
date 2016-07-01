@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="default-cache">
+
+    <!-- 
+    Sets the path to the directory where cache .data files are created.
+    If the path is a Java System Property it is replaced by
+    its value in the running VM.
+    The following properties are translated:
+    user.home - User's home directory
+    user.dir - User's current working directory
+    java.io.tmpdir - Default temp file path
+    -->
+    <!--
+    On Windows: java.io.tmpdir:[C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\]
+    On Solaris: java.io.tmpdir:[/var/tmp/]
+    On Linux: java.io.tmpdir: [/tmp]
+    On Mac OS X: java.io.tmpdir: [/tmp]
+    -->
+	<!-- C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\ -->
+	<diskStore path="java.io.tmpdir/cache" />
+    
+    <cacheManagerEventListenerFactory class="" properties=""/>
+
+    <!--
+   Default Cache configuration. These will applied to caches programmatically created through the CacheManager.
+
+   The following attributes are required for defaultCache:
+
+   maxInMemory       - Sets the maximum number of objects that will be created in memory
+   eternal           - Sets whether elements are eternal. If eternal,  timeouts are ignored and the element is never expired.
+   timeToIdleSeconds - Sets the time to idle for an element before it expires. Is only used if the element is not eternal. Idle time is now - last accessed time
+   timeToLiveSeconds - Sets the time to live for an element before it expires. Is only used if the element is not eternal. TTL is now - creation time
+   overflowToDisk    - Sets whether elements can overflow to disk when the in-memory cache has reached the maxInMemory limit.
+   -->
+    <!-- Default Cache Setting. -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+            maxEntriesLocalDisk="100000" />
+
+    <cache
+            name="shiroCache"
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120" />
+
+    <!-- Special objects setting. -->
+    <!-- Refresh demoCache every hour，按Cache实际大小而不是Element数量进行限制，超过限制后不保存到磁盘。 -->
+    <!--
+    <cache
+            name="demoCache"
+            maxBytesLocalHeap="10M"
+            eternal="true"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="3600"
+            overflowToDisk="false" />
+    -->
+
+
+    <cache name="SimplePageCachingFilter"
+           maxElementsInMemory="10"
+           maxElementsOnDisk="10"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="100"
+           timeToLiveSeconds="30"
+           memoryStoreEvictionPolicy="LFU" />
+
+    <cache name="SimplePageFragmentCachingFilter"
+           maxElementsInMemory="1"
+           maxElementsOnDisk="1"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" />
+
+</ehcache>

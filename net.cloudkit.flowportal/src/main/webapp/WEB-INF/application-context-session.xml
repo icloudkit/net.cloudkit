@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<description>Spring infrastructure config</description>
+
+	<!-- tag::beans[] -->
+
+
+	<!--
+	web.xml 配置
+	&lt;!&ndash; tag::delegatingFilterProxy[] &ndash;&gt;
+	<filter>
+		<filter-name>springSessionRepositoryFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		&lt;!&ndash;
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>testBean</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextAttribute</param-name>
+            <param-value>session</param-value>
+        </init-param>
+        &ndash;&gt;
+		<init-param>
+			&lt;!&ndash; 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 &ndash;&gt;
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSessionRepositoryFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	&lt;!&ndash; end::delegatingFilterProxy[] &ndash;&gt;
+
+	Java Bean 配置方式
+	//import org.springframework.context.annotation.Bean;
+	//import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+	//import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+	//import redis.clients.jedis.JedisPoolConfig;
+	//
+	///**
+	// * req.getSession().setAttribute(attributeName, attributeValue);
+	// * req.getSession().setAttribute("user", new User(uid, "张三", "这里是redis的"));
+	// */
+	//@EnableRedisHttpSession
+	//public class RedisHttpSessionConfig {
+	//    @Bean
+	//    public JedisConnectionFactory connectionFactory()
+	//    {
+	//        JedisConnectionFactory connection = new JedisConnectionFactory();
+	//        connection.setHostName("192.168.1.197");
+	//        connection.setPort(6379);
+	//        connection.setPassword("root");
+	//        // connection.setUsePool(true);
+	//        // connection.setPoolConfig(new JedisPoolConfig());
+	//        return connection;
+	//    }
+	//}
+
+	//package net.cloudkit.ecological.enterprises.infrastructure.config;
+	//
+	//import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
+	//
+	//public class SpringSessionInitializer extends AbstractHttpSessionApplicationInitializer {
+	//
+	//    public SessionInitializer() {
+	//        super(SessionConfig.class);
+	//    }
+	//}
+	-->
+
+
+	<!-- XML 配置方式 -->
+	<!--1 httpSession配置 -->
+	<context:annotation-config/>
+	<bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" />
+
+	<!-- 2 配置Redis连接 -->
+	<!--
+	&lt;!&ndash; jedis pool配置 &ndash;&gt;
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		&lt;!&ndash;<property name="maxActive" value="${redis.maxActive}" />&ndash;&gt;
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		&lt;!&ndash;<property name="maxWait" value="${redis.maxWait}" />&ndash;&gt;
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+	</bean>
+
+	&lt;!&ndash; spring data redis &ndash;&gt;
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+		<property name="usePool" value="true" />
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+		<property name="password" value="${redis.pass}" />
+		<property name="timeout" value="${redis.timeout}" />
+		<property name="database" value="${redis.default.db}" />
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+	</bean>
+	-->
+
+	<!-- hazelcast -->
+
+	<!-- end::beans[] -->
+</beans>

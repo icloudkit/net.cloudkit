@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="trustdeed" language="groovy" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="21" rightMargin="21" topMargin="21" bottomMargin="21" uuid="48c5d3c1-e30e-4e80-9417-b09a71c7edda">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="193"/>
+	<parameter name="exportername" class="java.lang.String"/>
+	<parameter name="maxcargoname" class="java.lang.String"/>
+	<parameter name="maxhscode" class="java.lang.String"/>
+	<parameter name="currencyname" class="java.lang.String"/>
+	<parameter name="amount" class="java.lang.Double"/>
+	<parameter name="tradetypename" class="java.lang.String"/>
+	<parameter name="regionname" class="java.lang.String"/>
+	<parameter name="bizid" class="java.lang.String"/>
+	<parameter name="biztypename" class="java.lang.String"/>
+	<parameter name="companycode" class="java.lang.String"/>
+	<parameter name="shippercode" class="java.lang.String"/>
+	<parameter name="biznumber" class="java.lang.String"/>
+	<parameter name="consigcode" class="java.lang.String"/>
+	<parameter name="rcvcode" class="java.lang.String"/>
+	<parameter name="rcvtype" class="java.lang.String"/>
+	<title>
+		<band height="479" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="339" width="235" height="17" uuid="bb4373a3-1d49-4dac-9860-288ed047d4bd"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{exportername}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="356" width="235" height="17" uuid="adf76a1b-3e0a-4f6a-9857-8ced7a3e19a4"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{maxcargoname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="373" width="100" height="17" uuid="6541e5b7-f34e-4c7a-b39b-71ef31b99135"/>
+				<textElement>
+					<font fontName="Arial" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{maxhscode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="390" width="73" height="20" uuid="18d5954e-110d-418b-ac31-7c846f54a12d"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{currencyname}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="188" y="390" width="162" height="20" uuid="a6728106-b7a0-4e12-9b21-3dc26f476652"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="441" width="100" height="17" uuid="d5500194-14f1-439e-b4a2-f555cfd516e2"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tradetypename}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="458" width="100" height="17" uuid="20b2f079-d67e-4a62-b458-a1d8264e3dc8"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{regionname}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="433" y="1" width="120" height="34" uuid="748f7b88-1a85-42a5-833e-dbad0208108a"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barHeight="50">
+					<jr:codeExpression><![CDATA[$P{bizid}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</title>
+</jasperReport>

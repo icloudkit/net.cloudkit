@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<!--
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+-->
+<!--
+<urlrewrite>元素
+default-match-type	regex(默认),wildcard	                所有的rule和condition  元素都会用到该匹配方法
+decode-using	    header,utf8(默认),null,iso-8859-1等	当url 需要解码时request.getCharacterEncoding() 将被用到，如果为空，则为utf-8
+use-query-string	false(默认),true	                    语句是否加到url的后面
+use-context	        false(默认),true	                    上下午路径是否要加到url 中
+-->
+<urlrewrite>
+    <!--
+    <rule>元素
+    enable	true(默认),false	是否应用该rule
+    match-type	regex(默认),wildcard	应用那种匹配规则
+    -->
+
+    <!--
+    <outbound-rule>元素
+    enabled	true(默认),false	    是否应该该规则
+    encodefirst	 false(默认),false	是否在执行<outbound-rule>之前执行encodeURL()，ture为之后，false为之前
+
+    <outbound-rule>
+        <from>^/world.jsp?country=([a-z]+)&amp;city=([a-z]+)$</from>
+        <to>/world/$1/$2</to>
+    </outbound-rule>
+
+    使用jsp
+    <a href="<%= response.encodeURL("/world.jsp?country=usa&amp;city=nyc") %>">nyc</a>
+    将输出
+    <a href="/world/usa/nyc">nyc</a>
+
+    或者使用jstl 标签
+    <a href="<c:url value="/world.jsp?country=${country}&amp;city=${city}" />">nyc</a>
+    将输出
+    <a href="/world/usa/nyc">nyc</a>
+
+    <name>元素
+    # 该规则的名称，可以用在rule元素和outbound-rule 元素中
+    <rule>
+        <name>World Rule</name>
+        <from>^/world/([a-z]+)/([a-z]+)$</from>
+        <to>/world.jsp?country=$1&amp;city=$2</to>
+    </rule>
+
+    <note>元素
+    # 用来描述该规则，可用在rule 元素和outbound-rule元素中
+    <rule>
+        <name>World Rule</name>
+        <note>
+            Cleanly redirect world requests to JSP,
+            a country and city must be specified.
+        </note>
+        <from>^/world/([a-z]+)/([a-z]+)$</from>
+        <to>/world.jsp</to>
+    </rule>
+
+    <condition>元素
+    可以用来为rule元素选择条件，所有条件将在规则执行时执行（除非显式的把“next” 设为“or”）
+    参数	取值	描述
+    type	    header(默认),method、port、time等	           设置一些条件的类型
+    name	    可为任何值	                               如果type 取值为header，这个名称将是http header 的值
+    next	    and（默认）,or	                           and：下一个rule 元素和这个rule 必须匹配。or：下一个rule元素或者这个condition 将被匹配
+    operator	equal(默认),notequal、greater、less等	       ie请求的值和condition 值比较
+
+    <condition name="user-agent" operator="notequal">Mozilla/[1-4]</condition>
+    <condition type="user-in-role" operator="notequal">bigboss</condition>
+    <condition name="host" operator="notequal">www.example.com</condition>
+    <condition type="method" next="or">PROPFIND</condition>
+    <condition type="method">PUT</condition>
+
+    <from> 元素
+    rule 或者outbound-rule 必须至有一个from 元素，该值为url 相对于上下文的值
+    casesensitive	false（默认）、true	是否要求该值的大小写，false为大小写匹配，true为忽略大小写
+
+    <to>元素
+
+    重写后的输出值
+    type	forward（默认）、passthrough、redirect等	url的跳转问题
+    last	false（默认）、true                      false：余下的rule 元素将被执行，如果该规则符合的话 true：剩下的rule 元素不被执行，如果该规则符合的话
+    encode	false（默认）、true                      response.encodeURL([to]) 是否被调用。false：将在url重写前调用。true：将不被调用
+    context 如果应用服务器配置允许 cross context（跨越上下文），这个属性将被forward（只有forward可以，redirct 或者其他to元素的类型都不可以）比如在tomcat 的配置文件中设有：
+
+    <Context docBase="app" path="/app" reloadable="true" crossContext="true"/>
+    <Context docBase="forum" path="/forum" reloadable="true" crossContext="true"/>
+
+    <to>null</to>表示当这个规则匹配时，将不会有任何的反应。
+
+    to元素可以包含后引用（backreferences）和变量
+
+    Backreferences
+    比如： %N
+    Provides access to the grouped parts (parentheses) of the pattern from the last matched Condition in the current rule. N must be less than 10 and greater than 0 (i.e. %1, %2, %3 etc).
+
+    变量
+    %{varName}
+    任何变量的 condition type 可以被用来作为varName。比如：%{port}将被翻译为80 ,%{year}将被翻译成2009等
+
+    函数
+    %{function:params}
+    函数可以用在set元素或者to元素中。
+
+    replace	${replace:my cat is a blue cat:cat:dog}	my dog is a blue dog
+    replaceFirst	${replace:my cat is a blue cat:cat:dog}	my cat is a blue dog
+    escape	${escape:a b c}	a+b+c
+    unescape	${unescape:a+b+c}	a b c
+    lower	${lower:Hello World}	hello world
+    upper	${upper:hello}	HELLO
+    trim	${trim: abc def }	abc def
+
+
+    <set>元素
+    如果rule 匹配的话，允许你设置一些变量。
+    type	request,session,cookie,charset等	  设置域的类型
+    name	任何数                             在request、session、response-header、cookie，有特殊的作用
+
+    实例：
+    # 把client 的值设进request中，可通过request.getAttribute("client")来获取
+    <rule>
+        <condition name="user-agent">Mozilla/3/.0 (compatible; AvantGo .*)</from>
+        <from>.*</from>
+        <set name="client">AvantGo</set>
+    </rule>
+    <rule>
+        <condition name="user-agent">UP/.Browser/3.*SC03 .* </from>
+        <from>.*</from>
+        <set name="client">Samsung SCH-6100</set>
+    </rule>
+
+    <run>元素
+    当rule和它的condition匹配时，你可以运行Object中的一个方法
+    class	 	                    你所要调用的方法的Object
+    method	    run(默认)	        你所要调用的方法，该方法必须带有(HttpServletRequest, HttpServletResponse)参数。例如：run(HttpServletRequest request, HttpServletResponse response) 如果init(ServletConfig) 或者destroy() 方法，将会被执行，当创建或销毁该Object时
+    neweachtime	false(默认),true	该Oject 是否为单例执行。false为单例，true为每次都new 新的Object
+
+
+    实例：
+    <rule>
+        <from>^/world/[a-z]+/[a-z]+$</from>
+        <run class="com.blah.web.WorldServlet" method="doGet" />
+        <to>/world-presentation.jsp</to>
+    </rule>
+    # 可以设置一些初始值
+    <run class="com.blah.web.MyServlet" method="doGet">
+        <init-param>
+            <param-name>someParamName</param-name>
+            <param-value>10</param-value>
+        </init-param>
+    </run>
+    才此方法中出现的异常将会被包装成ServletException 后抛出。
+
+    <class-rule>元素
+    每次请求都执行这个方法在rule 元素中，具体的例子在org.tuckey.web.filters.urlrewrite.sample可以查看。
+
+    class	                运行的Object，必须带有包的全名
+    method  matches（默认）	运行的方法，和run元素中的方法类似
+    last	true（默认）	    当为false时更多的rule将被执行，即使寂静匹配
+
+    实例：
+    <class-rule class="com.blah.web.MyRuleClass" />
+    -->
+
+    <!--
+    <rule>
+        <from>^/([a-z_]+)/$</from>
+        <to type="forward">/$1.jspx</to>
+    </rule>
+
+    <rule match-type="regex">
+       <from>^/some/olddir/(.*)$</from>
+       <to type="redirect">/very/newdir/$1</to>
+    </rule>
+
+    <rule match-type="wildcard">
+       <from>/blog/archive/**</from>
+       <to type="redirect">/roller/history/$1</to>
+    </rule>
+    -->
+
+    <!--
+    <rule>
+        &lt;!&ndash;
+        <condition operator="equal" next="and" type="request-uri">.*.html</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.shtml</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.css</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.js</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.swf</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.jsp</condition>
+        <condition operator="equal" next="and" type="request-uri">.*.jspx</condition>
+        &ndash;&gt;
+
+
+        <condition
+                operator="notequal"
+                next="and"
+                type="request-uri">cxf.*
+        </condition>
+        <condition
+                operator="notequal"
+                next="and"
+                type="request-uri">interfaces.*
+        </condition>
+        &lt;!&ndash;
+        <condition
+            operator="notequal"
+            next="and"
+            type="request-uri">.*.jspx</condition>
+         &ndash;&gt;
+
+        <from>^((/[a-z_0-9]+)+)$</from>
+        <to type="redirect">%{context-path}$1/</to>
+    </rule>
+    -->
+
+    <!-- 访问 jsp 及 jspx 将不 rewrite url,其它 .js,.css,.gif 等将重写,如 /logo.gif -> /resources/logo.gif -->
+    <!--
+    <rule>
+        <condition operator="notequal" next="and" type="request-uri">.*.jsp</condition>
+        <condition operator="notequal" next="and" type="request-uri">.*.jspx</condition>
+        <from>^(/.*\..*)$</from>
+        <to>/resources$1</to>
+    </rule>
+    -->
+
+    <!--
+    <rule>
+        <note>
+            The rule means that requests to /test/status/ will be redirected to /rewrite-status
+            the url will be rewritten.
+        </note>
+        <from>/test/status/</from>
+        <to type="redirect">%{context-path}/rewrite-status</to>
+    </rule>
+
+
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+        <from>/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+    -->
+
+
+    <!--
+
+    INSTALLATION
+
+        in your web.xml add...
+
+        <filter>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+            <init-param>
+                <param-name>logLevel</param-name>
+                <param-value>WARN</param-value>
+            </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+     EXAMPLES
+
+     Redirect one url
+        <rule>
+            <from>/some/old/page.html</from>
+            <to type="redirect">/very/new/page.html</to>
+        </rule>
+
+    Redirect a directory
+        <rule>
+            <from>/some/olddir/(.*)</from>
+            <to type="redirect">/very/newdir/$1</to>
+        </rule>
+
+    Clean a url
+        <rule>
+            <from>/products/([0-9]+)</from>
+            <to>/products/index.jsp?product_id=$1</to>
+        </rule>
+    eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 without the user noticing.
+
+    Browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <from>/some/page.html</from>
+            <to>/some/page-for-old-browsers.html</to>
+        </rule>
+    eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html only for older
+    browsers whose user agent srtings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+    Centralised browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <set type="request" name="browser">moz</set>
+        </rule>
+    eg, all requests will be checked against the condition and if matched
+    request.setAttribute("browser", "moz") will be called.
+
+    -->
+
+</urlrewrite>

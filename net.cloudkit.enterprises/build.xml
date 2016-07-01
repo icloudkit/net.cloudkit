@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+基本属性：name、default、basedir。
+name:    项目名称(可选)
+default: 默认开始执行的target。(必需)
+basedir: 用于计算所有其他路径的基路径。可以被basedir property覆盖。当覆盖时，该属性被忽略。如果属性和basedir property都没有设定，就使用build.xml的父目录。一般basedir=".",设置为build.xml所在的目录。(可选)
+-->
+<project name="ecosystem" basedir="./" default="deploy">   <!-- Properties and Paths -->
+    <property name="dir.java.src" value="src"/>
+    <property name="dir.java.build" value="webapp/WEB-INF/classes"/>
+    <property name="dir.lib" value="lib"/>
+    <property name="dir.dist" value="dist"/>
+    <property name="dir.deploy" value="deploy"/>
+    <property name="file.manifest" value="MANIFEST.MF"/>
+    <property name="file.jar" value="ecosystem.jar"/>
+    <!-- Just to fool the test -->
+    <property name="gpdi.root" value="."/>
+    <!-- 排除java源文件的模式集 -->
+    <patternset id="no.java">
+        <exclude name="**/*.java"/>
+    </patternset>
+    <path id="project.class.path">
+        <pathelement location="${dir.java.build}"/>
+        <fileset dir="${dir.lib}" id="lib.path">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <!--
+    target:
+    Attribute属性 Description属性值内容 Required
+    name target的名字 Y
+    depends 需要依赖的其他target N
+    description 关于target功能的简短描述 N
+    if 为了执行本target而被设置的属性的名字 N
+    unless 为了执行本target而不被设置的属性的名字 N
+    -->
+    <!-- 初始化,建立目录,复制文件 -->
+    <target name="init" depends="clean" description="初始化,建立目录,复制文件">
+        <mkdir dir="${dir.java.build}"/>
+        <mkdir dir="${dir.dist}"/>
+        <copy todir="${dir.java.build}">
+            <fileset dir="${dir.java.src}">
+                <patternset refid="no.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!-- 清理,删除临时目录 -->
+    <target name="clean" description="清理,删除临时目录">
+        <delete dir="${dir.java.build}"/>
+        <delete dir="${dir.dist}"/>
+        <echo level="info">清理完毕</echo>
+    </target>
+
+    <!-- 编译源文件-->
+    <target name="compile" depends="init" description="编译源文件">
+        <javac srcdir="${dir.java.src}" destdir="${dir.java.build}" deprecation="off" debug="off" encoding="gbk"
+               source="1.5" target="1.5">
+            <classpath refid="project.class.path"/>
+        </javac>
+    </target>
+
+    <!-- 创建清单文件 -->
+    <target name="create.manifest" description="创建清单文件">
+        <manifest file="${dir.java.src}/${file.manifest}">
+            <attribute name="Built-By" value="${user.name}"/>
+            <attribute name="Main-Class" value="net.cloudkit.ecosystem.enterprises.infrastructure.TaskJob"/>
+            <attribute name="Class-Path" value="lib/log4j-1.2.9.jar lib/classes12.jar lib/joone-engine.jar"/>
+        </manifest>
+    </target>
+
+    <!-- 打包类文件 -->
+    <target name="deploy" depends="create.manifest" description="打包类文件">
+        <mkdir dir="${dir.deploy}"/>
+        <mkdir dir="${dir.deploy}/log"/>
+        <jar jarfile="${dir.deploy}/${file.jar}" manifest="${dir.java.src}/${file.manifest}">
+            <fileset dir="${dir.java.build}"
+                     includes="db.properties,config.properties,log4j.properties,com/mfsoft/net/task/*.class,com/mfsoft/credit/modelmang/operation/*.class,           com/mfsoft/net/datatranslate/*.class,com/mfsoft/net/pre/*.class,com/mfsoft/icity/platform/database/*.class,com/mfsoft/icity/platform/datashare/*.class,           com/mfsoft/icity/platform/publicclass/*.class,com/mfsoft/credit/viable/*.class"/>
+        </jar>
+        <!--复制用到的库以及其他文件 -->
+        <mkdir dir="${dir.deploy}/lib"/>
+        <copy todir="${dir.deploy}/lib">
+            <fileset dir="defaultroot/WEB-INF/lib" includes="classes12.jar,joone-engine.jar,log4j-1.2.9.jar"/>
+        </copy>
+        <mkdir dir="${dir.deploy}/model"/>
+        <copy todir="${dir.deploy}/model">
+            <fileset dir="defaultroot/WEB-INF/classes" includes="*.snet"/>
+        </copy>
+    </target>
+</project>

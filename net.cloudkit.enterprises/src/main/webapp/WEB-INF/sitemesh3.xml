@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemesh 2.3 配置 -->
+<!--
+# /WEB-INF/layouts views
+<decorators defaultdir="/WEB-INF/decorators/">
+    <excludes>
+        <pattern>/interfaces/*</pattern>
+        <pattern>/api/*</pattern>
+        <pattern>/assets/*</pattern>
+        <pattern>/resources/*</pattern>
+        <pattern>/report/*</pattern>
+    </excludes>
+
+    ###
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+
+	<decorator name="theme" page="theme.jsp">
+		<pattern>/login/</pattern>
+		<pattern>/register/</pattern>
+	</decorator>
+    ###
+</decorators>
+-->
+<sitemesh>
+
+    <!--默认情况下，sitemesh 只对 HTTP 响应头中 Content-Type 为 text/html 的类型进行拦截和装饰，我们可以添加更多的 mime 类型-->
+    <mime-type>text/html</mime-type>
+    <mime-type>application/vnd.wap.xhtml+xml</mime-type>
+    <mime-type>application/xhtml+xml</mime-type>
+
+    <!-- 默认装饰器，当下面的路径都不匹配时，启用该装饰器进行装饰 -->
+    <!-- <mapping decorator="/default-decorator.html" /> -->
+
+    <!-- 对不同的路径，启用不同的装饰器 -->
+    <!--
+    <mapping path="/admin/*" decorator="/another-decorator.html" />
+    <mapping path="/*.special.jsp" decorator="/special-decorator.html" />
+    -->
+
+    <!-- 对同一路径，启用多个装饰器 -->
+    <!--
+    <mapping>
+        <path>/articles/*</path>
+        <decorator>/decorators/article.html</decorator>
+        <decorator>/decorators/two-page-layout.html</decorator>
+        <decorator>/decorators/common.html</decorator>
+    </mapping>
+    -->
+
+    <!-- 排除，不进行装饰的路径 -->
+    <!--
+    <mapping path="/javadoc/*" exclue="true" />
+    <mapping path="/brochures/*" exclue="true" />
+    -->
+
+    <!-- 自定义 tag 规则 -->
+    <!--
+    <content-processor>
+        <tag-rule-bundle class="com.something.CssCompressingBundle" />
+        <tag-rule-bundle class="com.something.LinkRewritingBundle" />
+    </content-processor>
+    -->
+
+    <!-- 指明满足“/*”的页面，将被“/WEB-INF/views/decorators/decorator.html”所装饰 -->
+    <!--
+    <mapping path="/*" decorator="/WEB-INF/views/decorators/decorator.html" />
+    -->
+
+    <!-- Map default decorator. This shall be applied to all paths if no other paths match. -->
+    <!--<mapping path="/*" decorator="/WEB-INF/layout/main.jsp" exclude="false"/>-->
+
+    <!-- Exclude path from decoration. -->
+    <!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 -->
+    <mapping path="/resources*" exclude="true" />
+    <mapping path="/services*" exclude="true" />
+</sitemesh>
+
+<!--
+# 自定义 tag 规则,Sitemesh 3 默认只提供了 body，title，head 等 tag 类型，我们可以通过实现 TagRuleBundle 扩展自定义的 tag 规则：
+public class MyTagRuleBundle implements TagRuleBundle {
+    @Override
+    public void install(State defaultState, ContentProperty contentProperty, SiteMeshContext siteMeshContext) {
+        defaultState.addRule("myHeader", new ExportTagToContentRule(contentProperty.getChild("myHeader"), false));
+
+    }
+
+    @Override
+    public void cleanUp(State defaultState, ContentProperty contentProperty, SiteMeshContext siteMeshContext) {
+    }
+}
+
+# 最后在 sitemesh3.xml 中配置即可：
+<content-processor>
+    <tag-rule-bundle class="com.lt.common.ext.sitemesh3.MyTagRuleBundle" />
+</content-processor>
+-->

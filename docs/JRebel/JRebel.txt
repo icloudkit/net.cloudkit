@@ -1,0 +1,33 @@
+https://dzone.com/articles/jrebel-and-gradle-integration
+
+http://zeroturnaround.com/software/jrebel/?utm_source=dzone&utm_medium=bumper&utm_campaign=jrebel
+
+https://github.com/zeroturnaround/gradle-jrebel-plugin
+
+The Java Zone is brought to you in partnership with ZeroTurnaround. Discover how you can skip the build and redeploy process by using JRebel by ZeroTurnaround.
+I have started to use JRebel and believe me, that's a great tool! To configure it, you have to specify the absolute path of your project directories in the configuration file. When working in a team, it is always problematic to have a configuration file with absolute path in version control.
+
+A plugin for maven exists to generate the rebel.xml files but for gradle, nope. Sadly it seems that Zeroturnaround has removed their gradle plugin from their repository.
+
+Hopefully generating a xml file in groovy is a piece of cake. So I have done my own code to generate the rebel.xml file before building the war file.
+task generateRebel << {
+    def rebelFile = sourceSets.main.output.classesDir.absolutePath + '/rebel.xml'
+
+    def srcWebApp = project.webAppDir.absolutePath
+    def writer = new FileWriter(rebelFile)
+    new MarkupBuilder(writer).application() {
+        classpath{
+            dir( name:sourceSets.main.output.classesDir.absolutePath )
+        }
+        web{
+            link(target:'/'){
+                dir(name:srcWebApp)
+            }
+        }
+    }
+}
+war.dependsOn generateRebel
+That's it! Your rebel.xml will be generated on the fly, you just need to activate JRebel on the server!
+The Java Zone is brought to you in partnership with ZeroTurnaround. Discover how you can skip the build and redeploy process by using JRebel by ZeroTurnaround.
+
+settings 里面 compile设置 make project automatically,然后启动,每次修改java文件,或者配置文件后 直接ctl+s 保存,Jrebel 就可以自动reload

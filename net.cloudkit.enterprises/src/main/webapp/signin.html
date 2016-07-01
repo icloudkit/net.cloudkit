@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Modifications to this file will be overwritten. -->
+<!--[if lt IE 7]><html class="no-js lt-ie10 ie6" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie10 ie7" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie10 ie8" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10 ie9" lang="zh-CN" dir="ltr"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="zh-CN" dir="ltr"><!--<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!--><html lang="zh-CN"><!--<![endif]-->
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <!-- initial-scale指定初始化的缩略比例，minimum-scale指定缩小的比例，而maximum-scale则是放大的比例，取决于user-scalable是否能缩放页面 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Sign in</title>
+
+    <meta name="author" content="hongquanli@qq.com" />
+    <meta name="keywords" content="memberprod, passport" />
+    <meta name="description" content="" />
+
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/icon/favicon.png" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- normalize.min.css -->
+    <link type="text/css" rel="stylesheet" href="resources/third-party/normalize/3.0.3/normalize.css" media="screen" />
+
+    <script type="text/javascript" src="resources/third-party/jquery/1.11.2/jquery.min.js?14.3.19.1"></script>
+    <script type="text/javascript" src="resources/third-party/jquery-validation/1.14.0/jquery.validate.min.js?14.3.19.1"></script>
+    <script type="text/javascript" src="resources/third-party/jquery-validation/1.14.0/localization/messages_zh.min.js?14.3.19.1"></script>
+
+    <style type="text/css">
+        body {font-family: Arial, Helvetica, sans-serif;}
+        div {margin: 4px;}
+
+        .captcha-image {height: 38px;width: 100px;border: 1px solid #ddd;margin-right: 10px;background: url(resources/images/loading.gif) center center no-repeat;}
+    </style>
+
+    <script type="application/javascript">
+        $(function() {
+
+            var $signinButton = $('#signin-button'), $signinForm = $("#signin-form"), $captchaImage = $("#captcha-image"),
+                    $refreshCaptchaLink = $("#refresh-captcha-link"), $signinErrorAlert = $("#signin-error-alert"),
+                    $captchaWrapper = $("#captcha-wrapper");
+
+            $signinForm.validate({
+                // errorClass: 'error',
+                // errorElement: 'em',
+                // errorContainer: errorContainer,
+                // errorLabelContainer: $("#signin-form div.error"),
+                // wrapper: 'p',
+                onfocus: false,
+                onkeyup: false,
+                onsubmit: true,
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [6, 14]
+                    },
+                    password: "required"
+                    /*
+                    password: {
+                        required: true
+                        // equalTo: "#password"
+                    }
+                    */
+                },
+                messages: {
+                    username: {
+                        required: "必须输入用户名/邮箱"
+                    },
+                    password: {
+                        required: "必须输入登录密码"
+                    }
+                },
+                showErrors: function (errorMap, errorList) {
+                    var message = "";
+                    $.each(errorList, function (i, value) {
+                        // message += (value.message + "\n");
+                        message += (value.message + "<br />");
+                    });
+                    if (message != "") {
+                        // alert(message);
+                        $signinErrorAlert.html(message);
+                    }
+                },
+                invalidHandler: function () {
+                    return false;
+                },
+                submitHandler: function () {
+                    //表单的处理
+
+                    /*
+                    // 判断登录状态，如果已经登录则退出登录后提交
+                    $.ajax({
+                        url: "get_login_status",
+                        dataType: "json",
+                        type: "GET",
+                        success: function(result){
+                            if(result && result.success) {
+                                $.ajax({
+                                    url: "logout",
+                                    type: "GET",
+                                    async: "true",
+                                    success: function(result){
+                                        signinAction();
+                                    }
+                                })
+                            } else {
+                                signinAction();
+                            }
+                        }
+                    });
+                    */
+
+                    signinAction();
+                    // 阻止表单提交
+                    return false;
+                }
+            });
+
+            // 提交表单登录 login-button
+            $signinButton.click(function () {
+                $signinForm.submit();
+            });
+
+            $signinForm.keydown(function (event) {
+                var keycode = event.which;
+                if (keycode == 13) {
+                    // $signinForm.submit();
+                    $signinButton.focus().click();
+                }
+            });
+
+            // 刷新验证码
+            $refreshCaptchaLink.click(function () {
+                // console.log("captcha_image?" + Math.random());
+                $captchaImage.attr("src", "captcha_image?" + Math.random());
+            });
+
+            var signinAction = function () {
+                // login-form
+                // console.log($("#signin-form").serialize());
+
+                /*
+                $.post('login', $signinForm.serialize(), function (result) {
+                    if (result && result.success == true) {
+                        alert((result && result.message) ? result.message : "登录成功！");
+                    } else {
+                        alert((result && result.message) ? result.message : "系统错误，请稍后再试！");
+                    }
+                }, 'json');
+                */
+
+                // login
+                $.ajax({
+                    type: 'POST',
+                    // url: '${context_path}/signin',
+                    url: 'signin',
+                    // data: {
+                    //     username: 'f',
+                    //     email: 'test@qq.com'
+                    // },
+                    data: $signinForm.serialize(),
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result && result.success == true) {
+                            // alert((result && result.message) ? result.message : "登录成功！");
+                            $signinErrorAlert.html((result && result.message) ? result.message : "登录成功！");
+                            // TODO 跳转到登录后主页
+                            // window.location.href = "main.html";
+                        } else {
+                            // alert((result && result.message) ? result.message : "系统错误，请稍后再试！");
+                            $signinErrorAlert.html((result && result.message) ? result.message : "系统错误，请稍后再试！");
+
+                            // TODO 是否开启验证码
+                            if(result.loginErrorTimes && result.loginErrorTimes >= 3) {
+                                $captchaImage.attr("src", "captcha_image?" + Math.random());
+                                $captchaWrapper.removeClass("hidden");
+                            }
+                        }
+                    },
+                    error: function (error) {
+
+                        // console.log(error)
+
+                        // http-status.js
+
+                        // 0：请求未初始化（还没有调用 open()）。
+                        // 1：请求已经建立，但是还没有发送（还没有调用 send()）。
+                        // 2：请求已发送，正在处理中（通常现在可以从响应中获取内容头）。
+                        // 3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。
+                        // 4：响应已完成；您可以获取并使用服务器的响应了。
+                        if (error.readyState == 4) {
+                            alert("系统错误，请稍后再试！");
+                        } else {
+                            alert("网络异常，请稍后再试！");
+                        }
+                    }
+                });
+            }
+        })
+    </script>
+</head>
+
+<body>
+
+<div>
+    <form id="signin-form" action="" method="post">
+        <div id="signin-error-alert"></div>
+        <div><label>登录用户名/邮箱</label> <input name="username" type="text" value="" required="required" placeholder="输入登录用户名或邮箱" /></div>
+        <div><label>登录密码</label> <input name="password" type="password" value="" required="required" value="" placeholder="输入密码" /></div>
+        <div id="captcha-wrapper" class="hidden"><label>验证码</label> <input name="captcha" type="text" value="" placeholder="验证码"  /> <img id="captcha-image" class="captcha-image" width="90" height="30" src="" onclick="this.src = 'captcha_image?' + Math.random()" /> <a id="refresh-captcha-link" href="javascript:void(0);">看不清？点击刷新！</a></div>
+        <div><label class="checkbox"><input name="rememberMe" type="checkbox"> 记住我</label> <button id="signin-button" class="btn btn-primary" type="button">登录</button></div>
+    </form>
+</div>
+
+</body>
+</html>

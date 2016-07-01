@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c='http://www.springframework.org/schema/c'
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+	http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+
+    <description>Spring infrastructure config</description>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Redis Messaging/PubSub -->
+    <!--
+    // send message through connection RedisConnection con = ...
+    byte[] msg = ...
+    byte[] channel = ...
+    con.publish(msg, channel); // send message through RedisTemplate
+    RedisTemplate template = ...
+    template.convertAndSend("hello!", "world");
+    -->
+    <!--
+    &lt;!&ndash; the default ConnectionFactory &ndash;&gt;
+    <redis:listener-container>
+        &lt;!&ndash; the method attribute can be skipped as the default method name is "handleMessage" &ndash;&gt;
+        <redis:listener ref="listener" method="handleMessage" topic="chatroom" />
+    </redis:listener-container>
+
+    <bean id="listener" class="net.cloudkit.ecosystem.enterprises.infrastructure.messaging.DefaultMessageDelegate"/>
+
+    <bean id="messageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
+        <constructor-arg>
+            &lt;!&ndash;<bean class="net.cloudkit.ecosystem.enterprises.infrastructure.messaging.DefaultMessageDelegate"/>&ndash;&gt;
+            <bean parent="listener" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="redisContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        <property name="messageListeners">
+            <map>
+                <entry key-ref="messageListener">
+                    <bean class="org.springframework.data.redis.listener.ChannelTopic">
+                        <constructor-arg value="chatroom" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    -->
+
+    <!-- Turn on declarative caching -->
+    <cache:annotation-driven />
+
+    <!-- Declare Redis Cache Manager -->
+    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager" c:redisOperations-ref="redisTemplate" />
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory" />
+    </bean>
+
+    <beans profile="production">
+        <!--
+        <bean id="propertyConfigurerRedis"
+              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="order" value="1"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <list>
+                    <value>classpath:config/redis-manager-config.properties</value>
+                </list>
+            </property>
+        </bean>
+        -->
+
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:development.properties"/>
+
+        <!-- jedis pool配置 -->
+        <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+            <!--<property name="maxActive" value="${redis.maxActive}" />-->
+            <property name="maxIdle" value="${redis.maxIdle}" />
+            <!--<property name="maxWait" value="${redis.maxWait}" />-->
+            <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        </bean>
+
+        <!-- spring data redis -->
+        <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+            <property name="usePool" value="true" />
+            <property name="hostName" value="${redis.host}" />
+            <property name="port" value="${redis.port}" />
+            <property name="password" value="${redis.pass}" />
+            <property name="timeout" value="${redis.timeout}" />
+            <property name="database" value="${redis.default.db}" />
+            <constructor-arg index="0" ref="jedisPoolConfig" />
+        </bean>
+    </beans>
+
+    <beans profile="development, functional, test">
+        <!--
+        <bean id="propertyConfigurerRedis"
+              class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="order" value="1"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <list>
+                    <value>classpath:config/redis-manager-config.properties</value>
+                </list>
+            </property>
+        </bean>
+        -->
+
+        <context:property-placeholder ignore-resource-not-found="true" location="classpath*:/environment.properties, classpath*:development.properties"/>
+
+        <!-- jedis pool配置 -->
+        <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+            <!--<property name="maxActive" value="${redis.maxActive}" />-->
+            <property name="maxIdle" value="${redis.maxIdle}" />
+            <!--<property name="maxWait" value="${redis.maxWait}" />-->
+            <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        </bean>
+
+        <!-- spring data redis -->
+        <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+            <property name="usePool" value="true" />
+            <property name="hostName" value="${redis.host}" />
+            <property name="port" value="${redis.port}" />
+            <property name="password" value="${redis.password}" />
+            <property name="timeout" value="${redis.timeout}" />
+            <property name="database" value="${redis.default.database}" />
+            <constructor-arg index="0" ref="jedisPoolConfig" />
+        </bean>
+    </beans>
+
+</beans>

@@ -1,0 +1,18 @@
+步骤一：
+
+在本机 /home/[用户名] 目录下生成 .ssh 目录，.ssh 下有 id_rsa 和 id_rsa.pub 两个文件，前者是秘钥，后者是公钥。
+
+ssh-keygen -t rsa -P ''
+参数 -P '' 表示空密码，也可以不用 -P 参数，然后三次回车。
+
+步骤二：
+
+登录服务器，把 id_rsa.pub 内容追加到 .ssh/authorzied_keys 文件。
+
+步骤三：
+
+在 ~/.ssh 目录创建 config 配置文件, 给服务器配置别名和账号：
+
+Host mangguo
+HostName [服务器 IP 地址]
+User root

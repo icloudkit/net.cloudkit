@@ -1,0 +1,630 @@
+https://gethttpsforfree.com/
+
+Nginx HTTP2 配置
+
+http://www.tuicool.com/articles/3eeIVfi
+
+需要https证书
+需要有 OpenSSL 1.0.2+
+
+安装
+
+1.下载Nginx
+wget http://nginx.org/download/nginx-1.9.4.tar.gz
+
+2.下载和编译
+ tar xvfz nginx-1.9.4.tar.gz
+ cd nginx-1.9.4
+
+3.打patch
+wget http://nginx.org/patches/http2/patch.http2.txt
+ patch -p1 < patch.http2.txt
+
+4.配置
+./configure --with-http_ssl_module \
+      --with-http_v2_module \
+      --with-debug \
+      --with-openssl=/path/to/openssl-1.0.2
+如果你和我一样有各种模块，那么配置可能是下面这样子的
+
+./configure --user=www --group=www --add-module=../ngx_pagespeed-release-1.9.32.6-beta --prefix=/usr/local/nginx --with-pcre --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-ipv6
+5.编译
+
+make
+
+6.修改配置如下
+ server {
+     listen 443 default_server ssl http2;
+
+     ssl_certificate      server.crt;
+     ssl_certificate_key  server.key;
+
+     ...
+ }
+7.更新
+mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old
+cp objs/nginx /usr/local/nginx/sbin/nginx
+/usr/local/nginx/sbin/nginx -t
+make upgrade
+
+8.查看
+chrome://net-internals/#http2
+
+------------------------------------------------------------------------------------------------------------------------
+Certificate Installation: NGINX
+Needed for this task:
+
+PEM encoded certificates (Root, Intermediate(s) and Domain/Device)
+Combine (Concatenate) multiple certificates into one file
+
+
+Combining the certificates into one file can be accomplished in many ways.
+
+Note: Please be aware that the file names used in this article are for EXAMPLE PURPOSES ONLY! So please modify accordingly to suit your needs based on the type and or product name of the certificate you have. If you're unsure what file names you should be using or have, then please consult our article: Which is Root? Which is Intermediate?
+
+If you have the individual certificate files (eg. AddTrustExternalCARoot.crt):
+Using the 'cat' command (found on Unix and Unix-like Operating Systems):
+Syntax: cat Device/Entity Cert Intermediates (reverse order) Root > ssl-bundle.crt
+Example Syntax: cat www_yourdomain_com.crt ComodoHigh-AssuranceSecureServerCA.crt AddTrustExternalCARoot.crt > ssl-bundle.crt
+
+If you have a .crt and .ca-bundle:
+Using the cat command (found on Unix and Unix-like Operating Systems):
+Syntax: cat Device/Entity Cert Bundle
+Example Syntax: cat www_yourdomain_com.crt www_yourdomain_com.ca-bundle > ssl-bundle.crt
+
+Using a GUI based text editor.
+Copy contents of: 'www_yourdomain_com.crt' into 'www_yourdomain_com.ca-bundle' on top of the existing text.
+Save new file as ssl-bundle.crt.
+Configure your nginx Virtual Host
+
+Move newly created ssl-bundle.crt to where you're saving cert files. e.g. /etc/ssl/certs/
+Create/modify your website site's configuration file, which may be located in the following:
+/etc/nginx/sites-available/
+/usr/local/nginx/sites-available/
+
+Ensure it has the following:
+-- Set 'ssl' to on.
+-- Set 'listen' to your SSL port; typically 443.
+-- Set 'ssl_certificate' to the location of your newly created ssl-bundle.crt file.
+-- Set 'ssl_certificate_key' to the location of your private key.
+
+Optionally you can set the following:
+-- ssl_ciphers "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4"; #Disables all weak ciphers
+
+-- ssl_protocols TLSv1 TLSv1.1 TLSv1.2# enables TLSv1.0, 1.1, and 1.2 but not SSLv2 or 3 as they are both weak and deprecated.
+-- ssl_prefer_server_ciphers on; # Specifies that server ciphers should be preferred over client (e.g. browser) ciphers when using SSL/TLS.
+Example of an SSL configured Virtual Host for nginx
+
+server {
+listen 443;
+server_name mysite.com;
+
+ssl on;
+ssl_certificate /etc/ssl/certs/ssl-bundle.crt;
+ssl_certificate_key /etc/ssl/private/mysite.key;
+
+#enables all versions of TLS, but not SSLv2 or 3 which are weak and now deprecated.
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+#Disables all weak ciphers
+ssl_ciphers "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
+
+ssl_prefer_server_ciphers on;
+}
+Related Articles
+
+CSR Generation: Using OpenSSL (Apache w/mod_ssl, NGINX, OS X) (using OpenSSL)
+
+------------------------------------------------------------------------------------------------------------------------
+
+nginx: Linux packages
+
+Currently, nginx packages are available for the following distributions and versions:
+
+RHEL/CentOS:
+
+Version	Supported Platforms
+5.x	x86_64, i386
+6.x	x86_64, i386
+7.x	x86_64
+Debian:
+
+Version	Codename	Supported Platforms
+7.x	wheezy	x86_64, i386
+8.x	jessie	x86_64, i386
+Ubuntu:
+
+Version	Codename	Supported Platforms
+12.04	precise	x86_64, i386
+14.04	trusty	x86_64, i386, aarch64/arm64
+15.04	vivid	x86_64, i386
+15.10	wily	x86_64, i386
+SLES:
+
+Version	Supported Platforms
+12	x86_64
+To enable automatic updates of Linux packages set up the yum repository for the RHEL/CentOS distributions, the apt repository for the Debian/Ubuntu distributions, or the zypper repository for SLES.
+
+Pre-Built Packages for Stable version
+
+To set up the yum repository for RHEL/CentOS, choose the corresponding nginx-release package from the list:
+
+RHEL 5
+RHEL 6
+RHEL 7
+CentOS 5
+CentOS 6
+CentOS 7
+This package contains yum configuration file and a public PGP key necessary to authenticate signed RPMs. Download and install it, then run the following:
+
+yum install nginx
+Alternatively, a repository configuration can be added manually without installing the nginx-release package. Create the file named /etc/yum.repos.d/nginx.repo with the following contents:
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+Replace “OS” with “rhel” or “centos”, depending on the distribution used, and “OSRELEASE” with “5”, “6”, or “7”, for 5.x, 6.x, or 7.x versions, respectively.
+
+For Debian/Ubuntu, in order to authenticate the nginx repository signature and to eliminate warnings about missing PGP key during installation of the nginx package, it is necessary to add the key used to sign the nginx packages and repository to the apt program keyring. Please download this key from our web site, and add it to the apt program keyring with the following command:
+
+sudo apt-key add nginx_signing.key
+For Debian replace codename with Debian distribution codename, and append the following to the end of the /etc/apt/sources.list file:
+
+deb http://nginx.org/packages/debian/ codename nginx
+deb-src http://nginx.org/packages/debian/ codename nginx
+For Ubuntu replace codename with Ubuntu distribution codename, and append the following to the end of the /etc/apt/sources.list file:
+
+deb http://nginx.org/packages/ubuntu/ codename nginx
+deb-src http://nginx.org/packages/ubuntu/ codename nginx
+For Debian/Ubuntu then run the following commands:
+
+apt-get update
+apt-get install nginx
+For SLES run the following command:
+
+zypper addrepo -G -t yum -c 'http://nginx.org/packages/sles/12' nginx
+Pre-Built Packages for Mainline version
+
+To set up the yum repository for RHEL/CentOS, create the file named /etc/yum.repos.d/nginx.repo with the following contents:
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1
+Replace “OS” with “rhel” or “centos”, depending on the distribution used, and “OSRELEASE” with “5”, “6”, or “7”, for 5.x, 6.x, or 7.x versions, respectively.
+
+For Debian/Ubuntu, in order to authenticate the nginx repository signature and to eliminate warnings about missing PGP key during installation of the nginx package, it is necessary to add the key used to sign the nginx packages and repository to the apt program keyring. Please download this key from our web site, and add it to the apt program keyring with the following command:
+
+sudo apt-key add nginx_signing.key
+For Debian replace codename with Debian distribution codename, and append the following to the end of the /etc/apt/sources.list file:
+
+deb http://nginx.org/packages/mainline/debian/ codename nginx
+deb-src http://nginx.org/packages/mainline/debian/ codename nginx
+For Ubuntu replace codename with Ubuntu distribution codename, and append the following to the end of the /etc/apt/sources.list file:
+
+deb http://nginx.org/packages/mainline/ubuntu/ codename nginx
+deb-src http://nginx.org/packages/mainline/ubuntu/ codename nginx
+For Debian/Ubuntu then run the following commands:
+
+apt-get update
+apt-get install nginx
+For SLES run the following command:
+
+zypper addrepo -G -t yum -c 'http://nginx.org/packages/mainline/sles/12' nginx
+Configure Arguments
+
+Configure arguments common for nginx binaries from pre-built packages for stable version:
+
+--prefix=/etc/nginx
+--sbin-path=/usr/sbin/nginx
+--conf-path=/etc/nginx/nginx.conf
+--error-log-path=/var/log/nginx/error.log
+--http-log-path=/var/log/nginx/access.log
+--pid-path=/var/run/nginx.pid
+--lock-path=/var/run/nginx.lock
+--http-client-body-temp-path=/var/cache/nginx/client_temp
+--http-proxy-temp-path=/var/cache/nginx/proxy_temp
+--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp
+--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp
+--http-scgi-temp-path=/var/cache/nginx/scgi_temp
+--user=nginx
+--group=nginx
+--with-http_ssl_module
+--with-http_realip_module
+--with-http_addition_module
+--with-http_sub_module
+--with-http_dav_module
+--with-http_flv_module
+--with-http_mp4_module
+--with-http_gunzip_module
+--with-http_gzip_static_module
+--with-http_random_index_module
+--with-http_secure_link_module
+--with-http_stub_status_module
+--with-http_auth_request_module
+--with-mail
+--with-mail_ssl_module
+--with-file-aio
+--with-http_spdy_module
+--with-ipv6
+Packages for mainline version also have the following arguments:
+
+--with-threads
+--with-stream
+--with-stream_ssl_module
+and
+
+--with-http_spdy_module
+replaced with
+
+--with-http_v2_module
+Package are built with all modules that do not require additional libraries to avoid extra dependencies.
+
+Signatures
+
+Both RPM packages and Debian/Ubuntu repositories use digital signatures to verify the integrity and origin of the downloaded package. In order to check a signature it is necessary to download nginx signing key and import it to the rpm or apt program’s keyring:
+
+On Debian/Ubuntu:
+sudo apt-key add nginx_signing.key
+On RHEL/CentOS:
+sudo rpm --import nginx_signing.key
+On SLES:
+sudo rpm --import nginx_signing.key
+On Debian/Ubuntu/SLES signatures are checked by default, but on RHEL/CentOS it is necessary to set
+
+gpgcheck=1
+in the /etc/yum.repos.d/nginx.repo file.
+
+Since our PGP keys and packages are located on the same server, they are equally trusted. It is highly advised to additionally verify the authenticity of the downloaded PGP key. PGP has the “Web of Trust” concept, when a key is signed by someone else’s key, that in turn is signed by another key and so on. It often makes possible to build a chain from an arbitrary key to someone’s key who you know and trust personally, thus verify the authenticity of the first key in a chain. This concept is described in details in GPG Mini Howto. Our keys have enough signatures, and their authenticity is relatively easy to check.
+
+# 添加用户
+## sudo adduser --system --no-create-home --disabled-password --group nginx
+$ groupadd -f nginx
+$ useradd -g nginx nginx
+
+$ ./configure --with-http_ssl_module \
+      --prefix=/usr/local/nginx-1.9.6 \
+      --sbin-path=/usr/local/nginx-1.9.6/sbin \
+      --conf-path=/usr/local/nginx-1.9.6/conf/nginx.conf \
+      --error-log-path=/usr/local/nginx-1.9.6/logs/error.log \
+      --http-log-path=/usr/local/nginx-1.9.6/logs/access.log \
+      --pid-path=/usr/local/nginx-1.9.6/logs/nginx.pid \
+      --lock-path=/usr/local/nginx-1.9.6/logs/nginx.lock \
+      --http-client-body-temp-path=/usr/local/nginx-1.9.6/client_temp \
+      --http-proxy-temp-path=/usr/local/nginx-1.9.6/proxy_temp \
+      --http-fastcgi-temp-path=/usr/local/nginx-1.9.6/fastcgi_temp \
+      --http-uwsgi-temp-path=/usr/local/nginx-1.9.6/uwsgi_temp \
+      --http-scgi-temp-path=/usr/local/nginx-1.9.6/scgi_temp \
+      --user=nginx \
+      --group=nginx \
+      --with-http_ssl_module \
+      --with-http_realip_module \
+      --with-http_addition_module \
+      --with-http_sub_module \
+      --with-http_dav_module \
+      --with-http_flv_module \
+      --with-http_mp4_module \
+      --with-http_gunzip_module \
+      --with-http_gzip_static_module \
+      --with-http_random_index_module \
+      --with-http_secure_link_module \
+      --with-http_stub_status_module \
+      --with-http_auth_request_module \
+      --with-mail \
+      --with-mail_ssl_module \
+      --with-file-aio \
+      --with-ipv6 \
+      --with-threads \
+      --with-stream \
+      --with-stream_ssl_module \
+      --with-http_v2_module \
+      --with-openssl=../openssl-1.0.2d
+
+      --with-http_spdy_module \
+      --with-debug \
+
+
+$ ./configure --with-http_ssl_module \
+      --prefix=/usr/local/nginx-1.9.7 \
+      --user=nginx \
+      --group=nginx \
+      --with-http_ssl_module \
+      --with-http_realip_module \
+      --with-http_addition_module \
+      --with-http_sub_module \
+      --with-http_dav_module \
+      --with-http_flv_module \
+      --with-http_mp4_module \
+      --with-http_gunzip_module \
+      --with-http_gzip_static_module \
+      --with-http_random_index_module \
+      --with-http_secure_link_module \
+      --with-http_stub_status_module \
+      --with-http_auth_request_module \
+      --with-mail \
+      --with-mail_ssl_module \
+      --with-file-aio \
+      --with-ipv6 \
+      --with-threads \
+      --with-stream \
+      --with-stream_ssl_module \
+      --with-http_v2_module \
+      --with-openssl=../openssl-1.0.2g \
+      --with-pcre=../pcre-8.38 \
+      --with-zlib=../zlib-1.2.8 \
+
+$ make
+$ make install
+
+
+
+openssl req -new -sha256 -key cert_key.pem -subj "/" -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:yunjing.net,DNS:www.yunjing.net"))
+
+Nginx 自启用脚本
+$ vi /etc/init.d/nginx
+
+
+#!/bin/sh
+#
+# nginx        This shell script takes care of starting and stopping
+#              The Nginx HTTP Server.
+# This script create it by Hunk at 2011.12.12.
+# it is v1.0 version.
+# chkconfig: - 85 15
+# description:  Nginx HTTP Server.
+# processname: nginx
+# config: /local/nginx-1.9.7/nginx.conf
+# pidfile: /local/nginx-1.9.7/logs/nginx.pid
+
+nginx=/usr/local/nginx-1.9.7/sbin/nginx
+nginx_config=/usr/local/nginx-1.9.7/conf/nginx.conf
+nginx_pid=/usr/local/nginx-1.9.7/logs/nginx.pid
+lockfile=/usr/local/nginx-1.9.7/lock/nginx
+
+RETVAL=0
+prog="nginx"
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is enabled.
+[ ${NETWORKING} = "no" ] && exit 1
+
+#Start nginx daemons functions
+start(){
+
+if [ -e $nginx_pid ];then
+    echo "nginx already running..."
+    exit 1
+fi
+
+    echo -n $"Starting $prog:"
+    daemon $nginx -c ${nginx_config}
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+        echo -n $"Shutting down $prog: "
+        killproc $nginx
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && rm -f $lockfile
+}
+
+# See how we were called.
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        status)
+                status $nginx
+                RETVAL=$?
+                ;;
+        restart)
+                stop
+                start
+                ;;
+        try-restart|condrestart)
+                if [ -f $lockfile ]; then
+                        stop
+                        start
+                fi
+                ;;
+        reload|force-reload|reread)
+                echo -n $"Re-reading $prog configuration: "
+                killproc $nginx -HUP
+                RETVAL=$?
+                echo
+                ;;
+    *)
+    echo -n "Usage: $prog {start|stop|restart|try-restart|reload|status"}
+                exit 2
+esac
+exit $RETVAL
+
+设置脚本权限：
+$ chmod a+x /etc/init.d/nginx
+测试：
+$ netstat -tnlp | grep 80
+
+
+
+
+
+#!/bin/bash
+#ckconfig: 345 40 40
+NGINX_PATH=/web/container/nginx-1.2.6
+NGINX_COMMAND=$NGINX_PATH/sbin/nginx
+NGINX_PID=$NGINX_PATH/logs/nginx.pid
+VERSION=1.2.6
+CONF=$2
+
+start()
+{
+if [ -f $NGINX_PID ];
+then
+echo "[Failure] Nginx is starting"
+else
+echo "[Success] Starting Nginx $VERSION"
+#用户设置好后统一使用同一个用户操作
+#/bin/su - nginx -c "$NGINX_PATH/nginx $CONF 1>/dev/null 2>/dev/null"
+$NGINX_COMMAND $CONF 1>/dev/null 2>/dev/null
+fi
+}
+
+stop()
+{
+echo $NGINX_PID
+if [ -f $NGINX_PID ];
+then
+echo "[Success] Stopping Nginx $VERSION"
+$NGINX_COMMAND -s quit
+#/bin/kill -QUIT $(eval "/bin/cat $NGINX_PID")
+else
+echo "[Failure] Stop Failure. Nginx isn't starting "
+fi
+}
+
+reload()
+{
+if test -f $NGINX_PID;
+then
+echo "[Success] Reloading Nginx $VERSION"
+$NGINX_COMMAND -s reload
+else
+echo "[Failure] Reload Failure. Nginx isn't starting "
+fi
+}
+
+out()
+{
+if test -f $NGINX_PID;
+then
+echo "[Success] Exiting Nginx $VERSION"
+$NGINX_COMMAND -s stop
+#/bin/kill -9 $(eval "/bin/cat $NGINX_PID")
+else
+echo "[Failure] Exiting Failure . Nginx isn't starting "
+fi
+}
+
+case "$1" in
+start)
+start
+;;
+stop)
+stop
+
+;;
+restart)
+
+stop
+sleep 3
+start
+;;
+exit)
+out
+;;
+reload)
+reload
+;;
+*)
+echo $"Usage: $0 {start|stop|restart|exit|reload}"
+exit 1
+;;
+esac
+exit 0
+
+
+
+#!/bin/bash
+# nginx Startup script for the Nginx HTTP Server
+# it is v.0.0.2 version.
+# chkconfig: - 85 15
+# description: Nginx is a high-performance web and proxy server.
+#              It has a lot of features, but it's not for everyone.
+# processname: nginx
+# pidfile: /var/run/nginx.pid
+# config: /usr/local/nginx/conf/nginx.conf
+nginxd=/usr/local/nginx/sbin/nginx
+nginx_config=/usr/local/nginx/conf/nginx.conf
+nginx_pid=/var/run/nginx.pid
+RETVAL=0
+prog="nginx"
+# Source function library.
+. /etc/rc.d/init.d/functions
+# Source networking configuration.
+. /etc/sysconfig/network
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+[ -x $nginxd ] || exit 0
+# Start nginx daemons functions.
+start() {
+if [ -e $nginx_pid ];then
+   echo "nginx already running...."
+   exit 1
+fi
+   echo -n $"Starting $prog: "
+   daemon $nginxd -c ${nginx_config}
+   RETVAL=$?
+   echo
+   [ $RETVAL = 0 ] && touch /var/lock/subsys/nginx
+   return $RETVAL
+}
+# Stop nginx daemons functions.
+stop() {
+        echo -n $"Stopping $prog: "
+        killproc $nginxd
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && rm -f /var/lock/subsys/nginx /var/run/nginx.pid
+}
+# reload nginx service functions.
+reload() {
+    echo -n $"Reloading $prog: "
+    #kill -HUP `cat ${nginx_pid}`
+    killproc $nginxd -HUP
+    RETVAL=$?
+    echo
+}
+# See how we were called.
+case "$1" in
+start)
+        start
+        ;;
+stop)
+        stop
+        ;;
+reload)
+        reload
+        ;;
+restart)
+        stop
+        start
+        ;;
+status)
+        status $prog
+        RETVAL=$?
+        ;;
+*)
+        echo $"Usage: $prog {start|stop|restart|reload|status|help}"
+        exit 1
+esac
+exit $RETVAL
+
+
+vi /etc/rc.local
+/etc/init.d/nginx start
+

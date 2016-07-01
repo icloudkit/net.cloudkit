@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd   ">
+
+    <description>Spring infrastructure config</description>
+
+    <context:annotation-config />
+
+    <!--
+    &lt;!&ndash; Offers convenience methods and automatic mapping between MongoDB JSON documents and your domain classes. &ndash;&gt;
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo"/>
+        <constructor-arg name="databaseName" value="db"/>
+    </bean>
+
+    <beans profile="production">
+        <mongo:mongo host="192.168.0.138" port="27017"/>
+    </beans>
+
+    <beans profile="development, functional, test">
+        <mongo:mongo host="192.168.0.138" port="27017"/>
+        &lt;!&ndash;
+        <mongo:db-factory dbname="test" port="27017" host="127.0.0.1"/>
+        &lt;!&ndash; Factory bean that creates the Mongo instance &ndash;&gt;
+        <bean class="org.springframework.data.mongodb.core.MongoClientFactoryBean">
+            <property name="host" value="localhost"/>
+            <property name="port" value="27017"/>
+        </bean>
+        &ndash;&gt;
+    </beans>
+    -->
+
+</beans>

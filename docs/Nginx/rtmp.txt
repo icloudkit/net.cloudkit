@@ -1,0 +1,2 @@
+https://github.com/icloudkit/nginx-rtmp-module
+http://blog.csdn.net/kl222/article/details/12886661

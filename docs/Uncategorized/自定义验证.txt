@@ -1,0 +1,891 @@
+JSR 303 – Bean Validation
+
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
+
+@Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE })
+@Retention(RUNTIME)
+//指定验证器
+@Constraint(validatedBy = ForbiddenValidator.class)
+@Documented
+public @interface Forbidden {
+
+    //默认错误消息
+    String message() default "{forbidden.word}";
+
+    //分组
+    Class<?>[] groups() default { };
+
+    //负载
+    Class<? extends Payload>[] payload() default { };
+
+    //指定多个时使用
+    @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE })
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
+        Forbidden[] value();
+    }
+}
+
+
+import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintValidatorContextImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.util.StringUtils;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.io.Serializable;
+
+public class ForbiddenValidator implements ConstraintValidator<Forbidden, String> {
+
+    private String[] forbiddenWords = {"admin"};
+
+    @Override
+    public void initialize(Forbidden constraintAnnotation) {
+        //初始化，得到注解数据
+    }
+
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        if(StringUtils.isEmpty(value)) {
+            return true;
+        }
+
+        for(String word : forbiddenWords) {
+            if(value.contains(word)) {
+                return false;//验证失败
+            }
+        }
+        return true;
+    }
+}
+
+
+
+类级别验证器
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.constraints.NotNull;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
+
+@Target({ TYPE, ANNOTATION_TYPE})
+@Retention(RUNTIME)
+//指定验证器
+@Constraint(validatedBy = CheckPasswordValidator.class)
+@Documented
+public @interface CheckPassword {
+
+    //默认错误消息
+    String message() default "";
+
+    //分组
+    Class<?>[] groups() default { };
+
+    //负载
+    Class<? extends Payload>[] payload() default { };
+
+    //指定多个时使用
+    @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE })
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
+        CheckPassword[] value();
+    }
+}
+
+定义验证器
+
+import com.sishuok.spring4.entity.User;
+import org.springframework.util.StringUtils;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+public class CheckPasswordValidator implements ConstraintValidator<CheckPassword, User> {
+
+    @Override
+    public void initialize(CheckPassword constraintAnnotation) {
+    }
+
+    @Override
+    public boolean isValid(User user, ConstraintValidatorContext context) {
+        if(user == null) {
+            return true;
+        }
+
+        //没有填密码
+        if(!StringUtils.hasText(user.getPassword())) {
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate("{password.null}")
+                    .addPropertyNode("password")
+                    .addConstraintViolation();
+            return false;
+        }
+
+        if(!StringUtils.hasText(user.getConfirmation())) {
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate("{password.confirmation.null}")
+                    .addPropertyNode("confirmation")
+                    .addConstraintViolation();
+            return false;
+        }
+
+        //两次密码不一样
+        if (!user.getPassword().trim().equals(user.getConfirmation().trim())) {
+            context.disableDefaultConstraintViolation();
+            context.buildConstraintViolationWithTemplate("{password.confirmation.error}")
+                    .addPropertyNode("confirmation")
+                    .addConstraintViolation();
+            return false;
+        }
+        return true;
+    }
+}
+其中我们通过disableDefaultConstraintViolation禁用默认的约束；然后通过buildConstraintViolationWithTemplate(消息模板)/addPropertyNode(所属属性)/addConstraintViolation定义我们自己的约束。
+
+使用
+@CheckPassword()
+public class User implements Serializable {
+}
+放到类头上即可。
+
+通过脚本验证
+@ScriptAssert(script = "_this.password==_this.confirmation", lang = "javascript", alias = "_this", message = "{password.confirmation.error}")
+public class User implements Serializable {
+}
+
+通过脚本验证是非常简单而且强大的，lang指定脚本语言（请参考javax.script.ScriptEngineManager JSR-223），alias是在脚本验证中User对象的名字，但是大家会发现一个问题：错误消息怎么显示呢？ 在springmvc 中会添加到全局错误消息中，这肯定不是我们想要的，我们改造下吧。
+
+定义验证注解
+
+import org.hibernate.validator.internal.constraintvalidators.ScriptAssertValidator;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Target({ TYPE })
+@Retention(RUNTIME)
+@Constraint(validatedBy = {PropertyScriptAssertValidator.class})
+@Documented
+public @interface PropertyScriptAssert {
+
+    String message() default "{org.hibernate.validator.constraints.ScriptAssert.message}";
+
+    Class<?>[] groups() default { };
+
+    Class<? extends Payload>[] payload() default { };
+
+    String lang();
+
+    String script();
+
+    String alias() default "_this";
+
+    String property();
+
+    @Target({ TYPE })
+    @Retention(RUNTIME)
+    @Documented
+    public @interface List {
+        PropertyScriptAssert[] value();
+    }
+}
+和ScriptAssert没什么区别，只是多了个property用来指定出错后给实体的哪个属性。
+
+验证器
+
+import javax.script.ScriptException;
+import javax.validation.ConstraintDeclarationException;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+import com.sishuok.spring4.validator.PropertyScriptAssert;
+import org.hibernate.validator.constraints.ScriptAssert;
+import org.hibernate.validator.internal.util.Contracts;
+import org.hibernate.validator.internal.util.logging.Log;
+import org.hibernate.validator.internal.util.logging.LoggerFactory;
+import org.hibernate.validator.internal.util.scriptengine.ScriptEvaluator;
+import org.hibernate.validator.internal.util.scriptengine.ScriptEvaluatorFactory;
+
+import static org.hibernate.validator.internal.util.logging.Messages.MESSAGES;
+
+public class PropertyScriptAssertValidator implements ConstraintValidator<PropertyScriptAssert, Object> {
+
+    private static final Log log = LoggerFactory.make();
+
+    private String script;
+    private String languageName;
+    private String alias;
+    private String property;
+    private String message;
+
+    public void initialize(PropertyScriptAssert constraintAnnotation) {
+        validateParameters( constraintAnnotation );
+
+        this.script = constraintAnnotation.script();
+        this.languageName = constraintAnnotation.lang();
+        this.alias = constraintAnnotation.alias();
+        this.property = constraintAnnotation.property();
+        this.message = constraintAnnotation.message();
+    }
+
+    public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
+
+        Object evaluationResult;
+        ScriptEvaluator scriptEvaluator;
+
+        try {
+            ScriptEvaluatorFactory evaluatorFactory = ScriptEvaluatorFactory.getInstance();
+            scriptEvaluator = evaluatorFactory.getScriptEvaluatorByLanguageName( languageName );
+        }
+        catch ( ScriptException e ) {
+            throw new ConstraintDeclarationException( e );
+        }
+
+        try {
+            evaluationResult = scriptEvaluator.evaluate( script, value, alias );
+        }
+        catch ( ScriptException e ) {
+            throw log.getErrorDuringScriptExecutionException( script, e );
+        }
+
+        if ( evaluationResult == null ) {
+            throw log.getScriptMustReturnTrueOrFalseException( script );
+        }
+        if ( !( evaluationResult instanceof Boolean ) ) {
+            throw log.getScriptMustReturnTrueOrFalseException(
+                    script,
+                    evaluationResult,
+                    evaluationResult.getClass().getCanonicalName()
+            );
+        }
+
+        if(Boolean.FALSE.equals(evaluationResult)) {
+            constraintValidatorContext.disableDefaultConstraintViolation();
+            constraintValidatorContext
+                    .buildConstraintViolationWithTemplate(message)
+                    .addPropertyNode(property)
+                    .addConstraintViolation();
+        }
+
+        return Boolean.TRUE.equals( evaluationResult );
+    }
+
+    private void validateParameters(PropertyScriptAssert constraintAnnotation) {
+        Contracts.assertNotEmpty( constraintAnnotation.script(), MESSAGES.parameterMustNotBeEmpty( "script" ) );
+        Contracts.assertNotEmpty( constraintAnnotation.lang(), MESSAGES.parameterMustNotBeEmpty( "lang" ) );
+        Contracts.assertNotEmpty( constraintAnnotation.alias(), MESSAGES.parameterMustNotBeEmpty( "alias" ) );
+        Contracts.assertNotEmpty( constraintAnnotation.property(), MESSAGES.parameterMustNotBeEmpty( "property" ) );
+        Contracts.assertNotEmpty( constraintAnnotation.message(), MESSAGES.parameterMustNotBeEmpty( "message" ) );
+    }
+}
+和之前的类级别验证器类似，就不多解释了，其他代码全部拷贝自org.hibernate.validator.internal.constraintvalidators.ScriptAssertValidator。
+
+使用
+@PropertyScriptAssert(property = "confirmation", script = "_this.password==_this.confirmation", lang = "javascript", alias = "_this", message = "{password.confirmation.error}")
+和之前的区别就是多了个property，用来指定出错时给哪个字段。 这个相对之前的类级别验证器更通用一点。
+
+
+
+
+cross-parameter，跨参数验证
+
+首先注册MethodValidationPostProcessor，起作用请参考《Spring3.1 对Bean Validation规范的新支持(方法级别验证) 》
+查看复制到剪贴板打印
+<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+    <property name="validator" ref="validator"/>
+</bean>
+
+Service
+
+@Validated
+@Service
+public class UserService {
+
+    @CrossParameter
+    public void changePassword(String password, String confirmation) {
+
+    }
+}
+通过@Validated注解UserService表示该类中有需要进行方法参数/返回值验证；   @CrossParameter注解方法表示要进行跨参数验证；即验证password和confirmation是否相等。
+
+验证注解
+
+
+//省略import
+
+@Constraint(validatedBy = CrossParameterValidator.class)
+@Target({ METHOD, CONSTRUCTOR, ANNOTATION_TYPE })
+@Retention(RUNTIME)
+@Documented
+public @interface CrossParameter {
+
+    String message() default "{password.confirmation.error}";
+    Class<?>[] groups() default { };
+    Class<? extends Payload>[] payload() default { };
+
+}
+
+验证器
+
+
+//省略import
+
+@SupportedValidationTarget(ValidationTarget.PARAMETERS)
+public class CrossParameterValidator implements ConstraintValidator<CrossParameter, Object[]> {
+
+    @Override
+    public void initialize(CrossParameter constraintAnnotation) {
+    }
+
+    @Override
+    public boolean isValid(Object[] value, ConstraintValidatorContext context) {
+        if(value == null || value.length != 2) {
+            throw new IllegalArgumentException("must have two args");
+        }
+        if(value[0] == null || value[1] == null) {
+            return true;
+        }
+        if(value[0].equals(value[1])) {
+            return true;
+        }
+        return false;
+    }
+}
+其中@SupportedValidationTarget(ValidationTarget.PARAMETERS)表示验证参数； value将是参数列表。
+
+使用
+
+@RequestMapping("/changePassword")
+public String changePassword(
+        @RequestParam("password") String password,
+        @RequestParam("confirmation") String confirmation, Model model) {
+    try {
+        userService.changePassword(password, confirmation);
+    } catch (ConstraintViolationException e) {
+        for(ConstraintViolation violation : e.getConstraintViolations()) {
+            System.out.println(violation.getMessage());
+        }
+    }
+    return "success";
+}
+调用userService.changePassword方法，如果验证失败将抛出ConstraintViolationException异常，然后得到ConstraintViolation，调用getMessage即可得到错误消息；然后到前台显示即可。
+
+从以上来看，不如之前的使用方便，需要自己对错误消息进行处理。 下一节我们也写个脚本方式的跨参数验证器。
+
+
+
+混合类级别验证器和跨参数验证器
+验证注解
+
+
+//省略import
+
+@Constraint(validatedBy = {
+        CrossParameterScriptAssertClassValidator.class,
+        CrossParameterScriptAssertParameterValidator.class
+})
+@Target({ TYPE, FIELD, PARAMETER, METHOD, CONSTRUCTOR, ANNOTATION_TYPE })
+@Retention(RUNTIME)
+@Documented
+public @interface CrossParameterScriptAssert {
+    String message() default "error";
+    Class<?>[] groups() default { };
+    Class<? extends Payload>[] payload() default { };
+    String script();
+    String lang();
+    String alias() default "_this";
+    String property() default "";
+    ConstraintTarget validationAppliesTo() default ConstraintTarget.IMPLICIT;
+}
+
+此处我们通过@Constraint指定了两个验证器，一个类级别的，一个跨参数的。validationAppliesTo指定为ConstraintTarget.IMPLICIT，表示隐式自动判断。
+
+验证器
+请下载源码查看
+
+使用
+
+类级别使用
+
+@CrossParameterScriptAssert(property = "confirmation", script = "_this.password==_this.confirmation", lang = "javascript", alias = "_this", message = "{password.confirmation.error}")
+指定property即可，其他和之前的一样。
+
+跨参数验证
+
+@CrossParameterScriptAssert(script = "args[0] == args[1]", lang = "javascript", alias = "args", message = "{password.confirmation.error}")
+public void changePassword(String password, String confirmation) {
+
+}
+通过args[0]==args[1] 来判断是否相等。
+
+这样，我们的验证注解就自动适应两种验证规则了。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.ANNOTATION_TYPE, ElementType.FIELD, ElementType.METHOD})
+@Constraint(validatedBy = {BetweenImplForDate.class})
+public @interface Between {
+
+	public String message();
+
+	public String startDate();
+
+	public String endDate();
+
+	public String format() default "yyyy-MM-dd";
+
+	public Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+}
+
+
+
+
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class BetweenImplForDate implements ConstraintValidator<Between, Date> {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(BetweenImplForDate.class);
+
+	private Date startDate;
+	private Date endDate;
+	private DateFormat dateFormat;
+
+	public void initialize(Between annotation) {
+		this.dateFormat = new SimpleDateFormat(annotation.format());
+		try {
+			this.startDate  = dateFormat.parse(annotation.startDate());
+			this.endDate    = dateFormat.parse(annotation.endDate());
+		} catch (ParseException e) {
+			throw new IllegalArgumentException(e.getMessage(), e);
+		}
+	}
+
+	public boolean isValid(Date value, ConstraintValidatorContext context) {
+		LOGGER.debug("value = {}", dateFormat.format(value));
+		return (startDate.getTime() <= value.getTime()) && (value.getTime() < endDate.getTime());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.constraints.impl.IDCardValidator;
+
+/**
+ * The string has to be a well-formed IDCard.
+ *
+ * @author hongquanli <hongquanli@qq.com>
+ * @version 1.0 2012-3-12 下午4:57:21
+ */
+// 约束注解应用的目标元素类型
+@Target({ METHOD, FIELD, ANNOTATION_TYPE })
+// 约束注解应用的时机
+@Retention(RUNTIME)
+// 与约束注解关联的验证器
+@Constraint(validatedBy = IDCardValidator.class)
+@Documented
+public @interface IDCard {
+	/** 约束注解在验证时所属的组别 **/
+	Class<?>[] groups() default {};
+
+	/** 约束注解验证时的输出消息 **/
+	String message() default "{cn.gov.customs.application.validation.constraints.IDCard.message}";
+
+	/** 约束注解的有效负载 **/
+	Class<? extends Payload>[] payload() default {};
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.constraints.impl.EmailValidator;
+
+/**
+ * The string has to be a well-formed email address.
+ *
+ * @author hongquanli <hongquanli@qq.com>
+ * @version 1.0 2012-3-12 下午4:57:21
+ */
+@Documented
+@Constraint(validatedBy = EmailValidator.class)
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+@Retention(RUNTIME)
+public @interface Surname {
+	String message() default "{cn.gov.customs.application.validation.constraints.ChineseName.message}";
+
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+}
+
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraints.Surname;
+
+/**
+ * Validate that the string is a valid surname.
+ *
+ * @author hongquanli <hongquanli@qq.com>
+ * @version 1.0 2012-5-19 上午10:17:51
+ */
+public class SurnameValidator implements ConstraintValidator<Surname, String> {
+
+	public void initialize(Surname annotation) {
+
+	}
+
+	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (value == null || value.length() == 0) {
+			return true;
+		}
+		return isSurname(value);
+	}
+
+	/**
+	 * 验证是否为真实姓
+	 *
+	 * @param name 全名
+	 * @return
+	 */
+	public static boolean isSurname(String name) {
+		// 截取用户名的前两字节，也就是姓。
+		String x = name.substring(0, 1);
+		StringBuffer surname = new StringBuffer();
+		surname.append("赵,钱,孙,李,周,吴,郑,王,冯,陈,褚,卫,");
+		surname.append("蒋,沈,韩,杨,朱,秦,尤,许,何,吕,施,张,");
+		surname.append("孔,曹,严,华,金,魏,陶,姜,戚,谢,邹,喻,");
+		surname.append("柏,水,窦,章,云,苏,潘,葛,奚,范,彭,郎,");
+		surname.append("鲁,韦,昌,马,苗,凤,花,方,俞,任,袁,柳,");
+		surname.append("酆,鲍,史,唐,费,廉,岑,薛,雷,贺,倪,汤,");
+		surname.append("滕,殷,罗,毕,郝,邬,安,常,乐,于,时,傅,");
+		surname.append("皮,卞,齐,康,伍,余,元,卜,顾,孟,平,黄,");
+		surname.append("和,穆,萧,尹,姚,邵,湛,汪,祁,毛,禹,狄,");
+		surname.append("米,贝,明,臧,计,伏,成,戴,谈,宋,茅,庞,");
+		surname.append("熊,纪,舒,屈,项,祝,董,梁,杜,阮,蓝,闵,");
+		surname.append("席,季,麻,强,贾,路,娄,危,江,童,颜,郭,");
+		surname.append("梅,盛,林,刁,锺,徐,邱,骆,高,夏,蔡,田,");
+		surname.append("樊,胡,凌,霍,虞,万,支,柯,昝,管,卢,莫,");
+		surname.append("经,房,裘,缪,干,解,应,宗,丁,宣,贲,邓,");
+		surname.append("郁,单,杭,洪,包,诸,左,石,崔,吉,钮,龚,");
+		surname.append("程,嵇,邢,滑,裴,陆,荣,翁,荀,羊,於,惠,");
+		surname.append("甄,麴,家,封,芮,羿,储,靳,汲,邴,糜,松,");
+		surname.append("井,段,富,巫,乌,焦,巴,弓,牧,隗,山,谷,");
+		surname.append("车,侯,宓,蓬,全,郗,班,仰,秋,仲,伊,宫,");
+		surname.append("宁,仇,栾,暴,甘,钭,历,戎,祖,武,符,刘,");
+		surname.append("景,詹,束,龙,叶,幸,司,韶,郜,黎,蓟,溥,");
+		surname.append("印,宿,白,怀,蒲,邰,从,鄂,索,咸,籍,赖,");
+		surname.append("卓,蔺,屠,蒙,池,乔,阳,郁,胥,能,苍,双,");
+		surname.append("闻,莘,党,翟,谭,贡,劳,逄,姬,申,扶,堵,");
+		surname.append("冉,宰,郦,雍,却,璩,桑,桂,濮,牛,寿,通,");
+		surname.append("边,扈,燕,冀,僪,浦,尚,农,温,别,庄,晏,");
+		surname.append("柴,瞿,阎,充,慕,连,茹,习,宦,艾,鱼,容,");
+		surname.append("向,古,易,慎,戈,廖,庾,终,暨,居,衡,步,");
+		surname.append("都,耿,满,弘,匡,国,文,寇,广,禄,阙,东,");
+		surname.append("欧,殳,沃,利,蔚,越,夔,隆,师,巩,厍,聂,");
+		surname.append("晁,勾,敖,融,冷,訾,辛,阚,那,简,饶,空,");
+		surname.append("曾,毋,沙,乜,养,鞠,须,丰,巢,关,蒯,相,");
+		surname.append("查,后,荆,红,游,竺,权,逮,盍,益,桓,公,");
+		surname.append("万俟,司马,上官,欧阳,夏侯,诸葛,闻人,东方,赫连,皇甫,尉迟,公羊,");
+		surname.append("澹台,公冶,宗政,濮阳,淳于,单于,太叔,申屠,公孙,仲孙,轩辕,令狐,");
+		surname.append("钟离,宇文,长孙,慕容,司徒,司空,召,有,舜,叶赫那拉,丛,岳,");
+		surname.append("寸,贰,皇,侨,彤,竭,端,赫,实,甫,集,象,");
+		surname.append("翠,狂,辟,典,良,函,芒,苦,其,京,中,夕,");
+		surname.append("之,章佳,那拉,冠,宾,香,果,依尔根觉罗,依尔觉罗,萨嘛喇,赫舍里,额尔德特,");
+		surname.append("萨克达,钮祜禄,他塔喇,喜塔腊,讷殷富察,叶赫那兰,库雅喇,瓜尔佳,舒穆禄,爱新觉罗,索绰络,纳喇,");
+		surname.append("乌雅,范姜,碧鲁,张廖,张简,图门,太史,公叔,乌孙,完颜,马佳,佟佳,");
+		surname.append("富察,费莫,蹇,称,诺,来,多,繁,戊,朴,回,毓,");
+		surname.append("税,荤,靖,绪,愈,硕,牢,买,但,巧,枚,撒,");
+		surname.append("泰,秘,亥,绍,以,壬,森,斋,释,奕,姒,朋,");
+		surname.append("求,羽,用,占,真,穰,翦,闾,漆,贵,代,贯,");
+		surname.append("旁,崇,栋,告,休,褒,谏,锐,皋,闳,在,歧,");
+		surname.append("禾,示,是,委,钊,频,嬴,呼,大,威,昂,律,");
+		surname.append("冒,保,系,抄,定,化,莱,校,么,抗,祢,綦,");
+		surname.append("悟,宏,功,庚,务,敏,捷,拱,兆,丑,丙,畅,");
+		surname.append("苟,随,类,卯,俟,友,答,乙,允,甲,留,尾,");
+		surname.append("佼,玄,乘,裔,延,植,环,矫,赛,昔,侍,度,");
+		surname.append("旷,遇,偶,前,由,咎,塞,敛,受,泷,袭,衅,");
+		surname.append("叔,圣,御,夫,仆,镇,藩,邸,府,掌,首,员,");
+		surname.append("焉,戏,可,智,尔,凭,悉,进,笃,厚,仁,业,");
+		surname.append("肇,资,合,仍,九,衷,哀,刑,俎,仵,圭,夷,");
+		surname.append("徭,蛮,汗,孛,乾,帖,罕,洛,淦,洋,邶,郸,");
+		surname.append("郯,邗,邛,剑,虢,隋,蒿,茆,菅,苌,树,桐,");
+		surname.append("锁,钟,机,盘,铎,斛,玉,线,针,箕,庹,绳,");
+		surname.append("磨,蒉,瓮,弭,刀,疏,牵,浑,恽,势,世,仝,");
+		surname.append("同,蚁,止,戢,睢,冼,种,涂,肖,己,泣,潜,");
+		surname.append("卷,脱,谬,蹉,赧,浮,顿,说,次,错,念,夙,");
+		surname.append("斯,完,丹,表,聊,源,姓,吾,寻,展,出,不,");
+		surname.append("户,闭,才,无,书,学,愚,本,性,雪,霜,烟,");
+		surname.append("寒,少,字,桥,板,斐,独,千,诗,嘉,扬,善,");
+		surname.append("揭,祈,析,赤,紫,青,柔,刚,奇,拜,佛,陀,");
+		surname.append("弥,阿,素,长,僧,隐,仙,隽,宇,祭,酒,淡,");
+		surname.append("塔,琦,闪,始,星,南,天,接,波,碧,速,禚,");
+		surname.append("腾,潮,镜,似,澄,潭,謇,纵,渠,奈,风,春,");
+		surname.append("濯,沐,茂,英,兰,檀,藤,枝,检,生,折,登,");
+		surname.append("驹,骑,貊,虎,肥,鹿,雀,野,禽,飞,节,宜,");
+		surname.append("鲜,粟,栗,豆,帛,官,布,衣,藏,宝,钞,银,");
+		surname.append("门,盈,庆,喜,及,普,建,营,巨,望,希,道,");
+		surname.append("载,声,漫,犁,力,贸,勤,革,改,兴,亓,睦,");
+		surname.append("修,信,闽,北,守,坚,勇,汉,练,尉,士,旅,");
+		surname.append("五,令,将,旗,军,行,奉,敬,恭,仪,母,堂,");
+		surname.append("丘,义,礼,慈,孝,理,伦,卿,问,永,辉,位,");
+		surname.append("让,尧,依,犹,介,承,市,所,苑,杞,剧,第,");
+		surname.append("零,谌,招,续,达,忻,六,鄞,战,迟,候,宛,");
+		surname.append("励,粘,萨,邝,覃,辜,初,楼,城,区,局,台,");
+		surname.append("原,考,妫,纳,泉,老,清,德,卑,过,麦,曲,");
+		surname.append("竹,百,福,言,第五,佟,爱,年,笪,谯,哈,墨,");
+		surname.append("南宫,赏,伯,佴,佘,牟,商,西门,东门,左丘,梁丘,琴,");
+		surname.append("后,况,亢,缑,帅,微生,羊舌,海,归,呼延,南门,东郭,");
+		surname.append("百里,钦,鄢,汝,法,闫,楚,晋,谷梁,宰父,夹谷,拓跋,");
+		surname.append("壤驷,乐正,漆雕,公西,巫马,端木,颛孙,子车,督,仉,司寇,亓官,");
+		surname.append("鲜于,锺离,盖,逯,库,郏,逢,阴,薄,厉,稽,闾丘,");
+		surname.append("公良,段干,开,光,操,瑞,眭,泥,运,摩,伟,铁,");
+		surname.append("迮,凡,付");
+		int i = surname.indexOf(x); // 查找字符串。
+		if (i == -1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraints.IDCard;
+
+/**
+ * Validate that the string is a valid IDCard.
+ *
+ * @author hongquanli <hongquanli@qq.com>
+ * @version 1.0 2012-5-19 上午10:19:01
+ */
+public class IDCardValidator implements ConstraintValidator<IDCard, String> {
+
+	public void initialize(IDCard annotation) {
+
+	}
+
+	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (value == null || value.length() == 0) {
+			return true;
+		}
+		return validateIDCard18(value);
+	}
+
+	/**
+	 * 18位身份证验证
+	 *
+	 * @param cardNum 18位身份证
+	 * @return 验证成功返回true
+	 */
+	public static boolean validateIDCard18(String iDCard) {
+		if (iDCard.length() == 18) {
+			String tempStr = iDCard.substring(0, 17);
+			String sourceCheckCode = iDCard.substring(17, 18);
+			String checkCode = "";
+			int[] a = new int[17];
+			int i = 0;
+			try {
+				while (i < 17) {
+					a[i] = Integer.parseInt(tempStr.substring(i, i + 1));
+					i++;
+				}
+			} catch (NumberFormatException nfe) {
+				nfe.printStackTrace();
+			}
+			int mod = (a[0] * 7 + a[1] * 9 + a[2] * 10 + a[3] * 5 + a[4] * 8 + a[5] * 4 + a[6] * 2 + a[7] * 1 + a[8] * 6 + a[9] * 3 + a[10] * 7 + a[11] * 9 + a[12] * 10 + a[13] * 5 + a[14] * 8 + a[15] * 4 + a[16] * 2) % 11;
+			switch (mod) {
+			case 10:
+				checkCode = "2";
+				break;
+			case 9:
+				checkCode = "3";
+				break;
+			case 8:
+				checkCode = "4";
+				break;
+			case 7:
+				checkCode = "5";
+				break;
+			case 6:
+				checkCode = "6";
+				break;
+			case 5:
+				checkCode = "7";
+				break;
+			case 4:
+				checkCode = "8";
+				break;
+			case 3:
+				checkCode = "9";
+				break;
+			case 2:
+				checkCode = "x";
+				break;
+			case 1:
+				checkCode = "0";
+				break;
+			case 0:
+				checkCode = "1";
+				break;
+			}
+			if (sourceCheckCode.equals(checkCode)) {
+				System.out.println(sourceCheckCode + ":" + checkCode);
+				return true;
+			}
+		} else if (iDCard.length() == 15) {
+			validateIDCard15(iDCard);
+		} else {
+			return false;
+		}
+		return false;
+	}
+
+	public static String iDCard15ToIDCard18(String iDCard) {
+		int[] arrInt = new int[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+		String[] arrStr = new String[] { "1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2" };
+		int temp = 0, i;
+		iDCard = iDCard.substring(0, 6) + "19" + iDCard.substring(6, iDCard.length() - 6);
+		for (i = 0; i < 17; i++) {
+			temp += Integer.parseInt(iDCard.substring(i, 1)) * arrInt[i];
+		}
+		iDCard += arrStr[temp % 11];
+		return iDCard;
+	}
+
+	/**
+	 * 15位身份证验证(只做了数字验证)
+	 *
+	 * @param CardId 15位身份证
+	 * @return 验证成功返回true:
+	 */
+	public static boolean validateIDCard15(String CardId) {
+		int i = 0;
+		try {
+			while (i < 15) {
+				if (!Character.isDigit(CardId.charAt(i))) {
+					return false;
+				}
+				i++;
+			}
+		} catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
+		}
+		return true;
+	}
+}
+

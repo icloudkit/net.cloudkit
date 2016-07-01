@@ -1,0 +1,387 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+// 包含gradle文件,引入jar包定义,定义的jar包可以直接在子项目中使用
+apply from: 'libraries.gradle'
+
+def defaultProperty(propertyName, defaultValue) {
+    return hasProperty(propertyName) ? project[propertyName] : defaultValue
+}
+
+// gradle插件
+/*
+buildscript {
+    repositories {
+        jcenter { url "http://jcenter.bintray.com/" }
+    }
+    dependencies {
+        // 远程布署插件
+        classpath 'org.hidetake:gradle-ssh-plugin:1.1.2'
+        // web容器，支持jetty和tomcat
+        classpath 'org.akhikhl.gretty:gretty:1.2.2'
+    }
+}
+*/
+
+/*
+// 所有项目共享配置
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven'
+
+    group = 'net.cloudkit'
+    version = "1.0"
+
+    repositories {
+
+        mavenCentral()
+        mavenLocal()
+    }
+
+    // 全局属性设置
+    ext {
+        junitVersion = "4.11"
+        springVersion = "3.0.5.RELEASE"
+        // java文件编码方式设置为utf-8
+        compileJava.options.encoding = 'UTF-8'
+        compileTestJava.options.encoding = 'UTF-8'
+    }
+
+    // ...
+}
+*/
+
+// 全局配置，对所有工程有效
+allprojects {
+    // show deprecation warnings for all projects
+    // GradleBuild JavaCompile
+    tasks.withType(GradleBuild) {
+        options.compilerArgs << [
+            "-Xlint:serial", "-Xlint:varargs", "-Xlint:cast", "-Xlint:classfile",
+            "-Xlint:dep-ann", "-Xlint:divzero", "-Xlint:empty", "-Xlint:finally",
+            "-Xlint:overrides", "-Xlint:path", "-Xlint:processing", "-Xlint:static",
+            "-Xlint:try", "-Xlint:fallthrough", "-Xlint:rawtypes", "-Xlint:deprecation",
+            "-Xlint:unchecked", "-Xlint:-options", "-Werror"
+        ]
+    }
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+        options.compilerArgs << "-Xlint:unchecked"
+    }
+}
+
+// 所有子项目共享配置
+subprojects {
+
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'java'
+
+    /*
+    compileJava.options*.compilerArgs = [
+        "-Xlint:serial", "-Xlint:varargs", "-Xlint:cast", "-Xlint:classfile",
+        "-Xlint:dep-ann", "-Xlint:divzero", "-Xlint:empty", "-Xlint:finally",
+        "-Xlint:overrides", "-Xlint:path", "-Xlint:processing", "-Xlint:static",
+        "-Xlint:try", "-Xlint:fallthrough", "-Xlint:rawtypes", "-Xlint:deprecation",
+        "-Xlint:unchecked", "-Xlint:-options", "-Werror"
+    ]
+
+    compileTestJava.options*.compilerArgs = [
+        "-Xlint:serial", "-Xlint:-varargs", "-Xlint:cast", "-Xlint:classfile",
+        "-Xlint:dep-ann", "-Xlint:divzero", "-Xlint:empty", "-Xlint:finally",
+        "-Xlint:overrides", "-Xlint:path", "-Xlint:processing", "-Xlint:static",
+        "-Xlint:try", "-Xlint:-fallthrough", "-Xlint:-rawtypes", "-Xlint:-deprecation",
+        "-Xlint:-unchecked", "-Xlint:-options"]
+    */
+
+    /*
+    compileJava {
+        // 1.7
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    compileTestJava {
+        // 1.7
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        options.compilerArgs += "-parameters"
+    }
+    */
+
+    // JVM 版本号要求
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    // 指定build输出目录和版本号
+    // version = '1.0'
+    // 默认为 build
+    // buildDir = "target"
+
+    /*
+    // 单独encoding设置
+    javadoc {
+        options.encoding = "UTF-8"
+    }
+    */
+    // 编译,生成JavaDoc和测试时注释的乱码问题
+    [compileJava, javadoc, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    // GRADLE和IDEA集成时下载依赖源码和JavaDoc设置
+    idea {
+        module {
+            downloadJavadoc = false
+            downloadSources = false
+        }
+    }
+
+    /*
+    // 根据不同的子项目个性化定义配置,':m1' 项目名称.
+    if ( ! subProject.name.startsWith( 'm1' ) ) {
+
+        apply plugin: 'java'
+
+        configurations {
+            // ...
+        }
+
+        dependencies {
+            // ...
+        }
+    }
+
+    // 或者使用configure来批量指定部分项目的配置,':m1' 项目名称.
+    configure(subprojects.findAll {it.name.contains('m1')}) {
+        apply plugin: 'war'
+    }
+    */
+
+    /*
+    sourceSets {
+        main {
+            // manifest.srcFile 'MANIFEST.MF'
+            java.srcDirs = ['src/main/java']
+            resources.srcDirs = ['src/main/resources']
+
+            // 自定义Build 后main 的classes 目录或resources 目录的输出位置
+            output.resourcesDir = "${buildDir}/classes/main"
+        }
+
+        test {
+            java.srcDirs = ['src/test/java']
+            resources.srcDirs = ['src/test/resources']
+
+            // 自定义Build 后test 的classes 目录或resources 目录的输出位置
+            output.resourcesDir = "${buildDir}/classes/test"
+        }
+    }
+    */
+
+    // tag::repositories[]
+    repositories {
+        // mavenCentral()别名，表示依赖是从Central Maven 2 仓库中获取。
+        // jcenter()别名，表示依赖是从Bintary’s JCenter Maven 仓库中获取。
+        // mavenLocal()别名，表示依赖是从本地的Maven仓库中获取。
+        mavenCentral()
+
+        // maven { url 'http://download.java.net/maven/2/' }
+        maven { url 'http://120.25.65.250:7001/nexus/content/groups/public/' }
+        jcenter { url "http://jcenter.bintray.com/" }
+
+        // maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
+
+        // 配置Spring Maven仓库
+        // maven { url 'http://repo.spring.io/release/' }
+        // maven { url 'http://repo.spring.io/milestone/' }
+        // maven { url 'http://repo.spring.io/snapshot/' }
+
+        // 带认证的库
+        /*
+        maven{
+            credentials{
+                username 'admin'
+                password 'admin123'
+            }
+            url "http://localhost:8081/nexus/content/groups/public/"
+        }
+        */
+
+        /*
+        ivy {
+            url "http://ivy.petrikainulainen.net/repo"
+        }
+
+        ivy {
+            // URL can refer to a local directory
+            url "../local-repo"
+        }
+        */
+
+        // flatDir {
+        //    dirs 'libs'
+        // }
+
+        flatDir name: 'localRepository', dirs: 'libs'
+        // ${rootProject.projectDir} ${gradle.gradleHomeDir}
+        // flatDir(dirs: '$projectDir/libs')
+        // flatDir(dirs: '${rootProject.projectDir}/lib')
+    }
+    // end::repositories[]
+
+    /*
+    // 默认情况下gradle会选用版本最高的那个依赖，有时候会带来问题
+    configurations.all {
+        // 有版本冲突的时候强制使用指定的版本，对于相关依赖也同样有效
+        resolutionStrategy.force(
+                "org.springframework:spring-core:${springVersion}",
+        )
+    }
+    */
+
+    configurations {
+
+        // 需要忽略的包
+        all*.exclude group: 'commons-httpclient'
+        // 排除commons-logging依赖
+        all*.exclude group: 'commons-logging'
+        all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+    }
+
+    // tag::dependencies[]
+    // 公共依赖配置
+    dependencies {
+
+        // 通用依赖
+        compile(
+
+                // logback
+                libraries.'logback-core',
+                libraries.'logback-classic',
+                // 添加SLF4J-JCL依赖，将对JCL的日志API调用转换为对SLF4J接口的调用
+                libraries.'jcl-over-slf4j',
+                libraries.'log4j-over-slf4j',
+                libraries.'jul-to-slf4j',
+                // 添加SLF4J接口依赖
+                libraries.'slf4j-api',
+                libraries.'logback-ext-spring',
+
+                // Guava工程包含了若干被Google的 Java项目广泛依赖 的核心库，例如：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I/O 等等。
+                libraries.'guava'
+        )
+
+        // 依赖mave库中不存在的jar,包含父项目的libs和当前项目的libs下的所有jar
+        // 注意：这些libs目录是运行有子目录存在的
+        // fileTree(dir: "${rootProject.projectDir}/libs", include: '*.jar')
+        ext.jarTree = fileTree(dir: 'libs', include: '**/*.jar')
+        ext.rootProjectLibs = new File(rootProject.rootDir, 'libs').getAbsolutePath()
+        ext.jarTree += fileTree(dir: rootProjectLibs, include: '**/*.jar')
+        compile jarTree
+
+        // 测试依赖
+        testCompile(
+                libraries.'junit',
+                libraries.'spring-test'
+        )
+    }
+    // end::dependencies[]
+
+    /*
+    // 发布JAR包,执行gradle uploadArchives命令以发布JAR包
+    uploadArchives {
+        repositories {
+            flatDir {
+                dirs 'repos'
+            }
+        }
+    }
+    */
+
+    compileJava {
+        options.debug = version.endsWith('SNAPSHOT')
+    }
+
+    tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
+
+    tasks.withType(GroovyCompile) { groovyOptions.encoding = "MacRoman" }
+
+    /*
+    task hello << {
+        println 'hello world!'
+    }
+    */
+
+    // 显示项目下所有"compile jar".
+    /*
+    task listJars(description: '#Display all compile jars.') << {
+        println description
+        configurations.compile.each { File file -> println file.name }
+    }
+    */
+
+    task createJavaProject << {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }
+
+    task createWebProject(dependsOn: 'createJavaProject') << {
+        def webAppDir = file("$webAppDirName")
+        webAppDir.mkdirs()
+    }
+
+    /*
+    task createJar(type: org.gradle.api.tasks.bundling.Jar, dependsOn: ["test"]) {
+        version = 0.1
+        archiveName = "net.cloudkit.ecological.enterprises-${version}.jar"
+        manifest {
+            attributes 'Main-Class': 'net.cloudkit.xxxx.Main'
+        }
+        from(sourceSets.main.output.classesDir)
+    }
+
+
+    // create a single Jar with all dependencies
+
+    task fatJar(type: Jar) {
+        version = 0.1
+        manifest {
+            attributes 'Implementation-Title': 'Gradle Jar File Example', 'Implementation-Version': version, 'Main-Class': ''
+        }
+        baseName = project.name + '-all'
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        with jar
+    }
+
+    task copyJars(type: Copy) {
+        from configurations.runtime
+        // 目标位置
+        into 'dist'
+    }
+    */
+
+}
+
+// tag::wrapper[]
+// 如果你想配置你自己制定的Gradle 版本，加入以下配置，然后在导入工程时选择 use customizable gradle wrapper
+//task wrapper(type: Wrapper) {
+task wrapper(type: Wrapper, description: 'Gradle Wrapper task') {
+    // 2.6 2.7 2.8 2.9
+    gradleVersion = '2.10'
+}
+// end::wrapper[]
+
+task production << {
+    bootRun.systemProperty 'spring.profiles.active', 'production'
+}
+
+task development << {
+    bootRun.systemProperty 'spring.profiles.active', 'development'
+}
+
+def buildVersion() {
+    // yyyyMMddHHmmss
+    return 'v' + new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+    // return new Date().getTime();
+}

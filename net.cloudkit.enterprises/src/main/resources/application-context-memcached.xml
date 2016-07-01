@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Spring infrastructure config</description>
+
+	<!--
+	http://blog.csdn.net/javaman_chen/article/details/7682290
+
+	#memcached服务端ip和端口号
+	memcache.server=192.168.136.129:12000
+	#连接池初始连接数
+	memcache.initConn=5
+	#连接池最小连接数
+	memcache.minConn=5
+	#连接池最大连接数
+	memcache.maxConn=250
+	#主线程睡眠时间
+	memcache.maintSleep=30
+	#TCP参数
+	memcache.nagle=false
+	memcache.socketTO=3000
+
+	memcached常用方法：
+	1、设置数据到内存
+	memCachedClient.set(key, value, cache中存在时长);
+	2、删除内存中的数据
+	memCachedClient.delete(key);
+	3、取得内存中的数据
+	memCachedClient.get(key);
+	-->
+	<!--
+	<bean id="sockIOPool" class="com.danga.MemCached.SockIOPool"
+		  factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+		<property name="servers">
+			<list>
+				<value>${memcache.server}</value>
+			</list>
+		</property>
+		<property name="initConn">
+			<value>${memcache.initConn}</value>
+		</property>
+		<property name="maxConn">
+			<value>${memcache.maxConn}</value>
+		</property>
+		<property name="maintSleep">
+			<value>${memcache.maintSleep}</value>
+		</property>
+		<property name="nagle">
+			<value>${memcache.nagle}</value>
+		</property>
+		<property name="socketTO">
+			<value>${memcache.socketTO}</value>
+		</property>
+	</bean>
+
+	<bean id="memcachedClient" class="com.danga.MemCached.MemCachedClient">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+		<property name="compressEnable">
+			<value>true</value>
+		</property>
+		<property name="compressThreshold">
+			<value>4096</value>
+		</property>
+	</bean>
+	-->
+</beans>

@@ -1,0 +1,16 @@
+http://blog.jetbrains.com/idea/2015/11/intellij-idea-15-released-adds-kotlin-to-the-family-of-supported-jvm-languages/
+https://www.jetbrains.com/idea/whatsnew/
+
+http://15.idea.lanyus.com/
+http://idea.qinxi1992.cn
+http://www.ideajava.org/
+
+默认情况下Intellij IDEA是关闭了继承了java.io.Serializable的类生成serialVersionUID的警告。如果需要ide提示生成serialVersionUID，那么需要做以下设置：
+
+1、setting->Editor->Inspections->->Java->Serialization issues，将serialzable class without "serialVersionUID"打上勾；
+
+2、将光标放到类名上，按atl＋enter键，就会提示生成serialVersionUID了。
+
+http://www.iteblog.com/idea/
+
+http://bower.io/

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+       default-lazy-init="false">
+    <!--  default-autowire="byName" -->
+
+    <description>Spring infrastructure config</description>
+
+    <context:annotation-config />
+
+    <!-- spring 扫描注解的配置 -->
+    <context:component-scan base-package="net.cloudkit.ecosystem.enterprises.infrastructure.scheduling" />
+
+    <!-- 识别@Scheduled注解   -->
+    <task:annotation-driven />
+    <!--
+    <task:annotation-driven scheduler="qbScheduler" mode="proxy"/>
+    <task:scheduler id="qbScheduler" pool-size="10"/>
+    -->
+
+    <task:scheduled-tasks>
+        <task:scheduled ref="taskJob" method="execute" cron="0 * * * * ?"/>
+    </task:scheduled-tasks>
+
+    <!--
+    <task:annotation-driven executor="customAsyncTaskExecutor" scheduler="taskScheduler"/>
+    <task:annotation-driven executor="myExecutor" scheduler="myScheduler"/>
+    <task:executor  id="myExecutor"  pool-size="5"/>
+    <task:scheduler id="myScheduler" pool-size="10"/>
+    -->
+</beans>

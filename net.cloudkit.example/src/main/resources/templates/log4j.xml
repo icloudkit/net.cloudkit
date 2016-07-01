@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2016. The CloudKit Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true" threshold="null">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d\t%X{userName}\t%-5p\t[%t]\t%m%n" />
+		</layout>
+		<!--过滤器设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="debug" />
+			<param name="levelMax" value="warn" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+	<appender name="FILEINFO" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="DEBUG" />
+		<param name="File" value="./log/log.log" />
+		<param name="DatePattern" value=".yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d\t%-5p\t[%t]\t%m%n" />
+		</layout>
+	</appender>
+	<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="DEBUG" />
+		<param name="File" value="./log/log.log" />
+		<param name="DatePattern" value=".yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d\t%-5p\t[%t]\t%m%n" />
+		</layout>
+	</appender>
+	<appender name="RFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="./log/log.log" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="1000KB" />
+		<param name="MaxBackupIndex" value="60" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- [%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n -->
+			<param name="ConversionPattern" value="%d\t%X{userName}\t%-5p\t[%t]\t%C{2}\t(%F:%L)\t%m%n" />
+		</layout>
+	</appender>
+	<appender name="ERR_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="File" value="./log/error.log" />
+		<param name="DatePattern" value=".yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d\t%-5p\t[%t]\t%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="ERR_FILE" />
+	</appender>
+	<!-- 根logger的设置 -->
+	<root>
+		<priority value="all" />
+		<appender-ref ref="ASYNC" />
+	</root>
+</log4j:configuration>

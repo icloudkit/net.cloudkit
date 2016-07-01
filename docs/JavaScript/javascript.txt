@@ -1,0 +1,483 @@
+JavaScript:
+// 网页可见区域宽(body)
+console.log(document.body.clientWidth);
+// 网页可见区域高(body)
+console.log(document.body.clientHeight);
+// 网页可见区域宽(body)，包括border、margin等
+console.log(document.body.offsetWidth);
+// 网页可见区域宽(body)，包括border、margin等
+console.log(document.body.offsetHeight);
+// 网页正文全文宽，包括有滚动条时的未见区域
+console.log(document.body.scrollWidth);
+// 网页正文全文高，包括有滚动条时的未见区域
+console.log(document.body.scrollHeight);
+// 网页被卷去的Top(滚动条)
+console.log(document.body.scrollTop);
+// 网页被卷去的Left(滚动条)
+console.log(document.body.scrollLeft);
+// 浏览器距离Top
+console.log(window.screenTop);
+// 浏览器距离Left
+console.log(window.screenLeft);
+// 屏幕分辨率的高
+console.log(window.screen.height);
+// 屏幕分辨率的宽
+console.log(window.screen.width);
+// 屏幕可用工作区的高
+console.log(window.screen.availHeight);
+// 屏幕可用工作区的宽
+console.log(window.screen.availWidth);
+
+JQuery
+// 浏览器当前窗口可视区域高度
+console.log($(window).height());
+// 浏览器当前窗口文档的高度
+console.log($(document).height());
+// 浏览器当前窗口文档body的高度
+console.log($(document.body).height());
+// 浏览器当前窗口文档body的总高度 包括border padding margin
+console.log($(document.body).outerHeight(true));
+// 浏览器当前窗口可视区域宽度
+console.log($(window).width());
+// 浏览器当前窗口文档对象宽度
+console.log($(document).width());
+// 浏览器当前窗口文档body的宽度
+console.log($(document.body).width());
+// 浏览器当前窗口文档body的总宽度 包括border padding margin
+console.log($(document.body).outerWidth(true));
+
+-------------------------------------------------------------------------------------------------------
+
+// 严格模式
+"use strict";
+
+(function (){
+
+	"use strict";
+	// some code here
+})();
+
+<input type="text" class="search-query" placeholder="" x-webkit-speech="">
+
+//过滤关键字
+string keyWord = @"select|insert|delete|from|count\(|drop table|update|truncate|asc\(|mid\(|char\(|xp_cmdshell|exec master|netlocalgroup administrators|:|net user|""|or|and";
+//过滤关键字符
+string symbolWord = @"[-|;|,|/|\(|\)|\[|\]|}|{|%|\@|*|!|']";
+
+font-family: 'Myriad Set Pro';
+font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+font-family: "Proxima-Nova",Helvetica,Verdana,Arial,Sans-Serif;
+
+Redirecting you to http://www.google.com
+
+集成开发环境（Integrated Development Environment，簡稱IDE，也稱為Integration Design Environment、Integration Debugging Environment）
+
+响应式网页设计 @media
+/* for 240 px width screen */
+@media only screen and (max-device-width:240px){
+    selector{
+    }
+}
+
+/* for 360px width screen */
+@media only screen and (min-device-width:241px) and (max-device-width:360px){
+    selector{
+    }
+}
+
+/* for 480 px width screen */
+@media only screen (min-device-width:361px)and (max-device-width:480px){
+    selector{
+    }
+}
+
+<!--[if lt IE 9]>
+    <script src="components/html5shiv/html5shiv.js"></script>
+<![endif]-->
+
+<!--[if lt IE 8]>
+  <script src="browser-not-supported.js"></script>
+<![endif]-->
+
+<link rel="stylesheet/less" type="text/css" href="styles.less">
+<script src="less.js" type="text/javascript"></script>
+
+
+::-webkit-scrollbar {width:13px;height:13px;}
+::-webkit-scrollbar-track-piece {background-color:#f5f5f5;border-left:1px solid #d2d2d2;}
+::-webkit-scrollbar-thumb {background-color:#c2c2c2;background-clip:padding-box;border:1px solid #979797;min-height:28px;}
+::-webkit-scrollbar-thumb:hover {border:1px solid #636363;background-color:#929292;}
+
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+
+-webkit-border-radius: 1px;
+-moz-border-radius: 1px;
+border-radius: 1px;
+
+-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+
+-webkit-transition: all 0.218s;
+-moz-transition: all 0.218s;
+-ms-transition: all 0.218s;
+-o-transition: all 0.218s;
+transition: all 0.218s;
+
+background-image: -webkit-gradient(linear,left top,left bottom,from(#f5f5f5),to(#f1f1f1));
+background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
+background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
+background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
+
+-webkit-user-select: none;
+-moz-user-select: none;
+-khtml-user-select: none;
+user-select: none;
+
+
+   * reset
+　　* css3
+　　* layout
+　　* typography
+　　* utilities
+
+
+
+
+
+http://www.codecogs.com/latex/eqneditor.php?lang=zh-cn 公式符号
+http://www.latex-project.org/
+
+
+http://blog.jobbole.com/50022/
+http://www.ng-newsletter.com/posts/directives.html
+http://www.ng-newsletter.com/posts/beginner2expert-scopes.html
+http://v3.bootcss.com/getting-started/
+
+D:\development\workspace\test>node scripts/web-server.js
+
+http://en.pdf24.org/
+http://www.ng-newsletter.com/books/
+
+
+http://ionicframework.com/ mobie移动开发
+http://phonegap.com/ 移动开发
+
+
+<!--[if IEMobile 7]><html class="iem7" lang="zh-hans" dir="ltr"><![endif]-->
+<!--[if (lte IE 6)&(!IEMobile)]><html class="ie6 ie6-7 ie6-8" lang="zh-hans" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="ie7 ie6-7 ie6-8" lang="zh-hans" dir="ltr"><![endif]-->
+<!--[if (IE 8)&(!IEMobile)]><html class="ie8 ie6-8" lang="zh-hans" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html class="ie9up ie9" lang="zh-hans" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+
+
+// 替换
+(function(){
+	var l = location;
+	var r = new RegExp('^(?:([A-Za-z]{1,5}):?(\\/{2,3}))?('+l.hostname.replace(/\./g,'\\.')+')?(?::(\\d+))?(?:\\/([^?#]*))?(?:\\?([^#]*))?(?:#(.*))?$');
+	var s;
+	((s = (l = l.toString()).indexOf('#!')) != -1 && r.test(l = l.substr(s + 2))) && l.indexOf('//') != 0 ? location.replace(l) : 0;
+})();
+// 缓存背景图片
+try{
+    document.execCommand("BackgroundImageCache", false, true);
+}catch(e){}
+
+
+document.execCommand()函数
+1、全选命令的实现
+[格式]:document.execCommand("selectAll")
+[说明]将选种网页中的全部内容！
+[举例]在<body></body>之间加入：
+<a href="#" onclick=document.execCommand("selectAll")>全选</a>
+
+2、打开命令的实现
+[格式]:document.execCommand("open")
+[说明]这跟VB等编程设计中的webbrowser控件中的命令有些相似，大家也可依此琢磨琢磨。
+[举例]在<body></body>之间加入：
+<a href="#" onclick=document.execCommand("open")>打开</a>
+
+3、另存为命令的实现
+[格式]:document.execCommand("saveAs")
+[说明]将该网页保存到本地盘的其它目录！
+[举例]在<body></body>之间加入：
+<a href="#" onclick=document.execCommand("saveAs")>另存为</a>
+
+4、打印命令的实现
+[格式]:document.execCommand("print")
+[说明]当然，你必须装了打印机！
+[举例]在<body></body>之间加入：
+<a href="#" onclick=document.execCommand("print")>打印</a>
+
+Js代码 下面列出的是指令参数及意义
+
+//相当于单击文件中的打开按钮
+document.execCommand("Open");
+//将当前页面另存为
+document.execCommand("SaveAs");
+//剪贴选中的文字到剪贴板;
+document.execCommand("Cut","false",null);
+//删除选中的文字;
+document.execCommand("Delete","false",null);
+//改变选中区域的字体;
+document.execCommand("FontName","false",sFontName);
+//改变选中区域的字体大小;
+document.execCommand("FontSize","false",sSize|iSize);
+//设置前景颜色;
+document.execCommand("ForeColor","false",sColor);
+//使绝对定位的对象可直接拖动;
+document.execCommand("2D-Position","false","true");
+//使对象定位变成绝对定位;
+document.execCommand("AbsolutePosition","false","true");
+//设置背景颜色;
+document.execCommand("BackColor","false",sColor);
+//使选中区域的文字加粗;
+document.execCommand("Bold","false",null);
+//复制选中的文字到剪贴板;
+document.execCommand("Copy","false",null);
+//设置指定锚点为书签;
+document.execCommand("CreateBookmark","false",sAnchorName);
+//将选中文本变成超连接,若第二个参数为true,会出现参数设置对话框;
+document.execCommand("CreateLink","false",sLinkURL);
+//设置当前块的标签名;
+document.execCommand("FormatBlock","false",sTagName);
+//相当于单击文件中的打开按钮
+document.execCommand("Open");
+//将当前页面另存为
+document.execCommand("SaveAs");
+//剪贴选中的文字到剪贴板;
+document.execCommand("Cut","false",null);
+//删除选中的文字;
+document.execCommand("Delete","false",null);
+//改变选中区域的字体;
+document.execCommand("FontName","false",sFontName);
+//改变选中区域的字体大小;
+document.execCommand("FontSize","false",sSize|iSize);
+//设置前景颜色;
+document.execCommand("ForeColor","false",sColor);
+//使绝对定位的对象可直接拖动;
+document.execCommand("2D-Position","false","true");
+//使对象定位变成绝对定位;
+document.execCommand("AbsolutePosition","false","true");
+//设置背景颜色;
+document.execCommand("BackColor","false",sColor);
+//使选中区域的文字加粗;
+document.execCommand("Bold","false",null);
+//复制选中的文字到剪贴板;
+document.execCommand("Copy","false",null);
+//设置指定锚点为书签;
+document.execCommand("CreateBookmark","false",sAnchorName);
+//将选中文本变成超连接,若第二个参数为true,会出现参数设置对话框;
+document.execCommand("CreateLink","false",sLinkURL);
+//设置当前块的标签名;
+document.execCommand("FormatBlock","false",sTagName);
+
+
+2D-Position 允许通过拖曳移动绝对定位的对象。
+AbsolutePosition 设定元素的 position 属性为“absolute”(绝对)。
+BackColor 设置或获取当前选中区的背景颜色。
+Bold 切换当前选中区的粗体显示与否。
+Copy 将当前选中区复制到剪贴板。
+CreateBookmark 创建一个书签锚或获取当前选中区或插入点的书签锚的名称。
+CreateLink 在当前选中区上插入超级链接，或显示一个对话框允许用户指定要为当前选中区插入的超级链接的 URL。
+Cut 将当前选中区复制到剪贴板并删除之。
+Delete 删除当前选中区。
+FontName 设置或获取当前选中区的字体。
+FontSize 设置或获取当前选中区的字体大小。
+ForeColor 设置或获取当前选中区的前景(文本)颜色。
+FormatBlock 设置当前块格式化标签。
+Indent 增加选中文本的缩进。
+InsertButton 用按钮控件覆盖当前选中区。
+InsertFieldset 用方框覆盖当前选中区。
+InsertHorizontalRule 用水平线覆盖当前选中区。
+InsertIFrame 用内嵌框架覆盖当前选中区。
+InsertImage 用图像覆盖当前选中区。
+InsertInputButton 用按钮控件覆盖当前选中区。
+InsertInputCheckbox 用复选框控件覆盖当前选中区。
+InsertInputFileUpload 用文件上载控件覆盖当前选中区。
+InsertInputHidden 插入隐藏控件覆盖当前选中区。
+InsertInputImage 用图像控件覆盖当前选中区。
+InsertInputPassword 用密码控件覆盖当前选中区。
+InsertInputRadio 用单选钮控件覆盖当前选中区。
+InsertInputReset 用重置控件覆盖当前选中区。
+InsertInputSubmit 用提交控件覆盖当前选中区。
+InsertInputText 用文本控件覆盖当前选中区。
+InsertMarquee 用空字幕覆盖当前选中区。
+InsertOrderedList 切换当前选中区是编号列表还是常规格式化块。
+InsertParagraph 用换行覆盖当前选中区。
+InsertSelectDropdown 用下拉框控件覆盖当前选中区。
+InsertSelectListbox 用列表框控件覆盖当前选中区。
+InsertTextArea 用多行文本输入控件覆盖当前选中区。
+InsertUnorderedList 切换当前选中区是项目符号列表还是常规格式化块。
+Italic 切换当前选中区斜体显示与否。
+JustifyCenter 将当前选中区在所在格式化块置中。
+JustifyLeft 将当前选中区所在格式化块左对齐。
+JustifyRight 将当前选中区所在格式化块右对齐。
+LiveResize 迫使 MSHTML 编辑器在缩放或移动过程中持续更新元素外观，而不是只在移动或缩放完成后更新。
+MultipleSelection 允许当用户按住 Shift 或 Ctrl 键时一次选中多于一个站点可选元素。
+Open 打开一个文档。
+Outdent 减少选中区所在格式化块的缩进。
+OverWrite 切换文本状态的插入和覆盖。
+Paste 用剪贴板内容覆盖当前选中区。
+Print 打开打印对话框以便用户可以打印当前页。
+Redo 撤消操作,相当于Ctrl+Z。
+Undo 重做。
+Refresh 刷新当前文档。
+RemoveFormat 从当前选中区中删除格式化标签。
+RemoveParaFormat 目前尚未支持。
+SaveAs 将当前 Web 页面保存为文件。
+SelectAll 选中整个文档。
+UnBookmark 从当前选中区中删除全部书签。
+Underline 切换当前选中区的下划线显示与否。
+Unlink 从当前选中区中删除全部超级链接。
+Unselect 清除当前选中区的选中状态。
+
+
+document.execCommand()函数可用参数解析
+<script type="text/javascript">
+
+<!--
+/*
+ * 该function执行copy指令
+ */
+function fn_doufucopy() {
+	edit.select();
+	document.execCommand('Copy');
+}
+
+/*
+ * 该function执行paste指令
+ */
+function fn_doufupaste() {
+	tt.focus();
+	document.execCommand('paste');
+}
+
+/*
+ * 该function用来创建一个超链接
+ */
+function fn_creatlink() {
+	document.execCommand('CreateLink',true,'true');//弹出一个对话框输入URL
+	//document.execCommand('CreateLink',false,'http://bbs.tc800.com');
+}
+
+/*
+ * 该function用来将选中的区块设为指定的背景色
+ */
+function fn_change_backcolor() {
+	document.execCommand('BackColor',true,'#FFbbDD');//true或false都可以
+}
+
+/*
+*该function用来将选中的区块设为指定的前景色,改变选中区块的字体大小,改变字体,字体变粗变斜
+*/
+
+function fn_change_forecolor() {
+	//指定前景色
+	document.execCommand('ForeColor',false,'#BBDDCC');//true或false都可以
+
+	//指定背景色
+	document.execCommand('FontSize',false,7);   //true或false都可以
+
+	//字体必须是系统支持的字体
+	document.execCommand('FontName',false,'标楷体');   //true或false都可以
+
+	//字体变粗
+	document.execCommand('Bold');
+
+	//变斜体
+	document.execCommand('Italic');
+}
+
+/*
+*该function用来将选中的区块加上不同的线条
+*/
+
+function fn_change_selection() {
+	//将选中的文字加下划线
+	document.execCommand('Underline');
+
+	//在选中的文字上划粗线
+	document.execCommand('StrikeThrough');
+
+	//将选中的部分文字变细
+	document.execCommand('SuperScript');
+
+	//将选中区块的下划线取消掉
+	document.execCommand('Underline');
+}
+
+/*
+ * 该function用来将选中的区块排成不同的格式
+ */
+
+function fn_format() {
+	//有序列排列
+	document.execCommand('InsertOrderedList');
+	//实心无序列排列
+	document.execCommand('InsertUnorderedList');
+	//空心无序列排列
+	document.execCommand('Indent');
+}
+
+/*
+ * 该function用来将选中的区块剪下或是删除掉
+ */
+
+function fn_CutOrDel() {
+	//删除选中的区块
+	//document.execCommand('Delete');
+	//剪下选中的区块
+	document.execCommand('Cut');
+}
+
+
+document.execCommand()的应用实例
+<input type="button" value="剪切" onclick="document.execCommand('Cut')">
+<input type="button" value="拷贝" onclick="document.execCommand('Copy')">
+<input type="button" value="粘贴" onclick="document.execCommand('Paste')">
+<input type="button" value="撤消" onclick="document.execCommand('Undo')">
+<input type="button" value="重做" onclick="document.execCommand('Redo')" id="button2" name="button2">
+
+<input type="button" value="删除" onclick="document.execCommand('Delete')">
+<input type="button" value="黑体" onclick="document.execCommand('Bold')">
+<input type="button" value="斜体" onclick="document.execCommand('Italic')">
+<input type="button" value="下划线" onclick="document.execCommand('Underline')">
+<input type="button" value="停止" onclick="document.execCommand('stop')">
+<input type="button" value="保存" onclick="document.execCommand('SaveAs')">
+<input type="button" value="另存为" onclick="document.execCommand('Saveas',false,'c:\\test.htm')">
+<input type="button" value="字体" onclick="document.execCommand('FontName',false,fn)">
+<input type="button" value="字体大小" onclick="document.execCommand('FontSize',false,fs)">
+<input type="button" value="刷新" onclick="document.execCommand('refresh',false,0)">
+
+------------------------------------------------------------------------------------------------------------------------
+<script type="text/javascript">
+var jsonObj = {
+    cn : {name : '中国'},
+    us : {name : '美国'},
+    uk : {name : '英国'},
+    de : {name : '德国'}
+};
+
+alert(jsonObj.cn.name);
+
+for(var obj in jsonObj) {
+    alert(jsonObj[obj].name);
+}
+
+document.write(decodeURIComponent(''));
+</script>
