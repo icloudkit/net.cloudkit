@@ -184,6 +184,7 @@ MVC
 负载均衡
 反向代理
 LVS(Linux Virtual Server)
+http://blog.sina.com.cn/s/blog_5f54f0be0101eyff.html
 
 序列化/反序列化
 
@@ -1828,6 +1829,7 @@ http://wiki.fasterxml.com/JacksonDownload
 
 Nginx
 http://nginx.org/
+http://nginx.org/en/books.html
 
 Container/ServiceProvider/Facade
 
