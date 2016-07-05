@@ -1947,14 +1947,14 @@ http://www.wenwenyun.com/a/tip/2014/0924/533.html
 CentOs图形界面的开启与关闭
 http://blog.sina.com.cn/s/blog_545f2b4701018ub9.html
 
-nethogs
+Nethogs 终端下的网络流量监控工具
 # yum install nethogs
 
-http://www.clamav.net/
+Linux恶意软件检测工具和杀毒引擎ClamAV http://www.clamav.net/
 # yum install -y epel-release
 # yum install -y clamav
 
-denyhosts
+DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件(/var/log/secure)，当发现重 复的攻击时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。
 # yum install denyhosts
 
 freshclam
