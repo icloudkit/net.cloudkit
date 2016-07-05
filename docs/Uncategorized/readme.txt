@@ -1955,6 +1955,7 @@ http://www.clamav.net/
 # yum install -y clamav
 
 denyhosts
+# yum install denyhosts
 
 freshclam
 clamscan -r /
