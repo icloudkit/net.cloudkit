@@ -1975,3 +1975,6 @@ vim /etc/group
 
 
 http://drops.wooyun.org/tips/1424
+
+
+netstat -apn|grep 8080
