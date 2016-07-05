@@ -1963,7 +1963,7 @@ clamscan -r /
 service iptables save
 service iptables restart
 iptables -D INPUT -s 222.142.2.0/16 -j DROP
-
+iptables -I INPUT -s 122.226.189.60 -j DROP
 
 # vi /etc/ssh/sshd_config
 or
@@ -1978,3 +1978,5 @@ http://drops.wooyun.org/tips/1424
 
 
 netstat -apn|grep 8080
+
+
