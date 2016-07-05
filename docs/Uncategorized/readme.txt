@@ -1948,4 +1948,8 @@ CentOs图形界面的开启与关闭
 http://blog.sina.com.cn/s/blog_545f2b4701018ub9.html
 
 nethogs
+# yum install nethogs
+
 http://www.clamav.net/
+# yum install -y epel-release
+# yum install -y clamav
