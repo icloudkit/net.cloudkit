@@ -1954,7 +1954,7 @@ Linux恶意软件检测工具和杀毒引擎ClamAV http://www.clamav.net/
 # yum install -y epel-release
 # yum install -y clamav
 
-DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件(/var/log/secure)，当发现重 复的攻击时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。
+DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件(/var/log/secure)，当发现重复的攻击时就会记录IP到/etc/hosts.deny文件，从而达到自动屏IP的功能。
 # yum install denyhosts
 
 freshclam
