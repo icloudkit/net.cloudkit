@@ -1954,6 +1954,8 @@ http://www.clamav.net/
 # yum install -y epel-release
 # yum install -y clamav
 
+denyhosts
+
 freshclam
 clamscan -r /
 
@@ -1966,3 +1968,6 @@ iptables -D INPUT -s 222.142.2.0/16 -j DROP
 or
 # /usr/sbin/sshd -p 60000
 # service sshd restart
+
+
+vim /etc/group
