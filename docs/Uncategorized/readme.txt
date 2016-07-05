@@ -1972,3 +1972,6 @@ or
 
 
 vim /etc/group
+
+
+http://drops.wooyun.org/tips/1424
