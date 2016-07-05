@@ -1959,6 +1959,7 @@ DenyHosts是Python语言写的一个程序，它会分析sshd的日志文件(/va
 
 freshclam
 clamscan -r /
+clamscan -r / --remove
 
 service iptables save
 service iptables restart
