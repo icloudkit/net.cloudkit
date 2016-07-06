@@ -2005,3 +2005,11 @@ http://drops.wooyun.org/tips/1424
 netstat -apn|grep 8080
 
 
+yum install lrzsz
+从服务端发送文件到客户端：
+sz filename
+从客户端上传文件到服务端：
+rz
+在弹出的框中选择文件，上传文件的用户和组是当前登录的用户
+SecureCRT设置默认路径：
+Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
