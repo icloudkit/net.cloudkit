@@ -1961,6 +1961,11 @@ freshclam
 clamscan -r /
 clamscan -r / --remove
 
+tar zxvf clamav-0.99.2.tar.gz
+进入目录，编译安装
+./configure --prefix=/usr/local/clamav
+make&&make install
+
 service iptables save
 service iptables restart
 iptables -D INPUT -s 222.142.2.0/16 -j DROP
