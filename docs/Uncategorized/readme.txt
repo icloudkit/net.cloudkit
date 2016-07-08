@@ -2013,3 +2013,6 @@ rz
 在弹出的框中选择文件，上传文件的用户和组是当前登录的用户
 SecureCRT设置默认路径：
 Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
+
+
+Git 和 Mercurial(Hg)
