@@ -220,7 +220,19 @@ Querydsl
 YAWL(Yet Another Workflow Language)
 Spring Batch
 
+https://www.elastic.co/
+https://github.com/looly/elasticsearch-definitive-guide-cn
+https://github.com/elastic/elasticsearch-definitive-guide
+https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html
 Elasticsearch
+Logstash
+Kibana
+Beats
+Shield
+Watcher
+ES-Hadoop
+
+Git 和 Mercurial(Hg)
 
 网格计算核心技术
 ------------------------------------------------------------------------------------------------------------------------
@@ -2015,4 +2027,4 @@ SecureCRT设置默认路径：
 Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
 
 
-Git 和 Mercurial(Hg)
+
