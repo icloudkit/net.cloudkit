@@ -2028,3 +2028,26 @@ Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
 
 
 
+Apache Zeppelin
+http://zeppelin.apache.org/
+
+Hue
+https://github.com/cloudera/hue
+
+Apache Sqoop
+http://sqoop.apache.org/
+
+Spark
+http://spark.apache.org/
+
+http://www.lighttpd.net/
+
+
+Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
+SNMP
+MySQL、PostgreSQL、Pgpool
+系统网络安装 PXE，Cobbler
+主流自动化运维工具 Puppet/Chef/Salt/Ansible
+开发语言 Bash/Python/Perl 等；
+开源虚拟化技术 KVM，Container
+Nginx、Apache、HAProxy、Keepalived
