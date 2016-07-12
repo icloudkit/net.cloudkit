@@ -118,6 +118,8 @@ public class HttpClientTest {
             response1.close();
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         HttpPost httpPost = new HttpPost("http://query.customs.gov.cn/MNFTQ/MRoadQuery.aspx?" + Math.random() * 1000);
         httpPost.setHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
         httpPost.setHeader("Accept-Encoding", "gzip, deflate");
@@ -189,7 +191,7 @@ public class HttpClientTest {
 //     */
 //    public static String uploadFile(File file,String RequestURL){
 //        String result = null;
-//        String  BOUNDARY =  UUID.randomUUID().toString();  //边界标识   随机生成
+//        String BOUNDARY =  UUID.randomUUID().toString();  //边界标识   随机生成
 //        String PREFIX = "--" , LINE_END = "\r\n";
 //        String CONTENT_TYPE = "multipart/form-data";   //内容类型
 //
