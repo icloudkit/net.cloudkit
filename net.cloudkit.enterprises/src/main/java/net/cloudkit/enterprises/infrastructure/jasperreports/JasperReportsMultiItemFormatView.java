@@ -20,6 +20,7 @@ import net.sf.jasperreports.j2ee.servlets.ImageServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.web.servlet.view.jasperreports.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -137,6 +138,9 @@ public class JasperReportsMultiItemFormatView extends JasperReportsMultiFormatVi
 
                 path = matcher.replaceAll(viewName);
 
+                // TODO 从URL获取模板
+                // Resource resource = new UrlResource("http://www.example.com/main.html");
+                // 从本地获取模板
                 Resource resource = getApplicationContext().getResource(path);
                 reports.add(loadReport(resource));
             }
