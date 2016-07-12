@@ -140,6 +140,8 @@ public class JasperReportsMultiItemFormatView extends JasperReportsMultiFormatVi
 
                 // TODO 从URL获取模板
                 // Resource resource = new UrlResource("http://www.example.com/main.html");
+                // TODO 从InputStream获取模板
+                // Resource resource = new InputStreamResource();
                 // 从本地获取模板
                 Resource resource = getApplicationContext().getResource(path);
                 reports.add(loadReport(resource));

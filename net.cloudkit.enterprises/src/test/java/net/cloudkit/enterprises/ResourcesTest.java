@@ -16,6 +16,8 @@
 
 package net.cloudkit.enterprises;
 
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
@@ -29,7 +31,9 @@ public class ResourcesTest {
     public static void main(String[] args) {
 
         try {
+
             // Resource resource = getApplicationContext().getResource(path);
+            // Resource resource = new InputStreamResource();
             Resource resource = new UrlResource("http://guanmaoyun.com/main.html");
             System.out.println("filename:" + resource.getFilename());
         } catch (MalformedURLException e) {
