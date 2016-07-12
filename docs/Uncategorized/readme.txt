@@ -2054,6 +2054,7 @@ Nginx、Apache、HAProxy、Keepalived
 
 
 {
+
   action: "USER_REGISTRATION",
   request_context: "",
   request_data: "",
@@ -2063,3 +2064,6 @@ Nginx、Apache、HAProxy、Keepalived
   // action: "",
   // result: ""
 }
+
+unique_sequence
+unique_identifier
