@@ -73,7 +73,7 @@ public class JasperReportsMultiItemFormatView extends JasperReportsMultiFormatVi
             Properties contentDispositionMappings = getContentDispositionMappings();
             response.setCharacterEncoding("UTF-8");
 
-            // MIME TYP
+            // MIME TYPE
             // image/bmp                     BMP
             // image/gif                     GIF
             // image/jpeg                    JPEG
