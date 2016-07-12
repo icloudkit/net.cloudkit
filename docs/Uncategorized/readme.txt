@@ -2051,3 +2051,15 @@ MySQL、PostgreSQL、Pgpool
 开发语言 Bash/Python/Perl 等；
 开源虚拟化技术 KVM，Container
 Nginx、Apache、HAProxy、Keepalived
+
+
+{
+  action: "USER_REGISTRATION",
+  request_context: "",
+  request_data: "",
+  response_context: "",
+  response_data: ""
+
+  // action: "",
+  // result: ""
+}

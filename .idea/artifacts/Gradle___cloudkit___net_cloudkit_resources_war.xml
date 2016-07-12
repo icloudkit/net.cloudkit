@@ -12,14 +12,14 @@
           <element id="dir-copy" path="$PROJECT_DIR$/net.cloudkit.resources/build/resources/main" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.7" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.7" />
           <element id="library" level="project" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Gradle: org.slf4j:jul-to-slf4j:1.7.21" />
+          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Gradle: org.logback-extensions:logback-ext-spring:0.1.4" />
           <element id="library" level="project" name="Gradle: com.google.guava:guava:19.0" />
-          <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.7" />
-          <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.21" />
         </element>
       </element>
       <element id="directory" name="META-INF">
