@@ -2069,3 +2069,13 @@ unique_sequence
 unique_identifier
 
 http://hc.apache.org/
+
+查看文件和文件夹大小占用硬盘情况
+# 查看磁盘空间
+$ df -h
+# 查看具体文件目录空间信息
+$ du -h --max-depth=1
+# 查看端口
+$ netstat -anp|grep java
+# 端口被哪个进程占用
+$ lsof -i:8086
