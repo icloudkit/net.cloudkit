@@ -1,4 +1,4 @@
-./configure --prefix=/usr/local/php-7.0.7 \
+./configure --prefix=/usr/local/php-7.0.8 \
  --with-curl \
  --with-freetype-dir \
  --with-gd \
