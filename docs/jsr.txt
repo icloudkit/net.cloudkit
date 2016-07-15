@@ -1,0 +1,3894 @@
+JSRs: Java Specification Requests
+List of all JSRs
+	By Number		By Date
+
+
+
+1		Real-time Specification for Java
+Description:		The Real-Time Specification for Java extends the JavaTM platform to support both current practice and advanced real-time systems application programming.
+Status:		Final
+Latest Stage:
+Final Release 3	Download page	Start: 2006-07-12
+Spec Lead:		James J. Hunt, aicas GmbH
+
+
+
+2		Boundary-Scan API
+Description:		This API targeted the JavaCardTM platform so as to allow it to be usable on all available JavaTM virtual machines from the very smallest to the most sophisticated.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter.
+Latest Stage:
+Withdrawn		Effective: 1999-01-09
+Spec Lead:		Neil Jacobson, Xilinx
+Spec Lead:		Harold Ogle, Oracle
+
+
+
+3		JavaTM Management Extensions (JMXTM) Specification
+Description:		The JMXTM specification will provide a management architecture, APIs and services for building Web-based, distributed, dynamic and modular solutions to manage Java enabled resources.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 4	Download page	Start: 2014-03-04
+Spec Lead:		Staffan Larsen, Oracle
+Spec Lead:		Hinkmond Wong, Oracle
+
+
+
+4		ECperf Benchmark Specification
+Description:		ECperf is an EJBTM performance workload that is real-world, scalable and captures the essence of why component models exist.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 2	Download page	Start: 2002-03-19	End: 2002-04-22
+Spec Lead:		Shanti Subramanyam, Sun Microsystems, Inc.
+
+
+
+5		XML Parsing Specification
+Description:		The JavaTM API for XML Parsing (JAXP) allows developers to easily use XML Parsers in their applications via the industry standard SAX and DOM APIs.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2000-03-21
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+6		Unified Printing API (Java Print Service API)
+Description:		This unified Java Print API will be based on a print model that meets the requirements of the current Java 2 Print API and JiniTM Printing.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Robert Herriot, Xerox
+
+
+
+7		Industrial Automation Extension
+Description:		The Industrial Automation specification will result in an industry standard for industrial automation that is based on the JavaTM and JiniTM technologies.
+Status:		Withdrawn
+Reason:		Withdrawn with the consent of the Spec Lead. Difficulties in forming an expert group and reaching consensus toward a draft spec hampered the JSR's abilities in successfully navigating the community process.
+Latest Stage:
+Withdrawn		Effective: 2004-10-11
+Spec Lead:		Bruce Khavar, Cyberonix
+Spec Lead:		Tamsin Vantress, Cyberonix
+
+
+
+8		Open Services Gateway Specification
+Description:		This JSR was going to develop the Open Services Gateway (OSG) Specification and describe an extensible Service Gateway.
+Status:		Withdrawn
+Reason:		Withdrawn because work moved to Open Services Gateway consortium (www.osgi.org) where the specification will be completed.
+Latest Stage:
+Withdrawn		Effective: 1999-05-10
+Spec Lead:		Robert Mines, Sun Microsystems, Inc.
+
+
+
+9		Federated Management Architecture Specification
+Description:		The Federated Management Architecture (FMA) specifies a storage management platform that will allow vendors to construct storage management applications from standard and custom components.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2000-08-18	End: 2000-09-18
+Spec Lead:		William Connor, Phd., Sun Microsystems, Inc.
+
+
+
+10		Preferences API Specification
+Description:		A simple API allowing programs to manipulate user preference data and configuration data.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Joshua Bloch, Sun Microsystems, Inc.
+
+
+
+11		JAINTM TCAP Specification
+Description:		JAINTM TCAP JSR is a proposed Java specification for the TCAP layer of the Signaling System 7 (SS7) stack.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2001-10-04
+Spec Lead:		Phelim O'Doherty, Sun Microsystems, Inc.
+
+
+
+12		JavaTM Data Objects (JDO) Specification
+Description:		The JDO specification provides for interface-based definitions of data stores and transactions; and selection and transformation of persistent storage data into native JavaTM programming language objects.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 2	Download page	Start: 2004-10-25	End: 2004-12-06
+Spec Lead:		Craig Russell, Sun Microsystems, Inc.
+
+
+
+13		Decimal Arithmetic Enhancement
+Description:		This primarily adds floating point arithmetic to the BigDecimal class, allowing the use of decimal numbers for general-purpose arithmetic without the problems resulting from conversions to and from another type.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Joe Darcy, Oracle
+
+
+
+14		Add Generic Types To The JavaTM Programming Language
+Description:		Extending the JavaTM programming language with generic types (aka parameterized types).
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+15		Image I/O Framework Specification
+Description:		Image I/O supports image reader and writer plug-ins for sampled image formats. The API provides for exposure and preservation of metadata as well as pixel data.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Phil Race, Sun Microsystems, Inc.
+
+
+
+16		J2EETM Connector Architecture
+Description:		The J2EETM Connector architecture defines a standard architecture for integrating JavaTM applications with existing back-end Enterprise Information systems.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2001-09-24
+Spec Lead:		Binod PG, Sun Microsystems, Inc.
+
+
+
+17		JAINTM ISUP Specification
+Description:		Requirements for a Standard Java API for ISDN User Part (ISUP), an SS7 protocol.
+Status:		Withdrawn
+Reason:		The Spec Lead of this JSR approached other members of the Expert Group to see if they might be interested in taking on the role of Spec Lead, but there has been no interest. This is due to the fact that industry focus has evolved/changed, and as such the original scope of the JSR is not as important to the industry as originally scoped. The Spec Lead has since left the JCP and the Expert Group has been disbanded.
+Latest Stage:
+Withdrawn		Effective: 2003-02-05
+Spec Lead:		Vijaya Venkatachalam, Ulticom
+
+
+
+18		JAINTM OAM API Specification
+Description:		JAINTM Operations, Administration, and Maintenance (OAM) defines a standard API for provisioning and managing protocol interfaces in the Telecommunications and Internet Industry.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2000-09-14
+Spec Lead:		Doug Tait, Sun Microsystems, Inc.
+
+
+
+19		Enterprise JavaBeansTM 2.0
+Description:		The Enterprise JavaBeansTM 2.0 specification extends the architecture with integration with JMS, improved support for entity bean persistence, a portable query language for finder methods, and support for server interoperability.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2002-02-20	End: 2002-03-25
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+
+
+
+20		Orthogonal Persistence for the JavaTM Platform
+Description:		Orthogonal persistence for the JavaTM platform (OPJ) would have provided persistence for the full computational model specified by the JavaTM Language Specification (JLS).
+Status:		Rejected
+Reason:		This work duplicates functionality to be provided by JSR-000012 Java Data Objects Specification. Work on Orthogonal Persistence continued at SunLabs.
+Latest Stage:
+Rejected		Effective: 1999-08-11
+Spec Lead:		Mick Jordan, Oracle
+
+
+
+21		JAINTM JCC Specification
+Description:		JSR 21 focuses on the JAINTM Java Call Control (JCC) Specification. Any references seen below that refer to the JAIN Coordination and Transactions (JCAT) are addressed in JSR 122.
+Status:		Final
+Latest Stage:
+Final Release 4	Download page	Start: 2002-07-30
+Spec Lead:		Christer Boberg, Ericsson AB
+
+
+
+22		JAINTM SLEE API Specification
+Description:		Descriptions of all interfaces, classes, exceptions and requirements to develop portable telecommunication services and application frameworks so that services once developed will run on any JAINTM SLEE-compliant execution environment.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-03-03
+Spec Lead:		David Ferry, Open Cloud Limited
+
+
+
+23		JAINTM MGCP API Specification
+Description:		This work will specify the JAINTM API through which access to protocol stacks that support the Media Gateway Control Protocol (RFC 2705) may be achieved.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2001-10-08
+Spec Lead:		Christer Boberg, Ericsson AB
+
+
+
+24		JAINTM SPA TSM, SD and SAM 1.0 API
+Description:		This allows software developers to rapidly develop external Service Provider-type applications to securely access, discover and agree other APIs, which use abstract primitives that hide the heterogeneity of underlying networks.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-10-08
+Spec Lead:		Anders Lundqvist, Incomit AB
+
+
+
+25		JAINTM Connectivity Management Specification
+Description:		The JSR is to define the Java APIs for a Connectivity Management API specification.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter.
+Latest Stage:
+Withdrawn		Effective: 2000-11-21
+Spec Lead:		Rob Goedman, Sun Microsystems, Inc.
+
+
+
+26		UML/EJB Mapping Specification
+Description:		This document describes a standard mapping between the Enterprise JavaBeansTM architecture and the Unified Modeling Language.
+Status:		Withdrawn
+Reason:		Withdrawn due to lack of interest after the original Spec Lead company was acquired. New Spec Lead company has failed to find a Spec Lead who wants to drive JSR-26 to completion. Expert Group was informed of intent to withdraw JSR-26 and it supported that action.
+Latest Stage:
+Withdrawn		Effective: 2004-03-29
+Spec Lead:		Andy Dean, IBM
+
+
+
+27		JavaTM Cryptography Extension 1.3
+Description:		This Specification would have enhanced the JavaTM Cryptography Extension 1.2 and made it exportable.
+Status:		Withdrawn
+Reason:		Withdrawn before work began because the proposal describes a cryptographic system and/or a cryptographic framework whose implementation would be subject to U.S. Export Licensing requirements.
+Latest Stage:
+Withdrawn		Effective: 1999-11-05
+Spec Lead:		Sharon Liu, Sun Microsystems, Inc.
+Spec Lead:		Jan Luehe, Sun Microsystems, Inc.
+
+
+
+28		Java SASL Specification
+Description:		This specification defines a SASL client and server API in the JavaTM programming language.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2003-12-23
+Spec Lead:		Rosanna Lee, Sun Microsystems, Inc.
+
+
+
+29		JAINTM MAP Specification
+Description:		The JAINTM MAP API Specification includes functionality for messaging and location service. The API may be implemented on different protocols, e.g. ETSI MAP and ANSI 41.
+Status:		Withdrawn
+Reason:		Withdrawn due to Spec Lead's move to another company and the lack of interest from the rest of the Expert Group in driving the spec to Final Release. At the time it was withdrawn, there had been no activity in the JSR since September 2001.
+Latest Stage:
+Withdrawn		Effective: 2003-05-30
+Spec Lead:		S?ren Torstensson, Ericsson Inc.
+
+
+
+30		J2METM Connected, Limited Device Configuration
+Description:		This specification will define a standard platform configuration of the JavaTM 2 platform, Micro Edition (J2METM) for small, resource-limited, connected devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2000-05-30
+Spec Lead:		Antero Taivalsaari, Sun Microsystems, Inc.
+
+
+
+31		XML Data Binding Specification
+Description:		A facility for compiling an XML schema into one or more JavaTM classes which can parse, generate, and validate documents that follow the schema.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-03-04
+Spec Lead:		Joe Fialli, Oracle
+Spec Lead:		Sekhar Vajjhala, Sun Microsystems, Inc.
+
+
+
+32		JAINTM SIP API Specification
+Description:		The JAINTM SIP API specification provides a standard portable interface to share information between SIP Clients and SIP Servers, providing call control elements enabling converged-network applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-11-29
+Spec Lead:		Phelim O'Doherty, Oracle
+Spec Lead:		Mudumbai Ranganathan, NIST
+
+
+
+33		InfoBus 2.0 Specification
+Description:		The InfoBus 2.0 Specification and release would have added features to the existing InfoBus 1.2 Specification that capitalize on new features found in the J2SETM Platform.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter. InfoBus 2.0 is no longer under development in the Java Community Process. Please direct comments or questions about InfoBus to infobus-comments@java.sun.com. For information on InfoBus 1.2, see http://java.sun.com/beans/infobus.
+Latest Stage:
+Withdrawn		Effective: 1999-11-08
+Spec Lead:		Mark Colan, Lotus Development Corporation
+
+
+
+34		JavaTM Advanced Imaging API 1.1
+Description:		Revision of the JavaTM Advanced Imaging API specification to version 1.1. Java Advanced Imaging supports sophisticated image processing in Java 2.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-03-11
+Spec Lead:		John Zimmerman, Sun Microsystems, Inc.
+
+
+
+35		JAINTM INAP API Specification
+Description:		This JSR is to develop the JAINTM (Java APIs for Integrated Networks) INAP (Intelligent Network Application Protocol) specification for Intelligent Network Applications in the Telecommunications Industry.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-03-05
+Spec Lead:		Shankar Allimatti, Mahindra British Telecom Ltd.
+
+
+
+36		Connected Device Configuration
+Description:		The Connected Device Configuration (CDC) provides the basis of the JavaTM 2 platform, Micro Edition for devices that have a sufficient 32-bit microprocessor and ample memory.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2005-12-20
+Spec Lead:	Star Spec Lead	Jon Courtney, Sun Microsystems, Inc.
+
+
+
+37		Mobile Information Device Profile for the J2METM Platform
+Description:		This specification will define a profile that will extend and enhance the "J2METM Connected, Limited Device Configuration" (JSR-000030), enabling application development for mobile information appliances and voice communication devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2000-09-19
+Spec Lead:		Brian Deuser, Motorola
+
+
+
+38		Application Installation API Specification
+Description:		This proposal is to develop a set of Java APIs that will enable cross-platform installation and de-installation of JavaTM applications as well as platform-specific applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2003-01-15	End: 2003-02-18
+Spec Lead:		Paul Lovvik, Sun Microsystems, Inc.
+
+
+
+39		JavaTM Servlet and JSP Performance Benchmark
+Description:		The specification will provide a comprehensive benchmark suite for JavaTM Servlets and JSPTM pages that exercises the key areas that impact performance of these in real life applications.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter.
+Latest Stage:
+Withdrawn		Effective: 2001-10-02
+Spec Lead:		Ruslan Belkin, America Online (AOL)
+
+
+
+40		The JavaTM Metadata Interface (JMI) Specification
+Description:		The Java Metadata Interface specification will address the need for a pure Java metadata framework API that supports the creation, storage, retrieval, and interchange of metadata.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-06-28
+Spec Lead:		Ravi Dirckze, Unisys
+
+
+
+41		A Simple Assertion Facility
+Description:		A new keyword allowing programmers to include assertions describing intended program behavior, which can be checked as programs execute to detect bugs.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Joshua Bloch, Sun Microsystems, Inc.
+
+
+
+42		Travel Industry Reservation Booking Foundation API Specification
+Description:		This intended to ease the building of applications for reservation booking in the travel industry that would cross all aspects of travel (air, car, hotel, cruise, and other travel activities).
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter. Community support was not sufficient to form an expert group.
+Latest Stage:
+Withdrawn		Effective: 2000-06-13
+Submitter:		Sherry Shavor, IBM
+
+
+
+43		JTAPI 1.4 Specification
+Description:		JTAPI 1.4 extends and enhances the current Java Telephony specification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-07-29
+Spec Lead:		Jeff Peck, Enterprise Computer Telephony Forum (ECTF)
+Spec Lead:		Richard J. Pennenga, Enterprise Computer Telephony Forum (ECTF)
+
+
+
+44		Braille API Specification
+Description:		This API for Braille lines would have eased use of these devices and allowed faster introduction of new Braille lines in the JavaTM market by writing a driver for Braille.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter. Community support was not sufficient to support an Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2000-11-21
+Spec Lead:		Ramon Cabello, O.N.C.E.
+
+
+
+45		Debugging Support for Other Languages
+Description:		This specification establishes standardized tools for correlating JavaTM virtual machine byte code to source code of languages other than the JavaTM programming language.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-11-24
+Spec Lead:		Robert Field, Oracle
+
+
+
+46		Foundation Profile
+Description:		The Foundation Profile is a set of APIs meant for applications running on small devices that have some type of network connection.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2005-12-20
+Spec Lead:	Star Spec Lead	Jon Courtney, Sun Microsystems, Inc.
+
+
+
+47		Logging API Specification
+Description:		Define standard logging APIs for the error and trace logging.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+48		WBEM Services Specification
+Description:		JavaTM WBEM Services is a set of APIs and reference implementation for WBEM. WBEM is an initiative from the DMTF that unifies systems management and instrumentation.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-07-01
+Spec Lead:		Carl Chan, WBEM Solutions, Inc
+Spec Lead:		Jim Davis, WBEM Solutions, Inc
+
+
+
+49		Web Based Industrial Monitoring Framework
+Description:		This JSR is to develop a web based monitoring and data acquisition framework for a industrial automation application. The APIs provides cross vendor inter-bean communication means.
+Status:		Withdrawn
+Reason:		Withdrawn as Spec Lead left the JCP and no other Expert Group member was willing to take over as Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-02-18
+Spec Lead:		Hiroaki Hashimukai, Yamatake Corporation
+
+
+
+50		Distributed Real-Time Specification
+Description:		The Distributed Real-Time Specification for Java extends RMI in the Real-Time Specification for Java, to provide support for predictability of end-to-end timeliness of trans-node activities.
+Status:		Dormant
+Reason:		The Specification Lead has chosen to list this JSR as dormant while work on the Community Review draft continues.
+Latest Stage:
+Expert Group Formation		Start: 2000-04-12	End: 2000-08-14
+Spec Lead:		James J. Hunt, aicas GmbH
+
+
+
+51		New I/O APIs for the JavaTM Platform
+Description:		APIs for scalable I/O, fast buffered binary and character I/O, regular expressions, charset conversion, and an improved filesystem interface.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:	Star Spec Lead	Mark Reinhold, Sun Microsystems, Inc.
+
+
+
+52		A Standard Tag Library for JavaServer PagesTM
+Description:		A standard tag library for JSPTM pages.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 3	Download page	Start: 2006-10-04	End: 2006-11-06
+Spec Lead:		Jan Luehe, Sun Microsystems, Inc.
+Spec Lead:		Eduardo Pelegri-Llopart, Sun Microsystems, Inc.
+
+
+
+53		JavaTM Servlet 2.3 and JavaServer PagesTM 1.2 Specifications
+Description:		The next versions of the JavaTM Servlet and JavaServer PagesTM (JSP) specifications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 2	Download page	Start: 2002-05-24	End: 2002-06-24
+Spec Lead:		Eduardo Pelegri-Llopart, Sun Microsystems, Inc.
+
+
+
+54		JDBCTM 3.0 Specification
+Description:		The proposed specification will update the JDBCTM specification to reflect changes in the SQL specification and JavaTM platform.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Lance Andersen, Oracle
+
+
+
+55		Certification Path API
+Description:		The Certification Path API provides a set of provider-based APIs for creating, building, and verifying certification paths (also known as "certificate chains").
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Sean Mullan, Sun Microsystems, Inc.
+
+
+
+56		Java Network Launching Protocol and API
+Description:		A specification of protocols and APIs that will enable JavaTM applications to be deployed on the Web.
+Status:		Active
+Latest Stage:
+Maintenance Draft Review 8	Download page	Start: 2015-09-25	End: 2015-10-24
+Spec Lead:		Andy Herrick, Oracle
+
+
+
+57		Long-Term Persistence for JavaBeansTM Specification
+Description:		JSR 57 provides streams to convert graphs of JavaBeansTM architecture to and from version resilient file formats (typically XML documents).
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Mark Davidson, Sun Microsystems, Inc.
+
+
+
+58		JavaTM 2 Platform, Enterprise Edition 1.3 Specification
+Description:		Defines the JavaTM 2 Platform, Enterprise Edition, version 1.3.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2001-09-24
+Spec Lead:	Star Spec Lead	Bill Shannon, Sun Microsystems, Inc.
+
+
+
+59		J2SETM Merlin Release Contents
+Description:		Define the major features of the J2SETM "Merlin" release (J2SE 1.4).
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 5	Download page	Start: 2004-08-17	End: 2004-09-20
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+60		Building Automation Java API
+Description:		The goal is to develop a set of Java APIs for programmable controllers in the building automation industry.
+Status:		Withdrawn
+Reason:		This JSR was originally proposed a long time ago, but failed to attract a critical mass for an expert group. After a few conference calls, the effort was abandoned.
+Latest Stage:
+Withdrawn		Effective: 2016-04-05
+Spec Lead:		Brian Frank, Tridium, Inc
+
+
+
+61		Phonelets API Specification
+Description:		Phonelets provide developers with a simple API to package, deploy and run Computer Telephony Integration (CTI) applications in a resource and security controlled environment.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead after 4 years with no Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2004-04-09
+Spec Lead:		Marc Petit-Huguenin, 8x8
+
+
+
+62		Personal Profile Specification
+Description:		The J2METM Personal Profile provides the J2ME environment for those devices with a need for a high degree of Internet connectivity and web fidelity.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-03-24
+Spec Lead:	Star Spec Lead	Jon Courtney, Sun Microsystems, Inc.
+
+
+
+63		JavaTM API for XML Processing 1.1
+Description:		The proposed specification will define a set of implementation independent portable APIs supporting XML Processing.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2002-09-10
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+64		Financial Services Party Component
+Description:		This JSR is a proposal to define an Enterprise Java BeanTM (EJBTM) component interface for party information as required by the financial services domain.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the submitter. XML party components for this functionality are being developed under the Customer Profile Exchange (CPex).
+Latest Stage:
+Withdrawn		Effective: 2000-08-29
+Submitter:		William Senn, IBM
+
+
+
+65		Concise Object-Array Literals
+Description:		A minor extension to the JavaTM programming language that will support a concise notation for automatically-boxing object-array literals.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead with the agreement of the Expert Group. The community requirements targeted in this JSR are now being addressed as part of autoboxing in JSR 201.
+Latest Stage:
+Withdrawn		Effective: 2003-07-25
+Spec Lead:		Gilad Bracha, Sun Microsystems, Inc.
+
+
+
+66		RMI Optional Package Specification Version 1.0
+Description:		The J2METM RMI Optional Package (RMI OP) provides JavaTM platform to Java platform remote method invocation for Java devices and interoperates with J2SETM RMI.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-06-27
+Spec Lead:		Mark Hodapp, Sun Microsystems, Inc.
+
+
+
+67		JavaTM APIs for XML Messaging 1.0
+Description:		JAXM provides an API for packaging and transporting business transactions using on-the-wire protocols being defined by ebXML.org, Oasis, W3C and IETF.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 3	Download page	Start: 2006-04-12
+Spec Lead:		V B Kumar Jayanti, Sun Microsystems, Inc.
+
+
+
+68		J2METM Platform Specification
+Description:		This specification will define the next major revision of the JavaTM 2 platform, Micro Edition.
+Status:		Withdrawn
+Reason:		Its original purpose to define the architecture for Java ME and additional processes for building blocks are not necessary. The Community Review draft contains useful working definitions of Configurations and Profiles and useful rules for subsetting and merging APIs.
+Latest Stage:
+Withdrawn		Effective: 2011-03-22
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+69		Java OLAP Interface (JOLAP)
+Description:		JOLAP is a pure Java API for the J2EETM environment that supports the creation and maintenance of OLAP data and metadata, in a vendor-independent manner.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2012-04-16
+Spec Lead:		John D. Poole, Hyperion Solutions Corporation
+
+
+
+70		IIOP Protocol Adapter for JMXTM Specification
+Description:		This specification will establish an IIOP based adapter for the JMXTM specification to allow CORBA clients access JMX agents.
+Status:		Withdrawn
+Reason:		Withdrawn following re-prioritization within the company, IONA could no longer commit the resources necessary to complete the specification and build an RI and TCK. In addition, IONA no longer sees a sufficient customer demand for access to JMX MBeans using CORBA clients, so IONA formed the opinion that the specification did not address a common need in the marketplace and therefore was unnecessary.
+Latest Stage:
+Withdrawn		Effective: 2003-10-23
+Spec Lead:		Damian McGrath, Progress Software
+
+
+
+71		JMX-TMN Specification
+Description:		JMX-TMN Specification is part of the second phase of the JavaTM Management Extensions (JMXTM) umbrella initiative. It specifies the interoperability between the Telecommunication Management Network (TMN) standards and JMX.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2001-06-18
+Spec Lead:		Aline Ellul, Evidian
+
+
+
+72		JavaTM GSS API
+Description:		This defines a Generic Security Services API (GSS-API) in Java, to provide a layer of abstraction over security mechanisms that perform authentication, message integrity protection, and message privacy protection.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-05-09
+Spec Lead:		Seema Malkani, Sun Microsystems, Inc.
+
+
+
+73		Data Mining API
+Description:		This JSR addresses the need for a data mining API aligned with existing, evolving data mining standards efforts.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2005-08-12
+Spec Lead:	Star Spec Lead	Mark F. Hornick, Oracle
+
+
+
+74		Public Key Cryptography Standards (PKCS) 1.0
+Description:		This JSR is to define a standard set of APIs for a subset of the Public Key Cryptography Standards (PKCS#1, #5, #7, #8, #9, #10 and #12).
+Status:		Withdrawn
+Reason:		Withdrawn as the main goals of this JSR have been achieved and delivered through J2SE and other JCP specifications.
+Latest Stage:
+Withdrawn		Effective: 2003-01-14
+Spec Lead:		Seema Malkani, Sun Microsystems, Inc.
+
+
+
+75		PDA Optional Packages for the J2METM Platform
+Description:		This JSR produces two separate optional packages for features commonly found on PDAs and other J2ME mobile devices: one for accessing PIM data and one for accessing file systems.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-06-07
+Spec Lead:		Tom Chavez, PalmSource, Inc.
+Spec Lead:		Ken Walker, IBM
+
+
+
+76		RMI Security for J2SETM
+Description:		Define a high-level API for network security in JavaTM 2 Standard Edition RMI, covering basic security mechanisms: authentication (including delegation), confidentiality, and integrity.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in Draft Approval/Reconsideration Ballots.
+Latest Stage:
+Rejected		Effective: 2001-02-21
+Spec Lead:		Bob Scheifler, Sun Microsystems, Inc.
+
+
+
+77		J2EETM Management
+Description:		The JavaTM 2 Platform, Enterprise Edition Management Specification will provide server vendors and tool vendors with a standard model for managing the J2EE Platform.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-06-22
+Spec Lead:		Hans Hrasna, Oracle
+
+
+
+78		RMI Custom Remote References
+Description:		Provide a general framework in JavaTM 2 Standard Edition RMI for customizing remote invocation behavior.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in Draft Approval/Reconsideration Ballots.
+Latest Stage:
+Rejected		Effective: 2001-02-21
+Spec Lead:		Ann Wollrath, Sun Microsystems, Inc.
+
+
+
+79		JAINTM MEGACO API Specification
+Description:		This work will specify the JAINTM API through which access to protocol stacks that support the MEGACO/H.248 protocol may be achieved.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-12-06
+Spec Lead:		Vikas Bajaj, Hughes Software Systems
+
+
+
+80		JavaTM USB API
+Description:		This specification provides a JavaTM API for communicating with devices attached via the Universal Serial Bus (USB). It allows Java applications to discover, read, write, and manage USB devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-06-08
+Spec Lead:		Boyd Dimmock, IBM
+
+
+
+81		JAIN H323
+Description:		H.323 defines a system for moving real-time bi-directional multimedia (video, voice, data, fax, etc.) across packet-based networks.
+Status:		Withdrawn
+Reason:		Due to the general absence of interest in the Community, the Specification Lead decided to withdraw the JSR from development.
+Latest Stage:
+Withdrawn		Effective: 2002-02-05
+Spec Lead:		Orit Levin, RADvision
+
+
+
+82		JavaTM APIs for Bluetooth
+Description:		Bluetooth is an important emerging standard for wireless integration of small devices. The specification standardizes a set of Java APIs to allow Java-enabled devices to integrate into a Bluetooth environment.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 4	Download page	Start: 2010-03-08	End: 2010-04-12
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+83		Multiarray package
+Description:		This JSR proposes a package implementing true rectangular multidimensional arrays for the JavaTM platform.
+Status:		Withdrawn
+Reason:		JSR-83 has shown slow progress for several years and has not generated significant industry interest or participation. With no outlook for a timely completion of this JSR, the Spec Lead decided to withdraw it.
+Latest Stage:
+Withdrawn		Effective: 2005-09-06
+Spec Lead:		Jose E. Moreira, IBM
+
+
+
+84		Floating Point Extensions
+Description:		This JSR proposes extensions to the JavaTM Programming Language and Java Virtual Machine that support more efficient execution of floating point code.
+Status:		Withdrawn
+Reason:		Due to the general absence of interest in the community, the Specification lead withdrew the JSR.
+Latest Stage:
+Withdrawn		Effective: 2002-03-01
+Spec Lead:		Marc Snir, IBM
+
+
+
+85		Rules-based Authorization and Audit
+Description:		Define an API for managing and accessing a rules-based authorization and audit trail service.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+JSR Review Ballot Failed		Start: 2000-10-10
+Spec Lead:		Hal Lockhart, Entegrity Solutions
+
+
+
+86		Enterprise Media Beans
+Description:		Enterprise Media Beans provide a framework to integrate rich media data (i.e. audio, video, or image) into applications based on EJBTM Entity Beans within the J2EETM application development model.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-05-28
+Submitter:		Lou Raymundo, Watchmark Corporation
+
+
+
+87		JavaTM Agent Services
+Description:		This specification defines a set of objects and service interfaces to support the deployment and operation of autonomous communicative agents.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-01-25
+Spec Lead:		Francis G. McCabe, Fujitsu Limited
+
+
+
+88		JavaTM EE Application Deployment
+Description:		This specification provides a complete description of the APIs required by the J2EE platform to enable development of platform-independent deployment tools.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2006-06-07
+Spec Lead:		Gerald Ingalls, Oracle
+
+
+
+89		OSS Service Activation API
+Description:		Provide an API that allows telecom management applications to be developed and integrated with Java-enabled Service Activation systems.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2006-05-23
+Spec Lead:		Andreas Ebbert-Karroum, codecentric AG
+
+
+
+90		OSS Quality of Service API
+Description:		Provide an API that allows telecom management applications to be developed and integrated with Java-enabled Quality of Service systems.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-11-26
+Spec Lead:		Ashutosh Sharma, Wipro Technologies
+
+
+
+91		OSS Trouble Ticket API
+Description:		The OSS Trouble Ticket API will provide interfaces for creating, querying, updating, and deleting trouble tickets (trouble reports).
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2007-08-21
+Spec Lead:		Roman Schlegel, Frox Communication
+
+
+
+92		Localizable Text
+Description:		Localizable Text is the infrastructure necessary to translate language-neutral information (in an object) from anywhere in a distributed network.
+Status:		Withdrawn
+Reason:		Both JSR-92 and JSR-150 address the issue of 'distributed internationalization' in the J2EE world. JSR-92 is somewhat client-centric in nature while JSR-150 attempts to provide a server-side solution. The progress of JSR-92 is rather slow, and some of the issues raised in JSR-92 can be addressed more elegantly by the technology advocated in JSR-150. The existence of two separate JSRs for the same issue of distributed internationalization can generate unnecessary confusion. Hence we feel JSR-92 should be withdrawn from the JSR space altogether. We will incorporate relevant portions of JSR-92 in JSR-150.
+Latest Stage:
+Withdrawn		Effective: 2005-02-08
+Spec Lead:		Debasish Banerjee, IBM
+
+
+
+93		JavaTM API for XML Registries 1.0 (JAXR)
+Description:		JAXR provides an API for a set of distributed Registry Services that enables business-to-business integration between business enterprises, using the protocols being defined by ebXML.org, Oasis, ISO 11179.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-06-11
+Spec Lead:		Paul Sterk, Sun Microsystems, Inc.
+
+
+
+94		JavaTM Rule Engine API
+Description:		This specification defines a Java runtime API for rule engines.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-08-04
+Spec Lead:		Daniel Selman, ILOG
+
+
+
+95		J2EETM Activity Service for Extended Transactions
+Description:		The Activity Service supports flexible ways of composing an application using transactions, and can enable the application to possess some or all ACID properties.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-05-11
+Spec Lead:		Ian Robinson, IBM
+
+
+
+96		JavaTM Daemons
+Description:		The Java Daemon API supplies a small container framework for developing and deploying independently running services in order to fill the gap caused by different handling on existing native platforms.
+Status:		Withdrawn
+Reason:		Following the failed Draft Approval Ballot, the Spec Lead decided not to work on materials for a reconsideration ballot and withdrew the JSR from the Java Community Process.
+Latest Stage:
+Withdrawn		Effective: 2002-03-15
+Spec Lead:		Thomas Kopp, Dialogika GMBH
+
+
+
+97		JavaHelpTM 2.0 Specification
+Description:		A major update to the JavaHelp 1.0 Specification, including enhancements to merging, multi-topic printing, improved secondary window and popup usage, JFC ToolTip HelpSet support, HelpSet presentation controls and additional Navigators.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-10-16
+Spec Lead:		Roger Brinkley, Oracle
+
+
+
+98		JAINTM User Location and Status API
+Description:		The JAIN User Location and Status 1.0 API is the Java specification of the Parlay Mobility 2.1 API.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-02-28
+Spec Lead:		Ulf Lange, Siemens AG
+
+
+
+99		Java Specification Participation Agreement
+Description:		This is the major revision of the Java Specification Participation Agreement (JSPA).
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2005-01-21	End: 2005-03-28
+Spec Lead:		Jonathan Nimer, Sun Microsystems, Inc.
+
+
+
+100		JAINTM Service Creation Environment
+Description:		JAINTM SCE will support and simplify the creation of portable telecommunication services delivered primarily to the JAINTM Service Logic Execution Environment, while not restricted to this class of Execution Environments.
+Status:		Withdrawn
+Reason:		Withdrawn when the Spec Lead asked to withdraw and no one from the Expert Group was willing to become the new Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2006-12-04
+Spec Lead:		John-Luc Bakker, Telcordia Technologies, Inc.
+
+
+
+101		JavaTM APIs for XML based RPC
+Description:		Java APIs to support emerging industry XML based RPC standards.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2003-10-28
+Spec Lead:		Roberto Chinnici, Oracle
+
+
+
+102		JDOM 1.0
+Description:		JDOM is a way to represent an XML document for easy and efficient reading, manipulation, and writing.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-03-22
+Spec Lead:		Jason Hunter, Hunter, Jason
+
+
+
+103		JAINTM User Interaction API
+Description:		This was intended to allow software developers to rapidly develop external Service Provider-type applications using abstract primitives that hide the heterogeneity of underlying networks.
+Status:		Withdrawn
+Reason:		Withdrawn following decisions at the November 2002 JAIN meeting in Austin.
+Latest Stage:
+Withdrawn		Effective: 2003-03-21
+Spec Lead:		Judith Russell, AePONA
+
+
+
+104		XML Trust Service APIs
+Description:		This defines a standard set of APIs and a protocol for a "Trust Service", minimizing the complexity of applications using XML Signature.
+Status:		Withdrawn
+Reason:		The Java world has moved on since 2001 and the need for this JSR has declined.
+Latest Stage:
+Withdrawn		Effective: 2009-06-11
+Submitter:		Anthony Nadalin, IBM
+
+
+
+105		XML Digital Signature APIs
+Description:		This defines and incorporates a standard set of high-level implementation-independent APIs for XML digital signatures services. The XML Digital Signature specification is defined by the W3C.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-06-24
+Spec Lead:		Sean Mullan, Sun Microsystems, Inc.
+Spec Lead:		Sean Mullan, Oracle
+
+
+
+106		XML Digital Encryption APIs
+Description:		This JSR is to define a standard set of APIs for XML digital encryption services. This proposal is to define and incorporate the high level implementation independent Java APIs.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-05-04
+Spec Lead:		Bruce Rich, IBM
+
+
+
+107		JCACHE - Java Temporary Caching API
+Description:		Specifies API and semantics for temporary, in memory caching of Java objects, including object creation, shared access, spooling, invalidation, and consistency across JVM's.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-03-18
+Spec Lead:		Gregory Robert Luck, Luck, Gregory Robert
+Spec Lead:		Brian Oliver, Oracle
+Spec Lead:		Cameron Purdy, Oracle
+
+
+
+108		Units Specification
+Description:		The JavaTM units package supports programatic unit handling via an abstract Unit class, run-time checking and conversion, unit arithmetic, unit parsing and formatting, and a units database.
+Status:		Withdrawn
+Reason:		Withdrawn after the Spec Lead left the JCP and none of the Expert Group took over as Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2004-07-23
+Spec Lead:		Steven Emmerson, University Corporation for Atmospheric Research (UCAR)
+
+
+
+109		Implementing Enterprise Web Services
+Description:		This specification defines the programming model and runtime architecture for implementing web services in Java.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 3	Download page	Start: 2013-06-07
+Spec Lead:		Jitendra Kotamraju, Oracle
+
+
+
+110		JavaTM APIs for WSDL
+Description:		JWSDL provides a standard set of Java APIs for representing, manipulating, reading and writing WSDL (Web Services Description Language) documents, including an extension mechanism for WSDL extensibility.
+Status:		Final
+Latest Stage:
+Final Release 3	Download page	Start: 2006-09-22
+Spec Lead:		Graham C Turrell, IBM
+
+
+
+111		JavaTM Services Framework
+Description:		Provide a specification that clearly defines the lifecycle, configuration, and management of software application services. The specification will provide a standard mechanism for assembling service components into Java server applications.
+Status:		Withdrawn
+Reason:		Withdrawn with the agreement of the Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2003-08-19
+Spec Lead:		Berin Loritsch, Loritsch, Berin
+
+
+
+112		J2EETM Connector Architecture 1.5
+Description:		The J2EE(TM) Connector Architecture 1/5 extends the existing 1.0 specification with new features including asynchronous integration with enterprise information systems, Java Message Service (JMS) provider pluggability.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-11-24
+Spec Lead:		Binod PG, Sun Microsystems, Inc.
+
+
+
+113		JavaTM Speech API 2.0
+Description:		This JSR extends the work of the 1.0 JavaTM Speech API, specifying a cross-platform interface to support speech recognizers and synthesizers.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-05-07
+Spec Lead:		Charles Hemphill, EverSpeech, Inc.
+
+
+
+114		JDBC Rowset Implementations
+Description:		JavaTM API providing implementations of the JDBC Rowset interface.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2014-03-04
+Spec Lead:		Lance Andersen, Oracle
+
+
+
+115		JavaTM Authorization Contract for Containers
+Description:		This JSR seeks to define a contract between containers and authorization service providers that will result in the implementation of providers for use by containers.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 3	Download page	Start: 2013-06-10
+Spec Lead:		Ronald Monzillo, Oracle
+
+
+
+116		SIP Servlet API
+Description:		The SIP Servlet API defines a high-level extension API for SIP servers. It enables SIP applications to be deployed and managed based on the servlet model.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-03-07
+Spec Lead:		Anders Kristensen, Dynamicsoft, Inc
+
+
+
+117		J2EETM APIs for Continuous Availability
+Description:		This specification defines the programming model and runtime support for implementing J2EE applications requiring continuous availability.
+Status:		Withdrawn
+Reason:		Withdrawn with the agreement of the Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2003-08-25
+Spec Lead:		Max Mortazavi, Sun Microsystems, Inc.
+
+
+
+118		Mobile Information Device Profile 2.0
+Description:		This specification will define a profile that will extend and enhance the "J2METM Mobile Information Device Profile" (JSR-000037).
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 3	Download page	Start: 2010-10-18	End: 2010-11-22
+Spec Lead:	Star Spec Lead	Volker Bauche, Oracle
+
+
+
+119		JAINTM SPA Integrity Management and Event Notification API
+Description:		The API was intended to allow software developers to rapidly develop external Service Provider-type applications to maintain service intergrity and receive generic service-related events.
+Status:		Withdrawn
+Reason:		With agreement from the Expert Group, the Spec Lead decided to withdrawn this JSR following decisions at the November 2002 JAIN meeting in Austin.
+Latest Stage:
+Withdrawn		Effective: 2003-02-24
+Spec Lead:		Anders Lundqvist, Incomit AB
+
+
+
+120		Wireless Messaging API
+Description:		This defines a set of optional APIs which provides standard access to wireless communication resources, designed to run on J2ME configurations and to enhance J2ME profiles with unique functionality.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2003-04-25
+Spec Lead:		Marquart C Franz, Siemens AG
+
+
+
+121		Application Isolation API Specification
+Description:		An API for initiating and controlling computations isolated from each other to varying degrees. Some API semantics are similar to those of ThreadGroup.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-06-13
+Spec Lead:		Krzysztof Palacz, Sun Microsystems, Inc.
+
+
+
+122		JAINTM JCAT
+Description:		This develops the JavaTM Coordination and Transaction (JCAT) specification, which perceives Java Call Control (JCC) as its core package and extends it with concepts to model and control terminal capabilities.
+Status:		Withdrawn
+Reason:		We see no reason to keep it as there has be no development or interest for a long time and we do not intend to further evolve the standard.
+Latest Stage:
+Withdrawn		Effective: 2016-04-05
+Spec Lead:		Christer Boberg, Ericsson AB
+
+
+
+123		JAINTM Presence and Availability Management (PAM) API
+Description:		JAINTM SPA Presence and Availability Management API will provide Java APIs to disseminate and manage presence information securely across heterogeneous networks and applications.
+Status:		Withdrawn
+Reason:		Withdrawn when no one was found to take over Specification Lead role. In addition, the differences between the OSA PAM and JAIN PAM specs are sufficiently small that it's not clear that the industry benefits from two specifications.
+Latest Stage:
+Withdrawn		Effective: 2004-03-19
+Spec Lead:		Jorge Lobo, Teltier Technologies
+
+
+
+124		J2EETM Client Provisioning Specification
+Description:		This JSR aims to define Java standard which partitions server applications that provision client applications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-10-24
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+125		JAINTM SIP Lite
+Description:		The JAINTM SIP Lite API defines a high level API to the SIP stack to allow for the rapid development of applications.
+Status:		Withdrawn
+Reason:		Withdrawn after no one on the Expert Group offered to take over the Spec Lead role. Because of the resourcing issues, Nortel had to withdraw from JSR125. Nortel was unable to provide the RI and the TCK, but believed that this is the right approach for a Proxy and small footprint SIP servers/Clients.
+Latest Stage:
+Withdrawn		Effective: 2006-03-14
+Spec Lead:		David Tweedie, Nortel
+
+
+
+126		Distributed Page Assembly
+Description:		This specification defines a standard application model and architecture for distributed page assembly within the J2EE framework.
+Status:		Withdrawn
+Reason:		Initial discussions for the JSR 126 EG were deferred when they realized that a viable solution in the proposed direction, which is complimentary to JSR 128, required advancements in the underlying technology (Edge Side Includes). At the time, it seemed that discussion about ESI-related standards were sufficiently active that they could wait for the next version of the standard. However, those discussions seemed to stall as attentions were directed to early adoption and other topics. If ESI standards are revised at a later date, then perhaps the objectives of JSR 126 could be pursued through a new JSR.
+Latest Stage:
+Withdrawn		Effective: 2003-11-10
+Spec Lead:		Rajesh Agarwalla, IBM
+Spec Lead:		Steve Ims, IBM
+
+
+
+127		JavaServer Faces
+Description:		This specification defines an architecture and APIs which simplify the creation and maintenance of Java Server application GUIs.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2004-05-27
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+Spec Lead:		Craig R. McClanahan, Sun Microsystems, Inc.
+
+
+
+128		JESI - JSP Tag Library for Edge Side Includes (ESI)
+Description:		The JESI tag library facilitates the use of Edge Side Include (ESI) in-markup language within JSP applications. JESI tags simplify the declaration of cacheable dynamic fragments, content invalidation and personalization.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-02-26
+Spec Lead:		Olga Peschansky, Oracle
+
+
+
+129		Personal Basis Profile Specification
+Description:		The J2METM Personal Basis Profile provides a J2ME application environment for network-connected devices supporting a basic level of graphical presentation.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2005-12-19
+Spec Lead:	Star Spec Lead	Jon Courtney, Sun Microsystems, Inc.
+
+
+
+130		OSS Billing Mediation API
+Description:		Provide an API via the OSS through Java initiative that allows telecom network management applications to be developed and integrated with Java-enabled IP Billing systems.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2004-02-03
+Spec Lead:		Tulika Pradhan, Infozech Software Ltd.
+
+
+
+131		ECPerf 1.1
+Description:		ECperf 1.1 is a maintenance release of ECperf 1.0. The ECperf 1.1 Expert Group will also be responsible for evaluating and accepting ECperf 1.0 results submitted.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-04-25
+Spec Lead:		Shanti Subramanyam, Sun Microsystems, Inc.
+
+
+
+132		JAINTM OAM API Specification v2.0
+Description:		This would have developed the JAINTM Operations, Administration, and Maintenance API v2.0 Specification, which defines a standard Interface for provisioning and managing various protocol interfaces, switching platforms, and applications servers.
+Status:		Withdrawn
+Reason:		The JAIN community has decided to encapsulate the management functionality for each of the JAIN protocol specifications into their own specification as opposed to encapsulating this functionality in a separate JSR.
+Latest Stage:
+Withdrawn		Effective: 2002-01-28
+Spec Lead:		Phelim O'Doherty, Sun Microsystems, Inc.
+
+
+
+133		JavaTM Memory Model and Thread Specification Revision
+Description:		The proposed specification describes the semantics of threads, locks, volatile variables and data races. This includes what has been referred to as the Java memory model.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		William Pugh, Pugh, William
+
+
+
+134		JavaTM Game Profile
+Description:		Defines a Java 2 Micro Edition Profile for the purposes of game development targeting high-end consumer game devices and desktops.
+Status:		Withdrawn
+Reason:		The Spec Lead has chosen to withdraw this JSR. It was determined that the needs of games developers were best served by moving to a pure open source model for game client technologies. This changes in strategy will allow the broadest participation by the game development community, and will focus the energies of the community on timely solutions that address a rapidly changing technology landscape. The Spec Lead wishes to thank the Java Community and the Game Developers who supported and showed interest in this effort.
+Latest Stage:
+Withdrawn		Effective: 2003-07-09
+Spec Lead:		Bartley Calder, Sun Microsystems, Inc.
+
+
+
+135		Mobile Media API
+Description:		This specifies a small-footprint multimedia API for J2METM, allowing simple, easy access and control of basic audio and multimedia resources while also addressing scalability and support of more sophisticated features.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 3	Download page	Start: 2010-09-20	End: 2010-10-25
+Spec Lead:		Michael Lagally, Oracle
+
+
+
+136		JavaTM Technology for Service Providers
+Description:		This would have correlated JSRs targeted at next-generation service providers, documented how these JSRs fit together within end-to-end service provider networks, and introduced developers to emerging service provider network-targeted APIs.
+Status:		Withdrawn
+Reason:		Community support was not sufficient to support an Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2004-03-19
+Spec Lead:		Mauricio Arango, Sun Microsystems, Inc.
+
+
+
+137		JAINTM 3G MAP Specification
+Description:		This JSR is to develop the JAINTM 3G MAP APIs which will enable mobile applications in the 3G domain to talk to each other.
+Status:		Withdrawn
+Reason:		Seeing that there has been no active interest in the JAIN 3G Map APIs recently and because of lack of member contributions to the Expert Group, the Spec Lead decided to withdrawn the JSR.
+Latest Stage:
+Withdrawn		Effective: 2003-03-04
+Spec Lead:		Sanjiv Kapur, Hughes Software Systems
+
+
+
+138		Performance Metric Instrumentation
+Description:		Specifies standard APIs for performance metric instrumentation of Java programs.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-02-26
+Spec Lead:		Bruce Irvin, Oracle
+
+
+
+139		Connected Limited Device Configuration 1.1
+Description:		This specification will define a revised version of the J2METM Connected, Limited Device Configuration (CLDC).
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2007-11-29
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+140		Service Location Protocol (SLP) API for Java
+Description:		This JSR is to standardize the Service Location Protocol Application Programmer Interface for Java as described in RFC 2614.
+Status:		Withdrawn
+Reason:		The Spec Lead was not doing work on the JSR. While several other organizations have done seemingly promising Java work in the SLP area, none of them was interested in taking over the spec lead position to progress a JSR on it.
+Latest Stage:
+Withdrawn		Effective: 2004-10-05
+Spec Lead:		Nick Briers, The SCO Group
+
+
+
+141		SDP API
+Description:		The IETF protocol SDP specifies messages that describe multi-media sessions and are included within other protocol messages as payload. The API will enable users to manipulate SDP messages.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Proposed Final Draft	Download page	Start: 2004-07-20
+Spec Lead:		Kelvin R Porter, Cisco Systems
+
+
+
+142		OSS Inventory API
+Description:		The OSS Inventory API defines J2EE based interfaces between inventory repositories and other OSS components.
+Status:		Final
+Latest Stage:
+Final Release 3	Download page	Start: 2007-08-27
+Spec Lead:	Star Spec Lead	Pierre Gauthier, Oracle
+
+
+
+143		JavaDesk
+Description:		JavaDesk provides a standard desktop API across platforms using an MVC model. Applications can control and enhance the desktop using the JavaDesk API.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2001-08-06
+Spec Lead:		Rich Isaac, Bay Equities, Inc.
+
+
+
+144		OSS Common API
+Description:		This JSR specifies the set of APIs which are common across the OSS through Java JSRs. This provides consistency by reducing duplication of common interfaces and classes among these JSRs.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 5	Download page	Start: 2007-07-24
+Spec Lead:	Star Spec Lead	Vincent Perrot, Sun Microsystems, Inc.
+
+
+
+145		JAINTM SPA Common API
+Description:		This JSR will specify the set of APIs common across the JAIN SPA JSRs. This will provide consistency by reducing duplication of common interfaces and classes among these JSRs.
+Status:		Withdrawn
+Reason:		Read the Spec Lead's explanation of the withdrawal.
+Latest Stage:
+Withdrawn		Effective: 2003-02-14
+Spec Lead:		Gary Bruce, Sun Microsystems, Inc.
+
+
+
+146		WBEM Services: JMX Provider Protocol Adapter
+Description:		JSR-048 defines WBEM support for Java. This specification would have defined how JMX instrumentation mapped to CIM and the definition of a JMX Provider Protocol Adapter for WBEM Services.
+Status:		Withdrawn
+Reason:		After a year and a half of no progress, the Spec Lead suggested withdrawing the JSR and the Expert Group did not object.
+Latest Stage:
+Withdrawn		Effective: 2003-07-14
+Spec Lead:		Chris Seibel, Sun Microsystems, Inc.
+
+
+
+147		Workspace Versioning and Configuration Management
+Description:		Workspace Versioning and Configuration Management provides client support for creating and manipulating sets of version-controlled files and web resources.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-03-30
+Spec Lead:		Geoffrey Clemm, IBM
+
+
+
+148		3D Media Utilities
+Description:		The 3D Media Utilities API specifies classes and interfaces for 3D vector operations and volumetric imaging.
+Status:		Withdrawn
+Reason:		After over a year of no development, the Spec Lead suggested withdrawing the JSR and the Expert Group did not object.
+Latest Stage:
+Withdrawn		Effective: 2002-12-02
+Spec Lead:		Brian Burkhalter, Sun Microsystems, Inc.
+Spec Lead:		Kevin Rushforth, Sun Microsystems, Inc.
+
+
+
+149		Work Area Service for J2EE
+Description:		The Work Area Service allows J2EE developers to set properties as application context that is implicitly attached to and made available anywhere during the processing of remote requests.
+Status:		Withdrawn
+Reason:		JSR-149 had shown slow progress for several years and had not generated significant industry interest or participation. With no outlook for a timely completion of this JSR, the Spec Lead withdrew the JSR once no one in the Expert Group agreed to take over the Spec Lead role.
+Latest Stage:
+Withdrawn		Effective: 2005-10-26
+Spec Lead:		Heath Thomann, IBM
+
+
+
+150		Internationalization Service for J2EE
+Description:		The Internationalization Service enables distributed localization within Enterprise Java applications by transparently propagating and managing localization information within relevant J2EE application components.
+Status:		Withdrawn
+Reason:		JSR-150 had been idle for several years and the existing draft had not kept pace with changes in J2EE. The Spec Lead wished to withdraw the JSR. None of the EG members objected.
+Latest Stage:
+Withdrawn		Effective: 2008-10-30
+Spec Lead:		Charles Hornig, IBM
+
+
+
+151		JavaTM 2 Platform, Enterprise Edition 1.4 (J2EE 1.4) Specification
+Description:		This JSR is to develop J2EE 1.4, the next release of the Java 2 Platform, Enterprise Edition.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2004-03-24	End: 2004-04-26
+Spec Lead:		Mark Hapner, Sun Microsystems, Inc.
+Spec Lead:	Star Spec Lead	Bill Shannon, Sun Microsystems, Inc.
+
+
+
+152		JavaServer PagesTM 2.0 Specification
+Description:		Next revision of the JavaServer PagesTM specification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-11-24
+Spec Lead:		Eduardo Pelegri-Llopart, Sun Microsystems, Inc.
+Spec Lead:		Mark Roth, Sun Microsystems, Inc.
+
+
+
+153		Enterprise JavaBeansTM 2.1
+Description:		The Enterprise JavaBeans 2.1 specification adds to the EJB architecture support for web services, extensions to message-driven beans, enhancements to EJB QL, and a container-managed timer service.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-11-24
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+
+
+
+154		JavaTM Servlet 2.4 Specification
+Description:		This specification will build on servlet specification version 2.3 by enhancing existing features and adding new facilities of a reasonably small nature.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2007-09-11
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+155		Web Services Security Assertions
+Description:		To provide a set of APIs, exchange patterns & implementation to securely (integrity and confidentiality) exchange assertions between web services based on OASIS SAML.
+Status:		Withdrawn
+Reason:		Withdrawn by the JSR 155 Spec Lead due to changing industry focus and continued JSR inactivity.
+Latest Stage:
+Withdrawn		Effective: 2010-02-18
+Spec Lead:		Sandeep Kumar, Cisco Systems
+Spec Lead:		Krishna Sankar, Cisco Systems
+
+
+
+156		Java API for XML Transactions
+Description:		JAXTX provides an API for packaging and transporting ACID transactions (as in JTA) and extended transactions (e.g., the BTP from OASIS) using the protocols being defined by OASIS, W3C.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-02-18
+Spec Lead:		Jonathan Halliday, Red Hat
+
+
+
+157		ebXML CPP/A APIs for Java
+Description:		This JSR is to provide a standard set of APIs for representing and manipulating Collaboration Profile and Agreement information described by ebXML CPP/A (Collaboration Protocol Profile/Agreement)documents.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-07-30
+Spec Lead:		Himagiri Mukkamala, Sybase
+
+
+
+158		JavaTM Stream Assembly
+Description:		TheJavaTM Stream Assembly API specifies classes and interfaces for the creation, management, and processing of broadcast and interactive stream multiplexes.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-12-14
+Spec Lead:		Gerard Fernando, Sun Microsystems, Inc.
+
+
+
+159		JavaTM Process Component API (JPC)
+Description:		JPC would have defined a loosely coupled, event based process component model that would simplify the development of composable, customizable services.
+Status:		Withdrawn
+Reason:		Withdrawn by the JSR 159 Spec Lead with assent from the Expert Group.
+Latest Stage:
+Withdrawn		Effective: 2003-05-05
+Spec Lead:		Mark Hapner, Sun Microsystems, Inc.
+
+
+
+160		JavaTM Management Extensions (JMX) Remote API
+Description:		This API extends the JMX 1.2 API to provide remote access to JMX MBean servers.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2014-03-04
+Spec Lead:		Eamonn McManus, Oracle
+Spec Lead:		Simon Vienot, Sun Microsystems, Inc.
+Spec Lead:		Hinkmond Wong, Oracle
+
+
+
+161		JAINTM ENUM API Specification
+Description:		The JAINTM ENUM API Specification defines a standard, portable application programming interface to query and provision E.164 telephone numbers and their service-specific Uniform Resource Identifiers (URI).
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Public Review	Download page	Start: 2004-05-11	End: 2004-06-10
+Spec Lead:		Christopher John, NetNumber, Inc.
+
+
+
+162		Portlet API
+Description:		The Portlet API specification defines an API for components being aggregated in web applications like portals. It includes portlets, portlet container behavior, portlet windows, events, persistent storage and portlet services.
+Status:		Withdrawn
+Reason:		Portlet API As there is very significant overlap between JSRs 162 & 167, Sun and IBM have reached a mutual agreement regarding the proposals. We have now reached a point where we feel that we have a mutually acceptable new combined JSR proposal, which we now wish to seek endorsement of from the existing supporters of JSR 162 and 167.
+Latest Stage:
+Withdrawn		Effective: 2002-01-20
+Spec Lead:	Star Spec Lead	Stefan Hepper, IBM
+
+
+
+163		JavaTM Platform Profiling Architecture
+Description:		A mechanism and APIs for extracting time and space profiling information from a running JavaTM virtual machine.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Robert Field, Oracle
+
+
+
+164		SIMPLE Presence
+Description:		SIMPLE Presence provides a standard portable and secure interface to manipulate presence information between a SIMPLE client (watcher) and a presence server (presence agent).
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-10-25
+Spec Lead:		Tan Jek Thoon, Panasonic Information and Network Technologies Laboratory
+
+
+
+165		SIMPLE Instant Messaging
+Description:		SIMPLE Instant Messaging provides a standard portable and secure interface to exchange messages between SIMPLE clients. SIMPLE is an extension of SIP to support presence and instant messaging.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-10-25
+Spec Lead:		Tan Jek Thoon, Panasonic Information and Network Technologies Laboratory
+
+
+
+166		Concurrency Utilities
+Description:		The JSR proposes a set of medium-level utilities that provide functionality commonly needed in concurrent programs.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Doug Lea, Lea, Doug
+
+
+
+167		JavaTM Portlet Specification
+Description:		This specification would have defined a set of APIs for Portal computing addressing the areas of aggregation, personalization, presentation and security.
+Status:		Withdrawn
+Reason:		As there is very significant overlap between JSRs 162 & 167, Sun and IBM reached a mutual agreement regarding the proposals. They reached a point where they felt that they had a mutually acceptable new combined JSR proposal, which they then sought endorsement of from the existing supporters of JSR 162 and 167.
+Latest Stage:
+Withdrawn		Effective: 2002-01-20
+Spec Lead:	Star Spec Lead	Alejandro Abdelnur, Sun Microsystems, Inc.
+Spec Lead:		Wesley Budziwojski, Sun Microsystems, Inc.
+
+
+
+168		Portlet Specification
+Description:		To enable interoperability between Portlets and Portals, this specification will define a set of APIs for Portal computing addressing the areas of aggregation, personalization, presentation and security.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-10-27
+Spec Lead:		Martin Nicklous, IBM
+
+
+
+169		JDBC Optional Package for CDC/Foundation Profile
+Description:		The proposed specification will define a JDBC Optional Package for Java 2 Micro Edition (J2ME), Connected Device Configuration (CDC) Foundation Profile.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-04-08
+Spec Lead:		Lance Andersen, Oracle
+
+
+
+170		Content Repository for JavaTM technology API
+Description:		Specifies a standard API to access content repositories in JavaTM 2 independently of implementation.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2006-03-22	End: 2006-04-24
+Spec Lead:	Star Spec Lead	David Nuescheler, Day Software, Inc.
+
+
+
+171		Java Community ProcessSM (JCP) Program, version 2.5
+Description:		This JSR defined JCP version 2.5. Its overriding goal was to ensure that the Process document was in sync with the JSPA 2 created by JSR 99.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2002-10-23
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+172		J2METM Web Services Specification
+Description:		The purpose of this specification is to define an optional package that provides standard access from J2ME to web services.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2011-10-20
+Spec Lead:		Jean-Yves Bitterlich, Oracle
+
+
+
+173		Streaming API for XML
+Description:		The Streaming API for XML (StAX) is a Java based API for pull-parsing XML.
+Status:		Active
+Latest Stage:
+Maintenance Review Ballot 2		Start: 2016-07-12	End: 2016-07-25
+Spec Lead:		Christopher Fry, BEA Systems
+Spec Lead:		Deva Sagar, Oracle
+
+
+
+174		Monitoring and Management Specification for the JavaTM Virtual Machine
+Description:		A specification for APIs for monitoring and management of the JavaTM virtual machine.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Flavio Bergamaschi, IBM
+
+
+
+175		A Metadata Facility for the JavaTM Programming Language
+Description:		A metadata facility for the JavaTM Programming Language would allow classes, interfaces, fields, and methods to be marked as having particular attributes.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+176		J2SETM 5.0 (Tiger) Release Contents
+Description:		Define the major features of the J2SETM "Tiger" release (J2SE 5.0).
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 2	Download page	Start: 2006-10-11	End: 2006-11-13
+Spec Lead:	Star Spec Lead	Mark Reinhold, Sun Microsystems, Inc.
+
+
+
+177		Security and Trust Services API for J2METM
+Description:		This specification will provide J2ME applications with APIs for security and trust services through the integration of a Security Element.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2007-08-20
+Spec Lead:		Saqib Ahmad, Oracle
+Spec Lead:		Roman Zelov, Sun Microsystems, Inc.
+
+
+
+178		Mobile Game API
+Description:		Defines an optional package that will facilitate the emergence of the market for the development of compelling games on mobile phones. The API shall work with MIDP1.0.
+Status:		Rejected
+Reason:		This JSR was not approved by the ME Executive Committee in the JSR Reconsideration Ballot.
+Latest Stage:
+Rejected		Effective: 2002-05-07
+Spec Lead:		Thomas Landspurg, In-Fusio SA
+
+
+
+179		Location API for J2METM
+Description:		An Optional Package that enables developers to write mobile location-based applications for resource-limited devices. The API works on the J2ME CLDC v1.1 and CDC configurations.
+Status:		Final
+Latest Stage:
+Final Release 3	Download page	Start: 2011-09-28
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:		Cheng Wang, Nokia Corporation
+
+
+
+180		SIP API for J2METM
+Description:		SIP API for J2ME defines a multipurpose SIP API for J2ME clients. It enables SIP applications to be executed in memory limited terminals, especially targeting to mobile phones.
+Status:		Final
+Latest Stage:
+Final Release 5	Download page	Start: 2011-10-31
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+Spec Lead:		Cheng Wang, Nokia Corporation
+
+
+
+181		Web Services Metadata for the JavaTM Platform
+Description:		This JSR defines an annotated JavaTM format that that uses JavaTM Language Metadata (JSR 175) to enable easy definition of Java Web Services in a J2EE container.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2013-06-18
+Spec Lead:		Alan Mullendore, Oracle
+
+
+
+182		JPay - Payment API for the JavaTM Platform
+Description:		This JSR requests the creation of the Payment API for the Java Platform (JPay) specification. The JPay API will support payments in an open, Web-like environment.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Early Draft Review	Download page	Start: 2004-10-27	End: 2004-12-25
+Spec Lead:		Marquart C Franz, Siemens AG
+
+
+
+183		Web Services Message Security APIs
+Description:		This JSR is to define a standard set of APIs for Web services message security. The goal of this JSR is to enable applications to construct secure SOAP message exchanges.
+Status:		Withdrawn
+Reason:		Web services security (WS-Security) has become the defacto standard to secure web services messages. Lack of a standard in Java to write to these APIs, hasn't caused any interoperability or integration issues across vendor platforms. So, this JSR was withdrawn.
+Latest Stage:
+Withdrawn		Effective: 2008-08-05
+Spec Lead:		Nataraj Nagaratnam, IBM
+
+
+
+184		Mobile 3D Graphics API for J2METM
+Description:		This proposed JSR will provide a scalable, small-footprint, interactive 3D API for use on mobile devices.
+Status:		Final
+Latest Stage:
+Final Release 2	Download page	Start: 2005-08-24
+Spec Lead:		Tomi Aarnio, Nokia Corporation
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+
+
+
+185		JavaTM Technology for the Wireless Industry
+Description:		This JSR will provide an overall architectural description as well as an integrated TCK and RI to coordinate selected JCP efforts for the wireless industry.
+Status:		Maintenance
+Latest Stage:
+Item Exception Ballot 2	View results	Start: 2006-01-10	End: 2006-01-17
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+186		Presence
+Description:		Presence is a generic and protocol-agnostic API for Presence, providing a standard portable and secure interface to control, manage and manipulate Presence information between Presence clients and servers.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-03-15
+Spec Lead:		Tan Jek Thoon, Panasonic Information and Network Technologies Laboratory
+
+
+
+187		Instant Messaging
+Description:		A protocol-agnostic API for Instant Messaging, this provides a standard portable and secure interface to control, manage and manipulate instant messages between clients through the use of presence servers.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-03-17
+Spec Lead:		Tan Jek Thoon, Panasonic Information and Network Technologies Laboratory
+
+
+
+188		CC/PP Processing
+Description:		To enable interoperability between web servers and access mechanisms, and to facilitate development of device independent web applications, this specification will define a set of APIs for processing CC/PP information.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-10-30
+Spec Lead:		Nigel Jacobs, Oracle
+Spec Lead:		Jerry Raj, Sun Microsystems, Inc.
+
+
+
+189		JavaTM 3D API 1.4
+Description:		This JSR will add new large scale funtionality to Java 3D. Possible technologies for inclusion include programmable shading and advanced rendering techniques.
+Status:		Withdrawn
+Reason:		The changes to the Java 3D API as originally envisioned by JSR-189 were quite significant, and were planned as part of a major API release, for which we had planned to form an expert group under the JSR. Due to changes in the nature of the project development, this effort was discontinued in 2002, a few months after the JSR was filed. JSR-189 was left open as a place-holder, but it no longer makes sense to leave it open. At the time of withdrawal, the Java 3D API was a community source project on java.net, where all new development had happened over the past 18 months. They were actively developing the 1.4 API release with help from the Java 3D community on java.net. This release was a much more modest undertaking than was originally planned, and all new API changes are being designed with public input. As such they closed this JSR, and did Java 3D 1.4 as a maintenance release under the JCP.
+Latest Stage:
+Withdrawn		Effective: 2005-11-08
+Spec Lead:		Kevin Rushforth, Sun Microsystems, Inc.
+
+
+
+190		Event Tracking API for J2ME
+Description:		This defines an optional code package that standardizes application event tracking on a mobile device and the submission of these event records to an event-tracking server via a standard protocol.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-11-09
+Spec Lead:	Star Spec Lead	Shai Gotlib, Amdocs Management Ltd.
+
+
+
+191		JAINTM GCCS API
+Description:		The API was intended to allow software developers to rapidly develop external Service Provider type applications to interact with the GCCS Service.
+Status:		Withdrawn
+Reason:		Withdrawn following agreement with the Expert Group after the decisions at the November 2002 JAIN meeting in Austin.
+Latest Stage:
+Withdrawn		Effective: 2003-03-21
+Spec Lead:		Judith Russell, AePONA
+
+
+
+192		JAINTM Service Creation Environment - JavaTM PART
+Description:		This is the specification for the JavaTM API to support and simplify the creation of portable telecommunication services delivered primarily to the JAINTM Service Logic Execution Environment (JAINTM SLEE).
+Status:		Withdrawn
+Reason:		There had not been much progress on this JSR since quite some time. The draft was floated for Expert Group review but there was no response even after several reminders. They then decided not to go ahead with this activity and hence requested the PMO to mark this JSR 192 as WITHDRAWN.
+Latest Stage:
+Withdrawn		Effective: 2004-09-22
+Spec Lead:		Vishal Aggarwal, Hughes Software Systems
+
+
+
+193		Client Side Container (CSC)
+Description:		This would have described a client-side container architecture, providing common client infrastructure, for developing API-neutral clients (Swing, AWT, Command Line). The access to J2EE-components would be fully abstracted and encapsulated.
+Status:		Withdrawn
+Reason:		Having noticed the many questions/concerns about this specification proposal, the submitter decided to withdraw the request.
+Latest Stage:
+Withdrawn		Effective: 2002-10-14
+Spec Lead:		Adam Bien, Bien, Adam
+
+
+
+194		JAINTM ULS API
+Description:		This was intended to allow software developers to rapidly develop external Service Provider-type applications to interrogate the location and status of a user's mobile device.
+Status:		Withdrawn
+Reason:		With agreement from his Expert Group, the Spec Lead decided to withdrawn this JSR following decisions at the November 2002 JAIN meeting in Austin.
+Latest Stage:
+Withdrawn		Effective: 2003-02-21
+Spec Lead:		Jorgen Dyst, Appium Technologies AB
+
+
+
+195		Information Module Profile
+Description:		This JSR will define a J2ME profile targeting embedded networked devices that wish to support a Java runtime environment, but that do not have graphical display capabilities.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-07-31
+Spec Lead:		Thomas Lampart, Cinterion Wireless Modules GmbH
+Spec Lead:		Jari Lansio, Nokia Corporation
+
+
+
+196		JavaTM Authentication Service Provider Interface for Containers
+Description:		This JSR seeks to define a standard interface by which authentication modules may be integrated with containers and such that these modules may establish the authentication identities used by containers.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2013-06-12
+Spec Lead:		Ronald Monzillo, Oracle
+
+
+
+197		Generic Connection Framework Optional Package for the J2SE Platform
+Description:		The Generic Connection Framework (GCF) Optional Package for J2SE will permit applications that rely on the GCF in J2ME to migrate to J2SE.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-10-15
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+198		A Standard Extension API for Integrated Development Environments
+Description:		JSR 198 has the goal of defining a standard IDE API that allows developers to implement IDE plugins once and have them run with any IDE supporting the specification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-05-08
+Spec Lead:	Star Spec Lead	Jose Cronembold, Oracle
+
+
+
+199		JavaTM Compiler API
+Description:		A service provider API that allows a Java program to select and invoke a Java Language Compiler programmatically.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2014-03-04
+Spec Lead:		Jonathan Gibbons, Oracle
+
+
+
+200		Network Transfer Format for JavaTM Archives.
+Description:		This JSR will define a dense download format for JavaTM classfiles. It is expected that this format can achieve considerable size savings over compressed JAR files.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		John Rose, Sun Microsystems, Inc.
+Spec Lead:		Kumar Srinivasan, Sun Microsystems, Inc.
+
+
+
+201		Extending the JavaTM Programming Language with Enumerations, Autoboxing, Enhanced for loops and Static Import
+Description:		This JSR proposes four new JavaTM programming language features: enumerations, autoboxing, enhanced for loops and static import.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+202		JavaTM Class File Specification Update
+Description:		This JSR will make incremental updates to the JavaTM class file format. This will principally consist of increasing certain class file size limits and adding support for split verification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-12-11
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+203		More New I/O APIs for the JavaTM Platform ("NIO.2")
+Description:		APIs for filesystem access, scalable asynchronous I/O operations, socket-channel binding and configuration, and multicast datagrams.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2011-07-20
+Spec Lead:		Alan Bateman, Oracle
+
+
+
+204		Unicode Supplementary Character Support
+Description:		The proposed specification will define a mechanism to support Supplementary Characters as defined in the Unicode 3.1 specification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-09-30
+Spec Lead:		Masayoshi Okutsu, Sun Microsystems, Inc.
+
+
+
+205		Wireless Messaging API 2.0
+Description:		This JSR will extend and enhance the "Wireless Messaging API" (JSR-000120)
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-06-04
+Spec Lead:		Marquart C Franz, Siemens AG
+
+
+
+206		JavaTM API for XML Processing (JAXP) 1.3
+Description:		JAXP 1.3 is the next version of JAXP, an implementation independent portable API for processing XML with JavaTM.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 3	Download page	Start: 2014-03-04
+Spec Lead:		Jeff Suttor, Sun Microsystems, Inc.
+Spec Lead:		Joe Wang, Oracle
+
+
+
+207		Process Definition for JavaTM
+Description:		Definition of an annotated Java syntax and APIs for programming business processes in Java.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2010-02-26
+Spec Lead:		Michael Rowley, BEA Systems
+
+
+
+208		JavaTM Business Integration (JBI)
+Description:		This JSR extends J2EETM and J2SETM with business integration SPIs.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-08-25
+Spec Lead:		Ron Ten-Hove, Sun Microsystems, Inc.
+Spec Lead:		Peter Walker, Sun Microsystems, Inc.
+
+
+
+209		Advanced Graphics and User Interface Optional Package for the J2METM Platform
+Description:		The Advanced Graphics and User Interface (AGUI) Optional Package will migrate the core APIs for advanced graphics and user interface facilities from the J2SE platform to the J2ME platform.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-10-05
+Spec Lead:		Hakim Mendjeli, Vodafone Group Services Limited
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+210		OSS Service Quality Management API
+Description:		Provide an API via the OSS through Java initiative that allows telecom management applications to be developed and integrated with Java-enabled Service Quality Management Systems.
+Status:		Withdrawn
+Reason:		The API has been completed and contributed to TMF and there is no reason to continue with the JSR.
+Latest Stage:
+Withdrawn		Effective: 2012-05-23
+Spec Lead:		Thierry Supplisson, IBM
+
+
+
+211		Content Handler API
+Description:		Enabling J2METM applications to handle multi-media and web content can give developers and users a seamless and integrated user environment on mobile phones and wireless devices.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2009-09-25
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+212		Server API for Mobile Services: Messaging - SAMS: Messaging
+Description:		This specification defines a protocol agnostic messaging API for composing, sending and receiving short messages and multimedia messages. The API shall work on the J2SE and J2EE.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2005-01-12
+Spec Lead:		Hannu Mettala, Nokia Corporation
+
+
+
+213		Micro WSCI Framework for J2ME.
+Description:		Effort to define another layer of the J2ME Web Service stack, implementing the 'observable' behavior of a choreographed Web Service on the Device, relative to the message exchange requiring support.
+Status:		Rejected
+Reason:		This JSR was not approved by the ME Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2003-05-13
+Spec Lead:		Ash Parikh, IOPSIS Software Inc.
+
+
+
+214		Micro BPSS for J2ME Devices.
+Description:		This JSR is to provide a standard set of APIs for J2ME Devices for representing and manipulating Collaboration Profile and Agreement information described by ebXML CPP/A (Collaboration Protocol Profile/Agreement) documents.
+Status:		Rejected
+Reason:		This JSR was not approved by the ME Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2003-05-13
+Spec Lead:		Ash Parikh, IOPSIS Software Inc.
+
+
+
+215		Java Community ProcessSM version 2.6
+Description:		This JSR will update the JCP Process document to make the process more transparent and efficient.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2009-05-27
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+216		Personal Profile 1.1
+Description:		This JSR will update the existing Personal Profile (JSR-62) specification to reflect the J2SETM 1.4 APIs).
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-08-03
+Spec Lead:	Star Spec Lead	Jon Courtney, Sun Microsystems, Inc.
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+217		Personal Basis Profile 1.1
+Description:		This JSR will update the existing Personal Basis Profile (JSR-129) specification to reflect the J2SETM 1.4 APIs.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-08-03
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+218		Connected Device Configuration (CDC) 1.1
+Description:		This JSR defines a revision to the J2ME CDC specification. This JSR provides updates (based on J2SE, v1.4) to the existing core, non-graphical Java APIs for small electronic devices.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-08-03
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+219		Foundation Profile 1.1
+Description:		This JSR defines a revision to the J2ME Foundation Profile. This JSR provides updates (based on J2SE, v1.4) to the existing core, non-graphical Java APIs for small electronic devices.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-08-03
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+220		Enterprise JavaBeansTM 3.0
+Description:		The purpose of Enterprise JavaBeans (EJB) 3.0 is to improve the EJB architecture by reducing its complexity from the developer's point of view.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2007-11-14	End: 2007-12-17
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+Spec Lead:		Mike Keith, Oracle
+
+
+
+221		JDBCTM 4.0 API Specification
+Description:		This specification seeks to improve Java application access to SQL data stores by the provision of ease-of-development focused features and improvements at both the utility and API level.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2014-03-04
+Spec Lead:		Lance Andersen, Oracle
+
+
+
+222		JavaTM Architecture for XML Binding (JAXB) 2.0
+Description:		JAXB 2.0 is the next version of JAXB, The JavaTM Architecture for XML Binding. This JSR proposes additional functionality while retaining ease of development as a key goal.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2009-12-10
+Spec Lead:		Martin Grebac, Oracle
+
+
+
+223		Scripting for the JavaTM Platform
+Description:		The specification will describe mechanisms allowing scripting language programs to access information developed in the Java Platform and allowing scripting language pages to be used in Java Server-side Applications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-12-11
+Spec Lead:		Mike Grogan, Sun Microsystems, Inc.
+
+
+
+224		JavaTM API for XML-Based Web Services (JAX-WS) 2.0
+Description:		The JAX-WS 2.0 specification is the next generation web services API replacing JAX-RPC 1.0.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 4	Download page	Start: 2011-12-19
+Spec Lead:		Jitendra Kotamraju, Oracle
+
+
+
+225		XQuery API for JavaTM (XQJ)
+Description:		Develop a common API that allows an application to submit queries conforming to the W3C XQuery 1.0 specification and to process the results of such queries.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-06-24
+Spec Lead:		Maxim Orgiyan, Oracle
+Spec Lead:		Marc Van Cappellen, DataDirect Technologies
+
+
+
+226		Scalable 2D Vector Graphics API for J2METM
+Description:		This specification will define an optional package API for rendering scalable 2D vector graphics, including image files in W3C Scalable Vector Graphics (SVG) format.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-06-02
+Spec Lead:		Juha Eskelinen, Nokia Corporation
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+
+
+
+227		A Standard Data Binding & Data Access Facility for J2EETM
+Description:		An API and associated metadata format for declaratively binding and accessing data in J2EETM applications.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-05-02
+Spec Lead:		John Smiljanic, Oracle
+
+
+
+228		Information Module Profile - Next Generation (IMP-NG)
+Description:		This specification will define a profile that will extend and enhance the "J2METM Information Module Profile" (JSR-195).
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-11-30
+Spec Lead:		Thomas Lampart, Cinterion Wireless Modules GmbH
+
+
+
+229		Payment API
+Description:		Enabling application developers to initiate mobile payment transactions in J2METM applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-01-24
+Spec Lead:		Jean-Yves Bitterlich, Oracle
+
+
+
+230		Data Sync API
+Description:		Enabling J2METM applications to access native data synchronization implementation
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2011.
+Latest Stage:
+Proposed Final Draft	Download page	Start: 2006-09-22
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+231		JavaTM Binding for the OpenGL® API
+Description:		Java bindings to the OpenGL native 3D graphics library.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2008-05-19
+Spec Lead:		Kenneth Russell, Sun Microsystems, Inc.
+
+
+
+232		Mobile Operational Management
+Description:		Create a predictable management environment for mobile devices capable of installing, executing, profiling, updating, and removing JavaTM and associated native components in the J2METM Connected Device Configuration.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2008-01-17
+Spec Lead:		Venkat Amirisetty, Motorola
+Spec Lead:		Cheng Wang, Nokia Corporation
+
+
+
+233		J2EE Mobile Device Management and Monitoring Specification
+Description:		This JSR defines an extension of the J2EE platform for the purposes of remotely monitoring and managing the software on mobile devices.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-07-15
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+234		Advanced Multimedia Supplements
+Description:		This specification will define an optional package for advanced multimedia functionality which is targeted to run as an supplement in connection with MMAPI (JSR-135) in J2ME/CLDC environment.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2011-10-27
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+Spec Lead:		Cheng Wang, Nokia Corporation
+
+
+
+235		Service Data Objects
+Description:		Defines core infrastructure APIs for heterogeneous data access that supports common application design patterns and supports higher-level tools and frameworks.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-05-11
+Spec Lead:		Kelvin Goodson, IBM
+Spec Lead:		Radu Preotiuc-Pietro, Oracle
+
+
+
+236		Concurrency Utilities for JavaTM EE
+Description:		Concurrency Utilities for Java EE provides a simple, standardized API for using concurrency from application components without compromising container integrity while still preserving the Java EE platform's fundamental benefits.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-28
+Spec Lead:		Anthony Lai, Oracle
+
+
+
+237		Work Manager for Application Servers
+Description:		A work manager API providing for execution of concurrent work items within managed environments.
+Status:		Withdrawn
+Reason:		JSR 237 has been merged with JSR 236, providing a single, consistent specification for Java EE concurrency.
+Latest Stage:
+Withdrawn		Effective: 2008-06-18
+Spec Lead:		Chris D Johnson, IBM
+Spec Lead:		Naresh Revanuru, BEA Systems
+
+
+
+238		Mobile Internationalization API
+Description:		This JSR defines an API that provides culturally correct data formatting, sorting of text strings and application resource processing for J2ME MIDlets running in MIDP over CLDC.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2005-04-21
+Spec Lead:	Star Spec Lead	Jere Kapyaho, Nokia Corporation
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+
+
+
+239		JavaTM Binding for the OpenGL® ES API
+Description:		JavaTM bindings to the OpenGL ES (Embedded Subset) native 3D graphics library.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2007-08-14
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+240		JAINTM SLEE (JSLEE) v1.1
+Description:		This JSR is a logical extension to address gaps in JSLEE v1.0 specification. The central area of focus is to specify the Resource Adaptor Architecture API and semantics.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-07-14
+Spec Lead:		David Ferry, Open Cloud Limited
+
+
+
+241		The Groovy Programming Language
+Description:		Groovy is an agile, dynamic programming language for the Java Virtual Machine. Groovy includes features found in Python, Ruby, and Smalltalk, but uses syntax similar to the Java programming language.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in April 2012.
+Latest Stage:
+Expert Group Formation		Start: 2004-03-30
+Spec Lead:		No Current Spec Lead, No SL Company
+
+
+
+242		Digital Set Top Box Profile - "On Ramp to OCAP"
+Description:		The requested specification will define a J2ME profile based on the Connected Limited Device Configuration (CLDC) that is appropriate for use by small-footprint cable television set top boxes.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-09-26
+Spec Lead:		Donald Bleyl, Cox Communications, Inc.
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+243		JavaTM Data Objects 2.0 - An Extension to the JDO specification
+Description:		The high level objectives are to make JDO easier to use, closely align JDO with J2EE, standardize JDO's database support, and broaden the scope of JDO.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 3	Download page	Start: 2010-08-23
+Spec Lead:		Craig Russell, Sun Microsystems, Inc.
+
+
+
+244		JavaTM Platform, Enterprise Edition 5 (Java EE 5) Specification
+Description:		This JSR is to develop Java EE 5, the next release of the Java Platform, Enterprise Edition, targeted to ship in the second quarter of 2006.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-05-11
+Spec Lead:	Star Spec Lead	Bill Shannon, Sun Microsystems, Inc.
+
+
+
+245		JavaServerTM Pages 2.1
+Description:		This is the next revision of the JavaServerTM Pages specification. The purpose of JSP 2.1 is to improve alignment with JavaServerTM Faces (JSF) and enhance ease of development.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2013-06-12
+Spec Lead:		Kinman Chung, Oracle
+
+
+
+246		Device Management API
+Description:		Enabling J2METM applications to access device management implementations
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2011.
+Latest Stage:
+Early Draft Review	Download page	Start: 2005-08-08	End: 2005-09-07
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+247		Data Mining 2.0
+Description:		JDM 2.0 will address requested features deferred from JDM 1.0, which focused on the data mining framework and a select number of mining functions and algorithms.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-05-02
+Spec Lead:	Star Spec Lead	Mark F. Hornick, Oracle
+
+
+
+248		Mobile Service Architecture
+Description:		This JSR creates a mobile service architecture and platform definition for the high volume wireless handsets continuing the work started in JSR-185 and enhancing the definition with new technologies.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2008-02-21
+Spec Lead:		Guenter Klas, Vodafone Group Services Limited
+Spec Lead:		Erkki Rysa, Nokia Corporation
+
+
+
+249		Mobile Service Architecture 2
+Description:		This JSR defines the next generation of the Mobile Service Architecture and platform created in JSR 248.
+Status:		Dormant
+Reason:		The Specification Leads chose to list this JSR as dormant in August 2012.
+Latest Stage:
+Public Review Ballot	View results	Start: 2009-02-17	End: 2009-02-23
+Spec Lead:		Adamu  Haruna, Nokia Corporation
+Spec Lead:		Guenter Klas, Vodafone Group Services Limited
+
+
+
+250		Common Annotations for the JavaTM Platform
+Description:		This JSR will develop annotations for common semantic concepts in the J2SE and J2EE platforms that apply across a variety of individual technologies.
+Status:		Active
+Latest Stage:
+Maintenance Review Ballot		Start: 2016-07-12	End: 2016-07-25
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+251		Pricing API
+Description:		Standard for defining and using complex pricing data and business rules, enabling integration, allowing business differentiating extensions. Addresses usage-based business model needs, for communications and entertainment industries and utilities.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Early Draft Review	Download page	Start: 2006-05-01	End: 2006-05-31
+Spec Lead:		No Current Spec Lead, No SL Company
+
+
+
+252		JavaServer Faces 1.2
+Description:		This JSR is an update to the 1.1 version of the JavaServer Faces specification. Its scope goes beyond a JCP maintenance release, but is short of a new feature release.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 3	Download page	Start: 2008-07-22	End: 2008-08-25
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+Spec Lead:		Roger Kitain, Oracle
+
+
+
+253		Mobile Telephony API (MTA)
+Description:		This JSR creates a mobile telephony API and platform definition which utilizes common telephony features and is small and simple to suite to high volume devices with limited resources.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-03-10
+Spec Lead:		Jean-Yves Bitterlich, Oracle
+Spec Lead:		Brian Deuser, Motorola
+
+
+
+254		OSS Discovery API
+Description:		Provide an API that allows network discovery applications to be developed and integrated with other OSS/J enabled applications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-02-08
+Spec Lead:		Andrew Paterson, Nakina Systems
+Spec Lead:		Sergio Pellizzari, Nakina Systems
+Spec Lead:		Yves Thibeault, Nakina Systems
+
+
+
+255		JavaTM Management Extensions (JMXTM) Specification, version 2.0
+Description:		This JSR updates the JMX and JMX Remote APIs for version 6.0 of the Java(TM) Platform, Standard Edition. It will improve usability of existing features and add new functionality.
+Status:		Withdrawn
+Reason:		JSR 255 specified changes to javax.management.* which were subsequently abandoned due to lack of resources, and were not included in the Java SE 6 or 7 Platforms. (The changes were distinct from other changes to javax.management.* specified by JSRs 3, 160, and 336 for inclusion in the Java SE 6 and 7 Platforms.) It was determined in 2014 that future changes to JMX technology would be specified directly by the umbrella JSR for the Java SE Platform.
+Latest Stage:
+Withdrawn		Effective: 2016-03-24
+Spec Lead:		Staffan Larsen, Oracle
+
+
+
+256		Mobile Sensor API
+Description:		The API provides general Sensor API that extends the usability and choice of sensors for J2ME applications. It defines generic sensor functionality optimized for the resource-constrained devices like mobile devices.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 4	Download page	Start: 2009-03-27	End: 2009-04-27
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:		Pia Niemela, Nokia Corporation
+
+
+
+257		Contactless Communication API
+Description:		This specification will define J2ME Optional Packages for contactless communication, one package for bi-directional communication and the other for accessing read-only information.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2011-10-31
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:	Star Spec Lead	Jaana Majakangas, Nokia Corporation
+
+
+
+258		Mobile User Interface Customization API
+Description:		The Mobile User Interface Customization API provides a way to query and modify the user interface customization properties of a mobile device or platform.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2011-10-31
+Spec Lead:	Star Spec Lead	Jere Kapyaho, Nokia Corporation
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+
+
+
+259		Ad Hoc Networking API
+Description:		The purpose of this JSR is to define an API that enables communication between mobile devices in a peer-to-peer ad-hoc network environment.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2011.
+Latest Stage:
+Early Draft Review	Download page	Start: 2006-01-30	End: 2006-03-01
+Spec Lead:	Star Spec Lead	Volker Bauche, Oracle
+
+
+
+260		JavadocTM Tag Technology Update
+Description:		Defines new tags and generated Javadoc document representation aimed to increase readability, information richness, and make the Javadoc more approachable to developers learning and using the APIs.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-03-22
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+261		JavaTM API for XML Web Services Addressing (JAX-WSA)
+Description:		The Java API for XML Web Services Addressing (JAX-WSA) 1.0 specification will define APIs and a framework for supporting transport-neutral addressing of Web services.
+Status:		Withdrawn
+Reason:		All the work done under this JSR has been subsumed under JSR 224. This was conveyed to the EG at earlier instances as well and nobody objected.
+Latest Stage:
+Withdrawn		Effective: 2006-12-15
+Spec Lead:		Mike Grogan, Sun Microsystems, Inc.
+Spec Lead:		Arun Gupta, Sun Microsystems, Inc.
+
+
+
+262		Web Services Connector for Java Management Extensions (JMX) Agents
+Description:		Defines a connector for the JMX Remote API that uses Web Services to make JMX instrumentation available remotely. Clients do not have to be Java applications, but can be.
+Status:		Withdrawn
+Reason:		JSR 262 specified the javax.management.remote.ws API which was subsequently abandoned due to lack of resources, and was not included in the Java SE 7 Platform. It was determined in 2014 that future changes to JMX technology would be specified directly by the umbrella JSR for the Java SE Platform.
+Latest Stage:
+Withdrawn		Effective: 2016-03-24
+Spec Lead:		Staffan Larsen, Oracle
+
+
+
+263		Fault Management API
+Description:		The Fault Management API provides for the monitoring and management of alarms within an information or a telecommunications network.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-09-14
+Spec Lead:		Marc Flauw, Hewlett-Packard
+
+
+
+264		Order Management API
+Description:		This JSR defines an interface to an Order Management component, with specific extensions for activation and work order management use-cases.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-09-24
+Spec Lead:		Andreas Ebbert-Karroum, codecentric AG
+
+
+
+265		API for Utilizing Web Services Policy
+Description:		This specification aims to standardize a basic framework in Java for utilizing the Web services constraints and capabilities.
+Status:		Withdrawn
+Reason:		The standardization of policy-based metadata will continue as part of the Service Component Architecture (SCA), which will eventually provide Java-based language bindings as part of separate JSRs.
+Latest Stage:
+Withdrawn		Effective: 2010-01-28
+Spec Lead:		Sanjay Patil, SAP AG
+Spec Lead:		Umit Yalcinalp, SAP AG
+
+
+
+266		Unified Message Box Access API (UMBA-API)
+Description:		The purpose of this JSR is to define an API to access and manage the message boxes of the mobile device and their content.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in May 2012.
+Latest Stage:
+Early Draft Review	Download page	Start: 2006-04-14	End: 2006-05-14
+Spec Lead:		Michael Lagally, Oracle
+
+
+
+267		JSP Tag Library for Web Services
+Description:		JSPTM Tag Library for accessing Web Services
+Status:		Withdrawn
+Reason:		Lack of resources to drive this JSR, produce the RI (Reference Implementation) and TCK (Technology Compatibility Kit)- Waning interest and lack of support for this technology from the community led to the withdrawal of this JSR.
+Latest Stage:
+Withdrawn		Effective: 2008-02-06
+Spec Lead:		Dhiru Pandey, Sun Microsystems, Inc.
+
+
+
+268		JavaTM Smart Card I/O API
+Description:		APIs for APDU based communication with Smart Cards
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2006-12-11
+Spec Lead:		Valerie Peng, Sun Microsystems, Inc.
+
+
+
+269		Pluggable Annotation Processing API
+Description:		Provide an API to allow the processing of JSR 175 annotations (metadata); this will require modeling elements of the Java(TM) programming language as well as processing-specific functionality.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2014-03-04
+Spec Lead:		Joe Darcy, Oracle
+
+
+
+270		JavaTM SE 6 Release Contents
+Description:		The Umbrella JSR for the JavaTM SE 6 release.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2015-03-18
+Spec Lead:	Star Spec Lead	Mark Reinhold, Sun Microsystems, Inc.
+
+
+
+271		Mobile Information Device Profile 3
+Description:		This JSR will specify the 3rd generation Mobile Information Device Profile, expanding upon the functionality in all areas as well as improving interoperability across devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-09
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+272		Mobile Broadcast Service API for Handheld Terminals
+Description:		This specification will define an optional package in J2ME/MIDP/CLDC environment to provide functionality to handle broadcast content, e.g. to view digital television and to utilize its rich features and services.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-12-05
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:	Star Spec Lead	Antti Rantalahti, Nokia Corporation
+Spec Lead:		Ivan Wong, Motorola
+
+
+
+273		Design-Time API for JavaBeansTM JBDT
+Description:		This JSR extends the JavaBeans specification and APIs to improve design-time functionality for component authors to leverage within the visual design environments in IDEs.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-03-22
+Spec Lead:		Tor Norbye, Oracle
+
+
+
+274		The BeanShell Scripting Language
+Description:		This specification will standardize BeanShell, a Java syntax compatible scripting language for the Java platform.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in June 2011.
+Latest Stage:
+Expert Group Formation		Start: 2005-06-07
+Spec Lead:		Patrick Niemeyer, Niemeyer, Patrick D.
+
+
+
+275		Units Specification
+Description:		This JSR specifies Java packages for modeling and working with standard measures known as units.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in the Public Draft Reconsideration Ballot.
+Latest Stage:
+Rejected		Effective: 2010-03-09
+Spec Lead:		Jean-Marie Dautelle, Dautelle, Jean-Marie
+Spec Lead:		Werner Keil, Keil, Werner
+
+
+
+276		Design-Time Metadata for JavaServerTM Faces Components
+Description:		Defines a standard mechanism for associating design-time information with JavaServerTM Faces components.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2012.
+Latest Stage:
+Early Draft Review	Download page	Start: 2010-04-09	End: 2010-05-09
+Spec Lead:		Jeffrey Stephenson, Oracle
+
+
+
+277		JavaTM Module System
+Description:		The specification defines a distribution format and a repository for collections of Java code and related resources. It also defines the discovery, loading, and integrity mechanisms at runtime.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead. Superseded by JSR 376.
+Latest Stage:
+Withdrawn		Effective: 2016-01-20
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+278		Resource Management API for JavaTM ME
+Description:		RM API will provide a simple interface for resource reclamation, accounting, and monitoring in a Java ME platform that requires resource management for multiple applications.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Public Review Ballot	View results	Start: 2007-01-30	End: 2007-02-05
+Spec Lead:		Ho An, Samsung Electronics Corporation
+Spec Lead:		Hobum (Vincent) Kwon, Samsung Electronics Corporation
+
+
+
+279		Service Connection API for JavaTM ME
+Description:		A new high-level API for connection services via frameworks supporting identity based services, discovery, and authentication. The API supports Service Oriented Architectures (SOA) and other similar network service application models.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-11-16
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:		Pia Niemela, Nokia Corporation
+Spec Lead:		Jens Paetzold, Oracle
+
+
+
+280		XML API for JavaTM ME
+Description:		This JSR provides a common general purpose XML API for the next generation of mobile devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-10-11
+Spec Lead:		Jean-Yves Bitterlich, Oracle
+Spec Lead:		Pia Niemela, Nokia Corporation
+
+
+
+281		IMS Services API
+Description:		This JSR provides a high-level API to access IP Multimedia Subsystem (IMS) services. This API hides IMS technology details and exposes service-level support to enable easy development of IMS applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2009-04-22
+Spec Lead:		Piotr Kessler, Ericsson AB
+Spec Lead:		Stefan Svenberg, Ericsson AB
+
+
+
+282		RTSJ version 1.1
+Description:		Fill some minor gaps in the RTSJ
+Status:		Active
+Latest Stage:
+Early Draft Review 2	Download page	Start: 2015-01-29	End: 2015-03-30
+Spec Lead:		James J. Hunt, aicas GmbH
+
+
+
+283		Content Repository for JavaTM Technology API Version 2.0
+Description:		As the version 2.0 of the Content Repository for Java Technology API, the aim is to further expand and refine the specification based on feedback from the community.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-09-25
+Spec Lead:	Star Spec Lead	David Nuescheler, Day Software, Inc.
+
+
+
+284		Resource Consumption Management API
+Description:		The API will allow for partitioning resources (constraints, reservations) among Java applications and for querying about resource availability (notifications). It will also provide means of exposing various kinds of resources.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-01-22
+Spec Lead:		Grzegorz Czajkowski, Google Inc.
+
+
+
+285		Performance Management API
+Description:		The Performance Management API provides for the monitoring and management of the performance of an information or telecommunications network.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in June 2011.
+Latest Stage:
+Expert Group Formation		Start: 2005-11-15
+Spec Lead:		Dave Raymer, Motorola
+
+
+
+286		Portlet Specification 2.0
+Description:		Version 2.0 of the Portlet Specification plans to align with J2EE 1.4, integrate other new JSRs relevant for the portlet, and align with the WSRP specification V 2.0.
+Status:		Active
+Latest Stage:
+Maintenance Review Ballot	View results	Start: 2015-08-18	End: 2015-08-24
+Spec Lead:		Martin Nicklous, IBM
+
+
+
+287		Scalable 2D Vector Graphics API 2.0 for Java METM
+Description:		This specification will define an optional package for rendering enhanced 2D vector graphics and rich media content based on select features from SVG Mobile 1.2, with primary emphasis on MIDP.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-10
+Spec Lead:		Juha Eskelinen, Nokia Corporation
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+
+
+
+288		Adaptive JavaTM ME System API
+Description:		This specification will define a mechanism that enables a systems developer to include multiple Configurations and Profiles on a single device, using one set of developed components.
+Status:		Rejected
+Reason:		This JSR was not approved by the ME Executive Committee in the JSR Approval Ballot and JSR Reconsideration Ballot.
+Latest Stage:
+Rejected		Effective: 2006-02-22
+Spec Lead:		Andre Kruetzfeldt, Aplix Corporation
+
+
+
+289		SIP Servlet v1.1
+Description:		This specification is an enhancement to the SIPServlet specification. The central focus of this JSR is to enhance the existing SIPServlet specification with new requirements determined by the industry.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-08-21
+Spec Lead:		Yannis Cosmadopoulos, Oracle
+Spec Lead:		Amitha Pulijala, Oracle
+
+
+
+290		JavaTM Language & XML User Interface Markup Integration
+Description:		This JSR enables creation of Java ME applications which combine Web UI markup technologies with Java code. The intent is to leverage the W3C Compound Document Format (CDF) specification.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2012.
+Latest Stage:
+Proposed Final Draft 2	Download page	Start: 2009-05-01
+Spec Lead:		Jean-Yves Bitterlich, Oracle
+
+
+
+291		Dynamic Component Support for JavaTM SE
+Description:		Establish a JCP specification for a dynamic component framework supporting existing Java SE environments based on the OSGi dynamic component model specifications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2007-08-07
+Spec Lead:		Thomas Watson, IBM
+
+
+
+292		Supporting Dynamically Typed Languages on the JavaTM Platform
+Description:		Add a new bytecode, invokedynamic, that supports efficient and flexible execution of method invocations in the absence of static type information.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2011-07-20
+Spec Lead:		John Rose, Sun Microsystems, Inc.
+
+
+
+293		Location API 2.0
+Description:		This specification defines an optional package that enables the developers to use new enhanced location-based features on the JavaTM ME devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-11-04
+Spec Lead:		Kimmo Loytana, North Sixty-One Ltd
+Spec Lead:	Star Spec Lead	Jaana Majakangas, Nokia Corporation
+
+
+
+294		Improved Modularity Support in the JavaTM Programming Language
+Description:		Language extensions in support of information hiding and separate compilation.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead. Superseded by JSR 376.
+Latest Stage:
+Withdrawn		Effective: 2016-01-20
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+295		Beans Binding
+Description:		Provide an API that allows two properties of two beans to stay in sync.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Specification Lead.
+Latest Stage:
+Withdrawn		Effective: 2011-05-02
+Spec Lead:		Peter Zhelezniakov, Sun Microsystems, Inc.
+
+
+
+296		Swing Application Framework
+Description:		This JSR will provide a simple application framework for Swing applications. It will define infrastructure common to most desktop applications. In so doing, Swing applications will be easier to create.
+Status:		Withdrawn
+Reason:		Withdrawn at the Spec Lead's request.
+Latest Stage:
+Withdrawn		Effective: 2011-06-06
+Spec Lead:		Alexander Potochkin, Sun Microsystems, Inc.
+
+
+
+297		Mobile 3D Graphics API 2.0
+Description:		This new revision of M3G (JSR-184) will expose the latest graphics hardware features on high-end devices, while improving performance and memory usage on the low end.
+Status:		Dormant
+Reason:		The Specification Leads chose to list this JSR as dormant in June 2013.
+Latest Stage:
+Proposed Final Draft	Download page	Start: 2009-04-14
+Spec Lead:		Tomi Aarnio, Nokia Corporation
+Spec Lead:		Erkki Rysä, North Sixty-One Ltd
+
+
+
+298		Telematics API for JavaTM ME
+Description:		This JSR defines the API set for Telematics Service on mobile devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2008-10-14
+Spec Lead:		Dave Kim, SK Telecom Co., Ltd.
+Spec Lead:		Young Min Park, SK Telecom Co., Ltd.
+
+
+
+299		Contexts and Dependency Injection for the JavaTM EE platform
+Description:		The purpose of this specification is to unify the JSF managed bean component model with the EJB component model, resulting in a significantly simplified programming model for web-based applications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-10
+Spec Lead:		Gavin King, Red Hat
+
+
+
+300		DRM API for JavaTM ME
+Description:		This specification will define an optional package for developing JavaTM ME applications which utilize or interoperate with DRM agents that separately exist in devices.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2010-02-04
+Spec Lead:		Jea Un Kim, LG Electronics Inc.
+Spec Lead:		Dnyanesh R Pathak, LG Electronics Inc.
+
+
+
+301		Portlet 1.0 Bridge for JavaServerTM Faces 1.2
+Description:		The Portlet Bridge Specification for JavaServer Faces defines the semantics of a JSR 168/JSR 286 portlet that proxies for JSF artifacts.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2010-07-08
+Spec Lead:		Michael Freedman, Oracle
+
+
+
+302		Safety Critical JavaTM Technology
+Description:		This specification creates a J2METM capability, based on the Real-Time Specification for Java (JSR-1), containing minimal features necessary for safety critical systems capable of certification, e.g., DO-178B.
+Status:		Inactive
+Latest Stage:
+Early Draft Review 2	Download page	Start: 2013-06-28	End: 2013-09-26
+Spec Lead:		C. Douglass Locke, The Open Group
+
+
+
+303		Bean Validation
+Description:		This JSR will define a meta-data model and API for JavaBeanTM validation based on annotations, with overrides and extended meta-data through the use of XML validation descriptors.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-11-16
+Spec Lead:		Emmanuel Bernard, Red Hat
+
+
+
+304		Mobile Telephony API version 2
+Description:		This JSR extends the interfaces defined in JSR253 (Mobile Telephony API) to cover additional use cases and features not covered in that JSR.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Expert Group Formation		Start: 2006-08-01
+Spec Lead:		Brian Deuser, Motorola
+
+
+
+305		Annotations for Software Defect Detection
+Description:		This JSR will work to develop standard annotations (such as @NonNull) that can be applied to Java programs to assist tools that detect software defects.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Expert Group Formation		Start: 2006-09-12
+Spec Lead:		William Pugh, Pugh, William
+
+
+
+306		Towards a new version of the JCP
+Description:		This JSR proposes a variety of changes and adjustments to the JCP.
+Status:		Withdrawn
+Reason:		This JSR was withdrawn because it is obsolete. It was replaced by two new JSRs that will develop short-term and longer-term changes to the Process Document and the JSPA. Work from JSR 306 was to be incorporated into the new JSRs as appropriate. Patrick Curran was to be the Spec Lead for these JSRs, while the Expert Group will be the current membership of both the JCP Executive Committees.
+Latest Stage:
+Withdrawn		Effective: 2010-12-16
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+307		Network Mobility and Mobile Data API
+Description:		This JSR provides API's for initiating and controlling data sessions in a mobile device and providing applications control over wireless network selection.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in September 2012.
+Latest Stage:
+Public Review Ballot	View results	Start: 2009-02-17	End: 2009-02-23
+Spec Lead:		Brian Deuser, Motorola
+
+
+
+308		Annotations on Java Types
+Description:		This JSR extends the Java annotation syntax to permit annotations on any occurrence of a type. Previously, annotations could not be placed on generic type arguments, type casts, etc.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-03-04
+Spec Lead:		Alex Buckley, Oracle
+Spec Lead:		Michael Ernst, Ernst, Michael
+
+
+
+309		Media Server Control API
+Description:		This Specification is a protocol agnostic API for Media Server Control. It provides a portable interface to create media rich applications with IVR, Conferencing, Speech Recognition, and similar features.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-21
+Spec Lead:		Marc Brandt, Hewlett-Packard
+Spec Lead:		Tomas Ericson, Oracle
+
+
+
+310		Date and Time API
+Description:		This JSR will provide a new and improved date and time API for Java.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-03-04
+Spec Lead:		Stephen Colebourne, Colebourne, Stephen
+Spec Lead:		Roger Riggs, Oracle
+Spec Lead:		Michael Nascimento Santos, Santos, Michael Nascimento
+
+
+
+311		JAX-RS: The JavaTM API for RESTful Web Services
+Description:		This JSR will develop an API for providing support for RESTful(Representational State Transfer) Web Services in the Java Platform.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2009-11-23
+Spec Lead:	Star Spec Lead	Marek Potociar, Oracle
+
+
+
+312		JavaTM Business Integration 2.0 (JBI 2.0)
+Description:		JBI enables the creation of a Java business integration environment for the creation of Composite Applications. The JBI 2.0 JSR will augment it to address new requirements.
+Status:		Withdrawn
+Reason:		Withdrawn at the Spec Lead's request.
+Latest Stage:
+Withdrawn		Effective: 2010-12-17
+Spec Lead:		Ron Ten-Hove, Sun Microsystems, Inc.
+Spec Lead:		Peter Walker, Sun Microsystems, Inc.
+
+
+
+313		JavaTM Platform, Enterprise Edition 6 (Java EE 6) Specification
+Description:		This JSR is to develop Java EE 6, a release of the Java Platform, Enterprise Edition targeted to ship in 2008.
+Status:		Withdrawn
+Reason:		Withdrawn at the Spec Lead's request during the JSR Approval Ballot.
+Latest Stage:
+Withdrawn		Effective: 2007-04-13
+Spec Lead:		Roberto Chinnici, Oracle
+Spec Lead:	Star Spec Lead	Bill Shannon, Sun Microsystems, Inc.
+
+
+
+314		JavaServer Faces 2.0
+Description:		This JSR is an update to the 1.2 version of the JavaServer Faces specification. This is the first major revision of the JavaServer Faces specification since JSR 127.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2010-11-22
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+Spec Lead:		Roger Kitain, Oracle
+
+
+
+315		JavaTM Servlet 3.0 Specification
+Description:		This JSR will be an update to the existing Servlet 2.5 specification.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2011-03-09
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+316		JavaTM Platform, Enterprise Edition 6 (Java EE 6) Specification
+Description:		This JSR is to develop Java EE 6, a release of the Java Platform, Enterprise Edition targeted to ship in 2008.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-10
+Spec Lead:		Roberto Chinnici, Oracle
+Spec Lead:	Star Spec Lead	William Shannon, Oracle
+
+
+
+317		JavaTM Persistence 2.0
+Description:		The Java Persistence API is the Java API for the management of persistence and object/relational mapping for Java EE and Java SE environments.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-12-10
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+
+
+
+318		Enterprise JavaBeansTM 3.1
+Description:		Enterprise JavaBeans is an architecture for the development and deployment of component-based business applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2013-06-12
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+
+
+
+319		Availability Management for Java
+Description:		This JSR will provide an API by which an availability management framework can supervise and control Java runtime units in order to achieve high availability.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2010-06-15
+Spec Lead:		Jens Jensen, Ericsson AB
+
+
+
+320		Services Framework
+Description:		This specification will define a high level, lightweight services and management framework API's that will provide JME based devices the ability to manage long running applications and services.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in May 2012.
+Latest Stage:
+Expert Group Formation		Start: 2007-11-13
+Spec Lead:		Roger N. Mahler, AT&T
+
+
+
+321		Trusted Computing API for JavaTM
+Description:		Develop a Trusted Computing API for JavaTM providing selected functionality the TCG Software Stack offers to the C world, while following the conventions of modern Java APIs.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2011-12-05
+Spec Lead:		Ronald Toegl, IAIK Graz University of Technology
+
+
+
+322		JavaTM EE Connector Architecture 1.6
+Description:		The Java EE Connector Architecture 1.5 defines a standard architecture for connecting to Enterprise Information Systems. This JSR will enhance the existing specification with features requested by experts and community.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2013-06-10
+Spec Lead:		Sivakumar Thyagarajan, Oracle
+
+
+
+323		Strong Mobility for JavaTM
+Description:		Strong Mobility is the movement of code, data and execution state from one location to another. This specification defines byte-code transformation to achieve Strong Mobility for Java-based programs.
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2008-01-22
+Spec Lead:		Hiroki Suguri, Suguri, Hiroki
+
+
+
+324		On Screen MIDlet API for Java ME
+Description:		This JSR defines the API set for MIDlet activation functionality on idle screen.
+Status:		Rejected
+Reason:		This JSR was not approved by the ME Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2008-04-15
+Spec Lead:		Dave Kim, SK Telecom Co., Ltd.
+
+
+
+325		IMS Communication Enablers (ICE)
+Description:		This specification will define a high level, IMS Communications Enabler framework API that will provide Java ME based devices effortless access to a set of essential IMS Communication Enablers.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2010-10-26
+Spec Lead:		Martin Gunnang, Ericsson AB
+Spec Lead:		Niclas Palm, Ericsson AB
+
+
+
+326		Post mortem JVM Diagnostics API
+Description:		A standard Java API designed to support the generation and consumption of post mortem or snapshot Java diagnostic artefacts.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in August 2012.
+Latest Stage:
+Early Draft Review	Download page	Start: 2009-10-29	End: 2009-11-28
+Spec Lead:		Steve Poole, IBM
+
+
+
+327		Dynamic Contents Delivery Service API for JavaTM ME
+Description:		This JSR will enable Java application to interact with dynamic content delivery (DCD) client implementation in user's device.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in September 2012.
+Latest Stage:
+Proposed Final Draft	Download page	Start: 2010-04-30
+Spec Lead:		Dave Kim, SK Telecom Co., Ltd.
+
+
+
+328		Change Management API
+Description:		This JSR defines an interface to Change Management Systems handling and approving Requests for Changes.
+Status:		Withdrawn
+Reason:		The JSR 328 was designed to assure a 'standard' in handling OSS(/J) change amangement and to tie it the other existing OSS/J JSRs. It was developed in close cooperation with our customer based on his requirements. Since our customer constantly diverges from the standards and since the proposal was dormant for a long time without any interest on the topic it makes no sense for our company to further pursue this proposal.
+Latest Stage:
+Withdrawn		Effective: 2016-04-11
+Spec Lead:		Christian Klaus, Ascom Deutschland GmbH
+
+
+
+329		Portlet 2.0 Bridge for JavaServerTM Faces 1.2 Specification
+Description:		The Portlet 2.0 Bridge defines the semantics for executing JavaServer Faces views within a portlet.
+Status:		Active
+Latest Stage:
+Maintenance Review Ballot	View results	Start: 2015-08-18	End: 2015-08-24
+Spec Lead:		Michael Freedman, Oracle
+Spec Lead:		Neil Griffin, Liferay, Inc
+
+
+
+330		Dependency Injection for Java
+Description:		We propose to maximize reusability, testability and maintainability of Java code by standardizing an extensible dependency injection API.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2009-10-14
+Spec Lead:		Rod Johnson, VMware
+Spec Lead:		Bob Lee, Lee, Bob
+
+
+
+331		Constraint Programming API
+Description:		This specification defines a Java runtime API for constraint programming. The CP API prescribes a set of fundamental operations used to define and solve constraint satisfaction and optimization problems.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2012-10-16
+Spec Lead:		Jacob Feldman, Feldman, Jacob
+
+
+
+332		Email Client API for JavaTM ME
+Description:		The Email Client API (EMC) for Java ME enables Java ME applications to access Email services like sending/receiving of Emails and corresponding notifications.
+Status:		Dormant
+Reason:		The Executive Committee voted to list this JSR as dormant in July 2013.
+Latest Stage:
+JSR Review Ballot	View results	Start: 2009-11-17	End: 2009-11-30
+Spec Lead:		Gandhi Kishor Addanki, Samsung Electronics Corporation
+Spec Lead:		Lakshmi Narayana Thummala, Samsung Electronics Corporation
+
+
+
+333		Content Repository API for Java Technology 2.1
+Description:		As the version 2.1 of the Content Repository for Java Technology API, the aim is to further expand and refine the specification based on feedback from the community.
+Status:		Dormant
+Reason:		The Specification Lead chose to list this JSR as dormant in December 2014.
+Latest Stage:
+Proposed Final Draft	Download page	Start: 2013-08-31
+Spec Lead:		Peeter Piegaze, Adobe Systems Inc.
+
+
+
+334		Small Enhancements to the JavaTM Programming Language
+Description:		A successor to JSR 201 to enhance the Java programming language with an assortment of small changes to improve productivity. Changes must be simultaneously small in specification, implementation, and testing.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2011-07-20
+Spec Lead:		Joe Darcy, Oracle
+
+
+
+335		Lambda Expressions for the JavaTM Programming Language
+Description:		Extend the Java language to support compact lambda expressions (closures), as well as related language and library features to enable the Java SE APIs to use lambda expressions effectively.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-03-04
+Spec Lead:	Star Spec Lead	Brian Goetz, Oracle
+
+
+
+336		JavaTM SE 7 Release Contents
+Description:		The Umbrella JSR for the seventh edition of the Java SE Platform
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2015-03-12
+Spec Lead:	Star Spec Lead	Mark Reinhold, Oracle
+
+
+
+337		JavaTM SE 8 Release Contents
+Description:		The Umbrella JSR for the eighth edition of the Java SE Platform
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2015-03-03
+Spec Lead:	Star Spec Lead	Mark Reinhold, Oracle
+
+
+
+338		JavaTM Persistence 2.1
+Description:		The Java Persistence API is the Java API for the management of persistence and object/relational mapping in Java EE and Java SE environments.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-22
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+Spec Lead:		Lukas Jungmann, Oracle
+
+
+
+339		JAX-RS 2.0: The Java API for RESTful Web Services
+Description:		This JSR will develop the next version of JAX-RS, the API for for RESTful (Representational State Transfer) Web Services in the Java Platform.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2014-10-13
+Spec Lead:	Star Spec Lead	Santiago Pericasgeertsen, Oracle
+Spec Lead:	Star Spec Lead	Marek Potociar, Oracle
+
+
+
+340		Java Servlet 3.1 Specification
+Description:		This JSR is to develop the next version of Java Servlets - Java Servlets 3.1
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-28
+Spec Lead:		Shing Wai Chan, Oracle
+Spec Lead:		Rajiv Mordani, Oracle
+
+
+
+341		Expression Language 3.0
+Description:		This is an update to Expression Language 2.2, currently part of JSR 245, JavaServer Page (JSP) 2.2.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-22
+Spec Lead:		Kinman Chung, Oracle
+
+
+
+342		JavaTM Platform, Enterprise Edition 7 (Java EE 7) Specification
+Description:		This JSR will develop Java EE 7, the next version of the Java Platform, Enterprise Edition.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2015-07-03
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+Spec Lead:	Star Spec Lead	William Shannon, Oracle
+
+
+
+343		JavaTM Message Service 2.0
+Description:		This is an update to the Java Message Service API, an existing API for accessing enterprise messaging systems from Java programs.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2015-03-16
+Spec Lead:		Nigel Deakin, Oracle
+
+
+
+344		JavaServerTM Faces 2.2
+Description:		This JSR is an update to the 2.1 version of the JavaServer Faces specification. This is the first major revision of the JavaServer Specification since JSR 314.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-21
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+
+
+
+345		Enterprise JavaBeansTM 3.2
+Description:		Enterprise JavaBeans is an architecture for the development and deployment of component-based business applications.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-28
+Spec Lead:		Marina Vatkina, Oracle
+
+
+
+346		Contexts and Dependency Injection for JavaTM EE 1.1
+Description:		Updates and clarifications to CDI 1.0 along much requested features.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2014-04-18
+Spec Lead:	Star Spec Lead	Pete Muir, Red Hat
+
+
+
+347		Data Grids for the JavaTM Platform
+Description:		This JSR proposes an API for interacting with in-memory and disk-based distributed data grids.
+Status:		Withdrawn
+Reason:		Withdrawn at the Spec Lead's request: 'The JSR has failed to obtain sufficient interest and participation in the JCP community and has barely evolved since its inception. We are therefore requesting its withdrawal.'
+Latest Stage:
+Withdrawn		Effective: 2015-01-06
+Spec Lead:		No Current Spec Lead, No SL Company
+
+
+
+348		Towards a new version of the Java Community Process
+Description:		This JSR proposes a variety of changes and adjustments to the Java Community Process.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2011-10-18
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+349		Bean Validation 1.1
+Description:		Bean Validation standardizes constraint definition, declaration and validation for the Java platform. For more information on Bean Validation and how to participate, check out http://beanvalidation.org.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-24
+Spec Lead:		Emmanuel Bernard, Red Hat
+
+
+
+350		Java State Management
+Description:		This JSR will develop an API that applications and JavaEE containers can use to offload the responsibility of state management into third party providers with different quality of service characteristics.
+Status:		Rejected
+Reason:		This JSR was not approved to continue by the Executive Committee in the JSR Renewal Ballot.
+Latest Stage:
+Rejected		Effective: 2015-05-12
+Spec Lead:		Tim Watson, Oracle
+
+
+
+351		JavaTM Identity API
+Description:		This JSR will develop the Identity API for the Java Platform.
+Status:		Withdrawn
+Reason:		Withdrawn at the request of the Spec Lead.
+Latest Stage:
+Withdrawn		Effective: 2016-07-06
+Spec Lead:		Ronald Monzillo, Oracle
+
+
+
+352		Batch Applications for the Java Platform
+Description:		This JSR specifies a programming model for batch applications and a runtime for scheduling and executing jobs.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2014-08-19
+Spec Lead:		Chris Vignola, IBM
+
+
+
+353		JavaTM API for JSON Processing
+Description:		The Java API for JSON Processing (JSON-P) JSR will develop a Java API to process (for e.g. parse, generate, transform and query) JSON.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2013-05-23
+Spec Lead:		Jitendra Kotamraju, Oracle
+
+
+
+354		Money and Currency API
+Description:		Provides an API for representing, transporting, and performing comprehensive calculations with Money and Currency.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2015-05-13
+Spec Lead:	Star Spec Lead	Anatole Tresch, Credit Suisse
+
+
+
+355		JCP Executive Committee Merge
+Description:		Since Java is One Platform this JSR will merge the two Executive Committees into one, and will reduce the total number of EC members.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2012-08-22
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+356		JavaTM API for WebSocket
+Description:		The Java API for WebSocket JSR will define a standard API for creating WebSocket applications.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2014-08-13
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+357		Social Media API
+Description:		This specification proposes an API for accessing and providing social information networks
+Status:		Rejected
+Reason:		This JSR was not approved by the SE/EE Executive Committee in the JSR Approval Ballot.
+Latest Stage:
+Rejected		Effective: 2012-03-20
+Spec Lead:		Werner Keil, Keil, Werner
+Spec Lead:		Antoine Sabot-Durand, Sabot-Durand, Antoine
+
+
+
+358		A major revision of the Java Community Process
+Description:		This JSR will make a variety of changes and adjustments to the Java Community Process, revising the Process Document, the EC Standing Rules, and the JSPA.
+Status:		Withdrawn
+Reason:		At the January 2016 meeting of the JCP Executive Committee (EC) the EC was informed that Oracle Legal had advised that no changes should be made to the JSPA or to JSR licensing models while litigation is ongoing (see the public minutes for more details).
+
+Consequently the EC decided at the March meeting to withdraw (close) JSR 358. Another JSR ('JCP.next.5') will be opened to work on changes that can be implemented by modifying only the Process Document, and we hope and expect that we will be able to pick up the more substantive changes that were being considered for JSR 358 as soon as the litigation is completed.
+Latest Stage:
+Withdrawn		Effective: 2016-03-30
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+359		SIP Servlet 2.0
+Description:		SIP Servlet API is the standard platform for implementing SIP based services.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2015-04-11
+Spec Lead:		Binod PG, Oracle
+
+
+
+360		Connected Limited Device Configuration 8
+Description:		CLDC 8 will be an evolutionary update to CLDC 1.1.1 to bring the VM, Java Language, and libraries up to date with Java SE 8.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-04-30
+Spec Lead:		Michael Lagally, Oracle
+Spec Lead:		Roger Riggs, Oracle
+
+
+
+361		JavaTM ME Embedded Profile
+Description:		Update IMP(-NG) to align with state-of-the-art features and current embedded device market requirements.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2014-04-30
+Spec Lead:	Star Spec Lead	Volker Bauche, Oracle
+
+
+
+362		Portlet Specification 3.0
+Description:		This update to the Portlet Specification will address progress in Java EE, client-side web, and mobile technology that has taken place since JSR286 Portlet Specification 2.0 became final in 2008.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-10-09	End: 2016-01-07
+Spec Lead:		Martin Nicklous, IBM
+
+
+
+363		Units of Measurement API
+Description:		This JSR specifies Java packages for modeling and working with measurement values, quantities and their corresponding units.
+Status:		Active
+Latest Stage:
+Public Review Ballot	View results	Start: 2016-01-12	End: 2016-01-25
+Spec Lead:		Jean-Marie Dautelle, Dautelle, Jean-Marie
+Spec Lead:		Werner Keil, Keil, Werner
+Spec Lead:		Leonardo Lima, V2COM
+
+
+
+364		Broadening JCP Membership
+Description:		This aims to broaden JCP participation by defining new membership classes, changing existing membership categories, enabling participation by the community, and ensuring the appropriate Intellectual Property commitments from JCP Members.
+Status:		Active
+Latest Stage:
+Final Release	Download page	Start: 2016-04-07
+Spec Lead:		Heather VanCura, Oracle
+
+
+
+365		Contexts and Dependency Injection for JavaTM 2.0
+Description:		This JSR is a major evolution of the CDI 1.1 (JSR 346) specification. Focused on modularity and Java SE support.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-07-08	End: 2015-10-05
+Spec Lead:		Antoine Sabot-Durand, Red Hat
+
+
+
+366		Java Platform, Enterprise Edition 8 (Java EE 8) Specification
+Description:		This JSR is to develop Java EE 8, the next release of the Java Platform, Enterprise Edition.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-10-21	End: 2015-11-20
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+Spec Lead:	Star Spec Lead	William Shannon, Oracle
+
+
+
+367		JavaTM API for JSON Binding (JSON-B)
+Description:		A standard binding layer (metadata & runtime) for converting Java objects to/from JSON messages.
+Status:		Active
+Latest Stage:
+Public Review Ballot		Start: 2016-07-26	End: 2016-08-08
+Spec Lead:		Dmitry Kornilov, Oracle
+
+
+
+368		JavaTM Message Service 2.1
+Description:		The JMS API is an API for accessing enterprise messaging systems from Java programs. This JSR is to develop JMS 2.1, the next version of the API.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-10-22	End: 2015-11-21
+Spec Lead:		Nigel Deakin, Oracle
+
+
+
+369		JavaTM Servlet 4.0 Specification
+Description:		This JSR aims to expose the latest advances in HTTP to users of JavaEE as well as providing a vehicle for continual improvement in this foundational Java EE API.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-10-15	End: 2015-12-14
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+Spec Lead:		Shing Wai Chan, Oracle
+
+
+
+370		JavaTM API for RESTful Web Services (JAX-RS 2.1) Specification
+Description:		This JSR is to develop JAX-RS 2.1, the next release of Java API for RESTful Web Services.
+Status:		Active
+Latest Stage:
+JSR Renewal Ballot	View results	Start: 2015-11-10	End: 2015-11-23
+Spec Lead:	Star Spec Lead	Santiago Pericasgeertsen, Oracle
+Spec Lead:	Star Spec Lead	Marek Potociar, Oracle
+
+
+
+371		Model-View-Controller (MVC 1.0) Specification
+Description:		This JSR is to develop MVC 1.0, a model-view-controller specification for Java EE.
+Status:		Active
+Latest Stage:
+Early Draft Review 2	Download page	Start: 2015-10-08	End: 2015-11-07
+Spec Lead:	Star Spec Lead	Santiago Pericasgeertsen, Oracle
+Spec Lead:		Manfred Riem, Oracle
+
+
+
+372		JavaServer Faces (JSF 2.3) Specification.
+Description:		This JSR is to develop JSF 2.3, the next release of Java Server Faces.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-10-21	End: 2015-12-20
+Spec Lead:	Star Spec Lead	Edward Burns, Oracle
+Spec Lead:		Manfred Riem, Oracle
+
+
+
+373		JavaTM EE Management API 2.0
+Description:		This JSR is to update JSR 77 with REST interfaces and incorporate deployment as a standard part of the management interface.
+Status:		Active
+Latest Stage:
+JSR Renewal Ballot	View results	Start: 2015-11-10	End: 2015-11-23
+Spec Lead:		Martin Mares, Oracle
+
+
+
+374		JavaTM API for JSON Processing 1.1
+Description:		This JSR is to provide an update for the Java API for JSON Processing Specification.
+Status:		Active
+Latest Stage:
+Early Draft Review	Download page	Start: 2015-08-03	End: 2015-10-02
+Spec Lead:		Kinman Chung, Oracle
+
+
+
+375		JavaTM EE Security API
+Description:		The goal of this JSR is to improve the Java EE platform by ensuring the Security API aspect is useful in the modern cloud/PaaS application paradigm.
+Status:		Active
+Latest Stage:
+JSR Renewal Ballot	View results	Start: 2015-11-10	End: 2015-11-23
+Spec Lead:		Alexander Kosowski, Oracle
+
+
+
+376		JavaTM Platform Module System
+Description:		Define a module system for the Java Platform.
+Status:		Active
+Latest Stage:
+JSR Renewal Ballot	View results	Start: 2015-11-10	End: 2015-11-23
+Spec Lead:	Star Spec Lead	Mark Reinhold, Oracle
+
+
+
+377		Desktop|Embedded Application API
+Description:		The purpose of this specification is to standardize common behavior found in desktop & embedded applications
+Status:		Active
+Latest Stage:
+JSR Renewal Ballot	View results	Start: 2016-02-16	End: 2016-02-29
+Spec Lead:		Andres Almiray, Almiray, Andres
+
+
+
+378		Portlet 3.0 Bridge for JavaServerTM Faces 2.2 Specification
+Description:		The Java Portlet 3.0 Bridge for JavaServer Faces 2.2 Specification defines the required behavior of a control environment that enables JSF applications to be accessed as Java portlets.
+Status:		Active
+Latest Stage:
+Expert Group Formation		Start: 2015-08-18	End: 2015-12-10
+Spec Lead:		Neil Griffin, Liferay, Inc
+
+
+
+379		JavaTM SE 9 Release Contents
+Description:		The Umbrella JSR for the ninth edition of the Java SE Platform.
+Status:		Active
+Latest Stage:
+JSR Review Ballot	View results	Start: 2016-06-14	End: 2016-06-27
+Spec Lead:		Iris Clark, Oracle
+Spec Lead:	Star Spec Lead	Mark Reinhold, Oracle
+
+
+
+380		Bean Validation 2.0
+Description:		This JSR aims at evolving the Bean Validation specification by leveraging Java 8 language constructs for the purposes of validation.
+Status:		Active
+Latest Stage:
+JSR Review		Start: 2016-07-13	End: 2016-07-25
+Spec Lead:		Gunnar Morling, Red Hat
+
+
+
+901		JavaTM Language Specification
+Description:		This specification includes all changes, clarifications and amendments made to the JavaTM programming language since the publication of the first edition of the language specification.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2011-08-05
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+902		JavaTM Servlet API Specification, Version 2.2, Errata Sheet, 4/1/2000
+Description:		Maintenance revision for the JavaTM Servlet API Specification, version 2.2.
+Status:		Maintenance
+Latest Stage:
+Maintenance Review	Download page	Start: 2000-04-12	End: 2000-05-12
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+903		JavaTM Servlet API Specification, Version 2.2, Errata Sheet, 4/27/2000
+Description:		Maintenance revision for the JavaTM Servlet API Specification, version 2.2.
+Status:		Maintenance
+Latest Stage:
+Maintenance Review	Download page	Start: 2000-05-05	End: 2000-06-05
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+904		JavaMailTM Specification
+Description:		Maintenance revision 1.2 for the JavaMailTM API.
+Status:		Maintenance
+Latest Stage:
+Maintenance Review	Download page	Start: 2000-05-25	End: 2000-06-25
+Spec Lead:	Star Spec Lead	William Shannon, Oracle
+
+
+
+905		Enterprise JavaBeansTM Specification Version 1.1, Errata Sheet, 5/4/2000
+Description:		Maintenance revision for the Enterprise JavaBeansTM Specification, version 1.1.
+Status:		Maintenance
+Latest Stage:
+Maintenance Review	Download page	Start: 2000-05-08	End: 2000-06-08
+Spec Lead:	Star Spec Lead	Linda Demichiel, Oracle
+
+
+
+906		JavaServer PagesTM Specification Version 1.1, Errata Sheet 2000.04.28
+Description:		The Errata Sheet for 2000.04.28.
+Status:		Maintenance
+Latest Stage:
+Maintenance Review	Download page	Start: 2000-06-06	End: 2000-07-06
+Spec Lead:		Eduardo Pelegri-Llopart, Sun Microsystems, Inc.
+
+
+
+907		JavaTM Transaction API (JTA)
+Description:		Revisions to the JTA specification.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2013-06-17
+Spec Lead:		Paul Parkinson, Oracle
+
+
+
+908		JavaTM Media Framework, version 2.0 - Minor changes
+Description:		Minor changes to the RTP section.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2000-09-20	End: 2000-10-20
+Spec Lead:		Marc Owerfeldt, Sun Microsystems, Inc.
+
+
+
+909		JavaTM Specification Participation Agreement
+Description:		The Maintenance Review of the JSPA revisions.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2000-11-03	End: 2000-12-05
+Spec Lead:		Jonathan Nimer, Sun Microsystems, Inc.
+
+
+
+910		JDBC 2.1 Errata Sheet
+Description:		Errata Sheet of JDBC 2.1 for Maintenance review.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2000-12-20	End: 2001-01-18
+Spec Lead:		Lance Andersen, Oracle
+
+
+
+911		API Specification Differences in Ladybird
+Description:		This details the specification differences between Ladybird and Kestrel.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2001-02-21	End: 2001-03-23
+Spec Lead:		Alan Sommerer, Sun Microsystems, Inc.
+
+
+
+912		Java 3DTM API 1.3
+Description:		Version 1.3 of the Java 3D API.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review 3	Download page	Start: 2001-11-21	End: 2002-02-11
+Spec Lead:		Kevin Rushforth, Sun Microsystems, Inc.
+
+
+
+913		JCP 2.0
+Description:		This is the Maintenance Revision of the JCP 2.0 EC Voting rules.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2001-05-08	End: 2001-06-11
+Spec Lead:		Patrick Curran, Oracle
+
+
+
+914		JavaTM Message Service (JMS) API
+Description:		JavaTM Message Service API Errata.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2003-12-02
+Spec Lead:		Nigel Deakin, Oracle
+
+
+
+915		J2SETM 1.4 (Merlin) Maintenance Review
+Description:		Details of specification changes made in version 1.4 ("Merlin") of the JavaTM 2 Platform, Standard Edition.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2001-07-26	End: 2001-08-27
+Spec Lead:		Alan Sommerer, Sun Microsystems, Inc.
+
+
+
+916		J2SETM 1.4 (Merlin) Beta 2 Maintenance Review
+Description:		Details of specification changes made in version 1.4 ("Merlin") of the JavaTM 2 Platform, Standard Edition.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2001-10-01	End: 2001-11-05
+Spec Lead:		Alan Sommerer, Sun Microsystems, Inc.
+
+
+
+917		J2SETM 1.4 (Merlin) Beta 3 Maintenance Review
+Description:		Details of specification changes made in version 1.4 ("Merlin") of the JavaTM 2 Platform, Standard Edition.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2001-11-07	End: 2001-12-10
+Submitter:		Alan Sommerer, Sun Microsystems, Inc.
+
+
+
+918		J2SETM 1.4 Release Candidate
+Description:		Define the major features of the J2SETM 1.4 release.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2002-01-08	End: 2002-02-11
+Spec Lead:		Alan Sommerer, Sun Microsystems, Inc.
+
+
+
+919		JavaMailTM
+Description:		A description of the new APIs that are being introduced in JavaMail.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2013-06-10
+Spec Lead:	Star Spec Lead	William Shannon, Oracle
+
+
+
+920		JMF 2.1.1.
+Description:		Maintenance Review of the JMF specification, version 2.1.1.
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2002-04-26	End: 2002-05-28
+Spec Lead:		Babu Srinivasan, Sun Microsystems, Inc.
+
+
+
+921		Implementing Enterprise Web Services 1.1
+Description:		This is a Maintenance Revision of the Implementing Enterprise Web Services 1.1 Specification.
+Status:		Final
+Latest Stage:
+Final Release	Download page	Start: 2004-01-23
+Spec Lead:		Dhiru Pandey, Sun Microsystems, Inc.
+
+
+
+922		JavaTM Communication API
+Description:		Maintenance version of the Java Communication API specification,version 2.0.3
+Status:		Withdrawn
+Reason:		Withdrawn after it became clear that changes were to the implementation, not the specification.
+Latest Stage:
+Withdrawn		Effective: 2002-12-04
+Spec Lead:		Vincent Zhang, Sun Microsystems, Inc.
+
+
+
+923		J2SETM 1.4.2 (Mantis) Beta
+Description:		Descriptions of specification changes being made in version 1.4.2 ("Mantis") of the JavaTM 2 Platform, Standard Edition (J2SETM).
+Status:		Maintenance
+Latest Stage:
+Maintenance Draft Review	Download page	Start: 2003-04-04	End: 2003-05-05
+Spec Lead:	Star Spec Lead	Danny Coward, Oracle
+
+
+
+924		JavaTM Virtual Machine Specification
+Description:		Maintenance review of changes to the JavaTM Virtual Machine Specification, Second Edition for J2SE 1.5
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2011-08-05
+Spec Lead:		Alex Buckley, Oracle
+
+
+
+925		JavaBeansTM Activation Framework 1.1
+Description:		JavaBeans Activation Framework 1.1 proposes a few minor changes to the JAF APIs to address the most commonly requested enhancements.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release	Download page	Start: 2006-05-08
+Spec Lead:	Star Spec Lead	Bill Shannon, Sun Microsystems, Inc.
+
+
+
+926		Java 3DTM
+Description:		Maintenance of the Java 3D specification.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2007-01-18
+Spec Lead:		Kevin Rushforth, Sun Microsystems, Inc.
+
+
+
+927		JavaTM TV API 1.1
+Description:		The maintenance of the Java TV specification.
+Status:		Maintenance
+Latest Stage:
+Maintenance Release 2	Download page	Start: 2008-10-20
+Spec Lead:		Michael Lagally, Oracle
+Spec Lead:		Jens Paetzold, Oracle
+
