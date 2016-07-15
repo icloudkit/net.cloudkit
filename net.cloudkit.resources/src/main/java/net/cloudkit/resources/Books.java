@@ -16,6 +16,10 @@
 
 package net.cloudkit.resources;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.Map;
+
 @Path("books")
 public class Books {
     private final BookDao bookDao;
