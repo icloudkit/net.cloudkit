@@ -119,12 +119,19 @@ Redis
 Poseidon
 Spotify
 
-Apache ActiveMQ
-ActiveMQ Apollo
+Apache ActiveMQ Apollo
+http://activemq.apache.org/apollo/
 RabbitMQ
+http://www.rabbitmq.com/
 ZeroMQ
+http://zeromq.org/
 IBM WebSphere MQ
 Apache Qpid
+https://qpid.apache.org/
+Kafka
+http://kafka.apache.org/
+RocketMQ
+https://github.com/alibaba/RocketMQ
 
 JMS (Java Messaging Service)
 RPC (Remote Procedure Call Protocol)
