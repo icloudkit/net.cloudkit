@@ -27,6 +27,24 @@
         <param-value>webapp.root</param-value>
     </context-param>
 
+    <servlet>
+        <servlet-name>org.glassfish.jersey.examples.bookmark.MyApplication</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>org.glassfish.jersey.examples.bookmark.MyApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>unit:BookmarkPU</param-name>
+            <param-value>persistence/bookmark</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>org.glassfish.jersey.examples.bookmark.MyApplication</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+
     <!-- 默认欢迎页 -->
     <!-- Servlet2.5以上可直接在此处执行Servlet应用,如<welcome-file>servlet/InitSystemParamServlet</welcome-file> -->
     <!-- 这里使用了SpringMVC提供的<mvc:view-controller>标签,实现了首页隐藏的目的,详见applicationContext.xml -->
