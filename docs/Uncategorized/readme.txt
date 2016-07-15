@@ -2079,3 +2079,9 @@ $ du -h --max-depth=1
 $ netstat -anp|grep java
 # 端口被哪个进程占用
 $ lsof -i:8086
+
+
+https://support.hyperic.com/display/SIGAR/Home
+http://metrics.dropwizard.io/3.1.0/
+
+http://karaf.apache.org/
