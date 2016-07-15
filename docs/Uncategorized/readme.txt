@@ -1857,6 +1857,22 @@ Container/ServiceProvider/Facade
 ofbiz
 http://ofbiz.apache.org/
 
+Apache Zeppelin
+http://zeppelin.apache.org/
+
+Hue
+https://github.com/cloudera/hue
+
+Apache Sqoop
+http://sqoop.apache.org/
+
+Spark
+http://spark.apache.org/
+
+http://www.lighttpd.net/
+
+http://www.sonatype.com/download-oss-sonatype
+
 /**
  * jQuery Ajax 防止重复提交
  * @data   : 2012-5-31 17:13
@@ -2036,19 +2052,7 @@ Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
 
 
 
-Apache Zeppelin
-http://zeppelin.apache.org/
 
-Hue
-https://github.com/cloudera/hue
-
-Apache Sqoop
-http://sqoop.apache.org/
-
-Spark
-http://spark.apache.org/
-
-http://www.lighttpd.net/
 
 
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
