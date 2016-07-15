@@ -186,11 +186,11 @@ subprojects {
         // mavenLocal()别名，表示依赖是从本地的Maven仓库中获取。
         mavenCentral()
 
-        // maven { url 'http://download.java.net/maven/2/' }
+        maven { url 'http://download.java.net/maven/2/' }
         maven { url 'http://120.25.65.250:7001/nexus/content/groups/public/' }
         jcenter { url "http://jcenter.bintray.com/" }
 
-        // maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         maven { url 'http://maven.oschina.net/content/groups/public/' }
 
         // 配置Spring Maven仓库

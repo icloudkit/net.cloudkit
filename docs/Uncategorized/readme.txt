@@ -1845,9 +1845,17 @@ Nginx
 http://nginx.org/
 http://nginx.org/en/books.html
 
+https://support.hyperic.com/display/SIGAR/Home
+http://metrics.dropwizard.io/3.1.0/
+http://hc.apache.org/
+http://karaf.apache.org/
+
+http://www.bizfonts.com/
+
 Container/ServiceProvider/Facade
 
 ofbiz
+http://ofbiz.apache.org/
 
 /**
  * jQuery Ajax 防止重复提交
@@ -2068,7 +2076,7 @@ Nginx、Apache、HAProxy、Keepalived
 unique_sequence
 unique_identifier
 
-http://hc.apache.org/
+
 
 查看文件和文件夹大小占用硬盘情况
 # 查看磁盘空间
@@ -2081,7 +2089,4 @@ $ netstat -anp|grep java
 $ lsof -i:8086
 
 
-https://support.hyperic.com/display/SIGAR/Home
-http://metrics.dropwizard.io/3.1.0/
 
-http://karaf.apache.org/
