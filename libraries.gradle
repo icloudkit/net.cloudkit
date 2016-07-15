@@ -455,7 +455,6 @@ ext.libraries = [
 
     // Mail
     "javax.mail-api"                  : "javax.mail:javax.mail-api:1.5.5",
-    // "javamail"                        : "javax.mail:mail:1.5.0-b01",
 
     "activation"                      : "javax.activation:activation:1.1.1",
 
