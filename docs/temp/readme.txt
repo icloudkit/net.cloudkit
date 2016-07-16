@@ -1,4 +1,4 @@
-User/customer/merchant
+User/customer/merchant/shopper
 avatar
 email
 mobile
