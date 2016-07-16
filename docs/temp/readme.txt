@@ -1,4 +1,4 @@
-User/customer
+User/customer/merchant
 avatar
 email
 mobile
@@ -30,9 +30,31 @@ Category lists
 Notifications (Enable/Disable)
 SMS Notifications (Enable/Disable)
 
+Notifications
+Email Notifications
+Web and push settings
+
+Connected Accounts
+Google
+Facebook
+Twitter
+Instagram
+
+Payment Methods
+
+Shipping Addresses
+
+Referrals
+
+Credits
+
+Gift Card
+
+
+
 Account
 Deposit
-Order for goods/Order form
+Orders/Order for goods/Order form
 Goods/Gift
 Discount coupon
 Membership
@@ -49,6 +71,7 @@ Dispatch
 Delivery
 Consignment
 Transport
+
 Payoff/Payment/Pay
 Transaction History
 
@@ -61,14 +84,23 @@ Confirming an order form
 To generate the order
 Wrapping of goods/Packaging of goods
 
-
-
-
-
-
-
-
+Current Password
+New Password
+Confirm Password
 
 dashboard
 merchant
 settings
+
+fancy
+unfancy
+
+Followers
+Following
+
+login
+logout
+
+People also bought
+
+country
