@@ -62,7 +62,7 @@ Shopping cart
 Returned
 Exchange/Replacement
 Tags
-Classification of goods/Goods Category
+Categories/Classification of goods/Goods Category
 Relationship
 Articles
 Charges refund
@@ -105,5 +105,7 @@ People also bought
 
 country
 
+Password protection
 
 wecafe.net
+wecart.net
