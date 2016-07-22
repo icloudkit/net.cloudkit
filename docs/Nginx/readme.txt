@@ -393,3 +393,9 @@ sudo adduser --system --no-create-home --disabled-password --group nginx
 groupadd -f nginx
 useradd -g nginx nginx
 
+
+
+域名跳转
+if ($host != 'mbs.molmcs.com') {
+    rewrite ^/(.*)$ http://mbs.molmcs.com/$1 permanent;
+}
