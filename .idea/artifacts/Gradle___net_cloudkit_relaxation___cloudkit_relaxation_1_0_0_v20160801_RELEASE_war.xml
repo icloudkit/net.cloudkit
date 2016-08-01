@@ -1,11 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="Gradle : net.cloudkit.relaxation : cloudkit-relaxation-1.0.0-v20160716-RELEASE.war">
+  <artifact type="war" name="Gradle : net.cloudkit.relaxation : cloudkit-relaxation-1.0.0-v20160801-RELEASE.war">
     <output-path>$PROJECT_DIR$/out/artifacts/net.cloudkit.relaxation</output-path>
     <properties id="gradle-properties">
       <options external-project-path="$PROJECT_DIR$" />
     </properties>
-    <root id="archive" name="cloudkit-relaxation-1.0.0-v20160716-RELEASE.war">
-      <element id="javaee-facet-resources" facet="net.cloudkit.relaxation_main/web/Web Gradle : cloudkit-relaxation-1.0.0-v20160716-RELEASE.war" />
+    <root id="archive" name="cloudkit-relaxation-1.0.0-v20160801-RELEASE.war">
+      <element id="javaee-facet-resources" facet="net.cloudkit.relaxation_main/web/Web Gradle : cloudkit-relaxation-1.0.0-v20160801-RELEASE.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="net.cloudkit.relaxation_main" />
@@ -26,7 +26,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/net.cloudkit.relaxation/exploded/cloudkit-relaxation-1.0.0-v20160716-RELEASE.war/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/net.cloudkit.relaxation/exploded/cloudkit-relaxation-1.0.0-v20160801-RELEASE.war/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>
