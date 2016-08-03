@@ -106,18 +106,10 @@ OpenID
 OAuth
 YARN
 
-Hadoop
-Docker
-Mesos
-ZooKeeper
-HBase
-MongoDB
-OrientDB
-Memcached
-Redis
-
 Poseidon
 Spotify
+
+
 
 
 
@@ -1328,7 +1320,6 @@ https://www.behance.net/
 
 Content Security Policy Level 2
 
-日彩
 社交购物、青春秀购物、青春代名词
 
 五彩汽球、气泡、阳光、光环、线条、颜料、印像、春天、绿草
@@ -1568,7 +1559,7 @@ http://www.tianmaying.com/tutorial/deploy-spring-boot-application
 http://www.tianmaying.com/tutorial/spring-boot-overview
 http://luohua.iteye.com/blog/383891
 
-http://www.reactjs.cn/
+
 
 
 font-family: "Helvitica Neue",Helvitica,Arial,sans-serif;
@@ -1721,7 +1712,7 @@ Java并发编程从入门到精通
 中国海关通关标准化手册
 中国海关通关实务
 
-http://foundation.zurb.com/
+
 
 Search/Browse/Explore
 
@@ -1740,12 +1731,7 @@ http://www.gemalto.com/china/
 http://precisebiometrics.com/
 意法半导体
 
-Vue
-http://vuejs.org/
-https://github.com/vuejs/vue
 
-Weex
-http://alibaba.github.io/weex/index.html
 
 Xenocode Postbuild
 
@@ -1921,6 +1907,85 @@ http://www.lighttpd.net/
 Nexus
 http://www.sonatype.com/download-oss-sonatype
 
+Foundation
+http://foundation.zurb.com/
+
+ReactJS
+http://www.reactjs.cn/
+
+Vue
+http://vuejs.org/
+https://github.com/vuejs/vue
+
+Weex
+http://alibaba.github.io/weex/index.html
+
+Ratchet
+http://goratchet.com/
+
+Bootstrap
+http://getbootstrap.com/
+
+Photon
+http://photonkit.com
+
+http://connors.github.io/simple-user-styles/
+https://github.com/suprb/Nested
+
+Docker
+https://www.docker.com/
+
+Hadoop
+http://hadoop.apache.org/
+
+Mesos
+http://mesos.apache.org/
+
+ZooKeeper
+http://zookeeper.apache.org/
+
+HBase
+http://hbase.apache.org/
+
+Hive
+http://hive.apache.org/
+
+Ambari
+http://ambari.apache.org/
+
+Avro
+http://avro.apache.org/
+
+Cassandra
+http://cassandra.apache.org/
+
+Chukwa
+http://chukwa.apache.org/
+
+Mahout
+http://mahout.apache.org/
+
+Pig
+http://pig.apache.org/
+
+Spark
+http://spark.apache.org/
+
+Tez
+http://tez.apache.org/
+
+MongoDB
+https://www.mongodb.com/
+
+OrientDB
+http://orientdb.com/orientdb/
+
+Memcached
+http://memcached.org/
+
+Redis
+http://redis.io/
+
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
 MySQL、PostgreSQL、Pgpool
@@ -1991,8 +2056,6 @@ Nginx、Apache、HAProxy、Keepalived
 
 })(jQuery);
 
-
-
 里昂读小王子
 纳尼亚传奇
 人类的故事
@@ -2012,20 +2075,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-
 语义化版本 2.0.0
 http://semver.org/lang/zh-CN/
-
-
-Ratchet
-Bootstrap
-
-
-http://photonkit.com
-
-http://connors.github.io/simple-user-styles/
-https://github.com/suprb/Nested
-
 
 POST   /uri     创建
 DELETE /uri/xxx 删除
@@ -2034,7 +2085,6 @@ GET    /uri/xxx 查看
 http://blog.csdn.net/mfe10714022/article/details/39692305
 
 
-https://www.docker.com/
 http://www.wenwenyun.com/a/tip/2014/0924/533.html
 
 CentOs图形界面的开启与关闭
