@@ -1835,6 +1835,12 @@ http://zookeeper.apache.org/
 流式大数据处理的三种框架: Storm, Spark和Samza
 http://storm.apache.org/
 
+Flink
+http://flink.apache.org/
+
+Nashorn
+http://openjdk.java.net/projects/nashorn/
+
 Atomikos 是一款 Java/JTA 事务处理工具。
 https://www.atomikos.com/
 
