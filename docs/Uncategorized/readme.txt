@@ -2190,10 +2190,6 @@ rz
 SecureCRT设置默认路径：
 Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
 
-
-
-
-
 {
 
   action: "USER_REGISTRATION",
