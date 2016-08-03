@@ -160,8 +160,7 @@ JAX-RS
 
 Google SPDY
 
-Netty
-Grizzly
+
 NIO
 BIO
 
@@ -429,6 +428,7 @@ merchandise正式用词，指商业上销售或商家拥有货物的总称。
 wares 指上市待卖的商品或货物。多用复数形式。
 merchandise 商品，泛指商品，不特指某一商品
 
+Word 回车换行
 ^l 换行
 ^p 回车
 
@@ -1865,6 +1865,12 @@ http://openjdk.java.net/projects/nashorn/
 
 Atomikos 是一款 Java/JTA 事务处理工具。
 https://www.atomikos.com/
+
+Netty
+http://netty.io/
+
+Grizzly
+https://grizzly.java.net/
 
 Jersey
 https://jersey.java.net
