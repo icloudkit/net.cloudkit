@@ -2016,6 +2016,9 @@ http://www.scala-lang.org/
 Ruby
 http://www.ruby-lang.org/zh_cn/
 
+Haskell
+https://www.haskell.org/
+
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
 MySQL、PostgreSQL、Pgpool
