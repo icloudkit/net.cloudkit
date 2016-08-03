@@ -119,19 +119,7 @@ Redis
 Poseidon
 Spotify
 
-Apache ActiveMQ Apollo
-http://activemq.apache.org/apollo/
-RabbitMQ
-http://www.rabbitmq.com/
-ZeroMQ
-http://zeromq.org/
-IBM WebSphere MQ
-Apache Qpid
-https://qpid.apache.org/
-Kafka
-http://kafka.apache.org/
-RocketMQ
-https://github.com/alibaba/RocketMQ
+
 
 JMS (Java Messaging Service)
 RPC (Remote Procedure Call Protocol)
@@ -1842,7 +1830,25 @@ ZeroMQ
 https://github.com/zeromq/jzmq
 http://zeromq.org/
 
+Apache ActiveMQ Apollo
+http://activemq.apache.org/apollo/
+
+RabbitMQ
+http://www.rabbitmq.com/
+
+ZeroMQ
+http://zeromq.org/
+
+IBM WebSphere MQ
+
+Apache Qpid
+https://qpid.apache.org/
+
+Kafka
+http://kafka.apache.org/
+
 RocketMQ
+https://github.com/alibaba/RocketMQ
 
 ZooKeeper
 是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。
