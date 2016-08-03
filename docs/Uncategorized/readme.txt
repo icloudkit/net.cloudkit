@@ -1807,15 +1807,31 @@ JSON-lib
 http://json-lib.sourceforge.net/
 
 JDK
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 Javasisit
+http://jboss-javassist.github.io/javassist/
+
 ASM
+http://asm.ow2.org/
+
 CGLIB
+https://github.com/cglib/cglib
+
+Dubbo
+http://dubbo.io/
 
 MyBatis
+http://www.mybatis.org/
+
 Hibernate
+http://hibernate.org/orm/
+
 Quartz
+http://www.quartz-scheduler.org/
 
 keepalived
+http://www.keepalived.org/
 
 Mule
 https://developer.mulesoft.com/
@@ -1851,6 +1867,9 @@ https://github.com/Dreampie/Resty
 
 Spring MVC
 
+Ebean ORM - Java/Kotlin/JVM
+https://ebean-orm.github.io/
+
 fasterxml jackson
 http://wiki.fasterxml.com/JacksonDownload
 
@@ -1861,6 +1880,8 @@ http://nginx.org/en/books.html
 https://support.hyperic.com/display/SIGAR/Home
 http://metrics.dropwizard.io/3.1.0/
 http://hc.apache.org/
+
+Karaf/OSGi
 http://karaf.apache.org/
 
 http://www.bizfonts.com/
@@ -1882,9 +1903,20 @@ http://sqoop.apache.org/
 Spark
 http://spark.apache.org/
 
+Lighttpd
 http://www.lighttpd.net/
 
+Nexus
 http://www.sonatype.com/download-oss-sonatype
+
+Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
+SNMP
+MySQL、PostgreSQL、Pgpool
+系统网络安装 PXE，Cobbler
+主流自动化运维工具 Puppet/Chef/Salt/Ansible
+开发语言 Bash/Python/Perl 等；
+开源虚拟化技术 KVM，Container
+Nginx、Apache、HAProxy、Keepalived
 
 /**
  * jQuery Ajax 防止重复提交
@@ -2067,17 +2099,6 @@ Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
 
 
 
-
-Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
-SNMP
-MySQL、PostgreSQL、Pgpool
-系统网络安装 PXE，Cobbler
-主流自动化运维工具 Puppet/Chef/Salt/Ansible
-开发语言 Bash/Python/Perl 等；
-开源虚拟化技术 KVM，Container
-Nginx、Apache、HAProxy、Keepalived
-
-
 {
 
   action: "USER_REGISTRATION",
@@ -2106,11 +2127,9 @@ $ netstat -anp|grep java
 $ lsof -i:8086
 
 
-
 http://www.gtk.org/
 
 数据算法与结构
-
 
 ^l
 ^p
