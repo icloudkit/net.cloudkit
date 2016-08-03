@@ -2013,6 +2013,9 @@ https://www.dartlang.org/
 Scala
 http://www.scala-lang.org/
 
+Ruby
+http://www.ruby-lang.org/zh_cn/
+
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
 MySQL、PostgreSQL、Pgpool
