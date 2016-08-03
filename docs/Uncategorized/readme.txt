@@ -2019,6 +2019,8 @@ http://www.ruby-lang.org/zh_cn/
 Haskell
 https://www.haskell.org/
 
+Kotlin Groovy
+
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
 MySQL、PostgreSQL、Pgpool
@@ -2199,7 +2201,12 @@ Options -> Session Options -> Terminal -> Xmodem/Zmodem ->Directories
   response_data: ""
 
   // action: "",
-  // result: ""
+  // result: "",
+  // status: "",
+  // error: "",
+  // exception: "",
+  // warning
+  // TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF
 }
 
 unique_sequence
