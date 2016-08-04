@@ -1902,6 +1902,9 @@ http://www.lighttpd.net/
 Nexus
 http://www.sonatype.com/download-oss-sonatype
 
+Artifactory
+https://www.jfrog.com/artifactory/
+
 Foundation
 http://foundation.zurb.com/
 
@@ -2032,6 +2035,8 @@ http://square.github.io/retrofit/
 
 Scala并发编程
 
+https://www.jfrog.com/
+https://oss.jfrog.org/artifactory/webapp/#/home
 
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
