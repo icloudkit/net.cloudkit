@@ -2026,6 +2026,11 @@ http://www.rust-lang.org/
 
 https://github.com/spring-projects/spring-reactive
 https://github.com/ReactiveX/RxJava
+http://greenrobot.org/eventbus/
+https://github.com/square/retrofit
+http://square.github.io/retrofit/
+
+Scala并发编程
 
 
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
