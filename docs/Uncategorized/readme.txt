@@ -2019,7 +2019,10 @@ http://www.ruby-lang.org/zh_cn/
 Haskell
 https://www.haskell.org/
 
-Kotlin Groovy
+Kotlin Groovy Clojure
+
+Ruby,Scala,Groovy对应的Web框架Rails,Lift和Grails
+http://www.rust-lang.org/
 
 Zabbix、Cacti、Nagios、Zenoss、Ganglia 监控工具
 SNMP
