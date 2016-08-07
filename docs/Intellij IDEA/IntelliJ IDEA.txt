@@ -14,3 +14,5 @@ http://www.ideajava.org/
 http://www.iteblog.com/idea/
 
 http://bower.io/
+http://idea.iteblog.com/key.php
+http://idea.iteblog.com
