@@ -2265,6 +2265,40 @@ ps -mp pid -o THREAD,tid,time
 printf "%x\n" tid
 jstack pid |grep tid -A 30
 
+监控java线程数：
+ps -eLf | grep java | wc -l
+
+监控网络客户连接数：
+netstat -n | grep tcp | grep 侦听端口 | wc -l
+
+
+按键盘数字“1”，可监控每个逻辑CPU的状况
+1. 敲击键盘“b”（打开/关闭加亮效果）
+2. 敲击键盘“x”（打开/关闭排序列的加亮效果）
+3. 通过”shift + >”或”shift + <”可以向右或左改变排序列
+1. 敲击“f”键，top进入另一个视图，在这里可以编排基本视图中的显示字段
+2. “回车”返回基本视图，可以看到多了“CODE”和“DATA”两个字段
+
+命令pmap，来输出进程内存的状况，可以用来分析线程堆栈：
+pmap PID
+
+cat /proc/your_PID/status
+
+内存相关
+vmstat -s -S M
+也可用
+cat /proc/meminfo
+要看cpu的配置信息可用
+cat /proc/cpuinfo
+查看cpu波动情况的，尤其是多核机器上，可使用
+mpstat -P ALL 10
+只需查看均值的，可用
+iostat -c
+IO相关
+iostat -P ALL
+
+htop
+
 ps aux|grep 24549
 ps -mp 24549 -o THREAD,tid,time
 printf "%x\n" 24552
@@ -2277,3 +2311,41 @@ printf "%x\n" 24552
 jstack 24549|grep 5fe8 -A 30
 
 jstack <pid>  | grep -A 100 57a9
+
+
+序号	列名	含义
+a	PID	进程id
+b	PPID	父进程id
+c	RUSER	Real user name
+d	UID	进程所有者的用户id
+e	USER	进程所有者的用户名
+f	GROUP	进程所有者的组名
+g	TTY	启动进程的终端名。不是从终端启动的进程则显示为 ?
+h	PR	优先级
+i	NI	nice值。负值表示高优先级，正值表示低优先级
+j	P	最后使用的CPU，仅在多CPU环境下有意义
+k	%CPU	上次更新到现在的CPU时间占用百分比
+l	TIME	进程使用的CPU时间总计，单位秒
+m	TIME+	进程使用的CPU时间总计，单位1/100秒
+n	%MEM	进程使用的物理内存百分比
+o	VIRT	进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES
+p	SWAP	进程使用的虚拟内存中，被换出的大小，单位kb。
+q	RES	进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA
+r	CODE	可执行代码占用的物理内存大小，单位kb
+s	DATA	可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb
+t	SHR	共享内存大小，单位kb
+u	nFLT	页面错误次数
+v	nDRT	最后一次写入到现在，被修改过的页面数。
+w	S	进程状态。
+            D=不可中断的睡眠状态
+            R=运行
+            S=睡眠
+            T=跟踪/停止
+            Z=僵尸进程
+x	COMMAND	命令名/命令行
+y	WCHAN	若该进程在睡眠，则显示睡眠中的系统函数名
+z	Flags	任务标志，参考 sched.h
+
+
+
+https://go-zh.org/doc/
