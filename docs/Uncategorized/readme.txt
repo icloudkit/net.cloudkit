@@ -2259,3 +2259,6 @@ root pts/2 Apr 8 04:15 (172.29.0.21)
 这样他的终端将显示该信息。
 3，关闭用户连接
 # fuser -k /dev/pts/2
+
+ps aux|grep PID
+ps -mp pid -o THREAD,tid,time
