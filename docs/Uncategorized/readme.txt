@@ -2248,3 +2248,14 @@ http://www.gtk.org/
 
 ^l
 ^p
+
+
+1，查明登陆端口；
+# who
+root pts/1 Apr 8 00:06 (172.29.0.29)
+root pts/2 Apr 8 04:15 (172.29.0.21)
+2，通知该用户将要关闭他：
+# echo "I will close your connection" > /dev/pts/2
+这样他的终端将显示该信息。
+3，关闭用户连接
+# fuser -k /dev/pts/2
