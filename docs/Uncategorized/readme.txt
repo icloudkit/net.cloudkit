@@ -2275,3 +2275,5 @@ printf "%x\n" 24552
 24554
 
 jstack 24549|grep 5fe8 -A 30
+
+jstack <pid>  | grep -A 100 57a9
