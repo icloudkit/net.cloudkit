@@ -2262,3 +2262,16 @@ root pts/2 Apr 8 04:15 (172.29.0.21)
 
 ps aux|grep PID
 ps -mp pid -o THREAD,tid,time
+printf "%x\n" tid
+jstack pid |grep tid -A 30
+
+ps aux|grep 24549
+ps -mp 24549 -o THREAD,tid,time
+printf "%x\n" 24552
+
+24551
+24552
+24553
+24554
+
+jstack 24549|grep 5fe8 -A 30
