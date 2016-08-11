@@ -207,7 +207,12 @@ public class SuperPassParaProxyTest {
         // SELECT CODE, NAME FROM mft8_un_locode_port ORDER BY CODE
         // RMFT8ComplexCode
         // SELECT CODE_TS, G_NAME FROM complex ORDER BY CODE_TS
-        byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT CODE, NAME FROM mft8_un_locode_port ORDER BY CODE</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
+        // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>select table_name from user_tables</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
+
+        // SELECT COUNTRY_CODE FROM ( SELECT A.*, ROWNUM RN FROM (SELECT * FROM AGREEMENT_RATE) A WHERE ROWNUM <= 40 ) WHERE RN >= 21
+        // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT * FROM AGREEMENT_RATE</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
+        // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT column_name FROM user_tab_columns WHERE TABLE_NAME = 'AGREEMENT_RATE'</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
+        byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT CODE_TS,AGREEMENT_ID,COUNTRY_CODE,BEGIN_DATE,G_NAME,END_DATE,DUTY_TYPE,DUTY_RATE,COM_V_RATE,COM_Q_RATE,COM_UNIT_FLAG,COM_CTL_PRICE,COM_CTL_CURR,NOTE_S,REG_TYPE,REG_RATE,REG_Q_RATE,REG_LOW_Q_RATE,REG_CTL_PRICE,REG_CTL_CURR,TAX_TYPE,TAX_RATE,OUT_TYPE,OUT_RATE FROM ( SELECT A.*, ROWNUM RN FROM (SELECT * FROM AGREEMENT_RATE) A WHERE ROWNUM &lt;= 40 ) WHERE RN &gt;= 21</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
 
         Holder<byte[]> responseData = new Holder<byte[]>();
         System.out.println(new String(superPass.service(serviceName, requestContext, requestData, responseData)));
