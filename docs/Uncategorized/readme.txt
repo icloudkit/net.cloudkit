@@ -2349,3 +2349,6 @@ z	Flags	任务标志，参考 sched.h
 
 
 https://go-zh.org/doc/
+
+lower_case_table_names=1
+# innodb_force_recovery= 1
