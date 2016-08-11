@@ -2397,3 +2397,6 @@ https://detail.tmall.com/item.htm?spm=0.0.0.0.meMs6K&id=536996032956
 https://community.emc.com/message/740198#740198
 https://linux.cn/article-3167-1.html
 http://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/
+
+
+http://www.ituring.com.cn/article/28775?spm=5176.100239.blogcont54002.3.oiWqMc
