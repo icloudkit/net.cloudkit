@@ -2352,3 +2352,38 @@ https://go-zh.org/doc/
 
 lower_case_table_names=1
 # innodb_force_recovery= 1
+
+
+ListResourceAssembler
+Resources
+Representation
+
+action
+offset
+limit
+zone
+version
+
+total_count
+
+$.ajax({
+    beforeSend: function (req) {
+        req.setRequestHeader("Accept", "vnd.example-com.foo+json; version=1.1");
+        },
+    type: "GET",
+    url: "http://http://www.example.com/foo/12",
+    success: function (data) {
+        /* code elided */
+    },
+    dataType: "json"
+});
+
+
+GET to read
+POST to create
+PUT to update
+DELETE to remove
+
+http://www.informit.com/articles/article.aspx?p=1566460
+format=json
+http://www.ruanyifeng.com/blog/2011/09/restful
