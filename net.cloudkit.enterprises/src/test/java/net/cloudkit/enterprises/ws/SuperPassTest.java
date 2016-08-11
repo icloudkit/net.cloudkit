@@ -16,7 +16,11 @@
 
 package net.cloudkit.enterprises.ws;
 
+import javax.xml.namespace.QName;
 import javax.xml.ws.Endpoint;
+import javax.xml.ws.Holder;
+import javax.xml.ws.Service;
+import java.net.URL;
 
 /**
  * 伪造 license认证通过 Web Services
@@ -45,7 +49,7 @@ public class SuperPassTest {
 		 // 6.Copy WAR to “${Tomcat}/webapp” folder.
 		 // 7.Start It.
 
-		/*
+
 		// 调用测试
 		URL url = new URL("http://127.0.0.1:80/SuperPass/SuperPass?wsdl");
 		QName qname = new QName("http://pas.chinaport.gov.cn/", "SuperPassImplService");
@@ -58,7 +62,7 @@ public class SuperPassTest {
 		Holder<byte[]> responseData = new Holder<byte[]>("test".getBytes());
 		// byte[] responseData = "test".getBytes();
 		System.out.println(new String(superPass.service(serviceName, requestContext, requestData, responseData)));
-		*/
+
 
 	}
 }
