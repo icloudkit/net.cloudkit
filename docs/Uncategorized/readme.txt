@@ -2393,6 +2393,10 @@ grub
 爱奇艺会员一个月仅需0.1元(天猫信誉)长期有货（QQ群：363384873）
 https://detail.tmall.com/item.htm?spm=0.0.0.0.meMs6K&id=536996032956
 
+raft算法与paxos算法
+https://www.cockroachlabs.com/
+http://www.pingcap.com/index.html
+
 
 https://community.emc.com/message/740198#740198
 https://linux.cn/article-3167-1.html
