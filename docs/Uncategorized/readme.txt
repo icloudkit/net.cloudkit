@@ -2394,9 +2394,23 @@ grub
 https://detail.tmall.com/item.htm?spm=0.0.0.0.meMs6K&id=536996032956
 
 raft算法与paxos算法
+Cassandra
+http://cassandra.apache.org/
+CockroachDB
 https://www.cockroachlabs.com/
+TiDB
 http://www.pingcap.com/index.html
+Greenplum Database
 http://greenplum.org
+Zipkin
+http://zipkin.io/
+
+beego
+http://beego.me/
+gogs
+https://gogs.io/
+xorm
+http://www.xorm.io/
 
 https://community.emc.com/message/740198#740198
 https://linux.cn/article-3167-1.html
