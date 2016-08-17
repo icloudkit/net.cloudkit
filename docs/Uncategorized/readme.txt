@@ -2425,7 +2425,9 @@ https://gogs.io/
 xorm
 http://www.xorm.io/
 
-
+http://www.h2database.com/html/main.html
+https://github.com/lealone/Lealone
+http://vertx.io/
 
 https://community.emc.com/message/740198#740198
 https://linux.cn/article-3167-1.html
@@ -2446,3 +2448,6 @@ CSP模型 (Communicating Sequential Processes)
 Actor模型
 
 物化视图
+
+MVCC
+Multi-Version Concurrency Control 多版本并发控制
