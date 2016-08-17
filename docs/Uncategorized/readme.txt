@@ -2407,8 +2407,16 @@ http://zipkin.io/
 EagleEye alibaba
 Dapper google
 
+小米开源
 OpenFalcon
 http://open-falcon.org/
+Minos
+thrift
+Rose
+HDFS、YARN 和 Impala
+Themis
+
+http://www.novajs.com/
 
 beego
 http://beego.me/
@@ -2433,3 +2441,8 @@ Share
 
 OLTP即联机事务处理，就是我们经常说的关系数据库，意即记录即时的增、删、改、查，就是我们经常应用的东西，这是数据库的基础；
 OLAP即联机分析处理，是数据仓库的核心部心，所谓数据仓库是对于大量已经由OLTP形成的数据的一种分析型的数据库，用于处理商业智能、决策支持等重要的决策信息；数据仓库是在数据库应用到一定程序之后而对历史数据的加工与分析；是处理两种不同用途的工具而已。
+
+CSP模型 (Communicating Sequential Processes)
+Actor模型
+
+物化视图
