@@ -90,6 +90,19 @@
 		<property name="service" ref="memberRemoteService" />
 		<property name="serviceInterface" value="net.cloudkit.enterprises.interfaces.member.remoting.MemberRemoteService" />
 		<property name="registry" ref="registry"/>
+        <property name="interceptors">
+            <list><ref bean="securityInterceptor"/></list>
+        </property>
 	</bean>
+
+    <bean id="securityInterceptor" class="net.cloudkit.enterprises.infrastructure.shiro.SecurityInterceptor">
+        <!-- 允许访问RMI的客户端IP地址 -->
+        <property name="allowed">
+            <set>
+                <value>192.168.0.1</value>
+                <value>192.168.0.2</value>
+            </set>
+        </property>
+    </bean>
 
 </beans>

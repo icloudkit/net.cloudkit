@@ -2446,8 +2446,17 @@ OLAP即联机分析处理，是数据仓库的核心部心，所谓数据仓库�
 
 CSP模型 (Communicating Sequential Processes)
 Actor模型
-
+Reactive响应式编程
+函数式编程
+RESTful
+微服务
+异步编程
+事务
 物化视图
+CQRS
+DDD
+Channel模型
+事件与Event Sourcing
 
 MVCC
 Multi-Version Concurrency Control 多版本并发控制
@@ -2458,3 +2467,6 @@ http://www.fromdual.com/mysql-materialized-views
 
 http://research.google.com/pubs/pub36726.html
 http://research.google.com/pubs/pub41344.html
+
+http://www.gnu.org/
+http://gcc.gnu.org/
