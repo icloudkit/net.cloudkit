@@ -73,10 +73,12 @@
 		<property name="serviceUrl" value="${rmi.services_url_prefix}MemberRemoteService" />
 		<property name="serviceInterface" value="net.cloudkit.enterprises.interfaces.member.remoting.MemberRemoteService" />
 		<!-- 启动时检查连接，默认true invokeTimeout -->
+        <!-- 不在容器启动的时候创建与Server端的连接 -->
 		<property name="lookupStubOnStartup" value="false" />
 		<!-- 失败时刷新Stub, 默认 false -->
 		<!-- RMI stub被连接到特定的端点，不仅仅是为每个调用打开一个给定的目标地址的连接，所以如果重新启动RMI端点主机的服务器，那么就需要重新注册这些stub，并且客户端需要再次查询它们 -->
 		<!-- 调用失败，并且连接异常的话，将它设定为true来强制重新自动查询stub -->
+        <!-- 连接出错时自动重连 -->
 		<property name="refreshStubOnConnectFailure" value="true" />
 		<!-- 缓存Stub(生产环境对性能影响大)，可不填，默认true -->
 		<!-- 设置为false的时候，禁止stub的缓存，生产环境中必需开启否则影响性能 -->

@@ -2470,3 +2470,13 @@ http://research.google.com/pubs/pub41344.html
 
 http://www.gnu.org/
 http://gcc.gnu.org/
+
+
+https://github.com/google/gxui
+
+zab协议
+Raft协议
+http://www.tuicool.com/articles/b6jMjq
+paxos
+
+Lambdas
