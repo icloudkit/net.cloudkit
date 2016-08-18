@@ -2451,3 +2451,6 @@ Actor模型
 
 MVCC
 Multi-Version Concurrency Control 多版本并发控制
+
+物化视图
+http://www.fromdual.com/mysql-materialized-views
