@@ -23,6 +23,8 @@ import javax.xml.ws.Holder;
 import javax.xml.ws.Service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 
 /**
@@ -213,7 +215,8 @@ public class SuperPassParaProxyTest {
         // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT * FROM AGREEMENT_RATE</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
         // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT column_name FROM user_tab_columns WHERE TABLE_NAME = 'AGREEMENT_RATE'</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
         // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql>SELECT CODE_TS,AGREEMENT_ID,COUNTRY_CODE,BEGIN_DATE,G_NAME,END_DATE,DUTY_TYPE,DUTY_RATE,COM_V_RATE,COM_Q_RATE,COM_UNIT_FLAG,COM_CTL_PRICE,COM_CTL_CURR,NOTE_S,REG_TYPE,REG_RATE,REG_Q_RATE,REG_LOW_Q_RATE,REG_CTL_PRICE,REG_CTL_CURR,TAX_TYPE,TAX_RATE,OUT_TYPE,OUT_RATE FROM ( SELECT A.*, ROWNUM RN FROM (SELECT * FROM AGREEMENT_RATE) A WHERE ROWNUM &lt;= 40 ) WHERE RN &gt;= 1</QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
-        byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n<QuerySql><![CDATA[SELECT COUNT(1) AS TEST FROM AGREEMENT_RATE WHERE END_DATE > 2016-08-18]]></QuerySql>\n</LoadIntoMemoryRequest>".getBytes();
+        byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><QuerySql><![CDATA[SELECT CODE_TS,AGREEMENT_ID,COUNTRY_CODE,BEGIN_DATE,G_NAME,END_DATE,DUTY_TYPE,DUTY_RATE,COM_V_RATE,COM_Q_RATE,COM_UNIT_FLAG,COM_CTL_PRICE,COM_CTL_CURR,NOTE_S,REG_TYPE,REG_RATE,REG_Q_RATE,REG_LOW_Q_RATE,REG_CTL_PRICE,REG_CTL_CURR,TAX_TYPE,TAX_RATE,OUT_TYPE,OUT_RATE FROM (SELECT A.*, ROWNUM RN FROM (SELECT * FROM AGREEMENT_RATE WHERE END_DATE > TO_DATE('08/18/2016','MM/dd/yyyy')) A WHERE ROWNUM <= 400000) WHERE RN >= 300001]]></QuerySql></LoadIntoMemoryRequest>".getBytes();
+        // byte[] requestData = "<?xml version=\"1.0\"?>\n<LoadIntoMemoryRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><QuerySql><![CDATA[SELECT COUNT(1) AS COUNT FROM AGREEMENT_RATE WHERE END_DATE > TO_DATE('08/18/2016','MM/dd/yyyy')]]></QuerySql></LoadIntoMemoryRequest>".getBytes();
 
         Holder<byte[]> responseData = new Holder<byte[]>();
         System.out.println(new String(superPass.service(serviceName, requestContext, requestData, responseData)));
@@ -232,7 +235,11 @@ public class SuperPassParaProxyTest {
         baos.flush();
         baos.close();
 
-        System.out.println(new String(data));
+        // System.out.println(new String(data));
         // System.out.println(new String(responseData.value, "UTF-8"));
+        FileOutputStream fos = new FileOutputStream("D:/test_4.xml");
+        OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+        osw.write(new String(data));
+        osw.flush();
     }
 }

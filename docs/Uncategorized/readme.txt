@@ -2480,3 +2480,43 @@ http://www.tuicool.com/articles/b6jMjq
 paxos
 
 Lambdas
+
+
+How to Design Programs
+
+
+-- 查询包含多币种记录
+SELECT
+    EPROT_NO, DECL_NO, GROUP_CONCAT(CURRENCY_NAME)
+FROM
+    (
+    SELECT
+        DH.EPROT_NO, DG.DECL_NO, DG.CURRENCY_NAME
+    FROM
+        DECL_GOODS DG, DECL_HEAD DH
+    WHERE
+        DG.DECL_NO = DH.DECL_NO
+        AND SUBSTRING(DH.CREATE_TIME, 1, 10) >= UNIX_TIMESTAMP('2016-08-1 00:00:00')
+        AND SUBSTRING(DH.CREATE_TIME, 1, 10) <= UNIX_TIMESTAMP('2016-08-30 23:59:59')
+        AND DH.TRANS_TOOL_NAME = '集中申报'
+    GROUP BY
+        DG.DECL_NO, DG.CURRENCY
+    ) GOODS_COUNTS
+GROUP BY
+    DECL_NO HAVING COUNT(DECL_NO) > 1;
+
+
+"Helvetica Neue",Helvetica,Arial,FreeSans,sans-serif
+"proxima-nova","Helvetica Neue",Helvetica,Arial,FreeSans,sans-serif
+
+
+什么是JIT？
+JIT是just in time,即时编译技术。使用该技术，能够加速java程序的执行速度。下面，就对该技术做个简单的讲解。
+首先，我们大家都知道，通常javac将程序源代码编译，转换成java字节码，JVM通过解释字节码将其翻译成对应的机器指令，逐条读入，逐条解释翻译。很显然，经过解释执行，其执行速度必然会比可执行的二进制字节码程序慢。为了提高执行速度，引入了JIT技术。
+在运行时JIT会把翻译过的机器码保存起来，已备下次使用，因此从理论上来说，采用该JIT技术可以，可以接近以前纯编译技术。下面我看看，JIT的工作过程。
+JIT 编译过程
+当JIT编译启用时（默认是启用的），JVM读入.class文件解释后，将其发给JIT编译器。JIT编译器将字节码编译成本机机器代码，下图展示了该过程。
+
+
+TinyCC
+
