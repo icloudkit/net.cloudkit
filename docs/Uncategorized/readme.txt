@@ -2487,23 +2487,23 @@ How to Design Programs
 
 -- 查询包含多币种记录
 SELECT
-    EPROT_NO, DECL_NO, GROUP_CONCAT(CURRENCY_NAME)
+    ORD_SN, GROUP_CONCAT(CURRENCY_NAME)
 FROM
     (
     SELECT
-        DH.EPROT_NO, DG.DECL_NO, DG.CURRENCY_NAME
+        O.ORD_SN, OI.CURRENCY_NAME
     FROM
-        DECL_GOODS DG, DECL_HEAD DH
+        `ORDER` O, ORDER_ITEM OI
     WHERE
-        DG.DECL_NO = DH.DECL_NO
-        AND SUBSTRING(DH.CREATE_TIME, 1, 10) >= UNIX_TIMESTAMP('2016-08-1 00:00:00')
-        AND SUBSTRING(DH.CREATE_TIME, 1, 10) <= UNIX_TIMESTAMP('2016-08-30 23:59:59')
-        AND DH.TRANS_TOOL_NAME = '集中申报'
+        1 = 1
+        AND O.CREATE_TIME >= '2016-08-19 00:00:00'
+        AND O.CREATE_TIME <= '2016-08-19 23:59:59'
+        AND O.ORD_SN = OI.ORD_SN
     GROUP BY
-        DG.DECL_NO, DG.CURRENCY
-    ) GOODS_COUNTS
+        OI.ORD_SN, OI.CURRENCY_NAME
+    ) GOODS_CURR_COUNTS
 GROUP BY
-    DECL_NO HAVING COUNT(DECL_NO) > 1;
+    ORD_SN HAVING COUNT(ORD_SN) > 1;
 
 
 "Helvetica Neue",Helvetica,Arial,FreeSans,sans-serif
@@ -2522,3 +2522,7 @@ TinyCC
 http://bellard.org/tcc/
 http://bellard.org/
 
+Apache Thrift
+http://thrift.apache.org/
+
+http://git.oschina.net/zhou666/spring-cloud-7simple
