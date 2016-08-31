@@ -2558,3 +2558,8 @@ signal
 中国保险监督管理委员会湖南监管局办理《经营保险代理业务许可证》
 环境保护局办理《废弃电器电子产品处理批准文件》
 安全生产监督管理局办理《烟花爆竹经营（零售）许可证》
+
+JAVA Service Wrapper
+因为X64没有Free的Community版本，所以只好破解一下
+比较简单，首先用工具把wrapper.exe的数字签名去掉（http://www.fluxbytes.com/wp-content/files/FileUnsigner.rar）
+然后用IDA Pro X64打开wrapper.exe，找到几个关键跳转，jnz -> jz 即可。
