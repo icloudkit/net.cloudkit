@@ -2563,3 +2563,5 @@ JAVA Service Wrapper
 因为X64没有Free的Community版本，所以只好破解一下
 比较简单，首先用工具把wrapper.exe的数字签名去掉（http://www.fluxbytes.com/wp-content/files/FileUnsigner.rar）
 然后用IDA Pro X64打开wrapper.exe，找到几个关键跳转，jnz -> jz 即可。
+
+http://javapapers.com/core-java/java-vs-javaw-vs-javaws/
