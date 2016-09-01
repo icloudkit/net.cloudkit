@@ -2565,3 +2565,5 @@ JAVA Service Wrapper
 然后用IDA Pro X64打开wrapper.exe，找到几个关键跳转，jnz -> jz 即可。
 
 http://javapapers.com/core-java/java-vs-javaw-vs-javaws/
+
+http://tengine.taobao.org/book/
