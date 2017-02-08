@@ -80,8 +80,21 @@
 	<!-- XML 配置方式 -->
 	<!--1 httpSession配置 -->
 	<context:annotation-config/>
-	<bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" />
+	<!-- <bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" /> -->
 
+    <!-- 设置Cookie domain 和 名称 -->
+	<bean id="defaultCookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
+		<property name="domainName" value=".cloudkit.net"/>
+		<property name="cookieName" value="JSESSIONID"/>
+		<property name="cookiePath" value="/"></property>
+		<!-- <property name="domainNamePattern" value="^.+?\.(\w+\.[a-z]+)$"></property>-->
+	</bean>
+
+	<bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+		<property name="maxInactiveIntervalInSeconds" value="1800" />
+		<property name="cookieSerializer" ref="defaultCookieSerializer"/>
+	</bean>
+    
 	<!-- 2 配置Redis连接 -->
 	<!--
 	&lt;!&ndash; jedis pool配置 &ndash;&gt;
