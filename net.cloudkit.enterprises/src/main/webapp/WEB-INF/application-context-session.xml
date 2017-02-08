@@ -86,7 +86,8 @@
 	<bean id="defaultCookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
 		<property name="domainName" value=".cloudkit.net"/>
 		<property name="cookieName" value="JSESSIONID"/>
-		<property name="cookiePath" value="/"></property>
+		<property name="cookiePath" value="/" />
+        <property name="useHttpOnlyCookie" value="true"/>
 		<!-- <property name="domainNamePattern" value="^.+?\.(\w+\.[a-z]+)$"></property>-->
 	</bean>
 
