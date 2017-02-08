@@ -11,7 +11,62 @@
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
         <property name="proxyTargetClass" value="true" />
     </bean>
+    
+    <!--
+    &lt;!&ndash; 会话验证调度器 &ndash;&gt;
+    <bean id="sessionValidationScheduler"
+          class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
+        &lt;!&ndash;检测时间间距，默认是60分钟&ndash;&gt;
+        <property name="interval" value="${session.validate.timespan}"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
 
+    &lt;!&ndash; 会话Cookie模板 &ndash;&gt;
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        &lt;!&ndash;cookie的name &ndash;&gt;
+        <constructor-arg value="v_v-s-gmy"/>
+        <property name="httpOnly" value="true"/>
+        &lt;!&ndash;cookie的有效时间 &ndash;&gt;
+        <property name="maxAge" value="-1"/>
+        &lt;!&ndash; 配置存储Session Cookie的domain为 一级域名 &ndash;&gt;
+        <property name="domain" value=".guanmaoyun.com"/>
+    </bean>
+
+    &lt;!&ndash; 会话ID生成器 &ndash;&gt;
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+
+    &lt;!&ndash; 会话DAO &ndash;&gt;
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+    </bean>
+
+    &lt;!&ndash; Session Manager &ndash;&gt;
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        &lt;!&ndash; 相隔多久检查一次session的有效性   &ndash;&gt;
+        <property name="sessionValidationInterval" value="1800000"/>
+        &lt;!&ndash; session 有效时间为半小时 （毫秒单位）&ndash;&gt;
+        <property name="globalSessionTimeout" value="1800000"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
+        &lt;!&ndash; session 监听，可以多个。 &ndash;&gt;
+        &lt;!&ndash;
+        <property name="sessionListeners">
+            <list>
+                <ref bean="customSessionListener"/>
+            </list>
+        </property>
+        &ndash;&gt;
+        &lt;!&ndash; 间隔多少时间检查，不配置是60分钟 &ndash;&gt;
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        &lt;!&ndash; 是否开启 检测，默认开启 &ndash;&gt;
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        &lt;!&ndash; 是否删除无效的，默认也是开启 &ndash;&gt;
+        <property name="deleteInvalidSessions" value="true"/>
+        &lt;!&ndash; 会话Cookie模板 &ndash;&gt;
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+    -->
+    
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
