@@ -47,8 +47,8 @@ public class AliyunOSSClientHelper {
 
     /*
     private static String endpoint = "oss-cn-shenzhen.aliyuncs.com";
-    private static String accessKeyId = "TLCLhaRoudG3Ceq9";
-    private static String accessKeySecret = "TEXrcq473lUTEQY21WKvTSa8mC3q55";
+    private static String accessKeyId = "xxxxxx";
+    private static String accessKeySecret = "xxxxxx";
     */
 
     private static String bucketName = "hypermedia";
