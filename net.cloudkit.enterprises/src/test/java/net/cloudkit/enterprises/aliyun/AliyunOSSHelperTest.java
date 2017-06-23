@@ -52,8 +52,8 @@ public class AliyunOSSHelperTest {
 
     /*
     private static String endpoint = "oss-cn-shenzhen.aliyuncs.com";
-    private static String accessKeyId = "Gi0Yziw4U8wzEL4I";
-    private static String accessKeySecret = "A5g3t8l6bOL2ZYk4V0GPlQuTCxolus";
+    private static String accessKeyId = "xxxxxx";
+    private static String accessKeySecret = "xxxxxx";
 
     private static String bucketName = "repositories";
     // private static String key = "client-v1.0.0.exe";
