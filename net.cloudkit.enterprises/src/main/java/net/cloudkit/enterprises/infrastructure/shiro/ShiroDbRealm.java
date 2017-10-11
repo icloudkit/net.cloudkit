@@ -196,6 +196,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
         setCredentialsMatcher(matcher);
     }
 
+    // 密码是否一致则在HashedCredentialsMatcher的方法doCredentialsMatch中进行
+    // TODO 可以重写assertCredentialsMatch进行不传密码认证
+    
     /**
      * 将一些数据放到ShiroSession中,以便于其它地方使用
      * 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到
