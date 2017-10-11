@@ -7,6 +7,14 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// <!-- 自定义的Realm -->
+// <!-- Define the realm you want to use to connect to your back-end security datasource: -->
+// <bean id="shiroDbRealm" class="net.cloudkit.enterprises.infrastructure.shiro.ShiroDbRealm">
+//     <property name="credentialsMatcher" ref="passwordMatcher" />
+//     <property name="preMinute" value="1" />
+//     <property name="afterMinute" value="1" />
+// </bean>
+
 /**
  * 重新定义密码校验
  * The Class PasswordHashedCredentialsMatcher
